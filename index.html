@@ -1,107 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sora Kim</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sora Kim</title>
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#444;
+      --card:#fff;
+      --accent:#22c55e;
+      --border:#111;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)),
+        url("assets/bg.png");
+      background-size: cover;
+      background-position: center;
+      min-height:100vh;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .card{
+      background:var(--card);
+      border:4px solid var(--border);
+      box-shadow: 10px 10px 0 rgba(0,0,0,.15);
+      padding: 26px 22px;
+    }
+    .avatar{
+      width: 150px; height: 150px;
+      border-radius: 999px;
+      object-fit: cover;
+      display:block;
+      margin: 0 auto 14px;
+      border: 2px solid rgba(0,0,0,.15);
+    }
+    h1{
+      margin: 0;
+      text-align:center;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+    }
+    .greenline{
+      width: 44px; height: 3px;
+      background: var(--accent);
+      margin: 12px auto 14px;
+      border-radius: 99px;
+    }
+    .icons{
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .icons a{ color:var(--ink); text-decoration:none; }
+    .email{
+      text-align:center;
+      color:var(--muted);
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      word-break: break-word;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    .hero{
+      padding: 10px 0;
+    }
+    .hello{
+      font-size: 64px;
+      line-height: 0.95;
+      margin: 6px 0 14px;
+      letter-spacing: -0.03em;
+    }
+    .bio{
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .btnrow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0 18px;
+    }
+    .btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      background:#fff;
+      color:var(--ink);
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .02em;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.12);
+    }
+    .btn:hover{ transform: translate(-1px,-1px); box-shadow: 6px 6px 0 rgba(0,0,0,.12); }
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+    .mini{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(0,0,0,.12);
+      padding: 10px 12px;
+      max-width: 520px;
+    }
+    .mini .k{ color: #16a34a; font-weight: 700; }
+    .footer{
+      margin-top: 22px;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+    }
 
-.card {
-  background: white;
-  width: 340px;
-  padding: 40px 30px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.profile {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.role {
-  margin-top: 6px;
-  color: #666;
-  font-size: 14px;
-}
-
-.line {
-  width: 40px;
-  height: 3px;
-  background: #6bbf73;
-  margin: 14px auto;
-}
-
-.email {
-  font-size: 13px;
-  color: #444;
-  letter-spacing: 1px;
-}
-
-.links {
-  margin-top: 18px;
-}
-
-.links a {
-  text-decoration: none;
-  color: #111;
-  margin: 0 8px;
-  font-size: 14px;
-}
-
-.links a:hover {
-  text-decoration: underline;
-}
-</style>
+    @media (max-width: 860px){
+      .wrap{ grid-template-columns: 1fr; }
+      .hello{ font-size: 52px; }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <section class="card">
+      <img class="avatar" src="assets/profile.jpg" alt="Sora Kim" />
+      <h1>Sora Kim</h1>
+      <div class="greenline"></div>
 
-<div class="card">
+      <div class="icons">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">in</a>
+        <span>·</span>
+        <a href="https://github.com/sorakim-phd" target="_blank" rel="noreferrer">github</a>
+      </div>
 
-<img src="profile.jpg" class="profile">
+      <div class="email">sorakim.phd@gmail.com</div>
+    </section>
 
-<h1>Sora Kim</h1>
-<div class="line"></div>
+    <section class="hero">
+      <div class="hello">Hello!</div>
+      <div class="bio">
+        This is Sora Kim. I study how responsibility and accountability are structurally produced,
+        anticipated, and stabilized in high-stakes sociotechnical organizational systems—through
+        procedural infrastructures, investigative routines, and AI-mediated representations.
+      </div>
 
-<div class="role">
-Researcher in responsibility and accountability<br>
-in sociotechnical organizational systems
-</div>
+      <div class="btnrow">
+        <a class="btn" href="assets/SoraKim_CV.pdf">CV</a>
+        <a class="btn" href="https://osf.io/preprints/socarxiv/" target="_blank" rel="noreferrer">PREPRINTS</a>
+        <a class="btn" href="https://github.com/sorakim-phd" target="_blank" rel="noreferrer">PROJECTS</a>
+      </div>
 
-<div class="email">
-sorakim.phd@gmail.com
-</div>
+      <div class="mini">
+        <div><span class="k"># Who are you?</span></div>
+        <div>name = Sora 😎</div>
+        <div>nationality = Korea 🇰🇷</div>
+        <div>focus = responsibility/accountability</div>
+      </div>
 
-<div class="links">
-<a href="cv.pdf">CV</a> |
-<a href="https://github.com/sorakim-phd">GitHub</a> |
-<a href="https://osf.io/">Preprints</a>
-</div>
-
-</div>
-
+      <div class="footer">Best viewed on desktop · Designed by Sora Kim © 2026</div>
+    </section>
+  </main>
 </body>
 </html>
