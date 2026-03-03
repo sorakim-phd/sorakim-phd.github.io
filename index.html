@@ -169,7 +169,14 @@
       background: rgba(255,255,255,0.06);
       /* IMPORTANT: prevent “pixel-ish” rendering */
       image-rendering: auto;
-    }
+
+        filter: grayscale(100%);
+  transition: filter 180ms ease;
+}
+
+.avatar:hover {
+  filter: grayscale(0%);
+}
 
 .name {
   font-family: 'Sora', sans-serif;
