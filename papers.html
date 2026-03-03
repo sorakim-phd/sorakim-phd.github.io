@@ -1,76 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Papers · Sora Kim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#0f1014;--text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.72);--line:rgba(255,255,255,.14);--radius:22px}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui;line-height:1.7}
-    nav{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:10px;padding:10px;border:1px solid var(--line);background:rgba(15,16,20,.62);backdrop-filter:blur(10px);border-radius:999px}
-    nav a{text-decoration:none;color:var(--muted);font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{color:var(--text);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
-    nav a.active{color:var(--text);background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.12)}
-    .wrap{max-width:980px;margin:0 auto;padding:110px 22px 80px}
-    h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:44px;letter-spacing:-.03em;margin:0 0 14px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}}
-    .paper{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:var(--radius);padding:16px;transition:160ms ease}
-    .paper:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.20)}
-    .title{font-family:"Space Grotesk",Inter,sans-serif;font-size:16px;margin:0 0 10px}
-    .meta{color:rgba(255,255,255,.68);font-size:13px;margin:0 0 10px}
-    .links a{display:inline-block;margin-right:10px;text-decoration:none;color:rgba(255,255,255,.86);font-size:13px;padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.06)}
-    .links a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22)}
-  </style>
+<meta charset="UTF-8">
+<title>Papers · Sora Kim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f5f7;
+  --panel:#ffffff;
+  --text:#1d1d1f;
+  --muted:#6e6e73;
+  --line:#e5e5e7;
+  --radius:20px;
+  --shadow:0 12px 34px rgba(0,0,0,0.06);
+  --mono:'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+  background:
+    radial-gradient(900px 700px at 15% 10%, rgba(10,132,255,0.08), transparent 55%),
+    radial-gradient(900px 700px at 88% 18%, rgba(255,45,85,0.06), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+nav{
+  position:fixed;
+  top:18px;
+  right:18px;
+  display:flex;
+  gap:10px;
+  padding:10px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(14px);
+  border-radius:999px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  transition:150ms ease;
+}
+
+nav a:hover{
+  background:rgba(0,0,0,0.04);
+  color:var(--text);
+}
+
+nav a.active{
+  background:rgba(0,0,0,0.06);
+  color:var(--text);
+}
+
+.wrap{
+  max-width:860px;
+  margin:0 auto;
+  padding:110px 24px 100px;
+}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.title{
+  font-family:'Sora',sans-serif;
+  font-size:48px;
+  font-weight:700;
+  letter-spacing:-0.04em;
+  margin:0 0 14px 0;
+}
+
+.intro{
+  font-size:15px;
+  color:rgba(29,29,31,0.85);
+  margin-bottom:36px;
+}
+
+.paper{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-bottom:22px;
+}
+
+.paper-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.paper-title{
+  font-weight:600;
+  font-size:18px;
+  line-height:1.35;
+  max-width:620px;
+}
+
+.status{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,0.03);
+  white-space:nowrap;
+}
+
+.abstract{
+  margin:14px 0 16px 0;
+  font-size:14px;
+  color:rgba(29,29,31,0.85);
+}
+
+.links a{
+  font-size:13px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:14px;
+  background:rgba(0,0,0,0.03);
+  transition:150ms ease;
+}
+
+.links a:hover{
+  background:rgba(0,0,0,0.08);
+}
+
+.note{
+  margin-top:40px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+@media(max-width:600px){
+  .title{font-size:36px;}
+}
+</style>
 </head>
+
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="research.html">Research</a>
-    <a class="active" href="papers.html">Papers</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
-  </nav>
 
-  <div class="wrap">
-    <h1>Papers</h1>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="research.html">Research</a>
+  <a class="active" href="papers.html">Papers</a>
+  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
 
-    <div class="grid">
-      <div class="paper">
-        <div class="title">Anticipated Accountability Convergence</div>
-        <div class="meta">Manuscript · 2026</div>
-        <div class="links">
-          <a href="assets/kim-2026-aac.pdf" target="_blank" rel="noopener">PDF</a>
-        </div>
-      </div>
+<div class="wrap">
 
-      <div class="paper">
-        <div class="title">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</div>
-        <div class="meta">Manuscript · 2026</div>
-        <div class="links">
-          <a href="assets/kim-2026-cf.pdf" target="_blank" rel="noopener">PDF</a>
-        </div>
-      </div>
-
-      <div class="paper">
-        <div class="title">Responsibility Convergence in Organizational Investigations</div>
-        <div class="meta">Manuscript · 2026</div>
-        <div class="links">
-          <a href="assets/kim-2026-rc.pdf" target="_blank" rel="noopener">PDF</a>
-        </div>
-      </div>
-
-      <div class="paper">
-        <div class="title">AI-Mediated Responsibility</div>
-        <div class="meta">Manuscript · 2026</div>
-        <div class="links">
-          <a href="assets/kim-2026-pac.pdf" target="_blank" rel="noopener">PDF</a>
-        </div>
-      </div>
-    </div>
+  <div class="kicker">/ papers</div>
+  <h1 class="title">Selected Manuscripts</h1>
+  <div class="intro">
+    Full working drafts and preprints from the responsibility research program.
   </div>
+
+  <!-- AAC -->
+  <article class="paper">
+    <div class="paper-header">
+      <div class="paper-title">
+        Anticipated Accountability Convergence:<br>
+        Structuring Responsibility Before Action in Regulated Sociotechnical Systems
+      </div>
+      <span class="status">Working manuscript · 2026</span>
+    </div>
+    <div class="abstract">
+      Develops a process theory of how accountability becomes pre-structured before action through anticipatory alignment under procedural and review pressure.
+    </div>
+    <div class="links">
+      <a href="assets/aac.pdf" target="_blank">PDF</a>
+    </div>
+  </article>
+
+  <!-- CF -->
+  <article class="paper">
+    <div class="paper-header">
+      <div class="paper-title">
+        Structuring Judgment, Stabilizing Responsibility:<br>
+        Cognitive Friction in Procedural Texts
+      </div>
+      <span class="status">Working manuscript · 2026</span>
+    </div>
+    <div class="abstract">
+      Examines how procedural documents distribute interpretive burden and shape how responsibility becomes assignable within organizational workflows.
+    </div>
+    <div class="links">
+      <a href="assets/cf.pdf" target="_blank">PDF</a>
+    </div>
+  </article>
+
+  <!-- RC -->
+  <article class="paper">
+    <div class="paper-header">
+      <div class="paper-title">
+        Responsibility Convergence in Organizational Investigations:<br>
+        Structural Dynamics of Blame in Root Cause Analysis
+      </div>
+      <span class="status">Working manuscript · 2026</span>
+    </div>
+    <div class="abstract">
+      A theory of investigative convergence explaining how distributed signals narrow into a single accountable narrative under closure pressure.
+    </div>
+    <div class="links">
+      <a href="assets/rc.pdf" target="_blank">PDF</a>
+    </div>
+  </article>
+
+  <!-- PAC -->
+  <article class="paper">
+    <div class="paper-header">
+      <div class="paper-title">
+        Premature Accountability Convergence:<br>
+        AI-Mediated Responsibility in Sociotechnical Organizations
+      </div>
+      <span class="status">Working manuscript · 2026</span>
+    </div>
+    <div class="abstract">
+      Investigates how AI-assisted representations and formatting constraints reshape legibility and stabilize responsibility within regulated systems.
+    </div>
+    <div class="links">
+      <a href="assets/pac.pdf" target="_blank">PDF</a>
+    </div>
+  </article>
+
+  <div class="note">
+    Earlier drafts available upon request.
+  </div>
+
+</div>
+
 </body>
 </html>
