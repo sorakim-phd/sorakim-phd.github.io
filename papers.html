@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Papers · Sora Kim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1014;--text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.72);--line:rgba(255,255,255,.14);--radius:22px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui;line-height:1.7}
+    nav{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:10px;padding:10px;border:1px solid var(--line);background:rgba(15,16,20,.62);backdrop-filter:blur(10px);border-radius:999px}
+    nav a{text-decoration:none;color:var(--muted);font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid transparent}
+    nav a:hover{color:var(--text);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
+    nav a.active{color:var(--text);background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.12)}
+    .wrap{max-width:980px;margin:0 auto;padding:110px 22px 80px}
+    h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:44px;letter-spacing:-.03em;margin:0 0 14px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .paper{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:var(--radius);padding:16px;transition:160ms ease}
+    .paper:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.20)}
+    .title{font-family:"Space Grotesk",Inter,sans-serif;font-size:16px;margin:0 0 10px}
+    .meta{color:rgba(255,255,255,.68);font-size:13px;margin:0 0 10px}
+    .links a{display:inline-block;margin-right:10px;text-decoration:none;color:rgba(255,255,255,.86);font-size:13px;padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.06)}
+    .links a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22)}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a class="active" href="papers.html">Papers</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
+  </nav>
+
+  <div class="wrap">
+    <h1>Papers</h1>
+
+    <div class="grid">
+      <div class="paper">
+        <div class="title">Anticipated Accountability Convergence</div>
+        <div class="meta">Manuscript · 2026</div>
+        <div class="links">
+          <a href="assets/kim-2026-aac.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="title">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</div>
+        <div class="meta">Manuscript · 2026</div>
+        <div class="links">
+          <a href="assets/kim-2026-cf.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="title">Responsibility Convergence in Organizational Investigations</div>
+        <div class="meta">Manuscript · 2026</div>
+        <div class="links">
+          <a href="assets/kim-2026-rc.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="title">AI-Mediated Responsibility</div>
+        <div class="meta">Manuscript · 2026</div>
+        <div class="links">
+          <a href="assets/kim-2026-pac.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
