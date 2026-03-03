@@ -1,311 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="UTF-8">
 <title>Sora Kim</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  :root{
-    --bg1:#f5f5f5;
-    --bg2:#e9efe9;
-    --ink:#111;
-    --muted:#777;
-    --card:#f2f2f2;
-    --paper:#f7f7f7;
-    --code:#f0f0f0;
-    --accent:#39b36b;
-  }
 
-  * { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    line-height: 1.6;
+}
 
-  body{
-    margin:0;
-    font-family:'Space Mono', monospace;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-    color:var(--ink);
-  }
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px;
+}
 
-  .container{
-    max-width:1100px;
-    margin:60px auto;
-    padding:0 22px;
-    display:grid;
-    grid-template-columns: 360px 1fr;
-    gap:60px;
-    align-items:start;
-  }
+nav {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+}
 
-  /* Profile card */
-  .profile-card{
-    background:var(--card);
-    border:3px solid var(--ink);
-    border-radius:14px;
-    padding:36px 28px 30px;
-    text-align:center;
-    position:relative;
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.08);
-  }
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+}
 
-  .profile-card:after{
-    content:"";
-    position:absolute;
-    bottom:-14px;
-    left:50%;
-    transform:translateX(-50%);
-    border-width:14px 14px 0 14px;
-    border-style:solid;
-    border-color: var(--ink) transparent transparent transparent;
-  }
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 80px;
+}
 
-  .profile-img{
-    width:160px;
-    height:160px;
-    border-radius:50%;
-    object-fit:cover;
-    border:2px solid #bbb;
-    margin-bottom:18px;
-    background:#ddd;
-  }
+.profile-img {
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
 
-  .name{
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:8px;
-  }
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
 
-  .green-line{
-    width:40px;
-    height:4px;
-    background:var(--accent);
-    margin:10px auto 16px;
-    border-radius:2px;
-  }
+.hero-text p {
+    font-size: 18px;
+    max-width: 500px;
+}
 
-  .email{
-    font-size:13px;
-    letter-spacing:1px;
-    margin-top:12px;
-    word-break: break-word;
-  }
+.section {
+    margin-top: 120px;
+}
 
-  /* Right side */
-  .hello{
-    font-size:48px;
-    font-weight:700;
-    margin:0 0 10px 0;
-  }
+.section h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #111;
+    display: inline-block;
+    padding-bottom: 6px;
+}
 
-  .bio{
-    font-size:15px;
-    line-height:1.9;
-    max-width:560px;
-    margin:0 0 22px 0;
-  }
+.paper {
+    margin-bottom: 40px;
+}
 
-  /* Buttons */
-  .buttons{ margin: 0 0 24px 0; }
+.paper-title {
+    font-weight: 600;
+}
 
-  .btn{
-    display:inline-block;
-    padding:10px 18px;
-    border:2px solid var(--ink);
-    border-radius:10px;
-    margin-right:12px;
-    text-decoration:none;
-    color:var(--ink);
-    font-size:13px;
-    background:var(--paper);
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
-    transition: transform 0.15s;
-  }
+.paper-links a {
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-  .btn:hover{ transform: translateY(-2px); }
+.footer {
+    margin-top: 120px;
+    font-size: 14px;
+    opacity: 0.7;
+}
 
-  /* Profile box */
-  .codebox{
-    background:var(--code);
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:16px 18px;
-    font-size:14px;
-    margin:0 0 30px 0;
-    overflow:auto;
-  }
-
-  .codebox b{ color:#0aa35c; }
-
-  /* Preprints */
-  .section-title{
-    font-weight:700;
-    margin:0 0 14px 0;
-    border-bottom:1px solid #ccc;
-    padding-bottom:6px;
-  }
-
-  .paper{
-    background:var(--paper);
-    border:1px solid #e2e2e2;
-    border-radius:12px;
-    padding:14px 16px;
-    margin-bottom:12px;
-    font-size:14px;
-  }
-
-  .paper-title{
-    font-weight:700;
-    margin-bottom:6px;
-    line-height:1.5;
-  }
-
-  .paper-meta{
-    font-size:12px;
-    color:#444;
-    margin-bottom:8px;
-  }
-
-  .paper-links a{
-    font-size:12px;
-    margin-right:14px;
-    text-decoration:none;
-    color:#333;
-    border-bottom:1px solid rgba(0,0,0,0.25);
-  }
-
-  .paper-links a:hover{
-    border-bottom-color:#000;
-  }
-
-  footer{
-    text-align:center;
-    font-size:12px;
-    color:var(--muted);
-    margin:50px 0 28px 0;
-    padding:0 16px;
-  }
-
-  /* ========= Mobile responsiveness ========= */
-  @media (max-width: 900px){
-    .container{
-      margin:36px auto;
-      grid-template-columns: 1fr;
-      gap:28px;
-    }
-    .hello{ font-size:42px; }
-  }
-
-  @media (max-width: 520px){
-    .profile-card{
-      padding:26px 18px 22px;
-      border-width:2px;
-      box-shadow: 6px 6px 0 rgba(0,0,0,0.08);
-    }
-
-    .profile-img{
-      width:132px;
-      height:132px;
-    }
-
-    .name{ font-size:22px; }
-
-    .hello{ font-size:38px; }
-
-    .bio{
-      font-size:14px;
-      line-height:1.85;
-    }
-
-    .btn{
-      margin-right:10px;
-      margin-bottom:10px;
-      border-radius:12px;
-    }
-  }
 </style>
 </head>
 
 <body>
 
+<nav>
+<a href="#about">About</a>
+<a href="#research">Research</a>
+<a href="#papers">Papers</a>
+<a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
+
 <div class="container">
 
-  <!-- LEFT -->
-  <div class="profile-card">
-    <img src="assets/Sora.jpg" class="profile-img" alt="Sora Kim">
-    <div class="name">Sora Kim</div>
-    <div class="green-line"></div>
-    <div class="email">sorakim.phd@gmail.com</div>
-  </div>
+<div class="hero">
+    <img src="assets/Sora.jpg" class="profile-img">
 
-  <!-- RIGHT -->
-  <div>
-
-    <div class="hello">Hello!</div>
-
-    <div class="bio">
-      This is Sora Kim. I study how responsibility and accountability are structurally produced, anticipated, and stabilized in high-stakes sociotechnical organizational systems—through procedural infrastructures, investigative routines, and AI-mediated representations. I am applying to interdisciplinary PhD programs in sociotechnical and organizational research (Fall 2027).
+    <div class="hero-text">
+        <h1>Sora Kim</h1>
+        <p>
+        I study how responsibility becomes structured, stabilized,
+        and accelerated in high-stakes sociotechnical organizations.
+        My work examines procedural infrastructures, investigative
+        routines, and AI-mediated representations in regulated systems.
+        </p>
     </div>
-
-    <div class="buttons">
-      <a class="btn" href="assets/SoraKim_CV.pdf" target="_blank" rel="noopener">CV (open)</a>
-      <a class="btn" href="assets/SoraKim_CV.pdf" download>CV (download)</a>
-    </div>
-
-    <div class="codebox">
-      <b># profile</b><br>
-      name = Sora Kim<br>
-      location = South Korea<br>
-      focus = responsibility &amp; accountability<br>
-      domain = sociotechnical systems<br>
-      status = PhD applicant (2026–2027 cycle)
-    </div>
-
-    <div class="section-title">Preprints</div>
-
-    <div class="paper">
-      <div class="paper-title">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</div>
-      <div class="paper-meta">SocArXiv preprint · 2026</div>
-      <div class="paper-links">
-        <a href="assets/Kim_2026_Cognitive_Friction_in_Procedural_Texts.pdf" target="_blank" rel="noopener">open</a>
-        <a href="assets/Kim_2026_Cognitive_Friction_in_Procedural_Texts.pdf" download>download</a>
-      </div>
-    </div>
-
-    <div class="paper">
-      <div class="paper-title">Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis</div>
-      <div class="paper-meta">SocArXiv preprint · 2026</div>
-      <div class="paper-links">
-        <a href="assets/Kim_2026_Responsibility_Convergence_in_Organizational_Investigations.pdf" target="_blank" rel="noopener">open</a>
-        <a href="assets/Kim_2026_Responsibility_Convergence_in_Organizational_Investigations.pdf" download>download</a>
-      </div>
-    </div>
-
-    <div class="paper">
-      <div class="paper-title">Anticipated Accountability Convergence: Structuring Responsibility Before Action in Regulated Sociotechnical Systems</div>
-      <div class="paper-meta">SocArXiv preprint · 2026</div>
-      <div class="paper-links">
-        <a href="assets/Kim_2026_Anticipated_Accountability_Convergence.pdf" target="_blank" rel="noopener">open</a>
-        <a href="assets/Kim_2026_Anticipated_Accountability_Convergence.pdf" download>download</a>
-      </div>
-    </div>
-
-    <div class="paper">
-      <div class="paper-title">AI-Mediated Responsibility: Structuring, Translating, and Stabilizing Accountability in Sociotechnical Organizations</div>
-      <div class="paper-meta">SocArXiv preprint · 2026</div>
-      <div class="paper-links">
-        <a href="assets/Kim_2026_AI_Mediated_Responsibility.pdf" target="_blank" rel="noopener">open</a>
-        <a href="assets/Kim_2026_AI_Mediated_Responsibility.pdf" download>download</a>
-      </div>
-    </div>
-
-  </div>
 </div>
 
-<footer>
-  Best viewed on desktop · Designed by Sora Kim © 2026
-</footer>
+
+<div class="section" id="about">
+<h2>About</h2>
+<p>
+I am a researcher focused on responsibility and accountability in regulated organizational systems.
+Drawing from pharmaceutical quality environments, I develop theoretical frameworks explaining how responsibility is anticipated before action, stabilized during investigation, and intensified through computational mediation.
+</p>
+</div>
+
+
+<div class="section" id="research">
+<h2>Research Program</h2>
+<p>
+My work advances a unified responsibility lifecycle framework spanning:
+anticipatory alignment (AAC), procedural judgment structuring (Cognitive Friction),
+investigative stabilization (Responsibility Convergence),
+and computational acceleration (AI-Mediated Responsibility / PAC).
+</p>
+</div>
+
+
+<div class="section" id="papers">
+<h2>Selected Manuscripts (2026)</h2>
+
+<div class="paper">
+<div class="paper-title">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</div>
+<div class="paper-links">
+<a href="assets/kim-2026-cf.pdf.pdf" target="_blank">PDF</a>
+</div>
+</div>
+
+<div class="paper">
+<div class="paper-title">Responsibility Convergence in Organizational Investigations</div>
+<div class="paper-links">
+<a href="assets/kim-2026-rc.pdf.pdf" target="_blank">PDF</a>
+</div>
+</div>
+
+<div class="paper">
+<div class="paper-title">Anticipated Accountability Convergence</div>
+<div class="paper-links">
+<a href="assets/kim-2026-aac.pdf.pdf" target="_blank">PDF</a>
+</div>
+</div>
+
+<div class="paper">
+<div class="paper-title">AI-Mediated Responsibility</div>
+<div class="paper-links">
+<a href="assets/kim-2026-pac.pdf.pdf" target="_blank">PDF</a>
+</div>
+</div>
+
+</div>
+
+
+<div class="footer">
+South Korea · PhD applicant (2026–2027 cycle)
+</div>
+
+</div>
 
 </body>
 </html>
