@@ -149,15 +149,18 @@
       height:128px;
       border-radius:999px;
       object-fit:cover;
+      object-position:center;
       border:1px solid rgba(0,0,0,0.08);
       box-shadow: 0 10px 26px rgba(0,0,0,0.10);
       background: rgba(0,0,0,0.02);
       image-rendering:auto;
-      filter: grayscale(55%);
-      transition: filter 180ms ease;
+      transition: transform 180ms ease, filter 180ms ease;
     }
 
-    .avatar:hover{ filter: grayscale(0%); }
+    .avatar:hover{
+      transform: translateY(-1px);
+      filter: saturate(1.02);
+    }
 
     .name{
       font-family:'Sora',sans-serif;
@@ -402,13 +405,7 @@
         <div class="profile">
           <img
             class="avatar"
-            src="assets/sora-avatar-512.webp"
-            srcset="
-              assets/sora-avatar-256.webp 256w,
-              assets/sora-avatar-512.webp 512w,
-              assets/sora-avatar-1024.webp 1024w
-            "
-            sizes="128px"
+            src="assets/sora-kim-headshot.jpg"
             alt="Sora Kim portrait"
             loading="eager"
           />
@@ -437,7 +434,7 @@
         </div>
 
         <p class="lead">
-          I study how responsibility becomes structured, stabilized, and accelerated in high-stakes sociotechnical organizations through procedural documentation, investigative routines, and AI-mediated representations in regulated systems.
+          I study how responsibility becomes structured, stabilized, and accelerated in high-stakes sociotechnical organizations through procedural documentation, investigative routines, and AI-mediated representations in regulated systems, combining conceptual work with corpus-based and document-centered empirical analysis.
         </p>
 
         <p class="sublead">
@@ -449,8 +446,10 @@
 # quick spec
 focus: responsibility-making in regulated organizations
 research program: AAC → CF → RC → PAC
-methods: theory + document analysis + procedural text corpora + investigation logic
-empirical work: CF corpus expansion + FDA Warning Letters / Form 483 analysis
+methods: theory + procedural text corpora + qualitative document analysis
+empirical tracks:
+1) CF corpus expansion + annotation reliability testing
+2) RC document analysis of FDA Warning Letters / Form 483s
         </div>
 
         <div class="section">
@@ -465,13 +464,13 @@ empirical work: CF corpus expansion + FDA Warning Letters / Form 483 analysis
           </div>
 
           <div class="panel">
-            <h2>Work in progress</h2>
-            <p>Expanding the empirical component of the Cognitive Friction project through a larger procedural text corpus and annotation reliability testing.</p>
+            <h2>CF empirical extension</h2>
+            <p>Expanding the Cognitive Friction study through a larger corpus of procedural and regulatory texts, with annotation reliability testing and feature co-occurrence analysis in progress.</p>
           </div>
 
           <div class="panel">
-            <h2>Ongoing document analysis</h2>
-            <p>Analyzing FDA Warning Letters and Form 483 inspection materials to examine how responsibility attribution is structured in formal regulatory documentation.</p>
+            <h2>RC empirical companion</h2>
+            <p>Conducting a qualitative document analysis of FDA Warning Letters and Form 483 materials to examine how responsibility convergence mechanisms appear in regulatory investigation documents.</p>
           </div>
         </div>
 
