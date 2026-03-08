@@ -124,25 +124,21 @@ border-radius:50%;
 .dot:nth-child(2){background:#ffd166}
 .dot:nth-child(3){background:#6ee7b7}
 
-/* -------- PROFILE SIZE FIX -------- */
-
 .profile{
 display:grid;
-grid-template-columns:210px 1fr;   /* 기존 170px → 210px */
+grid-template-columns:210px 1fr;
 gap:26px;
 align-items:center;
 margin-top:38px;
 }
 
 .avatar{
-width:210px;   /* 기존 170px */
+width:210px;
 height:210px;
 border-radius:999px;
 object-fit:cover;
 box-shadow:0 10px 26px rgba(0,0,0,0.08);
 }
-
-/* ---------------------------------- */
 
 .name{
 font-family:'Sora',sans-serif;
@@ -194,7 +190,7 @@ font-size:72px;
 font-weight:700;
 letter-spacing:-0.05em;
 line-height:1.0;
-margin-bottom:12px;  /* 여백 조금 줄임 */
+margin-bottom:12px;
 }
 
 .hi{
@@ -205,10 +201,8 @@ margin-bottom:6px;
 .lead{
 font-size:16px;
 color:rgba(29,29,31,0.8);
-margin-bottom:8px;   /* 기존 14px → 8px */
+margin-bottom:8px;
 }
-
-/* -------- QUICK SPEC GAP FIX -------- */
 
 .callout{
 border:1px solid var(--line);
@@ -218,10 +212,8 @@ padding:18px;
 font-family:var(--mono);
 font-size:13px;
 white-space:pre-line;
-margin-top:0px;   /* 기존 margin 제거 */
+margin-top:0;
 }
-
-/* ----------------------------------- */
 
 .section{
 margin-top:26px;
@@ -257,6 +249,14 @@ font-size:13px;
 color:var(--muted);
 }
 
+.credit-note{
+margin-top:12px;
+font-size:12px;
+color:var(--muted);
+line-height:1.65;
+max-width:760px;
+}
+
 @media (max-width:920px){
 .hero{
 grid-template-columns:1fr;
@@ -267,6 +267,9 @@ grid-template-columns:150px 1fr;
 .avatar{
 width:150px;
 height:150px;
+}
+.links{
+flex-wrap:wrap;
 }
 }
 
@@ -297,7 +300,7 @@ height:150px;
 
 <div class="profile">
 
-<img class="avatar" src="assets/sora-kim-headshot-1024.jpg">
+<img class="avatar" src="assets/sora-kim-headshot-1024.jpg" alt="Sora Kim headshot">
 
 <div>
 
@@ -311,7 +314,7 @@ height:150px;
 
 <div class="links">
 <a class="btn" href="papers.html">read manuscripts</a>
-<a class="btn" href="assets/sora-kim-cv.pdf">cv (pdf)</a>
+<a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
 <a class="btn" href="mailto:sorakim.phd@gmail.com">email</a>
 </div>
 
@@ -381,6 +384,10 @@ Analyzing responsibility convergence patterns in FDA Warning Letters and Form 48
 
 <div class="footer">
 Independent researcher · Responsibility & accountability in regulated systems · PhD applicant (Fall 2027)
+</div>
+
+<div class="credit-note">
+This site was conceptually designed and coded by Sora Kim as part of an independent research portfolio on responsibility, accountability, and regulated sociotechnical systems.
 </div>
 
 </div>
