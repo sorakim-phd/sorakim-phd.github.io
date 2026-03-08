@@ -1,464 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>About · Sora Kim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Sora Kim researches how responsibility and accountability become structured, stabilized, and sometimes accelerated in regulated sociotechnical systems."
-  />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="About — Sora Kim">
-  <meta
-    property="og:description"
-    content="Research story and background of Sora Kim, focusing on responsibility and accountability in regulated systems."
-  >
-  <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
-  <meta property="og:url" content="https://sorakim-phd.github.io/about.html">
-  <meta property="og:site_name" content="Sora Kim">
+<meta charset="UTF-8" />
+<title>Papers · Sora Kim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  >
+<meta name="description"
+content="Working manuscripts from Sora Kim’s research program on responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems." />
 
-  <style>
-    :root{
-      --bg:#f5f5f7;
-      --panel:#ffffff;
-      --text:#1d1d1f;
-      --muted:#6e6e73;
-      --line:#e5e5e7;
-      --radius:20px;
-      --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-      background:
-        radial-gradient(800px 600px at 18% 10%, rgba(120,160,255,0.18), transparent 55%),
-        radial-gradient(900px 700px at 85% 18%, rgba(255,120,200,0.14), transparent 58%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      overflow-x:hidden;
-    }
+<style>
 
-    nav{
-      position:fixed;
-      top:18px;
-      right:18px;
-      z-index:60;
-      display:flex;
-      gap:10px;
-      padding:10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(16px);
-      border-radius:999px;
-    }
+:root{
+--bg:#f5f5f7;
+--panel:#ffffff;
+--panel-soft:#fafafa;
+--text:#1d1d1f;
+--muted:#6e6e73;
+--line:#e5e5e7;
+--radius:20px;
+--shadow:0 12px 34px rgba(0,0,0,0.06);
+--mono:'JetBrains Mono', monospace;
+--blue:#4da3ff;
+--pink:#ff6786;
+--purple:#c182ff;
+--green:#64d98b;
+}
 
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      font-size:14px;
-      padding:8px 12px;
-      border-radius:999px;
-      transition:160ms ease;
-      white-space:nowrap;
-    }
+*{box-sizing:border-box;}
 
-    nav a:hover{
-      color:var(--text);
-      background: rgba(0,0,0,0.04);
-    }
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
+}
 
-    nav a.active{
-      color:var(--text);
-      background: rgba(0,0,0,0.06);
-    }
+nav{
+position:fixed;
+top:18px;
+right:18px;
+z-index:60;
+display:flex;
+gap:10px;
+padding:10px;
+border:1px solid var(--line);
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(12px);
+border-radius:999px;
+}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:110px 22px 90px;
-    }
+nav a{
+text-decoration:none;
+color:var(--muted);
+font-size:14px;
+padding:8px 12px;
+border-radius:999px;
+}
 
-    .card,.panel{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.06);
-    }
+nav a.active{
+background:rgba(0,0,0,0.06);
+color:var(--text);
+}
 
-    .card{
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-    }
+.wrap{
+max-width:920px;
+margin:0 auto;
+padding:110px 24px 100px;
+}
 
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:42px;
-      background: rgba(0,0,0,0.02);
-      border-bottom:1px solid rgba(0,0,0,0.06);
-    }
+.kicker{
+font-family:var(--mono);
+font-size:12px;
+color:var(--muted);
+margin-bottom:12px;
+}
 
-    .window-dots{
-      position:absolute;
-      top:14px;
-      left:16px;
-      display:flex;
-      gap:6px;
-      z-index:3;
-    }
+.title{
+font-family:'Sora',sans-serif;
+font-size:48px;
+font-weight:700;
+letter-spacing:-0.04em;
+margin:0 0 14px 0;
+}
 
-    .dot{ width:10px; height:10px; border-radius:50%; background: rgba(0,0,0,0.12); }
-    .dot:nth-child(1){ background: rgba(255,90,90,0.55); }
-    .dot:nth-child(2){ background: rgba(255,200,80,0.55); }
-    .dot:nth-child(3){ background: rgba(90,220,120,0.55); }
+.intro{
+font-size:15px;
+color:rgba(29,29,31,0.84);
+margin-bottom:18px;
+max-width:72ch;
+}
 
-    .divider{
-      height:1px;
-      background: var(--line);
-      margin:22px 0;
-      opacity:0.9;
-    }
+.program-note{
+border:1px solid var(--line);
+background:rgba(255,255,255,0.75);
+border-radius:18px;
+box-shadow:var(--shadow);
+padding:16px;
+margin-bottom:28px;
+font-size:13px;
+color:rgba(29,29,31,0.74);
+}
 
-    .h1{
-      font-family:'Sora',sans-serif;
-      font-size:44px;
-      font-weight:700;
-      letter-spacing:-0.04em;
-      line-height:1.08;
-      margin:0 0 10px 0;
-    }
+.paper{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:22px;
+margin-bottom:18px;
+}
 
-    .lead{
-      font-size:15px;
-      color:#3a3a3c;
-      max-width:72ch;
-      margin:0 0 12px 0;
-    }
+.paper-top{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:10px;
+font-family:var(--mono);
+font-size:11.5px;
+color:var(--muted);
+}
 
-    .muted{
-      color:var(--muted);
-      font-size:13px;
-      margin:0;
-    }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+}
 
-    .h2{
-      font-family:'Sora',sans-serif;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      margin:0 0 10px 0;
-    }
+.dot-blue{background:var(--blue);}
+.dot-pink{background:var(--pink);}
+.dot-purple{background:var(--purple);}
+.dot-green{background:var(--green);}
 
-    .p{
-      margin:0 0 12px 0;
-      font-size:14px;
-      color:#2c2c2e;
-    }
+.pill{
+padding:6px 10px;
+border-radius:999px;
+border:1px solid var(--line);
+background:rgba(0,0,0,0.03);
+}
 
-    .callout{
-      border:1px solid var(--line);
-      background: #fafafa;
-      border-radius:18px;
-      padding:18px;
-      font-family:var(--mono);
-      font-size:12.5px;
-      color:#3a3a3c;
-      line-height:1.7;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
+.paper-title{
+font-family:'Sora',sans-serif;
+font-weight:700;
+font-size:21px;
+margin:0 0 10px 0;
+}
 
-    .topbar{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:18px;
-    }
+.abstract{
+margin:0 0 14px 0;
+font-size:14px;
+}
 
-    .crumb{
-      font-family: var(--mono);
-      font-size:12px;
-      color: var(--muted);
-    }
+.meta{
+padding-left:18px;
+font-size:13px;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.9fr;
-      gap:18px;
-      align-items:start;
-    }
+.meta li{margin:6px 0;}
 
-    .panel{
-      padding:18px;
-    }
+.concept-line{
+margin-top:12px;
+padding:10px 14px;
+border-radius:14px;
+border:1px solid var(--line);
+background:var(--panel-soft);
+font-family:var(--mono);
+font-size:12px;
+color:var(--muted);
+}
 
-    ul.clean{
-      margin: 0;
-      padding-left: 18px;
-      color:#2c2c2e;
-      font-size:14px;
-    }
+.progress{
+margin-top:12px;
+padding:12px 14px;
+border-radius:14px;
+border:1px solid var(--line);
+background:#fbfbfc;
+font-size:12.5px;
+}
 
-    ul.clean li{ margin:8px 0; }
+.links{
+margin-top:14px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
 
-    .imsg {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      overflow: hidden;
-    }
+.links a{
+font-size:13px;
+text-decoration:none;
+color:var(--text);
+border:1px solid var(--line);
+padding:8px 14px;
+border-radius:14px;
+background:rgba(0,0,0,0.03);
+}
 
-    .imsg-top {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 12px;
-    }
+.site-credit{
+margin-top:40px;
+font-size:12px;
+color:var(--muted);
+text-align:center;
+}
 
-    .imsg-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.12);
-    }
-
-    .imsg-title {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-      margin-left: auto;
-    }
-
-    .bubble {
-      display: inline-block;
-      max-width: 100%;
-      background: rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.05);
-      padding: 10px 12px;
-      border-radius: 16px;
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.5;
-      cursor: default;
-      user-select: text;
-    }
-
-    .bubble:focus,
-    .imsg:focus {
-      outline: none;
-    }
-
-    .bubble + .bubble {
-      margin-top: 8px;
-    }
-
-    .bubble.me {
-      background: rgba(10, 132, 255, 0.14);
-      border-color: rgba(10, 132, 255, 0.16);
-    }
-
-    .imsg-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,0.02);
-      color:var(--text);
-      text-decoration:none;
-      font-size:14px;
-      transition:160ms ease;
-      white-space:nowrap;
-    }
-
-    .btn:hover{
-      background: rgba(0,0,0,0.06);
-    }
-
-    .footer{
-      margin-top:22px;
-      padding-top:14px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .site-credit{
-      margin-top:60px;
-      font-size:12px;
-      color:var(--muted);
-      text-align:center;
-      opacity:0.75;
-    }
-
-    @media (max-width: 980px){
-      nav{
-        left:14px;
-        right:14px;
-        justify-content:center;
-      }
-      .grid{
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px){
-      .wrap{ padding:96px 16px 70px; }
-      .h1{ font-size:34px; }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a class="active" href="about.html">About</a>
-    <a href="research.html">Research</a>
-    <a href="papers.html">Papers</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
-  </nav>
 
-  <div class="wrap">
-    <div class="topbar">
-      <div>
-        <div class="crumb">/ about</div>
-        <h1 class="h1">About</h1>
-        <p class="lead">
-          Research background, current agenda, and a small human corner.
-        </p>
-      </div>
-    </div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="research.html">Research</a>
+<a class="active" href="papers.html">Papers</a>
+<a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
 
-    <div class="card">
-      <div class="window-dots">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      </div>
+<div class="wrap">
 
-      <div style="margin-top:38px;">
-        <div class="grid">
-          <div class="panel">
-            <div class="h2">Research story</div>
+<div class="kicker">/ papers</div>
 
-            <p class="p">
-              My research grows out of regulated work settings in which decisions are made under procedures, audits, timelines, and recurring documentation demands. In these environments, responsibility is not simply assigned after outcomes occur; it is structured through forms, protocols, investigation routines, and the institutional pressure to reach closure.
-            </p>
+<h1 class="title">Working Manuscripts</h1>
 
-            <p class="p">
-              That experience shaped my current research direction. I study responsibility as a sociotechnical and documentary process, with particular attention to how it becomes structured, stabilized, and sometimes accelerated through procedural infrastructures, investigative routines, and AI-mediated representations.
-            </p>
+<p class="intro">
+These manuscripts form a connected research program on how responsibility becomes prospectively aligned, procedurally embedded, investigatively stabilized, and computationally accelerated in regulated sociotechnical systems.
+</p>
 
-            <p class="muted">
-              I describe my professional background at a high level on purpose; the work is best captured as pharmaceutical quality systems, regulated documentation practices, and audit-facing organizational infrastructures.
-            </p>
+<div class="program-note">
+<strong>Program arc:</strong> AAC → CF → RC → PAC <br>
+<strong>Current empirical extensions:</strong> expanded CF corpus and annotation reliability testing; regulatory document analysis of FDA Warning Letters and Form 483 tracing RC-like responsibility convergence patterns informing PAC.
+</div>
 
-            <div class="divider"></div>
+<!-- AAC -->
 
-            <div class="h2">What I’m building</div>
-            <ul class="clean">
-              <li>Conceptual frameworks for responsibility across the lifecycle of organizational action, from anticipatory alignment to investigative stabilization and computational mediation.</li>
-              <li>Text- and document-centered analyses of how judgment is guided, constrained, and made accountable inside procedural systems.</li>
-              <li>Empirically grounded work on how regulatory and organizational documentation makes responsibility legible, assignable, and actionable.</li>
-            </ul>
+<article class="paper">
+<div class="paper-top">
+<span class="dot dot-blue"></span>
+<span class="pill">AAC</span>
+<span class="pill">anticipatory alignment</span>
+</div>
 
-            <div style="height:12px;"></div>
+<h2 class="paper-title">Anticipated Accountability Convergence</h2>
 
-            <div class="callout">current arc (manuscripts):
-AAC → CF → RC → PAC
+<p class="abstract">
+Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
+</p>
 
-current empirical work:
-CF corpus expansion + annotation reliability testing
-FDA Warning Letters / Form 483 document analysis
+<ul class="meta">
+<li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
+<li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
+<li>Contribution: theorizes accountability as a prospective organizational condition.</li>
+</ul>
 
-keywords:
-responsibility · documentation · investigations · closure pressure · accountability legibility · sociotechnical systems · AI mediation
-            </div>
-          </div>
+<div class="concept-line">
+before action → interpretive expectations are prospectively aligned
+</div>
 
-          <div>
-            <div class="panel" style="margin-bottom:14px;">
-              <div class="h2">Outside the work</div>
+<div class="links">
+<a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
+</div>
+</article>
 
-              <p class="p">
-                I collect thoughts by walking. 🚶‍♀️
-              </p>
-              <p class="p">
-                Most drafts are written during long, latte-powered writing sessions. ☕
-              </p>
-              <p class="p">
-                Ratatouille remains my comfort film — craft, process, and a little chaos. 🐀✨
-              </p>
-              <p class="p" style="margin-bottom:0;">
-                Also: I am an unreasonable bread person. 🍞🥐🥖
-              </p>
-            </div>
+<!-- CF -->
 
-            <div class="panel">
-              <div class="h2">Contact</div>
+<article class="paper">
+<div class="paper-top">
+<span class="dot dot-pink"></span>
+<span class="pill">CF</span>
+<span class="pill">procedural texts</span>
+</div>
 
-              <div class="imsg">
-                <div class="imsg-top">
-                  <span class="imsg-dot"></span>
-                  <span class="imsg-dot"></span>
-                  <span class="imsg-dot"></span>
-                  <div class="imsg-title">iMessage</div>
-                </div>
+<h2 class="paper-title">Cognitive Friction in Procedural Texts</h2>
 
-                <div class="bubble">
-                  If you would like to talk about responsibility, documentation, regulatory infrastructures, or sociotechnical accountability —
-                </div>
+<p class="abstract">
+Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
+</p>
 
-                <div class="bubble me">
-                  email me: <a href="mailto:sorakim.phd@gmail.com">sorakim.phd@gmail.com</a>
-                </div>
+<ul class="meta">
+<li>Empirical pilot: 500 procedurally realistic sentences from regulatory and safety documentation.</li>
+<li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers.</li>
+<li>Contribution: shows how responsibility-relevant judgment is embedded in procedural text architecture.</li>
+</ul>
 
-                <div class="imsg-actions">
-                  <a class="btn" href="mailto:sorakim.phd@gmail.com">compose</a>
-                  <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">cv (pdf)</a>
-                </div>
-              </div>
+<div class="concept-line">
+during execution → sentence structure shapes interpretive burden and attributable judgment
+</div>
 
-              <div class="footer">
-                Preparing PhD applications for Fall 2027 (U.S.) · Interests: STS, information infrastructures, organizational accountability, and sociotechnical systems.
-              </div>
+<div class="progress">
+Empirical extension underway: corpus expansion and annotation reliability testing.
+</div>
 
-              <div class="site-credit">
-                © 2026 Sora Kim
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="links">
+<a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
+</div>
+</article>
 
-  </div>
+<!-- RC -->
+
+<article class="paper">
+<div class="paper-top">
+<span class="dot dot-purple"></span>
+<span class="pill">RC</span>
+<span class="pill">investigations</span>
+</div>
+
+<h2 class="paper-title">
+Responsibility Convergence in Organizational Investigations
+</h2>
+
+<p class="abstract">
+Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
+</p>
+
+<ul class="meta">
+<li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
+<li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
+<li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures.</li>
+</ul>
+
+<div class="concept-line">
+after events → causal ambiguity is translated into administratively actionable responsibility
+</div>
+
+<div class="links">
+<a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
+</div>
+</article>
+
+<!-- PAC -->
+
+<article class="paper">
+<div class="paper-top">
+<span class="dot dot-green"></span>
+<span class="pill">PAC</span>
+<span class="pill">AI mediation</span>
+</div>
+
+<h2 class="paper-title">
+Premature Accountability Convergence
+</h2>
+
+<p class="abstract">
+Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
+</p>
+
+<ul class="meta">
+<li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
+<li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
+<li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
+</ul>
+
+<div class="concept-line">
+under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined
+</div>
+
+<div class="progress">
+Empirical extension underway: analysis of FDA Warning Letters and Form 483 materials tracing RC-like responsibility convergence patterns in regulatory documentation to extend the PAC framework beyond explicitly computational settings.
+</div>
+
+<div class="links">
+<a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
+</div>
+
+</article>
+
+<div class="site-credit">
+© 2026 Sora Kim
+</div>
+
+</div>
+
 </body>
 </html>
