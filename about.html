@@ -10,11 +10,9 @@ content="Sora Kim studies responsibility, accountability, and sociotechnical sys
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
 --bg:#f5f5f7;
 --panel:#ffffff;
@@ -25,9 +23,15 @@ content="Sora Kim studies responsibility, accountability, and sociotechnical sys
 --radius:20px;
 --shadow:0 12px 34px rgba(0,0,0,0.06);
 --mono:'JetBrains Mono', monospace;
+--blue:#4da3ff;
+--pink:#ff6786;
+--purple:#c182ff;
+--green:#64d98b;
 }
 
 *{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
 
 body{
 margin:0;
@@ -57,6 +61,12 @@ color:var(--muted);
 font-size:14px;
 padding:8px 12px;
 border-radius:999px;
+transition:background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover{
+background:rgba(0,0,0,0.035);
+color:var(--text);
 }
 
 nav a.active{
@@ -65,7 +75,7 @@ color:var(--text);
 }
 
 .wrap{
-max-width:920px;
+max-width:1180px;
 margin:0 auto;
 padding:110px 24px 100px;
 }
@@ -82,43 +92,260 @@ font-family:'Sora',sans-serif;
 font-size:48px;
 font-weight:700;
 letter-spacing:-0.04em;
-margin:0 0 18px 0;
+margin:0 0 14px 0;
 }
 
 .intro{
 font-size:15px;
 color:rgba(29,29,31,0.84);
-margin-bottom:28px;
+margin-bottom:18px;
 max-width:72ch;
 }
 
-.card{
+.about-note{
+border:1px solid var(--line);
+background:rgba(255,255,255,0.75);
+border-radius:18px;
+box-shadow:var(--shadow);
+padding:16px;
+margin-bottom:28px;
+font-size:13px;
+color:rgba(29,29,31,0.74);
+}
+
+.grid{
+display:grid;
+grid-template-columns:minmax(0, 1.55fr) minmax(280px, 0.82fr);
+gap:22px;
+align-items:start;
+}
+
+.main-col,
+.side-col{
+min-width:0;
+}
+
+.section{
 background:var(--panel);
 border:1px solid var(--line);
 border-radius:var(--radius);
 box-shadow:var(--shadow);
-padding:24px;
-margin-bottom:20px;
+padding:22px;
+margin-bottom:18px;
 }
 
-.card h2{
+.section-top{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:10px;
+font-family:var(--mono);
+font-size:11.5px;
+color:var(--muted);
+}
+
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+margin-top:3px;
+}
+
+.dot-blue{background:var(--blue);}
+.dot-pink{background:var(--pink);}
+.dot-purple{background:var(--purple);}
+.dot-green{background:var(--green);}
+
+.pill{
+padding:6px 10px;
+border-radius:999px;
+border:1px solid var(--line);
+background:rgba(0,0,0,0.03);
+}
+
+.section-title{
 font-family:'Sora',sans-serif;
-font-size:22px;
-margin:0 0 12px 0;
+font-weight:700;
+font-size:21px;
+margin:0 0 10px 0;
 }
 
-.card p{
-font-size:14px;
+.section p{
 margin:0 0 14px 0;
+font-size:14px;
+}
+
+.meta{
+padding-left:18px;
+font-size:13px;
+margin:0;
+}
+
+.meta li{
+margin:6px 0;
+}
+
+.concept-line{
+margin-top:12px;
+padding:10px 14px;
+border-radius:14px;
+border:1px solid var(--line);
+background:var(--panel-soft);
+font-family:var(--mono);
+font-size:12px;
+color:var(--muted);
+}
+
+.side-stack{
+display:flex;
+flex-direction:column;
+gap:18px;
+position:sticky;
+top:98px;
+}
+
+.side-card{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:20px;
+}
+
+.side-kicker{
+font-family:var(--mono);
+font-size:11.5px;
+color:var(--muted);
+margin-bottom:10px;
+display:flex;
+gap:8px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.side-title{
+font-family:'Sora',sans-serif;
+font-size:20px;
+font-weight:700;
+margin:0 0 10px 0;
+}
+
+.side-card p{
+font-size:13.5px;
+margin:0 0 12px 0;
+color:rgba(29,29,31,0.88);
+}
+
+.quick-list{
+display:grid;
+gap:10px;
+margin-top:10px;
+}
+
+.quick-item{
+padding:10px 12px;
+border-radius:14px;
+background:var(--panel-soft);
+border:1px solid var(--line);
+font-size:12.5px;
+color:var(--muted);
+}
+
+.quick-item strong{
+color:var(--text);
+font-weight:600;
+}
+
+.imessage{
+background:linear-gradient(180deg, #fcfcfd 0%, #f8f8fa 100%);
+border:1px solid var(--line);
+border-radius:22px;
+box-shadow:var(--shadow);
+padding:16px;
+}
+
+.imessage-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+font-family:var(--mono);
+font-size:11px;
+color:var(--muted);
+}
+
+.bubbles{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.bubble{
+max-width:88%;
+padding:10px 13px;
+border-radius:18px;
+font-size:13px;
+line-height:1.55;
+}
+
+.bubble.left{
+background:#ececef;
+color:var(--text);
+border-bottom-left-radius:8px;
+align-self:flex-start;
+}
+
+.bubble.right{
+background:#0a84ff;
+color:#ffffff;
+border-bottom-right-radius:8px;
+align-self:flex-end;
+}
+
+.mini-note{
+margin-top:12px;
+padding-top:12px;
+border-top:1px solid var(--line);
+font-size:12px;
+color:var(--muted);
 }
 
 .site-credit{
-margin-top:40px;
+margin-top:38px;
 font-size:12px;
 color:var(--muted);
 text-align:center;
 }
 
+@media (max-width: 980px){
+.grid{
+grid-template-columns:1fr;
+}
+.side-stack{
+position:static;
+top:auto;
+}
+}
+
+@media (max-width: 640px){
+.wrap{
+padding:100px 18px 80px;
+}
+.title{
+font-size:40px;
+}
+nav{
+left:18px;
+right:18px;
+justify-content:center;
+gap:6px;
+padding:8px;
+}
+nav a{
+font-size:13px;
+padding:8px 10px;
+}
+}
 </style>
 </head>
 
@@ -142,8 +369,23 @@ text-align:center;
 I study how responsibility becomes structured, stabilized, and accelerated within organizational systems. My work focuses on how documentation, procedural infrastructures, and computational representations shape the way accountability emerges in regulated sociotechnical environments.
 </p>
 
-<div class="card">
-<h2>Research Focus</h2>
+<div class="about-note">
+<strong>Core themes:</strong> responsibility, accountability, documentation, investigation, sociotechnical systems, and AI-mediated organizational judgment.<br>
+<strong>Empirical grounding:</strong> regulated environments shaped by procedural texts, quality systems, and accountability infrastructures.
+</div>
+
+<div class="grid">
+
+<div class="main-col">
+
+<article class="section">
+<div class="section-top">
+<span class="dot dot-blue"></span>
+<span class="pill">focus</span>
+<span class="pill">research orientation</span>
+</div>
+
+<h2 class="section-title">Research Focus</h2>
 
 <p>
 My research examines the organizational mechanisms through which responsibility becomes aligned before action, embedded within procedural structures during execution, stabilized through investigative processes after events, and increasingly reshaped through computational mediation.
@@ -153,30 +395,44 @@ My research examines the organizational mechanisms through which responsibility 
 Across highly regulated environments such as pharmaceuticals and other compliance-intensive industries, accountability rarely emerges spontaneously. Instead, it is produced through structured documentation regimes, procedural texts, investigative infrastructures, and evaluative systems that define what counts as responsible action.
 </p>
 
+<div class="concept-line">
+organizational responsibility → aligned before action, embedded in procedure, stabilized after events, accelerated through mediation
+</div>
+</article>
+
+<article class="section">
+<div class="section-top">
+<span class="dot dot-pink"></span>
+<span class="pill">program</span>
+<span class="pill">conceptual arc</span>
 </div>
 
-<div class="card">
-<h2>Research Program</h2>
+<h2 class="section-title">Research Program</h2>
 
 <p>
-My current research program develops a theoretical framework describing how responsibility evolves across the organizational lifecycle.
+My current research program develops a connected framework for understanding how responsibility evolves across the organizational lifecycle.
 </p>
 
-<p>
-The program includes four connected conceptual components:
-</p>
-
-<ul>
+<ul class="meta">
 <li><strong>Anticipated Accountability Convergence (AAC)</strong> — how accountability expectations align before action.</li>
 <li><strong>Cognitive Friction in Procedural Texts (CF)</strong> — how procedural language distributes interpretive burden during execution.</li>
 <li><strong>Responsibility Convergence (RC)</strong> — how investigations stabilize responsibility after events.</li>
 <li><strong>Premature Accountability Convergence (PAC)</strong> — how AI-mediated representations accelerate responsibility stabilization.</li>
 </ul>
 
+<div class="concept-line">
+AAC → CF → RC → PAC
+</div>
+</article>
+
+<article class="section">
+<div class="section-top">
+<span class="dot dot-purple"></span>
+<span class="pill">background</span>
+<span class="pill">regulated systems</span>
 </div>
 
-<div class="card">
-<h2>Background</h2>
+<h2 class="section-title">Background</h2>
 
 <p>
 My professional background is in pharmaceutical quality systems, where I worked extensively with regulated documentation, method verification processes, and organizational investigation structures. This experience informs my interest in how documentation architectures and accountability systems shape organizational reasoning.
@@ -185,6 +441,77 @@ My professional background is in pharmaceutical quality systems, where I worked 
 <p>
 Building on this experience, my research explores the sociotechnical dynamics of responsibility across documentation systems, investigative processes, and AI-mediated infrastructures.
 </p>
+
+<div class="concept-line">
+from pharmaceutical quality systems → to research on responsibility in regulated sociotechnical environments
+</div>
+</article>
+
+</div>
+
+<aside class="side-col">
+<div class="side-stack">
+
+<div class="side-card">
+<div class="side-kicker">
+<span class="dot dot-green"></span>
+<span>personal note</span>
+</div>
+<h3 class="side-title">A little more personally</h3>
+<p>
+I am especially interested in the points where organizational order looks stable on paper but remains interpretively fragile in practice.
+</p>
+<p>
+A lot of my questions come from documentation-heavy environments where rules, records, and accountability structures are everywhere, yet judgment still has to happen under uncertainty.
+</p>
+<p>
+I like research that treats documents, procedures, and infrastructures not as background paperwork, but as active sites where responsibility gets shaped.
+</p>
+</div>
+
+<div class="side-card">
+<div class="side-kicker">
+<span class="dot dot-blue"></span>
+<span>quick facts</span>
+</div>
+<h3 class="side-title">Quick Spec</h3>
+
+<div class="quick-list">
+<div class="quick-item"><strong>Based in</strong><br>South Korea</div>
+<div class="quick-item"><strong>Background</strong><br>Pharmaceutical quality systems</div>
+<div class="quick-item"><strong>Interests</strong><br>Responsibility, accountability, documentation, AI</div>
+<div class="quick-item"><strong>Current arc</strong><br>AAC → CF → RC → PAC</div>
+</div>
+</div>
+
+<div class="imessage">
+<div class="imessage-top">
+<span>iMessage</span>
+<span>research mode</span>
+</div>
+
+<div class="bubbles">
+<div class="bubble left">
+What kinds of systems are you drawn to?
+</div>
+<div class="bubble right">
+The ones that look orderly from the outside but quietly distribute judgment, pressure, and responsibility underneath.
+</div>
+<div class="bubble left">
+And what keeps showing up in your work?
+</div>
+<div class="bubble right">
+Documents, procedures, investigations, and the weird moment when accountability hardens before uncertainty is actually resolved.
+</div>
+</div>
+
+<div class="mini-note">
+Independent research on responsibility and sociotechnical accountability in regulated organizational settings.
+</div>
+</div>
+
+</div>
+</aside>
 
 </div>
 
