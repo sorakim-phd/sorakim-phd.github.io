@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Papers · Sora Kim</title>
+<title>About · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Working manuscripts from Sora Kim’s research program on responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems." />
+content="Sora Kim studies responsibility, accountability, and sociotechnical systems in regulated organizational environments." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +25,6 @@ content="Working manuscripts from Sora Kim’s research program on responsibilit
 --radius:20px;
 --shadow:0 12px 34px rgba(0,0,0,0.06);
 --mono:'JetBrains Mono', monospace;
---blue:#4da3ff;
---pink:#ff6786;
---purple:#c182ff;
---green:#64d98b;
 }
 
 *{box-sizing:border-box;}
@@ -86,118 +82,34 @@ font-family:'Sora',sans-serif;
 font-size:48px;
 font-weight:700;
 letter-spacing:-0.04em;
-margin:0 0 14px 0;
+margin:0 0 18px 0;
 }
 
 .intro{
 font-size:15px;
 color:rgba(29,29,31,0.84);
-margin-bottom:18px;
+margin-bottom:28px;
 max-width:72ch;
 }
 
-.program-note{
-border:1px solid var(--line);
-background:rgba(255,255,255,0.75);
-border-radius:18px;
-box-shadow:var(--shadow);
-padding:16px;
-margin-bottom:28px;
-font-size:13px;
-color:rgba(29,29,31,0.74);
-}
-
-.paper{
+.card{
 background:var(--panel);
 border:1px solid var(--line);
 border-radius:var(--radius);
 box-shadow:var(--shadow);
-padding:22px;
-margin-bottom:18px;
+padding:24px;
+margin-bottom:20px;
 }
 
-.paper-top{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:10px;
-font-family:var(--mono);
-font-size:11.5px;
-color:var(--muted);
-}
-
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-}
-
-.dot-blue{background:var(--blue);}
-.dot-pink{background:var(--pink);}
-.dot-purple{background:var(--purple);}
-.dot-green{background:var(--green);}
-
-.pill{
-padding:6px 10px;
-border-radius:999px;
-border:1px solid var(--line);
-background:rgba(0,0,0,0.03);
-}
-
-.paper-title{
+.card h2{
 font-family:'Sora',sans-serif;
-font-weight:700;
-font-size:21px;
-margin:0 0 10px 0;
+font-size:22px;
+margin:0 0 12px 0;
 }
 
-.abstract{
-margin:0 0 14px 0;
+.card p{
 font-size:14px;
-}
-
-.meta{
-padding-left:18px;
-font-size:13px;
-}
-
-.meta li{margin:6px 0;}
-
-.concept-line{
-margin-top:12px;
-padding:10px 14px;
-border-radius:14px;
-border:1px solid var(--line);
-background:var(--panel-soft);
-font-family:var(--mono);
-font-size:12px;
-color:var(--muted);
-}
-
-.progress{
-margin-top:12px;
-padding:12px 14px;
-border-radius:14px;
-border:1px solid var(--line);
-background:#fbfbfc;
-font-size:12.5px;
-}
-
-.links{
-margin-top:14px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.links a{
-font-size:13px;
-text-decoration:none;
-color:var(--text);
-border:1px solid var(--line);
-padding:8px 14px;
-border-radius:14px;
-background:rgba(0,0,0,0.03);
+margin:0 0 14px 0;
 }
 
 .site-credit{
@@ -214,159 +126,67 @@ text-align:center;
 
 <nav>
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
+<a class="active" href="about.html">About</a>
 <a href="research.html">Research</a>
-<a class="active" href="papers.html">Papers</a>
+<a href="papers.html">Papers</a>
 <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
 </nav>
 
 <div class="wrap">
 
-<div class="kicker">/ papers</div>
+<div class="kicker">/ about</div>
 
-<h1 class="title">Working Manuscripts</h1>
+<h1 class="title">About</h1>
 
 <p class="intro">
-These manuscripts form a connected research program on how responsibility becomes prospectively aligned, procedurally embedded, investigatively stabilized, and computationally accelerated in regulated sociotechnical systems.
+I study how responsibility becomes structured, stabilized, and accelerated within organizational systems. My work focuses on how documentation, procedural infrastructures, and computational representations shape the way accountability emerges in regulated sociotechnical environments.
 </p>
 
-<div class="program-note">
-<strong>Program arc:</strong> AAC → CF → RC → PAC <br>
-<strong>Current empirical extensions:</strong> expanded CF corpus and annotation reliability testing; regulatory document analysis of FDA Warning Letters and Form 483 tracing RC-like responsibility convergence patterns informing PAC.
-</div>
+<div class="card">
+<h2>Research Focus</h2>
 
-<!-- AAC -->
-
-<article class="paper">
-<div class="paper-top">
-<span class="dot dot-blue"></span>
-<span class="pill">AAC</span>
-<span class="pill">anticipatory alignment</span>
-</div>
-
-<h2 class="paper-title">Anticipated Accountability Convergence</h2>
-
-<p class="abstract">
-Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
+<p>
+My research examines the organizational mechanisms through which responsibility becomes aligned before action, embedded within procedural structures during execution, stabilized through investigative processes after events, and increasingly reshaped through computational mediation.
 </p>
 
-<ul class="meta">
-<li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
-<li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
-<li>Contribution: theorizes accountability as a prospective organizational condition.</li>
+<p>
+Across highly regulated environments such as pharmaceuticals and other compliance-intensive industries, accountability rarely emerges spontaneously. Instead, it is produced through structured documentation regimes, procedural texts, investigative infrastructures, and evaluative systems that define what counts as responsible action.
+</p>
+
+</div>
+
+<div class="card">
+<h2>Research Program</h2>
+
+<p>
+My current research program develops a theoretical framework describing how responsibility evolves across the organizational lifecycle.
+</p>
+
+<p>
+The program includes four connected conceptual components:
+</p>
+
+<ul>
+<li><strong>Anticipated Accountability Convergence (AAC)</strong> — how accountability expectations align before action.</li>
+<li><strong>Cognitive Friction in Procedural Texts (CF)</strong> — how procedural language distributes interpretive burden during execution.</li>
+<li><strong>Responsibility Convergence (RC)</strong> — how investigations stabilize responsibility after events.</li>
+<li><strong>Premature Accountability Convergence (PAC)</strong> — how AI-mediated representations accelerate responsibility stabilization.</li>
 </ul>
 
-<div class="concept-line">
-before action → interpretive expectations are prospectively aligned
 </div>
 
-<div class="links">
-<a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
-</div>
-</article>
+<div class="card">
+<h2>Background</h2>
 
-<!-- CF -->
-
-<article class="paper">
-<div class="paper-top">
-<span class="dot dot-pink"></span>
-<span class="pill">CF</span>
-<span class="pill">procedural texts</span>
-</div>
-
-<h2 class="paper-title">Cognitive Friction in Procedural Texts</h2>
-
-<p class="abstract">
-Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
+<p>
+My professional background is in pharmaceutical quality systems, where I worked extensively with regulated documentation, method verification processes, and organizational investigation structures. This experience informs my interest in how documentation architectures and accountability systems shape organizational reasoning.
 </p>
 
-<ul class="meta">
-<li>Empirical pilot: 500 procedurally realistic sentences from regulatory and safety documentation.</li>
-<li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers.</li>
-<li>Contribution: shows how responsibility-relevant judgment is embedded in procedural text architecture.</li>
-</ul>
-
-<div class="concept-line">
-during execution → sentence structure shapes interpretive burden and attributable judgment
-</div>
-
-<div class="progress">
-Empirical extension underway: corpus expansion and annotation reliability testing.
-</div>
-
-<div class="links">
-<a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
-</div>
-</article>
-
-<!-- RC -->
-
-<article class="paper">
-<div class="paper-top">
-<span class="dot dot-purple"></span>
-<span class="pill">RC</span>
-<span class="pill">investigations</span>
-</div>
-
-<h2 class="paper-title">
-Responsibility Convergence in Organizational Investigations
-</h2>
-
-<p class="abstract">
-Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
+<p>
+Building on this experience, my research explores the sociotechnical dynamics of responsibility across documentation systems, investigative processes, and AI-mediated infrastructures.
 </p>
 
-<ul class="meta">
-<li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
-<li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
-<li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures.</li>
-</ul>
-
-<div class="concept-line">
-after events → causal ambiguity is translated into administratively actionable responsibility
 </div>
-
-<div class="links">
-<a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
-</div>
-</article>
-
-<!-- PAC -->
-
-<article class="paper">
-<div class="paper-top">
-<span class="dot dot-green"></span>
-<span class="pill">PAC</span>
-<span class="pill">AI mediation</span>
-</div>
-
-<h2 class="paper-title">
-Premature Accountability Convergence
-</h2>
-
-<p class="abstract">
-Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
-</p>
-
-<ul class="meta">
-<li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
-<li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
-<li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
-</ul>
-
-<div class="concept-line">
-under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined
-</div>
-
-<div class="progress">
-Empirical extension underway: analysis of FDA Warning Letters and Form 483 materials tracing RC-like responsibility convergence patterns in regulatory documentation to extend the PAC framework beyond explicitly computational settings.
-</div>
-
-<div class="links">
-<a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
-</div>
-
-</article>
 
 <div class="site-credit">
 © 2026 Sora Kim
