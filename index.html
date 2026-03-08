@@ -1,491 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sora Kim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Sora Kim researches how responsibility and accountability become structured, stabilized, and sometimes accelerated in regulated sociotechnical systems."
-  />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Sora Kim — Responsibility Research">
-  <meta
-    property="og:description"
-    content="Research on responsibility, documentation, and sociotechnical accountability in regulated organizations."
-  >
-  <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
-  <meta property="og:url" content="https://sorakim-phd.github.io/">
-  <meta property="og:site_name" content="Sora Kim">
+<meta charset="UTF-8" />
+<title>Sora Kim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  >
+<meta
+name="description"
+content="Sora Kim researches how responsibility and accountability become structured, stabilized, and sometimes accelerated in regulated sociotechnical systems."
+/>
 
-  <style>
-    :root{
-      --bg:#f5f5f7;
-      --panel:#ffffff;
-      --panel2:#fafafa;
-      --text:#1d1d1f;
-      --muted:#6e6e73;
-      --line:#e5e5e7;
-      --radius:20px;
-      --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    }
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sora Kim — Responsibility Research">
+<meta property="og:description"
+content="Research on responsibility, documentation, and sociotechnical accountability in regulated organizations."
+>
+<meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
+<meta property="og:url" content="https://sorakim-phd.github.io/">
+<meta property="og:site_name" content="Sora Kim">
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-      background:
-        radial-gradient(900px 700px at 18% 10%, rgba(120,160,255,0.12), transparent 60%),
-        radial-gradient(900px 700px at 85% 22%, rgba(255,120,200,0.10), transparent 65%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      overflow-x:hidden;
-    }
+<link
+href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+rel="stylesheet"
+>
 
-    nav{
-      position:fixed;
-      top:18px;
-      right:18px;
-      z-index:60;
-      display:flex;
-      gap:10px;
-      padding:10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(16px);
-      border-radius:999px;
-    }
+<style>
 
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      font-size:14px;
-      padding:8px 12px;
-      border-radius:999px;
-      transition:160ms ease;
-      border:1px solid transparent;
-      white-space:nowrap;
-    }
+:root{
+--bg:#f5f5f7;
+--panel:#ffffff;
+--panel2:#fafafa;
+--text:#1d1d1f;
+--muted:#6e6e73;
+--line:#e5e5e7;
+--radius:20px;
+--mono:'JetBrains Mono', monospace;
+}
 
-    nav a:hover{
-      color:var(--text);
-      background: rgba(0,0,0,0.04);
-      border-color: rgba(0,0,0,0.05);
-    }
+*{box-sizing:border-box;}
+html,body{height:100%;}
 
-    nav a.active{
-      color:var(--text);
-      background: rgba(0,0,0,0.06);
-      border-color: rgba(0,0,0,0.06);
-    }
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+background:
+radial-gradient(900px 700px at 18% 10%, rgba(120,160,255,0.12), transparent 60%),
+radial-gradient(900px 700px at 85% 22%, rgba(255,120,200,0.10), transparent 65%),
+var(--bg);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:110px 22px 90px;
-    }
+nav{
+position:fixed;
+top:18px;
+right:18px;
+z-index:60;
+display:flex;
+gap:10px;
+padding:10px;
+border:1px solid var(--line);
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(16px);
+border-radius:999px;
+}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap:44px;
-      align-items:center;
-    }
+nav a{
+text-decoration:none;
+color:var(--muted);
+font-size:14px;
+padding:8px 12px;
+border-radius:999px;
+white-space:nowrap;
+}
 
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-    }
+nav a.active{
+color:var(--text);
+background:rgba(0,0,0,0.06);
+}
 
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:42px;
-      background: rgba(255,255,255,0.55);
-      border-bottom:1px solid rgba(0,0,0,0.06);
-    }
+.wrap{
+max-width:1100px;
+margin:0 auto;
+padding:110px 22px 90px;
+}
 
-    .window-dots{
-      position:absolute;
-      top:14px;
-      left:16px;
-      display:flex;
-      gap:6px;
-      z-index:3;
-    }
+.hero{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:44px;
+align-items:center;
+}
 
-    .dot{ width:10px; height:10px; border-radius:50%; }
-    .dot:nth-child(1){ background: rgba(255,120,120,0.55); }
-    .dot:nth-child(2){ background: rgba(255,220,120,0.55); }
-    .dot:nth-child(3){ background: rgba(140,255,170,0.55); }
+.card{
+border:1px solid var(--line);
+background:rgba(255,255,255,0.78);
+border-radius:var(--radius);
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+padding:26px;
+position:relative;
+overflow:hidden;
+backdrop-filter:blur(10px);
+}
 
-    .profile{
-      display:grid;
-      grid-template-columns: 128px 1fr;
-      gap:18px;
-      align-items:center;
-      margin-top:38px;
-    }
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:42px;
+background:rgba(255,255,255,0.55);
+border-bottom:1px solid rgba(0,0,0,0.06);
+}
 
-    .avatar{
-      width:128px;
-      height:128px;
-      border-radius:999px;
-      object-fit:cover;
-      object-position:center;
-      border:1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.10);
-      background: rgba(0,0,0,0.02);
-      image-rendering:auto;
-      transition: transform 180ms ease, filter 180ms ease;
-    }
+.window-dots{
+position:absolute;
+top:14px;
+left:16px;
+display:flex;
+gap:6px;
+z-index:3;
+}
 
-    .avatar:hover{
-      transform: translateY(-1px);
-      filter: saturate(1.02);
-    }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+}
 
-    .name{
-      font-family:'Sora',sans-serif;
-      font-size:36px;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      margin:0 0 6px 0;
-      line-height:1.1;
-    }
+.dot:nth-child(1){background:rgba(255,120,120,0.55);}
+.dot:nth-child(2){background:rgba(255,220,120,0.55);}
+.dot:nth-child(3){background:rgba(140,255,170,0.55);}
 
-    .mini{
-      font-family: var(--mono);
-      font-size:12px;
-      color: var(--muted);
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+.profile{
+display:grid;
+grid-template-columns:170px 1fr;
+gap:22px;
+align-items:center;
+margin-top:38px;
+}
 
-    .chip{
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,0.02);
-    }
+.avatar{
+width:170px;
+height:170px;
+border-radius:999px;
+object-fit:cover;
+border:1px solid rgba(0,0,0,0.08);
+box-shadow:0 10px 26px rgba(0,0,0,0.10);
+}
 
-    .links{
-      display:flex;
-      gap:10px;
-      margin-top:14px;
-      flex-wrap:wrap;
-    }
+.name{
+font-family:'Sora',sans-serif;
+font-size:42px;
+font-weight:700;
+letter-spacing:-0.02em;
+margin:0 0 6px 0;
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,0.02);
-      color:var(--text);
-      text-decoration:none;
-      font-size:14px;
-      transition:160ms ease;
-      white-space:nowrap;
-    }
+.mini{
+font-family:var(--mono);
+font-size:12px;
+color:var(--muted);
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
 
-    .btn:hover{
-      transform: translateY(-2px);
-      background: rgba(0,0,0,0.06);
-      border-color: rgba(0,0,0,0.08);
-    }
+.chip{
+padding:6px 12px;
+border-radius:999px;
+border:1px solid var(--line);
+background:rgba(0,0,0,0.02);
+}
 
-    .right{
-      padding:10px 6px;
-      max-width:560px;
-    }
+.links{
+display:flex;
+gap:10px;
+margin-top:14px;
+flex-wrap:wrap;
+}
 
-    .h1{
-      font-family:'Sora',sans-serif;
-      font-size:72px;
-      font-weight:700;
-      letter-spacing:-0.05em;
-      line-height:1.0;
-      margin:0 0 14px 0;
-    }
+.btn{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:10px 14px;
+border-radius:12px;
+border:1px solid var(--line);
+background:rgba(0,0,0,0.02);
+color:var(--text);
+text-decoration:none;
+font-size:14px;
+}
 
-    .h1 .hi{
-      display:block;
-      margin-bottom:6px;
-    }
+.right{
+padding:10px 6px;
+max-width:560px;
+}
 
-    .lead{
-      font-size:16px;
-      color: rgba(29,29,31,0.78);
-      max-width:58ch;
-      margin:0 0 12px 0;
-    }
+.h1{
+font-family:'Sora',sans-serif;
+font-size:72px;
+font-weight:700;
+letter-spacing:-0.05em;
+line-height:1.0;
+margin:0 0 14px 0;
+}
 
-    .sublead{
-      font-size:14px;
-      color: rgba(29,29,31,0.68);
-      max-width:62ch;
-      margin:0 0 18px 0;
-    }
+.lead{
+font-size:16px;
+color:rgba(29,29,31,0.78);
+max-width:58ch;
+}
 
-    .sublead .tag{
-      font-family: var(--mono);
-      font-size:12px;
-      opacity:0.9;
-    }
+.callout{
+border:1px solid var(--line);
+background:var(--panel2);
+border-radius:18px;
+padding:20px;
+font-family:var(--mono);
+font-size:13px;
+margin-top:16px;
+}
 
-    .callout{
-      border:1px solid var(--line);
-      background: var(--panel2);
-      border-radius:18px;
-      padding:20px;
-      font-family: var(--mono);
-      font-size:13px;
-      line-height:1.7;
-      color:#3a3a3c;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
+.section{
+margin-top:26px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
 
-    .section{
-      margin-top:26px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
+.panel{
+border:1px solid var(--line);
+background:rgba(255,255,255,0.72);
+border-radius:var(--radius);
+padding:16px;
+}
 
-    .panel{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 36px rgba(0,0,0,0.06);
-      padding:16px;
-    }
+.panel h2{
+font-family:'Sora',sans-serif;
+font-size:18px;
+margin:0 0 8px 0;
+}
 
-    .panel h2{
-      font-family:'Sora',sans-serif;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      margin:0 0 8px 0;
-    }
+.panel p{
+margin:0;
+font-size:14px;
+}
 
-    .panel p{
-      margin:0;
-      color:#444;
-      font-size:14px;
-    }
+.footer{
+margin-top:70px;
+padding-top:18px;
+border-top:1px solid var(--line);
+color:var(--muted);
+font-size:13px;
+}
 
-    .footer{
-      margin-top:70px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      color: var(--muted);
-      font-size:13px;
-    }
+@media (max-width:920px){
+.hero{grid-template-columns:1fr;}
+}
 
-    .footer a{
-      color: var(--muted);
-      text-decoration:none;
-    }
-
-    .footer a:hover{
-      color: var(--text);
-      text-decoration:underline;
-    }
-
-    .site-credit{
-      margin-top:6px;
-      font-size:12px;
-      color:var(--muted);
-      opacity:0.8;
-    }
-
-    .device-note{ display:none; }
-
-    @media (max-width: 900px){
-      .device-note{
-        display:block;
-        margin-top:8px;
-        font-size:11px;
-        opacity:0.8;
-        font-family: var(--mono);
-      }
-    }
-
-    @media (max-width: 920px){
-      .hero{
-        grid-template-columns: 1fr;
-        gap:22px;
-      }
-
-      nav{
-        left:14px;
-        right:14px;
-        justify-content:center;
-      }
-    }
-
-    @media (max-width: 560px){
-      .wrap{ padding:96px 16px 70px; }
-
-      .profile{
-        grid-template-columns: 1fr;
-        gap:12px;
-      }
-
-      .avatar{
-        width:112px;
-        height:112px;
-      }
-
-      .name{ font-size:30px; }
-
-      .h1{
-        font-size:40px;
-        line-height:1.05;
-      }
-
-      .lead{ font-size:15px; }
-
-      .section{
-        grid-template-columns: 1fr;
-      }
-
-      .btn{
-        font-size:13px;
-        padding:9px 11px;
-      }
-
-      .callout{
-        font-size:12px;
-        padding:14px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <nav>
-    <a class="active" href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="research.html">Research</a>
-    <a href="papers.html">Papers</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
-  </nav>
 
-  <div class="wrap">
-    <div class="hero">
-      <div class="card">
-        <div class="window-dots">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
+<nav>
+<a class="active" href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="research.html">Research</a>
+<a href="papers.html">Papers</a>
+<a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
 
-        <div class="profile">
-          <img
-            class="avatar"
-            src="assets/sora-kim-headshot-1024.jpg"
-            alt="Sora Kim portrait"
-            loading="eager"
-          />
+<div class="wrap">
 
-          <div>
-            <div class="name">Sora Kim</div>
-            <div class="mini">
-              <span class="chip">independent researcher</span>
-              <span class="chip">organization theory • STS • informatics</span>
-              <span class="chip">responsibility / accountability</span>
-            </div>
+<div class="hero">
 
-            <div class="links">
-              <a class="btn" href="papers.html">read manuscripts</a>
-              <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">cv (pdf)</a>
-              <a class="btn" href="mailto:sorakim.phd@gmail.com">email</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="card">
 
-      <div class="right">
-        <div class="h1">
-          <span class="hi">Hi 🙌</span>
-          I study how responsibility becomes structured.
-        </div>
+<div class="window-dots">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
 
-        <p class="lead">
-          I study how responsibility becomes structured, stabilized, and accelerated in high-stakes sociotechnical organizations through procedural documentation, investigative routines, and AI-mediated representations in regulated systems, combining conceptual work with corpus-based and document-centered empirical analysis.
-        </p>
+<div class="profile">
 
-        <p class="sublead">
-          <span class="tag">status:</span>
-          Preparing PhD applications for Fall 2027 (U.S.) · Interests: sociotechnical systems, organizational accountability, infrastructure studies, and information governance.
-        </p>
+<img
+class="avatar"
+src="assets/sora-kim-headshot-1024.jpg"
+alt="Sora Kim portrait"
+/>
 
-        <div class="callout">
+<div>
+
+<div class="name">Sora Kim</div>
+
+<div class="mini">
+<span class="chip">independent researcher</span>
+<span class="chip">organization theory • STS • informatics</span>
+<span class="chip">responsibility / accountability</span>
+</div>
+
+<div class="links">
+<a class="btn" href="papers.html">read manuscripts</a>
+<a class="btn" href="assets/sora-kim-cv.pdf">cv (pdf)</a>
+<a class="btn" href="mailto:sorakim.phd@gmail.com">email</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="h1">
+Hi 🙌
+I study how responsibility becomes structured.
+</div>
+
+<p class="lead">
+I study how responsibility becomes structured, stabilized, and accelerated in high-stakes sociotechnical organizations through procedural documentation, investigative routines, and AI-mediated representations in regulated systems.
+</p>
+
+<div class="callout">
 # quick spec
 focus: responsibility-making in regulated organizations
-research program: AAC → CF → RC → PAC
-methods: theory + procedural text corpora + qualitative document analysis
+
+research program:
+AAC → CF → RC → PAC
+
+methods:
+theory + procedural text corpora + qualitative document analysis
+
 empirical tracks:
 1) CF corpus expansion + annotation reliability testing
 2) RC pattern analysis in FDA Warning Letters / Form 483 to extend PAC
-        </div>
+</div>
 
-        <div class="section">
-          <div class="panel">
-            <h2>Current obsession</h2>
-            <p>How accountability becomes legible, actionable, and prematurely stabilized under procedural and investigative closure pressure.</p>
-          </div>
+<div class="section">
 
-          <div class="panel">
-            <h2>Empirical grounding</h2>
-            <p>Pharmaceutical quality systems and regulatory infrastructures (SOP documentation, deviations, CAPA/RCA investigations, and audit or inspection-facing records).</p>
-          </div>
+<div class="panel">
+<h2>Current obsession</h2>
+<p>
+How accountability becomes legible, actionable, and prematurely stabilized under procedural and investigative closure pressure.
+</p>
+</div>
 
-          <div class="panel">
-            <h2>CF empirical extension</h2>
-            <p>Expanding the Cognitive Friction study through a larger corpus of procedural and regulatory texts, with annotation reliability testing and feature co-occurrence analysis in progress.</p>
-          </div>
+<div class="panel">
+<h2>Empirical grounding</h2>
+<p>
+Pharmaceutical quality systems and regulatory infrastructures (SOP documentation, deviations, CAPA/RCA investigations).
+</p>
+</div>
 
-          <div class="panel">
-            <h2>PAC empirical extension</h2>
-            <p>Analyzing responsibility convergence patterns in FDA Warning Letters and Form 483 materials to extend the PAC framework through regulatory document analysis.</p>
-          </div>
-        </div>
+</div>
 
-        <div class="footer">
-          Independent researcher · Responsibility & accountability in regulated systems · PhD applicant (Fall 2027)
+<div class="footer">
+Independent researcher · Responsibility & accountability in regulated systems
+</div>
 
-          <div class="site-credit">
-            Concept, design, and code by Sora Kim.
-          </div>
+</div>
 
-          <a href="papers.html">Papers</a>
-          <div class="device-note">best viewed on desktop.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+
+</div>
+
 </body>
 </html>
