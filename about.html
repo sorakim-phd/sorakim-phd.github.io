@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Sora Kim studies responsibility, accountability, and sociotechnical systems in regulated organizational environments." />
+content="About Sora Kim — responsibility, accountability, and sociotechnical systems in regulated organizational environments." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,29 +15,24 @@ content="Sora Kim studies responsibility, accountability, and sociotechnical sys
 <style>
 :root{
   --bg:#f5f5f7;
-  --bg2:#efeff2;
-  --panel:rgba(255,255,255,0.84);
-  --panel-solid:#ffffff;
-  --panel-soft:#fafafc;
+  --panel:rgba(255,255,255,0.82);
+  --panel-strong:rgba(255,255,255,0.92);
+  --panel-soft:rgba(250,250,252,0.78);
   --text:#121316;
   --muted:#6e6e73;
-  --muted-strong:#4d4f57;
+  --muted-strong:#4a4d55;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.12);
-  --radius-xl:28px;
+  --radius-xl:30px;
   --radius-lg:22px;
   --radius-md:16px;
   --shadow:0 18px 50px rgba(15,23,42,0.08);
   --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
   --mono:'JetBrains Mono', monospace;
-  --blue:#4da3ff;
-  --pink:#ff6786;
-  --purple:#b987ff;
-  --green:#55d38a;
 }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -45,8 +40,8 @@ body{
   color:var(--text);
   line-height:1.68;
   background:
-    radial-gradient(circle at 12% 14%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.74) 18%, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(255,255,255,0.7) 0, transparent 34%),
+    radial-gradient(circle at 14% 12%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
+    radial-gradient(circle at 82% 18%, rgba(255,255,255,0.68) 0, transparent 34%),
     linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
 }
 
@@ -55,7 +50,7 @@ body::before{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+  background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
 }
 
 nav{
@@ -98,286 +93,201 @@ nav a.active{
 .wrap{
   max-width:1240px;
   margin:0 auto;
-  padding:118px 24px 96px;
+  padding:118px 24px 88px;
 }
 
-.header-narrow{
-  max-width:760px;
-  margin-bottom:28px;
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap:20px;
+  align-items:start;
+}
+
+.stack{
+  display:grid;
+  gap:16px;
+}
+
+.card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius-xl);
+}
+
+.hero-card{
+  padding:22px 22px 24px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
 }
 
 .kicker{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:8px 12px;
+  padding:7px 11px;
   border:1px solid var(--line);
   border-radius:999px;
-  background:rgba(255,255,255,0.64);
+  background:rgba(255,255,255,0.7);
   box-shadow:var(--shadow-soft);
   font-family:var(--mono);
   font-size:11px;
   color:var(--muted);
-  margin-bottom:16px;
+  margin-bottom:14px;
 }
 
 .title{
-  font-family:'Sora',sans-serif;
-  font-size:58px;
-  font-weight:800;
-  letter-spacing:-0.06em;
-  line-height:0.96;
   margin:0 0 14px 0;
+  font-family:'Sora',sans-serif;
+  font-size:62px;
+  line-height:0.94;
+  letter-spacing:-0.065em;
+  font-weight:800;
 }
 
-.intro{
+.lead{
+  max-width:720px;
+  margin:0;
   font-size:16px;
-  color:rgba(29,29,31,0.84);
-  margin:0 0 16px 0;
-  max-width:700px;
+  color:rgba(18,19,22,0.84);
 }
 
-.about-note{
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.72);
-  backdrop-filter:blur(18px) saturate(145%);
-  -webkit-backdrop-filter:blur(18px) saturate(145%);
-  border-radius:20px;
-  box-shadow:var(--shadow-soft);
-  padding:16px 18px;
-  font-size:13px;
-  color:rgba(29,29,31,0.74);
-  max-width:760px;
-}
-
-.grid{
+.grid-2{
   display:grid;
-  grid-template-columns:minmax(0, 1.2fr) minmax(310px, 0.8fr);
-  gap:22px;
-  align-items:start;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
 
-.main-col,
-.side-col{min-width:0;}
-
-.section,
-.side-card,
-.imessage{
-  border:1px solid var(--line);
-  background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%);
-  -webkit-backdrop-filter:blur(20px) saturate(150%);
-  box-shadow:var(--shadow);
+.info-card{
+  padding:20px;
 }
 
-.section{
-  border-radius:var(--radius-xl);
-  padding:22px 22px 20px;
-  margin-bottom:18px;
-}
-
-.section.featured{
-  padding:24px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(249,249,252,0.88));
-}
-
-.section-top{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
+.info-top{
+  margin-bottom:10px;
   font-family:var(--mono);
   font-size:11px;
   color:var(--muted);
-  letter-spacing:0.02em;
   text-transform:uppercase;
+  letter-spacing:0.04em;
 }
 
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  margin-top:3px;
-}
-.dot-blue{background:var(--blue);}
-.dot-pink{background:var(--pink);}
-.dot-purple{background:var(--purple);}
-.dot-green{background:var(--green);}
-
-.pill{
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.6);
-}
-
-.section-title{
-  font-family:'Sora',sans-serif;
-  font-weight:700;
-  font-size:24px;
-  letter-spacing:-0.04em;
-  line-height:1.08;
+.info-card h2{
   margin:0 0 10px 0;
+  font-family:'Sora',sans-serif;
+  font-size:24px;
+  line-height:1.08;
+  letter-spacing:-0.045em;
 }
 
-.section p{
+.info-card p{
+  margin:0;
+  font-size:14px;
+  color:#3f4148;
+}
+
+.statement{
+  padding:22px;
+}
+
+.statement h2{
+  margin:0 0 12px 0;
+  font-family:'Sora',sans-serif;
+  font-size:28px;
+  line-height:1.04;
+  letter-spacing:-0.05em;
+}
+
+.statement p{
   margin:0 0 14px 0;
   font-size:14px;
   color:#3f4148;
 }
 
-.meta{
-  display:grid;
-  gap:12px;
-  margin:14px 0 0 0;
-  padding:0;
-  list-style:none;
-}
-
-.meta li{
-  padding:12px 14px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:rgba(255,255,255,0.58);
-  font-size:13.5px;
-  color:#3f4148;
-}
-
-.meta strong{
-  color:var(--text);
-}
-
-.concept-line{
+.program-line{
   margin-top:14px;
-  padding:12px 14px;
-  border-radius:16px;
+  padding:11px 13px;
   border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(255,255,255,0.74), rgba(249,249,252,0.92));
+  border-radius:16px;
+  background:rgba(255,255,255,0.62);
   font-family:var(--mono);
   font-size:11.5px;
   color:var(--muted);
-  line-height:1.7;
 }
 
-.side-stack{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+.side{
+  display:grid;
+  gap:16px;
   position:sticky;
   top:98px;
 }
 
 .side-card{
-  border-radius:var(--radius-xl);
   padding:20px;
 }
 
-.side-kicker{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
-  margin-bottom:10px;
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-  text-transform:uppercase;
-  letter-spacing:0.03em;
-}
-
-.side-title{
+.side-card h3{
+  margin:0 0 10px 0;
   font-family:'Sora',sans-serif;
   font-size:22px;
-  font-weight:700;
-  letter-spacing:-0.04em;
-  margin:0 0 10px 0;
   line-height:1.08;
+  letter-spacing:-0.045em;
 }
 
 .side-card p{
-  font-size:13.5px;
   margin:0 0 12px 0;
+  font-size:13.5px;
   color:#3f4148;
 }
 
-.quick-list{
+.spec{
   display:grid;
   gap:10px;
-  margin-top:10px;
 }
 
-.quick-item{
+.spec-item{
   padding:12px 13px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.58);
   border:1px solid var(--line);
-  font-size:12.5px;
-  color:var(--muted);
+  border-radius:16px;
+  background:rgba(255,255,255,0.6);
 }
 
-.quick-item strong{
+.spec-item .label{
   display:block;
   margin-bottom:4px;
-  color:var(--text);
-  font-weight:600;
-}
-
-.imessage{
-  border-radius:28px;
-  padding:16px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(248,248,251,0.95) 100%);
-}
-
-.imessage-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
   font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
+  font-size:10.5px;
   text-transform:uppercase;
-  letter-spacing:0.03em;
-}
-
-.bubbles{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.bubble{
-  max-width:88%;
-  padding:11px 14px;
-  border-radius:18px;
-  font-size:13px;
-  line-height:1.55;
-}
-
-.bubble.left{
-  background:#ececef;
-  color:var(--text);
-  border-bottom-left-radius:8px;
-  align-self:flex-start;
-}
-
-.bubble.right{
-  background:#0a84ff;
-  color:#ffffff;
-  border-bottom-right-radius:8px;
-  align-self:flex-end;
-}
-
-.mini-note{
-  margin-top:12px;
-  padding-top:12px;
-  border-top:1px solid var(--line);
-  font-size:12px;
+  letter-spacing:0.04em;
   color:var(--muted);
 }
 
-.site-credit{
-  margin-top:34px;
+.spec-item .value{
+  font-size:13px;
+  color:var(--text);
+}
+
+.quote-card{
+  padding:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.94), rgba(247,247,250,0.9));
+}
+
+.quote-text{
+  margin:0;
+  font-family:'Sora',sans-serif;
+  font-size:26px;
+  line-height:1.14;
+  letter-spacing:-0.05em;
+}
+
+.quote-sub{
+  margin-top:12px;
+  font-size:13px;
+  color:var(--muted-strong);
+}
+
+.footer{
+  margin-top:30px;
   padding-top:16px;
   border-top:1px solid var(--line);
   font-size:12px;
@@ -388,22 +298,19 @@ nav a.active{
   flex-wrap:wrap;
 }
 
-@media (max-width: 980px){
-  .grid{grid-template-columns:1fr;}
-  .side-stack{position:static;top:auto;}
-  .header-narrow,.about-note{max-width:none;}
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;}
+  .side{position:static;top:auto;}
 }
 
-@media (max-width: 640px){
-  .wrap{padding:100px 18px 80px;}
-  .title{font-size:44px;}
-  nav{left:18px;right:18px;justify-content:center;gap:6px;padding:8px;overflow:auto;}
-  nav a{font-size:13px;padding:8px 10px;}
-  .site-credit{flex-direction:column;}
+@media (max-width:700px){
+  .wrap{padding:100px 18px 76px;}
+  .title{font-size:46px;}
+  .grid-2{grid-template-columns:1fr;}
+  nav{left:18px;right:18px;justify-content:center;overflow:auto;}
 }
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -415,168 +322,102 @@ nav a.active{
 </nav>
 
 <div class="wrap">
-
-  <div class="header-narrow">
-    <div class="kicker">about / research identity / systems + responsibility</div>
-
-    <h1 class="title">About</h1>
-
-    <p class="intro">
-      I study how responsibility becomes structured, stabilized, and accelerated within organizational systems. My work focuses on how documentation, procedural infrastructures, investigative routines, and computational representations shape accountability in regulated sociotechnical environments.
-    </p>
-
-    <div class="about-note">
-      <strong>Core themes:</strong> responsibility, accountability, documentation, investigation, sociotechnical systems, and AI-mediated organizational judgment.<br>
-      <strong>Empirical grounding:</strong> regulated environments shaped by procedural texts, quality systems, and accountability infrastructures.
-    </div>
-  </div>
-
-  <div class="grid">
-
-    <div class="main-col">
-
-      <article class="section featured">
-        <div class="section-top">
-          <span class="dot dot-blue"></span>
-          <span class="pill">focus</span>
-          <span class="pill">research orientation</span>
-        </div>
-
-        <h2 class="section-title">Research Focus</h2>
-
-        <p>
-          My research examines the mechanisms through which responsibility becomes aligned before action, embedded within procedural structures during execution, stabilized through investigation after events, and increasingly reshaped through computational mediation.
+  <div class="hero">
+    <div class="stack">
+      <section class="card hero-card">
+        <div class="kicker">about / research identity / systems + responsibility</div>
+        <h1 class="title">About</h1>
+        <p class="lead">
+          I study how responsibility becomes structured, stabilized, and accelerated in regulated sociotechnical systems. My work focuses on the ways documents, procedural infrastructures, investigative routines, and computational representations shape accountability in organizational life.
         </p>
+      </section>
 
-        <p>
-          Across highly regulated environments such as pharmaceuticals and other compliance-intensive sectors, accountability rarely emerges spontaneously. It is produced through documentation regimes, procedural texts, investigative infrastructures, and evaluative systems that define what counts as responsible action.
-        </p>
-
-        <div class="concept-line">
-          organizational responsibility → aligned before action / embedded in procedure / stabilized after events / accelerated through mediation
-        </div>
-      </article>
-
-      <article class="section">
-        <div class="section-top">
-          <span class="dot dot-pink"></span>
-          <span class="pill">program</span>
-          <span class="pill">conceptual arc</span>
-        </div>
-
-        <h2 class="section-title">Research Program</h2>
-
-        <p>
-          My current research program develops a connected framework for understanding how responsibility evolves across the organizational lifecycle.
-        </p>
-
-        <ul class="meta">
-          <li><strong>Anticipated Accountability Convergence (AAC)</strong> — how accountability expectations align before action.</li>
-          <li><strong>Cognitive Friction in Procedural Texts (CF)</strong> — how procedural language distributes interpretive burden during execution.</li>
-          <li><strong>Responsibility Convergence (RC)</strong> — how investigations stabilize responsibility after events.</li>
-          <li><strong>Premature Accountability Convergence (PAC)</strong> — how AI-mediated representations accelerate responsibility stabilization.</li>
-        </ul>
-
-        <div class="concept-line">
-          AAC → CF → RC → PAC
-        </div>
-      </article>
-
-      <article class="section">
-        <div class="section-top">
-          <span class="dot dot-purple"></span>
-          <span class="pill">background</span>
-          <span class="pill">regulated systems</span>
-        </div>
-
-        <h2 class="section-title">Background</h2>
-
-        <p>
-          My professional background is in pharmaceutical quality systems, where I worked extensively with regulated documentation, method verification processes, technology transfer, and organizational investigation structures. That experience shaped my interest in how documentation architectures and accountability systems organize reasoning under constraint.
-        </p>
-
-        <p>
-          Building on this background, my research explores the sociotechnical dynamics of responsibility across documents, procedures, investigations, and AI-mediated infrastructures.
-        </p>
-
-        <div class="concept-line">
-          from pharmaceutical quality systems → to research on responsibility in regulated sociotechnical environments
-        </div>
-      </article>
-
-    </div>
-
-    <aside class="side-col">
-      <div class="side-stack">
-
-        <div class="side-card">
-          <div class="side-kicker">
-            <span class="dot dot-green"></span>
-            <span>personal note</span>
-          </div>
-          <h3 class="side-title">A little more personally</h3>
+      <div class="grid-2">
+        <section class="card info-card">
+          <div class="info-top">orientation</div>
+          <h2>What I keep returning to</h2>
           <p>
-            I am especially interested in the moments when organizational order looks stable on paper but remains interpretively fragile in practice.
+            I am drawn to organizational settings that look orderly on paper but remain interpretively fragile in practice. The core question running through my work is how responsibility becomes made, made legible, and sometimes made to appear settled too early.
           </p>
+        </section>
+
+        <section class="card info-card">
+          <div class="info-top">grounding</div>
+          <h2>Where the questions come from</h2>
           <p>
-            Many of my questions come from documentation-heavy environments where rules, records, and accountability structures are everywhere, yet judgment still has to happen under uncertainty.
+            My background is in pharmaceutical quality systems, where documentation, verification, deviations, CAPA/RCA investigations, and audit-facing records are part of everyday work. That environment shaped my interest in responsibility as a system property, not just an individual outcome.
           </p>
-          <p>
-            I like research that treats documents, procedures, and infrastructures not as background paperwork, but as active sites where responsibility gets shaped.
-          </p>
-        </div>
-
-        <div class="side-card">
-          <div class="side-kicker">
-            <span class="dot dot-blue"></span>
-            <span>quick spec</span>
-          </div>
-          <h3 class="side-title">Research Snapshot</h3>
-
-          <div class="quick-list">
-            <div class="quick-item"><strong>Based in</strong>South Korea</div>
-            <div class="quick-item"><strong>Background</strong>Pharmaceutical quality systems</div>
-            <div class="quick-item"><strong>Interests</strong>Responsibility, accountability, documentation, AI</div>
-            <div class="quick-item"><strong>Current arc</strong>AAC → CF → RC → PAC</div>
-          </div>
-        </div>
-
-        <div class="imessage">
-          <div class="imessage-top">
-            <span>iMessage</span>
-            <span>research mode</span>
-          </div>
-
-          <div class="bubbles">
-            <div class="bubble left">
-              What kinds of systems are you drawn to?
-            </div>
-            <div class="bubble right">
-              The ones that look orderly from the outside but quietly distribute judgment, pressure, and responsibility underneath.
-            </div>
-            <div class="bubble left">
-              And what keeps showing up in your work?
-            </div>
-            <div class="bubble right">
-              Documents, procedures, investigations, and the strange moment when accountability hardens before uncertainty is actually resolved.
-            </div>
-          </div>
-
-          <div class="mini-note">
-            Independent research on responsibility and sociotechnical accountability in regulated organizational settings.
-          </div>
-        </div>
-
+        </section>
       </div>
+
+      <section class="card statement">
+        <h2>Research program</h2>
+        <p>
+          My current research program follows responsibility across the organizational lifecycle: before action, during procedural execution, after investigation, and under computational mediation. Rather than treating accountability as a fixed category, I approach it as something produced through infrastructures of documentation, interpretation, and organizational closure.
+        </p>
+        <p>
+          This arc currently takes shape through four linked concepts: Anticipated Accountability Convergence (AAC), Cognitive Friction in Procedural Texts (CF), Responsibility Convergence (RC), and Premature Accountability Convergence (PAC).
+        </p>
+        <div class="program-line">AAC → CF → RC → PAC</div>
+      </section>
+
+      <section class="card statement">
+        <h2>How I think</h2>
+        <p>
+          I like research that treats documents, procedures, and systems as active organizational actors rather than passive background materials. I am especially interested in the moment when an explanation becomes administratively usable — when ambiguity narrows, responsibility hardens, and a system starts acting as though the question has already been resolved.
+        </p>
+        <p>
+          Methodologically, this means I move between conceptual framing, procedural text analysis, and close reading of document-based evidence, while keeping an eye on how interfaces and representations quietly reorganize judgment.
+        </p>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section class="card side-card">
+        <div class="info-top">snapshot</div>
+        <h3>Research at a glance</h3>
+        <div class="spec">
+          <div class="spec-item">
+            <span class="label">base</span>
+            <span class="value">South Korea</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">background</span>
+            <span class="value">Pharmaceutical quality systems</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">interests</span>
+            <span class="value">Responsibility, accountability, documents, AI-mediated systems</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">current empirical track</span>
+            <span class="value">Procedural text corpus expansion + FDA document analysis</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card quote-card">
+        <div class="info-top">small things I like</div>
+        <p class="quote-text">
+          Outside research, I have a soft spot for small everyday rituals.
+        </p>
+        <div class="quote-sub">
+          🍞 fresh bread from a neighborhood bakery<br>
+          ☕ slow coffee mornings (very strong, preferably)<br>
+          🐀 Ratatouille — yes, the Pixar one. I rewatch it more often than I should.<br>
+          📚 quiet reading corners and long thinking walks.
+          <br><br>
+          Somehow these tiny things feel oddly connected to how I think about work too —
+          patience, craft, and the quiet systems behind things that look simple.
+        </div>
+      </section>
     </aside>
-
   </div>
 
-  <div class="site-credit">
+  <div class="footer">
     <span>Independent researcher · Responsibility & accountability in regulated systems</span>
-    <span>Concept, design, and code by Sora Kim.</span>
+    <span>© 2026 Sora Kim</span>
   </div>
-
 </div>
 
 </body>
