@@ -21,28 +21,35 @@
 <style>
 :root{
   --bg:#f5f5f7;
-  --panel:rgba(255,255,255,0.84);
-  --panel-strong:rgba(255,255,255,0.92);
-  --text:#121316;
-  --muted:#6e6e73;
-  --muted-strong:#4d4f57;
+  --panel:rgba(255,255,255,0.80);
+  --panel-strong:rgba(255,255,255,0.90);
+  --text:#111218;
+  --muted:#6d6f78;
+  --muted-strong:#4a4d56;
   --line:rgba(17,17,17,0.08);
-  --line-strong:rgba(17,17,17,0.12);
-  --accent:#e9eef9;
-  --accent-2:#edf6f2;
-  --accent-3:#f3eefb;
-  --accent-4:#f5f2ea;
-  --blue-strong:#cad8fb;
-  --green-strong:#cbeedc;
-  --lilac-strong:#dfd2fb;
-  --sand-strong:#efe3c7;
-  --silver-strong:#e4e6ec;
-  --radius-xl:30px;
-  --radius-lg:24px;
+  --line-strong:rgba(17,17,17,0.13);
+
+  --blue:#e8eefc;
+  --green:#ebf7f1;
+  --lilac:#f2edfc;
+  --sand:#f6f1e7;
+  --silver:#f3f4f8;
+
+  --blue-strong:#cddafb;
+  --green-strong:#cbeedb;
+  --lilac-strong:#ddd0fb;
+  --sand-strong:#ebdec0;
+  --silver-strong:#e1e5ef;
+
+  --radius-2xl:34px;
+  --radius-xl:28px;
+  --radius-lg:22px;
   --radius-md:18px;
-  --shadow:0 18px 50px rgba(15,23,42,0.08);
-  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+
+  --shadow:0 18px 55px rgba(15,23,42,0.08);
+  --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
   --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
+
   --mono:'JetBrains Mono', monospace;
 }
 
@@ -55,10 +62,11 @@ body{
   color:var(--text);
   line-height:1.65;
   background:
-    radial-gradient(circle at 12% 14%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.75) 18%, transparent 42%),
-    radial-gradient(circle at 82% 20%, rgba(233,238,249,0.70) 0, transparent 30%),
-    radial-gradient(circle at 72% 78%, rgba(243,238,251,0.35) 0, transparent 28%),
-    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+    radial-gradient(circle at 10% 12%, rgba(255,255,255,0.98) 0, rgba(255,255,255,0.72) 15%, transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(232,238,252,0.72) 0, transparent 28%),
+    radial-gradient(circle at 78% 72%, rgba(242,237,252,0.45) 0, transparent 26%),
+    radial-gradient(circle at 24% 84%, rgba(235,247,241,0.38) 0, transparent 22%),
+    linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
 }
 
 body::before{
@@ -66,7 +74,9 @@ body::before{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
 }
 
 nav{
@@ -77,8 +87,8 @@ nav{
   display:flex;
   gap:8px;
   padding:8px;
-  border:1px solid rgba(255,255,255,0.6);
-  background:rgba(255,255,255,0.58);
+  border:1px solid rgba(255,255,255,0.65);
+  background:rgba(255,255,255,0.56);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   border-radius:999px;
@@ -98,26 +108,26 @@ nav a{
 
 nav a:hover{
   color:var(--text);
-  background:rgba(255,255,255,0.7);
+  background:rgba(255,255,255,0.72);
 }
 
 nav a.active{
   color:var(--text);
-  background:rgba(255,255,255,0.82);
+  background:rgba(255,255,255,0.86);
   box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
 }
 
 .wrap{
-  max-width:1280px;
+  max-width:1320px;
   margin:0 auto;
   padding:112px 28px 92px;
 }
 
 .hero,
-.panel,
 .note,
-.project-card,
-.summary-card{
+.panel,
+.summary-card,
+.project-card{
   border:1px solid var(--line);
   background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%);
@@ -126,22 +136,22 @@ nav a.active{
 }
 
 .hero{
-  border-radius:var(--radius-xl);
-  padding:30px;
   position:relative;
   overflow:hidden;
-  margin-bottom:26px;
+  border-radius:var(--radius-2xl);
+  padding:30px;
+  margin-bottom:34px;
   background:
-    radial-gradient(circle at 80% 20%, rgba(233,238,249,0.55), transparent 28%),
-    radial-gradient(circle at 18% 82%, rgba(243,238,251,0.42), transparent 24%),
-    rgba(255,255,255,0.80);
+    radial-gradient(circle at 82% 12%, rgba(232,238,252,0.65), transparent 26%),
+    radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.78));
 }
 
 .hero::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
-  height:52px;
+  height:54px;
   border-bottom:1px solid var(--line);
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
@@ -151,10 +161,10 @@ nav a.active{
   position:absolute;
   right:-120px;
   top:-120px;
-  width:340px;
-  height:340px;
+  width:360px;
+  height:360px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.45), transparent 70%);
+  background:radial-gradient(circle, rgba(255,255,255,0.52), transparent 70%);
   pointer-events:none;
 }
 
@@ -177,14 +187,19 @@ nav a.active{
 .dot:nth-child(2){background:#febc2e}
 .dot:nth-child(3){background:#28c840}
 
-.hero-inner{
-  margin-top:34px;
-  display:grid;
-  grid-template-columns:1.15fr 0.85fr;
-  gap:22px;
-  align-items:start;
+.hero-main{
   position:relative;
   z-index:1;
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(360px,0.8fr);
+  gap:20px;
+  align-items:start;
+}
+
+.hero-left{
+  display:grid;
+  gap:18px;
 }
 
 .eyebrow,
@@ -199,22 +214,16 @@ nav a.active{
   padding:7px 11px;
   border:1px solid var(--line);
   border-radius:999px;
-  background:rgba(255,255,255,0.74);
+  background:rgba(255,255,255,0.78);
   font-family:var(--mono);
   font-size:11px;
   color:var(--muted);
   box-shadow:var(--shadow-soft);
 }
 
-.track-chip.paper{
-  background:rgba(243,238,251,0.88);
-}
-.track-chip.case{
-  background:rgba(233,238,249,0.88);
-}
-.track-chip.prototype{
-  background:rgba(237,246,242,0.88);
-}
+.track-chip.paper{background:rgba(242,237,252,0.9)}
+.track-chip.case{background:rgba(232,238,252,0.9)}
+.track-chip.prototype{background:rgba(235,247,241,0.9)}
 
 .h1,
 .section-title,
@@ -223,57 +232,66 @@ nav a.active{
 .panel h2,
 .summary-card h2{
   font-family:'Sora',sans-serif;
-  letter-spacing:-0.05em;
+  letter-spacing:-0.055em;
 }
 
 .h1{
-  font-size:66px;
+  font-size:72px;
   line-height:0.92;
-  margin:14px 0 14px;
+  margin:10px 0 10px;
   max-width:11ch;
 }
 
 .lead{
-  font-size:16px;
-  color:rgba(29,29,31,0.84);
-  max-width:760px;
   margin:0;
+  max-width:820px;
+  font-size:17px;
+  color:rgba(29,29,31,0.86);
 }
 
-.hero-right{
-  display:grid;
-  gap:14px;
+.hero-intro{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:rgba(255,255,255,0.42);
+  padding:20px 20px 18px;
+  box-shadow:var(--shadow-soft);
 }
 
-.note,
-.panel,
-.summary-card{
-  border-radius:22px;
-  padding:18px;
+.hero-intro-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
-.note{
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
+.hero-float{
+  min-width:210px;
+  max-width:260px;
+  padding:14px 14px 13px;
+  border-radius:20px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.84));
+  box-shadow:var(--shadow-soft);
 }
 
-.note h2,
-.panel h2,
-.summary-card h2{
-  font-size:18px;
-  line-height:1.1;
-  margin:0 0 8px;
+.hero-float strong{
+  display:block;
+  font-family:'Sora',sans-serif;
+  font-size:20px;
+  line-height:1.05;
+  letter-spacing:-0.04em;
+  margin-bottom:6px;
 }
 
-.note p,
-.panel p,
-.summary-card p{
-  margin:0;
-  font-size:14px;
-  color:#40434b;
+.hero-float span{
+  display:block;
+  font-size:13px;
+  color:#4b4e57;
+  line-height:1.5;
 }
 
 .quick-grid{
-  margin-top:18px;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
@@ -282,44 +300,104 @@ nav a.active{
 .panel{
   position:relative;
   overflow:hidden;
+  border-radius:22px;
+  padding:18px;
 }
+
 .panel::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
   height:4px;
 }
+
 .panel.soft-blue{
-  background:linear-gradient(180deg, rgba(233,238,249,0.60), rgba(255,255,255,0.90));
+  background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92));
 }
 .panel.soft-blue::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(233,238,249,0.95));
+  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
 }
+
 .panel.soft-green{
-  background:linear-gradient(180deg, rgba(237,246,242,0.68), rgba(255,255,255,0.90));
+  background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92));
 }
 .panel.soft-green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(237,246,242,0.95));
+  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
 }
+
 .panel.soft-lilac{
-  background:linear-gradient(180deg, rgba(243,238,251,0.72), rgba(255,255,255,0.90));
+  background:linear-gradient(180deg, rgba(242,237,252,0.76), rgba(255,255,255,0.92));
 }
 .panel.soft-lilac::before{
-  background:linear-gradient(90deg, var(--lilac-strong), rgba(243,238,251,0.95));
+  background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
+}
+
+.panel h2,
+.note h2,
+.summary-card h2{
+  font-size:18px;
+  line-height:1.08;
+  margin:0 0 8px;
+}
+
+.panel p,
+.note p,
+.summary-card p{
+  margin:0;
+  font-size:14px;
+  color:#40434b;
+}
+
+.hero-right{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.note{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
+}
+
+.note::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:4px;
+  background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95));
+}
+
+.note.large{
+  min-height:168px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.note-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 .summary-row{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
-  margin:20px 0 4px;
+  margin-top:14px;
 }
 
 .summary-card{
   position:relative;
   overflow:hidden;
+  border-radius:24px;
+  padding:18px;
   background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.90));
 }
+
 .summary-card::before{
   content:"";
   position:absolute;
@@ -327,24 +405,24 @@ nav a.active{
   height:4px;
 }
 .summary-card.blue::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(233,238,249,0.95));
+  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
 }
 .summary-card.green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(237,246,242,0.95));
+  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
 }
 .summary-card.lilac::before{
-  background:linear-gradient(90deg, var(--lilac-strong), rgba(243,238,251,0.95));
+  background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
 }
 .summary-card.sand::before{
-  background:linear-gradient(90deg, var(--sand-strong), rgba(245,242,234,0.95));
+  background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96));
 }
 
 .summary-number{
   font-family:'Sora',sans-serif;
-  font-size:34px;
+  font-size:36px;
   line-height:1;
-  letter-spacing:-0.05em;
-  margin:8px 0 8px;
+  letter-spacing:-0.06em;
+  margin:10px 0 8px;
 }
 
 .section-head{
@@ -352,16 +430,16 @@ nav a.active{
   justify-content:space-between;
   align-items:end;
   gap:16px;
-  margin:34px 0 16px;
+  margin:18px 0 18px;
 }
 
 .section-title{
-  font-size:30px;
+  font-size:32px;
   margin:8px 0 0;
 }
 
 .section-sub{
-  max-width:860px;
+  max-width:900px;
   font-size:15px;
   color:var(--muted-strong);
   margin:8px 0 0;
@@ -369,6 +447,7 @@ nav a.active{
 
 .project-list{
   display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:18px;
 }
 
@@ -381,9 +460,10 @@ nav a.active{
 .project-card{
   border-radius:30px;
   padding:24px;
-  transition:transform .24s ease,border-color .24s ease,background .24s ease, box-shadow .24s ease;
+  transition:transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
   position:relative;
   overflow:hidden;
+  height:100%;
 }
 
 .project-card::before{
@@ -396,69 +476,56 @@ nav a.active{
 .project-card::after{
   content:"";
   position:absolute;
-  right:-80px;
-  top:-80px;
+  right:-82px;
+  top:-82px;
   width:240px;
   height:240px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.45), transparent 70%);
+  background:radial-gradient(circle, rgba(255,255,255,0.48), transparent 70%);
   pointer-events:none;
-  opacity:.9;
+  opacity:.95;
 }
 
 .project-card:hover{
-  transform:translateY(-4px) scale(1.005);
+  transform:translateY(-6px);
   border-color:var(--line-strong);
   background:rgba(255,255,255,0.96);
   box-shadow:var(--shadow-hover);
 }
 
 .project-card.visual{
-  background:linear-gradient(180deg, rgba(233,238,249,0.62), rgba(255,255,255,0.92));
+  background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93));
 }
 .project-card.visual::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(233,238,249,0.95));
+  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
 }
 
 .project-card.soft-green{
-  background:linear-gradient(180deg, rgba(237,246,242,0.72), rgba(255,255,255,0.92));
+  background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93));
 }
 .project-card.soft-green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(237,246,242,0.95));
+  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
 }
 
 .project-card.soft-lilac{
-  background:linear-gradient(180deg, rgba(243,238,251,0.76), rgba(255,255,255,0.92));
+  background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93));
 }
 .project-card.soft-lilac::before{
-  background:linear-gradient(90deg, var(--lilac-strong), rgba(243,238,251,0.95));
+  background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
 }
 
 .project-card.soft-silver{
-  background:linear-gradient(180deg, rgba(248,248,250,0.98), rgba(255,255,255,0.94));
+  background:linear-gradient(180deg, rgba(243,244,248,0.98), rgba(255,255,255,0.94));
 }
 .project-card.soft-silver::before{
-  background:linear-gradient(90deg, var(--silver-strong), rgba(244,244,248,0.95));
+  background:linear-gradient(90deg, var(--silver-strong), rgba(243,244,248,0.96));
 }
 
 .project-card.soft-sand{
-  background:linear-gradient(180deg, rgba(245,242,234,0.88), rgba(255,255,255,0.92));
+  background:linear-gradient(180deg, rgba(246,241,231,0.9), rgba(255,255,255,0.93));
 }
 .project-card.soft-sand::before{
-  background:linear-gradient(90deg, var(--sand-strong), rgba(245,242,234,0.95));
-}
-
-.project-card h3{
-  font-size:30px;
-  line-height:1.02;
-  margin:10px 0 10px;
-  max-width:20ch;
-}
-
-.project-card p{
-  font-size:15px;
-  color:#40434b;
-  margin:0 0 14px;
+  background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96));
 }
 
 .project-top{
@@ -468,6 +535,19 @@ nav a.active{
   gap:14px;
   position:relative;
   z-index:1;
+}
+
+.project-card h3{
+  font-size:30px;
+  line-height:1.03;
+  margin:10px 0 10px;
+  max-width:18ch;
+}
+
+.project-card p{
+  font-size:15px;
+  color:#40434b;
+  margin:0 0 14px;
 }
 
 .project-meta{
@@ -485,8 +565,8 @@ nav a.active{
 
 .project-body{
   display:grid;
-  grid-template-columns:1.08fr 0.92fr;
-  gap:18px;
+  grid-template-columns:1fr;
+  gap:14px;
   position:relative;
   z-index:1;
 }
@@ -503,7 +583,7 @@ nav a.active{
 .card-block{
   border:1px solid var(--line);
   border-radius:20px;
-  background:rgba(255,255,255,0.74);
+  background:rgba(255,255,255,0.76);
   padding:16px;
   box-shadow:var(--shadow-soft);
 }
@@ -551,7 +631,7 @@ nav a.active{
   padding:10px 14px;
   border-radius:14px;
   border:1px solid var(--line);
-  background:rgba(255,255,255,0.76);
+  background:rgba(255,255,255,0.78);
   box-shadow:var(--shadow-soft);
   transition:all .2s ease;
 }
@@ -578,20 +658,24 @@ nav a.active{
 }
 
 @media (max-width:1180px){
+  .hero-main{
+    grid-template-columns:1fr;
+  }
+
+  .note-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
   .summary-row{
     grid-template-columns:1fr 1fr;
   }
-}
 
-@media (max-width:1080px){
-  .hero-inner,
-  .project-body,
-  .quick-grid{
+  .project-list{
     grid-template-columns:1fr;
   }
 }
 
-@media (max-width:760px){
+@media (max-width:860px){
   nav{
     left:14px;
     right:14px;
@@ -600,25 +684,28 @@ nav a.active{
   }
 
   .wrap{
-    padding:98px 18px 70px;
+    padding:98px 18px 72px;
   }
 
   .hero{
-    padding:24px 20px;
+    padding:24px 18px;
   }
 
   .h1{
-    font-size:46px;
+    font-size:48px;
     max-width:none;
   }
 
-  .project-top,
+  .hero-intro-top,
   .section-head,
+  .project-top,
   .project-bottom{
     flex-direction:column;
     align-items:flex-start;
   }
 
+  .quick-grid,
+  .note-grid,
   .summary-row{
     grid-template-columns:1fr;
   }
@@ -644,13 +731,24 @@ nav a.active{
       <span class="dot"></span>
     </div>
 
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">projects / human-centered systems / regulated environments</span>
-        <h1 class="h1">Designing systems for complex procedural work.</h1>
-        <p class="lead">
-          These projects explore how human-centered design can improve access, review interaction, traceability, cognition, workflow observability, and investigation reasoning in validation-constrained GMP environments.
-        </p>
+    <div class="hero-main">
+      <div class="hero-left">
+        <div class="hero-intro">
+          <div class="hero-intro-top">
+            <div>
+              <span class="eyebrow">projects / human-centered systems / regulated environments</span>
+              <h1 class="h1">Designing systems for complex procedural work.</h1>
+              <p class="lead">
+                These projects explore how human-centered design can improve access, review interaction, traceability, cognition, workflow observability, and investigation reasoning in validation-constrained GMP environments.
+              </p>
+            </div>
+
+            <div class="hero-float">
+              <strong>Support judgment.</strong>
+              <span>Not replacement, not automation theater — just clearer procedural environments for real human work.</span>
+            </div>
+          </div>
+        </div>
 
         <div class="quick-grid">
           <div class="panel soft-blue">
@@ -695,22 +793,34 @@ nav a.active{
       </div>
 
       <div class="hero-right">
-        <div class="note">
-          <h2>Portfolio structure</h2>
-          <p>
-            The projects below function as case studies and prototype artifacts. Some are also being extended into short papers, so the site connects design work with research writing.
-          </p>
+        <div class="note large">
+          <div>
+            <h2>Portfolio structure</h2>
+            <p>
+              The projects below function as case studies and prototype artifacts. Some are also being extended into short papers, so the site connects design work with research writing.
+            </p>
+          </div>
         </div>
-        <div class="note">
-          <h2>Research arc inside the projects</h2>
-          <p>
-            The sequence moves from information access to workflow interaction, then to traceability, cognitive pathways, workflow observability, and finally investigation reasoning.
-          </p>
+
+        <div class="note-grid">
+          <div class="note">
+            <h2>Research arc</h2>
+            <p>
+              The sequence moves from information access to workflow interaction, then to traceability, cognitive pathways, workflow observability, and investigation reasoning.
+            </p>
+          </div>
+          <div class="note">
+            <h2>Why this feels like HCI</h2>
+            <p>
+              These projects treat regulated documentation systems not only as compliance tools, but as user environments that shape navigation, coordination, interpretation, and decision-making.
+            </p>
+          </div>
         </div>
+
         <div class="note">
-          <h2>Why this feels like HCI</h2>
+          <h2>Design stance</h2>
           <p>
-            These projects treat regulated documentation systems not only as compliance tools, but as user environments that shape navigation, coordination, interpretation, and decision-making.
+            Most interventions remain external to validated source systems: metadata overlays, review scaffolds, observability layers, and reasoning-support structures rather than direct template modification.
           </p>
         </div>
       </div>
