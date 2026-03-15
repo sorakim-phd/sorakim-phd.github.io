@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Sora Kim designs and studies human-centered systems for high-stakes regulatory work, focusing on regulatory UX, procedural cognition, and decision support." />
+content="Sora Kim designs and studies human-centered systems for high-stakes procedural work, focusing on regulatory UX, procedural cognition, judgment, and decision support." />
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sora Kim — Human-Centered Systems Research">
 <meta property="og:description"
-content="Research and design work on human-centered systems, regulatory UX, procedural cognition, and decision support in high-stakes procedural environments.">
+content="Research and design work on human-centered systems, regulatory UX, procedural cognition, judgment, and decision support in high-stakes procedural environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/">
 <meta property="og:site_name" content="Sora Kim">
@@ -30,14 +30,27 @@ content="Research and design work on human-centered systems, regulatory UX, proc
   --muted-strong:#4d4f57;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.12);
-  --accent:#e9eef9;
-  --accent-2:#edf6f2;
-  --accent-3:#f3eefb;
+
+  --blue:#e9eef9;
+  --green:#edf6f2;
+  --lilac:#f3eefb;
+  --sand:#f5f1e8;
+  --silver:#f4f5f8;
+
+  --blue-strong:#cfdcfb;
+  --green-strong:#d3efe1;
+  --lilac-strong:#e0d4fa;
+  --sand-strong:#ece0c8;
+  --silver-strong:#e4e7ef;
+
   --radius-xl:30px;
   --radius-lg:24px;
   --radius-md:18px;
+
   --shadow:0 18px 50px rgba(15,23,42,0.08);
   --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+  --shadow-hover:0 26px 60px rgba(15,23,42,0.12);
+
   --mono:'JetBrains Mono', monospace;
 }
 
@@ -51,7 +64,8 @@ body{
   line-height:1.65;
   background:
     radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
+    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.58) 0, transparent 34%),
+    radial-gradient(circle at 78% 70%, rgba(243,238,251,0.42) 0, transparent 26%),
     linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
 }
 
@@ -102,23 +116,24 @@ nav a.active{
 }
 
 .wrap{
-  max-width:1260px;
+  max-width:1280px;
   margin:0 auto;
   padding:112px 28px 92px;
 }
 
 .hero{
   display:grid;
-  grid-template-columns:minmax(420px, 1.02fr) minmax(420px, 0.98fr);
-  gap:34px;
-  align-items:center;
-  min-height:calc(100vh - 220px);
+  grid-template-columns:minmax(410px, 0.95fr) minmax(480px, 1.05fr);
+  gap:28px;
+  align-items:start;
 }
 
 .card,
 .panel,
 .callout,
-.project-card{
+.project-card,
+.paper-card,
+.stat-card{
   border:1px solid var(--line);
   background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%);
@@ -179,11 +194,11 @@ nav a.active{
 .avatar-wrap::before{
   content:"";
   position:absolute;
-  inset:-12px;
+  inset:-14px;
   border-radius:50%;
-  background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(243,243,246,0.4));
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(243,243,246,0.42));
   z-index:0;
-  filter:blur(3px);
+  filter:blur(4px);
 }
 
 .avatar{
@@ -194,15 +209,22 @@ nav a.active{
   border-radius:50%;
   object-fit:cover;
   box-shadow:0 14px 34px rgba(15,23,42,0.14);
-  border:1px solid rgba(255,255,255,0.72);
+  border:1px solid rgba(255,255,255,0.78);
+}
+
+.identity-kicker,
+.panel-label,
+.section-tag,
+.meta-chip,
+.status-chip{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:0.02em;
 }
 
 .identity-kicker{
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:0.02em;
   text-transform:uppercase;
-  color:var(--muted);
   margin-bottom:10px;
 }
 
@@ -219,23 +241,25 @@ nav a.active{
   margin:0 0 14px 0;
   font-size:15px;
   color:var(--muted-strong);
-  max-width:460px;
+  max-width:470px;
 }
 
 .mini{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
 
-.chip{
+.chip,
+.meta-chip,
+.status-chip,
+.eyebrow,
+.section-tag{
   padding:7px 12px;
   border-radius:999px;
   border:1px solid var(--line);
   background:rgba(255,255,255,0.72);
+  box-shadow:var(--shadow-soft);
 }
 
 .links{
@@ -269,39 +293,38 @@ nav a.active{
   background:linear-gradient(180deg, rgba(233,238,249,0.88), rgba(255,255,255,0.88));
 }
 
-.right{
-  max-width:620px;
+.hero-right{
+  display:grid;
+  gap:14px;
+}
+
+.hero-head{
+  border-radius:var(--radius-xl);
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(233,238,249,0.62), transparent 30%),
+    radial-gradient(circle at 14% 78%, rgba(243,238,251,0.34), transparent 22%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,250,252,0.84));
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:8px 12px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background:rgba(255,255,255,0.64);
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
   margin-bottom:18px;
-  box-shadow:var(--shadow-soft);
 }
 
 .h1{
   font-family:'Sora',sans-serif;
-  font-size:78px;
+  font-size:74px;
   font-weight:800;
   letter-spacing:-0.07em;
   line-height:0.92;
   margin:0 0 16px 0;
   text-wrap:balance;
-}
-
-.hi{
-  display:block;
-  font-size:0.92em;
-  margin-bottom:8px;
+  max-width:10ch;
 }
 
 .gradient-word{
@@ -312,25 +335,20 @@ nav a.active{
 }
 
 .lead{
-  font-size:16px;
-  color:rgba(29,29,31,0.82);
-  margin:0 0 16px 0;
-  max-width:570px;
+  font-size:17px;
+  color:rgba(29,29,31,0.84);
+  margin:0;
+  max-width:610px;
 }
 
 .callout{
-  border-radius:22px;
-  padding:18px;
-  font-family:var(--mono);
-  font-size:12px;
-  white-space:pre-line;
-  margin-top:16px;
+  border-radius:24px;
+  padding:20px;
   line-height:1.8;
   background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(250,250,252,0.95));
 }
 
-.callout-label,
-.section-tag{
+.callout-label{
   display:inline-block;
   margin-bottom:10px;
   padding:6px 10px;
@@ -342,10 +360,48 @@ nav a.active{
   font-size:11px;
 }
 
-.section{
-  margin-top:16px;
+.callout-grid{
   display:grid;
-  grid-template-columns:1.12fr 0.88fr;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.callout-block{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  background:rgba(255,255,255,0.58);
+  box-shadow:var(--shadow-soft);
+}
+
+.callout-block h3{
+  margin:0 0 6px 0;
+  font-family:'Sora',sans-serif;
+  font-size:18px;
+  letter-spacing:-0.03em;
+}
+
+.callout-block p{
+  margin:0;
+  font-size:14px;
+  color:#40434b;
+}
+
+.callout-block ul{
+  margin:0;
+  padding-left:18px;
+}
+
+.callout-block li{
+  margin:0 0 4px;
+  color:#40434b;
+  font-size:14px;
+}
+
+.section{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1.06fr 0.94fr;
   gap:14px;
 }
 
@@ -361,29 +417,36 @@ nav a.active{
 }
 
 .panel:hover,
-.project-card:hover{
+.project-card:hover,
+.paper-card:hover,
+.stat-card:hover{
   transform:translateY(-2px);
   border-color:var(--line-strong);
   background:rgba(255,255,255,0.94);
 }
 
 .panel.featured{
-  min-height:180px;
+  min-height:190px;
   background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,248,251,0.92));
 }
 
-.panel-label{
-  font-family:var(--mono);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-  color:var(--muted);
-  margin-bottom:10px;
+.panel.soft-blue{
+  background:linear-gradient(180deg, rgba(233,238,249,0.50), rgba(255,255,255,0.88));
+}
+
+.panel.soft-green{
+  background:linear-gradient(180deg, rgba(237,246,242,0.55), rgba(255,255,255,0.88));
+}
+
+.panel.soft-lilac{
+  background:linear-gradient(180deg, rgba(243,238,251,0.58), rgba(255,255,255,0.88));
 }
 
 .panel h2,
 .project-card h3,
-.section-title{
+.paper-card h3,
+.section-title,
+.stat-card h3{
   font-family:'Sora',sans-serif;
   letter-spacing:-0.04em;
 }
@@ -400,7 +463,35 @@ nav a.active{
   color:#3f4148;
 }
 
-.projects-home{
+.stats{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+
+.stat-card{
+  border-radius:22px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.9));
+}
+
+.stat-number{
+  font-family:'Sora',sans-serif;
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-0.05em;
+  margin:8px 0 10px;
+}
+
+.stat-card p{
+  margin:0;
+  font-size:14px;
+  color:#43464e;
+}
+
+.projects-home,
+.papers-home{
   margin-top:54px;
 }
 
@@ -418,7 +509,7 @@ nav a.active{
 }
 
 .section-sub{
-  max-width:660px;
+  max-width:700px;
   font-size:15px;
   color:var(--muted-strong);
   margin:8px 0 0 0;
@@ -437,7 +528,7 @@ nav a.active{
 }
 
 .project-card.visual{
-  background:linear-gradient(180deg, rgba(233,238,249,0.45), rgba(255,255,255,0.88));
+  background:linear-gradient(180deg, rgba(233,238,249,0.46), rgba(255,255,255,0.88));
 }
 
 .project-card.soft-green{
@@ -476,6 +567,46 @@ nav a.active{
   color:var(--muted);
 }
 
+.paper-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
+.paper-card{
+  border-radius:24px;
+  padding:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
+}
+
+.paper-card h3{
+  font-size:24px;
+  line-height:1.06;
+  margin:10px 0 10px;
+}
+
+.paper-card p{
+  margin:0 0 14px;
+  font-size:14px;
+  color:#42454c;
+}
+
+.paper-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.paper-meta span{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.76);
+  color:var(--muted);
+}
+
 .footer{
   margin-top:40px;
   border-top:1px solid var(--line);
@@ -491,18 +622,25 @@ nav a.active{
   line-height:1.65;
 }
 
-@media (max-width:1080px){
+@media (max-width:1180px){
   .hero{
     grid-template-columns:1fr;
-    min-height:auto;
   }
 
-  .right{
+  .h1{
     max-width:none;
   }
 
   .project-grid{
     grid-template-columns:1fr;
+  }
+
+  .paper-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
   }
 }
 
@@ -518,7 +656,8 @@ nav a.active{
     padding:98px 18px 70px;
   }
 
-  .card{
+  .card,
+  .hero-head{
     padding:24px 20px;
   }
 
@@ -535,10 +674,13 @@ nav a.active{
   }
 
   .h1{
-    font-size:54px;
+    font-size:52px;
   }
 
-  .section{
+  .callout-grid,
+  .section,
+  .stats,
+  .paper-grid{
     grid-template-columns:1fr;
   }
 
@@ -581,14 +723,14 @@ nav a.active{
           <div class="name">Sora Kim</div>
 
           <p class="bio-mini">
-            I design and study human-centered systems for high-stakes regulatory work, with a focus on regulatory UX, procedural cognition, and decision support.
+            I design and study human-centered systems for high-stakes procedural work, focusing on regulatory UX, judgment, procedural cognition, and decision support.
           </p>
 
           <div class="mini">
             <span class="chip">human-centered systems</span>
-            <span class="chip">regulatory UX</span>
-            <span class="chip">procedural cognition</span>
-            <span class="chip">decision support</span>
+            <span class="chip">judgment</span>
+            <span class="chip">organizational environments</span>
+            <span class="chip">high-stakes work</span>
           </div>
 
           <div class="links">
@@ -601,82 +743,123 @@ nav a.active{
       </div>
     </div>
 
-    <div class="right">
-      <div class="eyebrow">human-computer interaction / regulatory UX / high-stakes procedural systems</div>
+    <div class="hero-right">
+      <div class="hero-head card" style="padding-top:30px;">
+        <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments</div>
 
-      <h1 class="h1">
-        <span class="hi">Hi 👋</span>
-        I design <span class="gradient-word">better systems</span><br>
-        for complex work.
-      </h1>
+        <h1 class="h1">
+          Designing <span class="gradient-word">systems</span><br>
+          for complex work.
+        </h1>
 
-      <p class="lead">
-        My work sits at the intersection of human-computer interaction, regulatory UX, and high-stakes procedural systems. I design tools that support navigation, reasoning, and decision-making in complex organizational environments.
-      </p>
+        <p class="lead">
+          My work sits across HCI, regulatory UX, procedural cognition, and organizational systems. I study how documents, workflows, interfaces, and support structures shape navigation, reasoning, interpretation, and decision-making in high-stakes environments.
+        </p>
+      </div>
 
       <div class="callout">
-<span class="callout-label">current direction</span>
+        <span class="callout-label">research-program direction</span>
 
-focus
-human-centered systems for regulated work
-regulatory UX, procedural cognition, and decision support
+        <div class="callout-grid">
+          <div class="callout-block">
+            <h3>What I study</h3>
+            <p>
+              I am interested in how procedural environments structure thought: how people move through documents, how they interpret evidence, how workflows narrow or expand judgment, and how support systems shape decision closure.
+            </p>
+          </div>
 
-building
-document accessibility tools
-workflow interfaces for investigation support
-reasoning scaffolds for high-stakes procedural work
+          <div class="callout-block">
+            <h3>Where it sits</h3>
+            <p>
+              This work draws on HCI and UX, but also on broader questions about systems, organizational environments, infrastructure, accountability, and human judgment under constraint.
+            </p>
+          </div>
 
-methods
-workflow analysis
-document analysis
-field-based observation
-python and R for low-code analysis
+          <div class="callout-block">
+            <h3>Current materials</h3>
+            <ul>
+              <li>SOP archives and accessibility layers</li>
+              <li>Deviation / CAPA workflow records</li>
+              <li>RCA reasoning structures</li>
+              <li>FDA-facing regulatory documents</li>
+            </ul>
+          </div>
 
-current domain
-GMP documentation · investigations · CAPA/RCA records · FDA-facing materials
-
-now exploring
-1) how interfaces shape navigation and reasoning in procedural work
-2) how support systems and AI mediation affect judgment and decision closure
+          <div class="callout-block">
+            <h3>Current output shape</h3>
+            <ul>
+              <li>SOP Accessibility Paper</li>
+              <li>Deviation–CAPA Workflow Paper</li>
+              <li>RCA Reasoning Paper</li>
+              <li>Regulatory UX Concept Paper</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="section">
         <div class="column">
-          <div class="panel featured">
+          <div class="panel featured soft-blue">
             <div class="panel-label">current build</div>
-            <h2>Designing systems that support reasoning in high-stakes work</h2>
+            <h2>Designing support systems for reasoning in high-stakes procedural work</h2>
             <p>
-              I am interested in how workflows, templates, and interface structures can make complex decisions more usable while preserving interpretive openness in constrained organizational settings.
+              I explore how interface structures, metadata layers, workflow visibility, and reasoning scaffolds can make complex work more navigable without flattening interpretation or replacing human judgment.
             </p>
           </div>
 
-          <div class="panel">
-            <div class="panel-label">domain</div>
-            <h2>Regulated documentation as an HCI problem</h2>
+          <div class="panel soft-lilac">
+            <div class="panel-label">bridge</div>
+            <h2>From HCI and UX to broader systems questions</h2>
             <p>
-              SOPs, deviations, investigations, CAPA records, and inspection-facing documents are not only compliance artifacts. They are also user environments that shape cognition, navigation, interpretation, and decision-making.
+              My projects begin with usability and interaction, but extend toward larger questions about how institutions, infrastructures, and procedural systems organize accountability, closure, and decision-making.
             </p>
           </div>
         </div>
 
         <div class="column">
-          <div class="panel">
-            <div class="panel-label">prototype direction</div>
-            <h2>Human-centered support for procedural work</h2>
+          <div class="panel soft-green">
+            <div class="panel-label">domain</div>
+            <h2>Regulated documentation as a living user environment</h2>
             <p>
-              I develop design concepts for structured navigation, workflow visibility, and reasoning support that help people work more clearly under procedural constraint.
+              SOPs, investigations, CAPA records, and inspection-facing documents are not only compliance artifacts. They are environments people inhabit while trying to find, interpret, justify, and act.
             </p>
           </div>
 
           <div class="panel">
-            <div class="panel-label">research bridge</div>
-            <h2>From design questions to research directions</h2>
+            <div class="panel-label">orientation</div>
+            <h2>Not just better interfaces, but better conditions for thought</h2>
             <p>
-              My projects connect interface design, workflow analysis, and conceptual research on how documents and support systems shape judgment in complex procedural environments.
+              I am interested in systems that support clearer reasoning, slower premature closure, more legible workflows, and more humane decision processes under procedural pressure.
             </p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="panel-label">paper set</div>
+      <div class="stat-number">4</div>
+      <p>Core papers spanning accessibility, workflow, reasoning, and regulatory UX concepts.</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="panel-label">research lens</div>
+      <div class="stat-number">HCI+</div>
+      <p>Human-centered systems work extending beyond interface design into organizational and procedural environments.</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="panel-label">domain</div>
+      <div class="stat-number">GMP</div>
+      <p>High-stakes regulatory materials including SOPs, investigations, CAPA/RCA, and FDA-facing documentation.</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="panel-label">methods</div>
+      <div class="stat-number">Mixed</div>
+      <p>Workflow analysis, document analysis, field observation, and low-code exploration with Python and R.</p>
     </div>
   </div>
 
@@ -685,9 +868,9 @@ now exploring
 
     <div class="section-header">
       <div>
-        <h2 class="section-title">Selected HCI / UX projects</h2>
+        <h2 class="section-title">Selected systems and UX projects</h2>
         <p class="section-sub">
-          Design explorations in navigation, workflow interfaces, procedural cognition, and decision support for regulated environments.
+          Design explorations in document accessibility, workflow interaction, procedural reasoning, and support systems for regulated environments.
         </p>
       </div>
       <a class="btn" href="projects.html">see all projects</a>
@@ -698,41 +881,109 @@ now exploring
         <div class="panel-label">project 01</div>
         <h3>SOP Accessibility System</h3>
         <p>
-          A document UX project focused on searchability, keyword pathways, and cross-reference clarity in dense procedural archives.
+          A document accessibility and information architecture project focused on searchability, keyword pathways, metadata structuring, and cross-reference clarity in dense procedural archives.
         </p>
         <div class="project-meta">
           <span>document UX</span>
           <span>information architecture</span>
+          <span>accessibility</span>
           <span>python</span>
-          <span>R</span>
         </div>
       </article>
 
       <article class="project-card soft-green">
         <div class="panel-label">project 02</div>
-        <h3>Investigation Workflow Interfaces</h3>
+        <h3>Deviation–CAPA Workflow Interfaces</h3>
         <p>
-          A workflow interface concept exploring how review structure, documentation flow, and interaction design shape reasoning in investigation settings.
+          A workflow systems project examining how review structure, routing logic, visibility, and documentation flow shape coordination and reasoning in investigation settings.
         </p>
         <div class="project-meta">
           <span>workflow UX</span>
+          <span>procedural systems</span>
           <span>investigations</span>
-          <span>python</span>
           <span>R</span>
         </div>
       </article>
 
       <article class="project-card soft-lilac">
         <div class="panel-label">project 03</div>
-        <h3>AI-Supported Investigation Systems</h3>
+        <h3>RCA Reasoning Support</h3>
         <p>
-          A design direction examining how AI-supported systems may reshape interpretation, reasoning, and decision closure in high-stakes procedural environments.
+          A reasoning-support direction exploring how scaffolds, prompts, and structured causal views can widen hypothesis space and reduce premature decision closure.
         </p>
         <div class="project-meta">
-          <span>human-AI interaction</span>
-          <span>decision support</span>
+          <span>judgment</span>
+          <span>reasoning support</span>
           <span>high-stakes systems</span>
-          <span>python</span>
+          <span>human-AI direction</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="papers-home">
+    <span class="section-tag">paper set</span>
+
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Current paper lineup</h2>
+        <p class="section-sub">
+          Four connected papers organized around accessibility, workflow, reasoning, and broader regulatory UX concepts in complex procedural environments.
+        </p>
+      </div>
+      <a class="btn" href="papers.html">view papers</a>
+    </div>
+
+    <div class="paper-grid">
+      <article class="paper-card">
+        <div class="panel-label">paper 01</div>
+        <h3>SOP Accessibility Paper</h3>
+        <p>
+          Examines document accessibility, searchability, and metadata support in SOP-heavy environments where retrieval burden shapes cognitive effort and practical usability.
+        </p>
+        <div class="paper-meta">
+          <span>accessibility</span>
+          <span>document UX</span>
+          <span>SOP systems</span>
+        </div>
+      </article>
+
+      <article class="paper-card">
+        <div class="panel-label">paper 02</div>
+        <h3>Deviation–CAPA Workflow Paper</h3>
+        <p>
+          Focuses on workflow structure, review interaction, and documentation flow in deviation and CAPA environments where process design affects clarity and turnaround.
+        </p>
+        <div class="paper-meta">
+          <span>workflow</span>
+          <span>interaction</span>
+          <span>regulated systems</span>
+        </div>
+      </article>
+
+      <article class="paper-card">
+        <div class="panel-label">paper 03</div>
+        <h3>RCA Reasoning Paper</h3>
+        <p>
+          Investigates how reasoning scaffolds and procedural structures shape causal exploration, interpretive openness, and closure tendencies in investigation work.
+        </p>
+        <div class="paper-meta">
+          <span>reasoning</span>
+          <span>judgment</span>
+          <span>RCA</span>
+        </div>
+      </article>
+
+      <article class="paper-card">
+        <div class="panel-label">paper 04</div>
+        <h3>Regulatory UX Concept Paper</h3>
+        <p>
+          Articulates a broader conceptual frame for understanding regulated documents and workflows as user environments that organize navigation, cognition, and decision-making.
+        </p>
+        <div class="paper-meta">
+          <span>regulatory UX</span>
+          <span>concept paper</span>
+          <span>systems lens</span>
         </div>
       </article>
     </div>
