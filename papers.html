@@ -6,7 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Working manuscripts from Sora Kim’s research program on documentation, investigations, responsibility, and AI-mediated decision support in regulated environments." />
+content="Papers and working manuscripts from Sora Kim’s research program on human-centered systems, regulatory UX, procedural cognition, responsibility, and AI-mediated decision support in regulated environments." />
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Papers — Sora Kim">
+<meta property="og:description" content="Current HCI paper directions and conceptual manuscripts from Sora Kim’s research program.">
+<meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
+<meta property="og:url" content="https://sorakim-phd.github.io/papers.html">
+<meta property="og:site_name" content="Sora Kim">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,22 +24,33 @@ content="Working manuscripts from Sora Kim’s research program on documentation
   --bg:#f5f5f7;
   --panel:rgba(255,255,255,0.84);
   --panel-strong:rgba(255,255,255,0.92);
-  --panel-soft:rgba(250,250,252,0.82);
+  --panel-soft:rgba(250,250,252,0.84);
   --text:#121316;
   --muted:#6e6e73;
   --muted-strong:#4a4d55;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.12);
-  --radius-xl:30px;
-  --radius-lg:22px;
-  --radius-md:16px;
-  --shadow:0 18px 50px rgba(15,23,42,0.08);
-  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
-  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
   --blue:#4da3ff;
   --pink:#ff6786;
   --purple:#b987ff;
   --green:#55d38a;
+
+  --soft-blue:rgba(77,163,255,0.10);
+  --soft-pink:rgba(255,103,134,0.08);
+  --soft-purple:rgba(185,135,255,0.10);
+  --soft-green:rgba(85,211,138,0.10);
+
+  --radius-2xl:34px;
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:18px;
+
+  --shadow:0 18px 55px rgba(15,23,42,0.08);
+  --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
+  --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
+
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 *{box-sizing:border-box}
@@ -97,17 +115,9 @@ nav a.active{
 }
 
 .wrap{
-  max-width:1240px;
+  max-width:1320px;
   margin:0 auto;
-  padding:118px 24px 88px;
-}
-
-.hero{
-  display:grid;
-  grid-template-columns:minmax(0, 1.04fr) minmax(320px, 0.96fr);
-  gap:18px;
-  align-items:start;
-  margin-bottom:18px;
+  padding:112px 28px 92px;
 }
 
 .card{
@@ -116,24 +126,111 @@ nav a.active{
   backdrop-filter:blur(20px) saturate(150%);
   -webkit-backdrop-filter:blur(20px) saturate(150%);
   box-shadow:var(--shadow);
-  border-radius:var(--radius-xl);
-}
-
-.hero-card{
-  padding:22px 22px 24px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
-}
-
-.meta-card{
-  padding:20px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,248,251,0.84));
+  border-radius:var(--radius-2xl);
 }
 
 .kicker,
 .chip,
 .hint,
-.paper-tagline{
+.paper-tagline,
+.mini-label,
+.status,
+.pill{
   font-family:var(--mono);
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:30px;
+  margin-bottom:18px;
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-blue) 0, transparent 24%),
+    radial-gradient(circle at 18% 88%, var(--soft-purple) 0, transparent 22%),
+    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(249,249,252,0.84));
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:54px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:-120px;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.52), transparent 70%);
+  pointer-events:none;
+}
+
+.window-dots{
+  position:absolute;
+  top:16px;
+  left:18px;
+  display:flex;
+  gap:7px;
+  z-index:2;
+}
+
+.window-dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
+}
+.window-dot:nth-child(1){background:#ff5f57}
+.window-dot:nth-child(2){background:#febc2e}
+.window-dot:nth-child(3){background:#28c840}
+
+.hero-grid{
+  position:relative;
+  z-index:1;
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(340px,0.92fr);
+  gap:22px;
+  align-items:start;
+}
+
+.hero-main{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:28px 28px 26px;
+  background:rgba(255,255,255,0.46);
+  box-shadow:var(--shadow-soft);
+}
+
+.hero-side{
+  display:grid;
+  gap:16px;
+}
+
+.side-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,251,0.84));
+  box-shadow:var(--shadow-soft);
+}
+
+.side-card.soft-green{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-green) 0, transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,250,249,0.84));
+}
+
+.side-card.soft-pink{
+  background:
+    radial-gradient(circle at 82% 18%, var(--soft-pink) 0, transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,248,249,0.84));
 }
 
 .kicker{
@@ -143,35 +240,53 @@ nav a.active{
   padding:7px 11px;
   border:1px solid var(--line);
   border-radius:999px;
-  background:rgba(255,255,255,0.7);
+  background:rgba(255,255,255,0.72);
   box-shadow:var(--shadow-soft);
   font-size:11px;
   color:var(--muted);
-  margin-bottom:14px;
+  margin-bottom:16px;
+}
+
+.title,
+.h2,
+.paper-title,
+.side-card h3{
+  font-family:'Sora',sans-serif;
+  letter-spacing:-0.055em;
 }
 
 .title{
-  margin:0 0 14px 0;
-  font-family:'Sora',sans-serif;
+  margin:0 0 16px 0;
   font-size:60px;
   line-height:0.94;
-  letter-spacing:-0.065em;
   font-weight:800;
-  max-width:10ch;
+  max-width:8ch;
 }
 
 .intro{
   margin:0;
-  font-size:15.5px;
+  font-size:16px;
   color:rgba(18,19,22,0.84);
-  max-width:68ch;
+  max-width:64ch;
+}
+
+.hero-note{
+  margin-top:18px;
+  max-width:760px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,0.68);
+  box-shadow:var(--shadow-soft);
+  font-size:13px;
+  color:#4a4d55;
 }
 
 .meta-row{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
 .chip{
@@ -180,29 +295,110 @@ nav a.active{
   padding:6px 10px;
   border:1px solid var(--line);
   border-radius:999px;
-  background:rgba(255,255,255,0.62);
+  background:rgba(255,255,255,0.64);
 }
 
-.meta-card p{
-  margin:0 0 9px 0;
-  font-size:13px;
+.side-card h3{
+  margin:0 0 8px 0;
+  font-size:22px;
+  line-height:1.08;
+}
+
+.side-card p{
+  margin:0;
+  font-size:14px;
   color:var(--muted-strong);
 }
 
-.meta-card p:last-child{margin-bottom:0}
+.section-card{
+  padding:20px;
+  margin-top:16px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(249,249,252,0.84));
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+
+.h2{
+  margin:0;
+  font-size:32px;
+  line-height:1.08;
+}
+
+.hint{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+.section-intro{
+  margin:0 0 14px 0;
+  font-size:14px;
+  color:#44484f;
+  max-width:78ch;
+}
 
 .papers{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:16px;
+  gap:18px;
 }
 
 .paper{
-  padding:18px;
+  padding:22px;
   position:relative;
   overflow:hidden;
-  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
+  border-radius:30px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,249,252,0.84));
+  box-shadow:var(--shadow-soft);
+  transition:transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
+}
+
+.paper:hover{
+  transform:translateY(-4px);
+  border-color:var(--line-strong);
+  background:rgba(255,255,255,0.96);
+  box-shadow:var(--shadow-hover);
+}
+
+.paper.hci-paper{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-blue) 0, transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.86));
+}
+
+.paper.concept-paper.blue{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-blue) 0, transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,249,252,0.84));
+}
+
+.paper.concept-paper.pink{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-pink) 0, transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(250,248,249,0.84));
+}
+
+.paper.concept-paper.purple{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-purple) 0, transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,248,252,0.84));
+}
+
+.paper.concept-paper.green{
+  background:
+    radial-gradient(circle at 84% 18%, var(--soft-green) 0, transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,250,249,0.84));
 }
 
 .paper-top{
@@ -210,8 +406,7 @@ nav a.active{
   align-items:center;
   gap:8px;
   flex-wrap:wrap;
-  margin-bottom:10px;
-  font-family:var(--mono);
+  margin-bottom:12px;
   font-size:11px;
   color:var(--muted);
   text-transform:uppercase;
@@ -236,15 +431,17 @@ nav a.active{
   border:1px solid var(--line);
   background:rgba(255,255,255,0.62);
   white-space:nowrap;
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
 }
 
 .paper-title{
   margin:0 0 8px 0;
-  font-family:'Sora',sans-serif;
-  font-size:22px;
+  font-size:30px;
   font-weight:700;
-  letter-spacing:-0.04em;
-  line-height:1.16;
+  line-height:1.08;
 }
 
 .paper-tagline{
@@ -257,7 +454,7 @@ nav a.active{
 
 .abstract{
   margin:0 0 12px 0;
-  font-size:14px;
+  font-size:15px;
   color:rgba(18,19,22,0.82);
 }
 
@@ -265,7 +462,7 @@ nav a.active{
   margin:0;
   padding-left:18px;
   color:#44484f;
-  font-size:13px;
+  font-size:14px;
 }
 
 .meta li{
@@ -288,8 +485,11 @@ nav a.active{
 }
 
 .progress{
-  background:linear-gradient(180deg, rgba(238,246,255,0.9), rgba(245,249,255,0.96));
-  color:#3e4a59;
+  background:rgba(255,255,255,0.64);
+  color:#57606f;
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
 }
 
 .links{
@@ -371,15 +571,8 @@ nav a.active{
   text-align:right;
 }
 
-@media (max-width:980px){
-  nav{
-    left:14px;
-    right:14px;
-    justify-content:center;
-    overflow:auto;
-  }
-
-  .hero,
+@media (max-width:1180px){
+  .hero-grid,
   .papers{
     grid-template-columns:1fr;
   }
@@ -387,9 +580,29 @@ nav a.active{
   .title{max-width:none}
 }
 
-@media (max-width:700px){
-  .wrap{padding:100px 18px 76px}
-  .title{font-size:46px}
+@media (max-width:860px){
+  nav{
+    left:14px;
+    right:14px;
+    justify-content:flex-start;
+    overflow:auto;
+  }
+
+  .wrap{
+    padding:98px 18px 72px;
+  }
+
+  .hero{
+    padding:24px 18px;
+  }
+
+  .hero-main{
+    padding:22px 20px;
+  }
+
+  .title{
+    font-size:46px;
+  }
 }
 </style>
 </head>
@@ -406,170 +619,309 @@ nav a.active{
 </nav>
 
 <div class="wrap">
-  <div class="hero">
-    <section class="card hero-card">
-      <div class="kicker">papers / working manuscripts / conceptual research</div>
-      <h1 class="title">Working Manuscripts</h1>
-      <p class="intro">
-        These working manuscripts reflect a connected research program on documentation, investigations, responsibility, and AI-mediated decision support in regulated environments.
-      </p>
-    </section>
+  <section class="card hero">
+    <div class="window-dots">
+      <span class="window-dot"></span>
+      <span class="window-dot"></span>
+      <span class="window-dot"></span>
+    </div>
 
-    <aside class="card meta-card">
-      <div class="meta-row">
-        <span class="chip">AAC</span>
-        <span class="chip">CF</span>
-        <span class="chip">RC</span>
-        <span class="chip">PAC</span>
-      </div>
-      <p>Program arc: AAC → CF → RC → PAC</p>
-      <p>Current empirical extensions: expanded CF corpus and annotation reliability testing; qualitative document analysis of FDA Warning Letters and Form 483 observations examining responsibility convergence in regulatory investigations.</p>
-      <p>These manuscripts represent the conceptual backbone of my broader research direction.</p>
-    </aside>
-  </div>
-
-  <section class="papers">
-
-    <article class="card paper">
-      <div class="paper-top">
-        <span class="dot dot-blue"></span>
-        <span class="pill">AAC</span>
-        <span class="pill">anticipatory alignment</span>
-        <span class="pill">organizational infrastructures</span>
-      </div>
-
-      <h2 class="paper-title">Anticipated Accountability Convergence: How Organizational Infrastructures Align Interpretations of Defensible Action</h2>
-      <p class="paper-tagline">before action / interpretive expectations / prospective structuring</p>
-
-      <div class="links">
-        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
-        <a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
-      </div>
-
-      <div class="abstract-content">
-        <p class="abstract">
-          Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="kicker">papers / HCI papers / conceptual manuscripts</div>
+        <h1 class="title">Papers & manuscripts</h1>
+        <p class="intro">
+          This page brings together two layers of writing in my research program: project-linked HCI paper directions and conceptual manuscripts that provide theoretical grounding for the broader agenda.
         </p>
-
-        <ul class="meta">
-          <li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
-          <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
-          <li>Contribution: theorizes accountability as a prospective organizational condition rather than a purely retrospective evaluative event.</li>
-        </ul>
-
-        <div class="concept-line">before action → interpretive expectations are prospectively aligned</div>
-      </div>
-    </article>
-
-    <article class="card paper">
-      <div class="paper-top">
-        <span class="dot dot-pink"></span>
-        <span class="pill">CF</span>
-        <span class="pill">procedural texts</span>
-        <span class="pill">document architecture</span>
-      </div>
-
-      <h2 class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</h2>
-      <p class="paper-tagline">during execution / procedural language / localized judgment demands</p>
-
-      <div class="links">
-        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
-        <a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
-      </div>
-
-      <div class="abstract-content">
-        <p class="abstract">
-          Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
-        </p>
-
-        <ul class="meta">
-          <li>Empirical pilot: 500 procedurally realistic sentences derived from public regulatory and safety documentation.</li>
-          <li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentence architecture.</li>
-          <li>Contribution: shows how responsibility-relevant judgment is embedded in procedural documentation itself.</li>
-        </ul>
-
-        <div class="concept-line">during execution → sentence structure shapes interpretive burden and attributable judgment</div>
-
-        <div class="progress">
-          Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.
+        <div class="hero-note">
+          The HCI papers grow directly from the project portfolio. The conceptual manuscripts clarify how judgment, interpretation, responsibility, and closure operate across those same procedural environments.
         </div>
       </div>
-    </article>
 
-    <article class="card paper">
-      <div class="paper-top">
-        <span class="dot dot-purple"></span>
-        <span class="pill">RC</span>
-        <span class="pill">investigations</span>
-        <span class="pill">closure pressure</span>
-      </div>
+      <div class="hero-side">
+        <div class="side-card soft-green">
+          <div class="meta-row">
+            <span class="chip">HCI papers</span>
+            <span class="chip">project-linked</span>
+            <span class="chip">design-oriented</span>
+          </div>
+          <h3>Four paper directions tied to the project portfolio.</h3>
+          <p>
+            These papers develop the case studies and prototypes into HCI arguments about usability, workflow friction, reasoning support, and regulatory UX.
+          </p>
+        </div>
 
-      <h2 class="paper-title">Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis</h2>
-      <p class="paper-tagline">after events / investigative closure / administratively legible attribution</p>
-
-      <div class="links">
-        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
-        <a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
-      </div>
-
-      <div class="abstract-content">
-        <p class="abstract">
-          Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
-        </p>
-
-        <ul class="meta">
-          <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
-          <li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
-          <li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures rather than a simple individual bias.</li>
-        </ul>
-
-        <div class="concept-line">after events → causal ambiguity is translated into administratively actionable responsibility</div>
-      </div>
-    </article>
-
-    <article class="card paper">
-      <div class="paper-top">
-        <span class="dot dot-green"></span>
-        <span class="pill">PAC</span>
-        <span class="pill">AI mediation</span>
-        <span class="pill">temporal accountability</span>
-      </div>
-
-      <h2 class="paper-title">Premature Accountability Convergence: AI and the Acceleration of Responsibility in Sociotechnical Organizations</h2>
-      <p class="paper-tagline">under AI mediation / representational compression / temporal contraction</p>
-
-      <div class="links">
-        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
-        <a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
-      </div>
-
-      <div class="abstract-content">
-        <p class="abstract">
-          Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
-        </p>
-
-        <ul class="meta">
-          <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
-          <li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
-          <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
-        </ul>
-
-        <div class="concept-line">under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined</div>
-
-        <div class="progress">
-          Empirical extension underway: qualitative analysis of FDA Warning Letters and Form 483 observations tracing responsibility convergence in regulatory investigations, providing empirical grounding for the PAC framework through RC-linked document patterns.
+        <div class="side-card soft-pink">
+          <div class="meta-row">
+            <span class="chip">conceptual manuscripts</span>
+            <span class="chip">AAC</span>
+            <span class="chip">CF</span>
+            <span class="chip">RC</span>
+            <span class="chip">PAC</span>
+          </div>
+          <h3>Conceptual grounding for the broader research agenda.</h3>
+          <p>
+            These manuscripts support the HCI work by clarifying interpretive expectations, procedural cognition, investigative closure, and AI-mediated convergence.
+          </p>
         </div>
       </div>
-    </article>
+    </div>
+  </section>
 
+  <section class="card section-card">
+    <div class="section-head">
+      <h2 class="h2">Current HCI paper directions</h2>
+      <div class="hint">project-linked paper set</div>
+    </div>
+
+    <p class="section-intro">
+      These papers grow directly from the project portfolio and represent the main HCI-facing writing directions in the research program.
+    </p>
+
+    <div class="papers">
+
+      <article class="paper hci-paper">
+        <div class="paper-top">
+          <span class="dot dot-blue"></span>
+          <span class="pill">paper 01</span>
+          <span class="pill">document usability</span>
+          <span class="pill">accessibility</span>
+        </div>
+
+        <h2 class="paper-title">SOP Accessibility Paper</h2>
+        <p class="paper-tagline">project-linked HCI paper</p>
+        <p class="abstract">
+          A paper on accessibility, document usability, and compliance-constrained design in regulated environments, developed from the SOP accessibility project.
+        </p>
+
+        <ul class="meta">
+          <li>Focus: searchability, keyword pathways, and navigation in scanned SOP archives.</li>
+          <li>Design argument: usability improvements can emerge through external support layers without changing validated source files.</li>
+          <li>Contribution: positions accessibility as a serious HCI issue in compliance-heavy documentation systems.</li>
+        </ul>
+
+        <div class="progress">Paper direction active</div>
+      </article>
+
+      <article class="paper hci-paper">
+        <div class="paper-top">
+          <span class="dot dot-green"></span>
+          <span class="pill">paper 02</span>
+          <span class="pill">workflow UX</span>
+          <span class="pill">review interaction</span>
+        </div>
+
+        <h2 class="paper-title">Deviation–CAPA Workflow Paper</h2>
+        <p class="paper-tagline">project-linked HCI paper</p>
+        <p class="abstract">
+          A paper on review interaction, workflow friction, and documentation burden in validated deviation–CAPA systems.
+        </p>
+
+        <ul class="meta">
+          <li>Focus: review clarity, feedback consistency, revision loops, and turnaround delays.</li>
+          <li>Design argument: validated documentation systems still produce interaction problems that can be studied and redesigned around.</li>
+          <li>Contribution: reframes documentation review as an interaction system rather than a purely administrative sequence.</li>
+        </ul>
+
+        <div class="progress">Paper direction active</div>
+      </article>
+
+      <article class="paper hci-paper">
+        <div class="paper-top">
+          <span class="dot dot-purple"></span>
+          <span class="pill">paper 03</span>
+          <span class="pill">reasoning support</span>
+          <span class="pill">investigations</span>
+        </div>
+
+        <h2 class="paper-title">RCA Reasoning Paper</h2>
+        <p class="paper-tagline">project-linked HCI paper</p>
+        <p class="abstract">
+          A paper on investigation reasoning, causal scaffolding, and human-centered support for deviation analysis in regulated environments.
+        </p>
+
+        <ul class="meta">
+          <li>Focus: how investigators sustain or lose alternative hypotheses during root cause analysis.</li>
+          <li>Design argument: lightweight reasoning scaffolds can broaden causal exploration without altering validated documentation structures.</li>
+          <li>Contribution: treats investigation quality as a cognitive systems design problem rather than only an individual skill issue.</li>
+        </ul>
+
+        <div class="progress">Paper direction active</div>
+      </article>
+
+      <article class="paper hci-paper">
+        <div class="paper-top">
+          <span class="dot dot-pink"></span>
+          <span class="pill">paper 04</span>
+          <span class="pill">regulatory UX</span>
+          <span class="pill">concept paper</span>
+        </div>
+
+        <h2 class="paper-title">Regulatory UX Concept Paper</h2>
+        <p class="paper-tagline">project-linked HCI paper</p>
+        <p class="abstract">
+          A broader HCI paper on human-centered design for regulated procedural environments, connecting the project portfolio into a unified design argument.
+        </p>
+
+        <ul class="meta">
+          <li>Focus: what it means to design for usability, judgment, and coordination in validation-constrained systems.</li>
+          <li>Design argument: regulated documentation systems should be understood as interaction environments, not only compliance infrastructures.</li>
+          <li>Contribution: frames regulatory UX as a broader HCI space.</li>
+        </ul>
+
+        <div class="progress">Paper direction active</div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="card section-card">
+    <div class="section-head">
+      <h2 class="h2">Conceptual manuscripts</h2>
+      <div class="hint">conceptual grounding</div>
+    </div>
+
+    <p class="section-intro">
+      These manuscripts provide conceptual grounding for the broader research program. They are not separate from the HCI agenda, but help explain the organizational and interpretive dynamics behind the systems I study.
+    </p>
+
+    <div class="papers">
+
+      <article class="paper concept-paper blue">
+        <div class="paper-top">
+          <span class="dot dot-blue"></span>
+          <span class="pill">AAC</span>
+          <span class="pill">anticipatory alignment</span>
+          <span class="pill">organizational infrastructures</span>
+        </div>
+
+        <h2 class="paper-title">Anticipated Accountability Convergence</h2>
+        <p class="paper-tagline">conceptual manuscript</p>
+
+        <div class="links">
+          <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+          <a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
+        </div>
+
+        <div class="abstract-content">
+          <p class="abstract">
+            Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
+          </p>
+
+          <ul class="meta">
+            <li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
+            <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
+            <li>Contribution: theorizes accountability as a prospective organizational condition rather than a purely retrospective evaluative event.</li>
+          </ul>
+
+          <div class="concept-line">before action → interpretive expectations are prospectively aligned</div>
+        </div>
+      </article>
+
+      <article class="paper concept-paper pink">
+        <div class="paper-top">
+          <span class="dot dot-pink"></span>
+          <span class="pill">CF</span>
+          <span class="pill">procedural texts</span>
+          <span class="pill">document architecture</span>
+        </div>
+
+        <h2 class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</h2>
+        <p class="paper-tagline">conceptual + empirical manuscript</p>
+
+        <div class="links">
+          <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+          <a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
+        </div>
+
+        <div class="abstract-content">
+          <p class="abstract">
+            Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
+          </p>
+
+          <ul class="meta">
+            <li>Empirical pilot: 500 procedurally realistic sentences derived from public regulatory and safety documentation.</li>
+            <li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentence architecture.</li>
+            <li>Contribution: shows how responsibility-relevant judgment is embedded in procedural documentation itself.</li>
+          </ul>
+
+          <div class="concept-line">during execution → sentence structure shapes interpretive burden and attributable judgment</div>
+
+          <div class="progress">Empirical expansion in progress</div>
+        </div>
+      </article>
+
+      <article class="paper concept-paper purple">
+        <div class="paper-top">
+          <span class="dot dot-purple"></span>
+          <span class="pill">RC</span>
+          <span class="pill">investigations</span>
+          <span class="pill">closure pressure</span>
+        </div>
+
+        <h2 class="paper-title">Responsibility Convergence in Organizational Investigations</h2>
+        <p class="paper-tagline">conceptual manuscript</p>
+
+        <div class="links">
+          <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+          <a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
+        </div>
+
+        <div class="abstract-content">
+          <p class="abstract">
+            Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
+          </p>
+
+          <ul class="meta">
+            <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
+            <li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
+            <li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures rather than a simple individual bias.</li>
+          </ul>
+
+          <div class="concept-line">after events → causal ambiguity is translated into administratively actionable responsibility</div>
+        </div>
+      </article>
+
+      <article class="paper concept-paper green">
+        <div class="paper-top">
+          <span class="dot dot-green"></span>
+          <span class="pill">PAC</span>
+          <span class="pill">AI mediation</span>
+          <span class="pill">temporal accountability</span>
+        </div>
+
+        <h2 class="paper-title">Premature Accountability Convergence</h2>
+        <p class="paper-tagline">conceptual manuscript</p>
+
+        <div class="links">
+          <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+          <a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
+        </div>
+
+        <div class="abstract-content">
+          <p class="abstract">
+            Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
+          </p>
+
+          <ul class="meta">
+            <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
+            <li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
+            <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
+          </ul>
+
+          <div class="concept-line">under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined</div>
+        </div>
+      </article>
+
+    </div>
   </section>
 
   <div class="footer">
     <div>
-      Current emphasis: documentation, investigations, responsibility, and AI-mediated decision support in regulated environments.
+      Current emphasis: project-linked HCI papers and conceptual manuscripts within a shared research program.
     </div>
     <div>
-      Working manuscripts / early research program materials
+      Papers / manuscripts / research writing
     </div>
   </div>
 
