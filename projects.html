@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Sora Kim</title>
+<meta name="description" content="Projects by Sora Kim on human-centered systems, regulatory UX, cognition, and decision support in GMP environments." />
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects — Sora Kim">
+<meta property="og:description" content="Human-centered systems projects spanning accessibility, review interaction, traceability, cognition, workflow analytics, and decision support.">
+<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
+<meta property="og:url" content="https://sorakim-lab.github.io/projects.html">
+<meta property="og:site_name" content="Sora Kim">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f5f7;
+  --panel:rgba(255,255,255,0.84);
+  --panel-strong:rgba(255,255,255,0.92);
+  --text:#121316;
+  --muted:#6e6e73;
+  --muted-strong:#4d4f57;
+  --line:rgba(17,17,17,0.08);
+  --line-strong:rgba(17,17,17,0.12);
+  --accent:#e9eef9;
+  --accent-2:#edf6f2;
+  --accent-3:#f3eefb;
+  --radius-xl:30px;
+  --radius-lg:24px;
+  --radius-md:18px;
+  --shadow:0 18px 50px rgba(15,23,42,0.08);
+  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+  --mono:'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+  color:var(--text);
+  line-height:1.65;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
+    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
+    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+}
+
+nav{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:60;
+  display:flex;
+  gap:8px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.58);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:999px;
+  transition:all .22s ease;
+  white-space:nowrap;
+}
+nav a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,0.7);
+}
+nav a.active{
+  color:var(--text);
+  background:rgba(255,255,255,0.82);
+  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
+}
+
+.wrap{
+  max-width:1260px;
+  margin:0 auto;
+  padding:112px 28px 92px;
+}
+
+.hero,
+.card,
+.project-card,
+.panel,
+.note{
+  border:1px solid var(--line);
+  background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:var(--shadow);
+}
+
+.hero{
+  border-radius:var(--radius-xl);
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:26px;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:52px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+}
+.window-dots{
+  position:absolute;
+  top:16px;
+  left:18px;
+  display:flex;
+  gap:7px;
+  z-index:2;
+}
+.dot{width:11px;height:11px;border-radius:50%;box-shadow:inset 0 1px 1px rgba(255,255,255,0.45)}
+.dot:nth-child(1){background:#ff5f57}
+.dot:nth-child(2){background:#febc2e}
+.dot:nth-child(3){background:#28c840}
+
+.hero-inner{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:22px;
+  align-items:start;
+}
+
+.eyebrow,
+.section-tag,
+.panel-label,
+.meta-chip,
+.status-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,0.72);
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+}
+
+.h1,
+.section-title,
+.project-card h3,
+.note h2,
+.panel h2{
+  font-family:'Sora',sans-serif;
+  letter-spacing:-0.05em;
+}
+.h1{
+  font-size:62px;
+  line-height:0.94;
+  margin:14px 0 14px;
+}
+.lead{
+  font-size:16px;
+  color:rgba(29,29,31,0.84);
+  max-width:720px;
+  margin:0;
+}
+.hero-right{
+  display:grid;
+  gap:14px;
+}
+.note,
+.panel{
+  border-radius:22px;
+  padding:18px;
+}
+.note h2,
+.panel h2{
+  font-size:18px;
+  line-height:1.1;
+  margin:0 0 8px;
+}
+.note p,
+.panel p{margin:0;font-size:14px;color:#40434b}
+
+.quick-grid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.panel.soft-blue{background:linear-gradient(180deg, rgba(233,238,249,0.5), rgba(255,255,255,0.88));}
+.panel.soft-green{background:linear-gradient(180deg, rgba(237,246,242,0.58), rgba(255,255,255,0.88));}
+.panel.soft-lilac{background:linear-gradient(180deg, rgba(243,238,251,0.62), rgba(255,255,255,0.88));}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:16px;
+  margin:34px 0 16px;
+}
+.section-title{font-size:30px;margin:8px 0 0}
+.section-sub{max-width:760px;font-size:15px;color:var(--muted-strong);margin:8px 0 0}
+
+.project-list{
+  display:grid;
+  gap:18px;
+}
+.project-card{
+  border-radius:28px;
+  padding:24px;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.project-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  background:rgba(255,255,255,0.94);
+}
+.project-card.visual{background:linear-gradient(180deg, rgba(233,238,249,0.48), rgba(255,255,255,0.9));}
+.project-card.soft-green{background:linear-gradient(180deg, rgba(237,246,242,0.58), rgba(255,255,255,0.9));}
+.project-card.soft-lilac{background:linear-gradient(180deg, rgba(243,238,251,0.62), rgba(255,255,255,0.9));}
+.project-card.soft-silver{background:linear-gradient(180deg, rgba(248,248,250,0.9), rgba(255,255,255,0.92));}
+.project-card h3{font-size:28px;line-height:1.02;margin:10px 0 10px}
+.project-card p{font-size:15px;color:#40434b;margin:0 0 14px}
+
+.project-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+}
+.project-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:12px 0 16px;
+}
+.meta-chip{padding:6px 10px}
+
+.project-body{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:18px;
+}
+.bullets,
+.mini-list{margin:0;padding-left:18px}
+.bullets li,
+.mini-list li{margin:0 0 6px;color:#41444c}
+.card-block{
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,0.72);
+  padding:16px;
+}
+.card-block h4{
+  margin:0 0 8px;
+  font-size:13px;
+  color:var(--muted);
+  font-family:var(--mono);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.card-block p{margin:0;color:#3f4148;font-size:14px}
+
+.footer{
+  margin-top:42px;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  font-size:13px;
+  color:var(--muted);
+}
+.credit-note{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.65}
+
+@media (max-width:1080px){
+  .hero-inner,
+  .project-body,
+  .quick-grid{grid-template-columns:1fr;}
+}
+
+@media (max-width:760px){
+  nav{left:14px;right:14px;justify-content:flex-start;overflow:auto}
+  .wrap{padding:98px 18px 70px}
+  .hero{padding:24px 20px}
+  .h1{font-size:46px}
+  .project-top,.section-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a class="active" href="projects.html">Projects</a>
+  <a href="research.html">Research</a>
+  <a href="papers.html">Papers</a>
+  <a href="about.html">About</a>
+  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="window-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">projects / human-centered systems / regulated environments</span>
+        <h1 class="h1">Designing systems for complex procedural work.</h1>
+        <p class="lead">
+          These projects explore how human-centered design can improve accessibility, review interaction, traceability, cognition, workflow visibility, and decision support in GMP documentation environments.
+        </p>
+
+        <div class="quick-grid">
+          <div class="panel soft-blue">
+            <div class="panel-label">focus</div>
+            <h2>Human-centered regulatory UX</h2>
+            <p>Designing usable systems under validation and compliance constraints.</p>
+          </div>
+          <div class="panel soft-green">
+            <div class="panel-label">methods</div>
+            <h2>Low-code + mixed methods</h2>
+            <p>Excel, Python, workflow mapping, cognitive interviews, and usability analysis.</p>
+          </div>
+          <div class="panel soft-lilac">
+            <div class="panel-label">through-line</div>
+            <h2>Support judgment, not replace it</h2>
+            <p>Making procedural work clearer while keeping responsibility and interpretation visible.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="note">
+          <h2>Portfolio structure</h2>
+          <p>
+            The projects below form a research stack: access to information, review interaction, document traceability, cognitive pathways, workflow analytics, and investigation reasoning.
+          </p>
+        </div>
+        <div class="note">
+          <h2>Core domain</h2>
+          <p>
+            GMP documentation, deviation and CAPA review, inspection-facing records, and other high-stakes procedural systems where usability and compliance must coexist.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div>
+        <span class="section-tag">selected projects</span>
+        <h2 class="section-title">Human-Centered Regulatory UX Series</h2>
+        <p class="section-sub">
+          A project series on accessibility, review interaction, traceability, cognition, workflow analytics, and decision support in regulated GMP environments.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-list">
+      <article class="project-card visual" id="project-1">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 01</div>
+            <h3>Enhancing SOP Accessibility in GMP Environments</h3>
+          </div>
+          <span class="status-chip">accessibility</span>
+        </div>
+        <p>
+          A human-centered approach to improving the usability of scanned SOP archives without altering validated documents.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">information architecture</span>
+          <span class="meta-chip">document UX</span>
+          <span class="meta-chip">excel</span>
+          <span class="meta-chip">usability testing</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>Scanned SOP PDFs were not searchable or metadata-linked.</li>
+              <li>Analysts relied on manual scrolling and ambiguous document titles.</li>
+              <li>Retrieval delays increased cognitive fatigue during audits and urgent reviews.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Built a metadata index for approximately 500 SOPs, improving retrieval speed from about 6–7 minutes to 1–2 minutes while maintaining full GMP compliance.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card soft-green" id="project-2">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 02</div>
+            <h3>Human-Centered Review Interaction in Deviation &amp; CAPA Management</h3>
+          </div>
+          <span class="status-chip">interaction</span>
+        </div>
+        <p>
+          A workflow design project focused on review clarity, feedback consistency, and turnaround time in validated documentation systems.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">review interaction</span>
+          <span class="meta-chip">workflow design</span>
+          <span class="meta-chip">feedback analysis</span>
+          <span class="meta-chip">survey design</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>Different QA reviewers applied inconsistent feedback styles.</li>
+              <li>Redundant identifier entry produced friction during revisions.</li>
+              <li>Multi-day review loops emerged even for small clarifications.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Developed a review interaction framework using Excel-based mapping, reviewer checklists, and latency heatmaps to improve feedback clarity while preserving validation integrity.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card soft-lilac" id="project-3">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 03</div>
+            <h3>Human-Centered Cross-Reference System for GMP Documentation</h3>
+          </div>
+          <span class="status-chip">traceability</span>
+        </div>
+        <p>
+          A metadata-driven cross-reference system improving traceability and reducing cognitive load across deviation, CAPA, and related documentation records.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">traceability</span>
+          <span class="meta-chip">metadata mapping</span>
+          <span class="meta-chip">python</span>
+          <span class="meta-chip">workflow visualization</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>Validated files could not be automatically interlinked.</li>
+              <li>Users manually cross-referenced IDs, status, and closure information.</li>
+              <li>Version inconsistency and lookup burden reduced inspection readiness.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Built an Excel-based cross-reference matrix plus Python-supported analysis, achieving faster document tracking and lower version error risk without modifying validated systems.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card soft-silver" id="project-4">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 04</div>
+            <h3>Cognitive Pathways in Regulated Work Environments</h3>
+          </div>
+          <span class="status-chip">cognition</span>
+        </div>
+        <p>
+          A project mapping how analysts and reviewers actually think through procedural work, revealing where human reasoning diverges from formal workflow structure.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">cognitive HCI</span>
+          <span class="meta-chip">field observation</span>
+          <span class="meta-chip">interviews</span>
+          <span class="meta-chip">network analysis</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>Procedural order did not always match actual reasoning order.</li>
+              <li>Users looped, revisited, and reinterpreted steps under pressure.</li>
+              <li>Cognitive bottlenecks emerged around terminology, cross-reference burden, and validation anxiety.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Combined observation, interviews, Excel logging, and Python network visualization to identify non-linear reasoning patterns and translate them into human-centered design insight.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card visual" id="project-5">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 05</div>
+            <h3>Workflow Feedback Dashboard for GMP Review Systems</h3>
+          </div>
+          <span class="status-chip">analytics</span>
+        </div>
+        <p>
+          A compliance-safe dashboard project visualizing reviewer workload, response times, and documentation bottlenecks using existing metadata.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">workflow analytics</span>
+          <span class="meta-chip">dashboard</span>
+          <span class="meta-chip">excel</span>
+          <span class="meta-chip">python</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>Review cycles were opaque and often discussed only informally.</li>
+              <li>Turnaround delays and workload imbalance were hard to see early.</li>
+              <li>Teams lacked a shared visual layer for bottleneck detection.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Created a dashboard from timestamps and reviewer metadata, enabling faster bottleneck identification and more transparent workflow monitoring without touching validated templates.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card soft-lilac" id="project-6">
+        <div class="project-top">
+          <div>
+            <div class="panel-label">project 06</div>
+            <h3>RCA Reasoning Scaffolder</h3>
+          </div>
+          <span class="status-chip">decision support</span>
+        </div>
+        <p>
+          A reasoning-support concept for root cause investigations, designed to help investigators explore hypotheses systematically instead of collapsing too early into single-cause explanations.
+        </p>
+        <div class="project-meta">
+          <span class="meta-chip">decision support</span>
+          <span class="meta-chip">reasoning design</span>
+          <span class="meta-chip">causal mapping</span>
+          <span class="meta-chip">investigation systems</span>
+        </div>
+        <div class="project-body">
+          <div class="card-block">
+            <h4>What it addressed</h4>
+            <ul class="bullets">
+              <li>RCA narratives often became linear and prematurely simplified.</li>
+              <li>Alternative hypotheses were difficult to sustain within existing document structures.</li>
+              <li>Investigators lacked an external reasoning layer to visualize causal relations.</li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <h4>Outcome</h4>
+            <p>
+              Designed a scaffold using investigation mapping, causal diagrams, and structured prompts to support broader hypothesis exploration while keeping validated systems unchanged.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="footer">
+    Independent researcher · Human-centered systems for regulated environments · PhD applicant (Fall 2027)
+  </div>
+  <div class="credit-note">
+    © 2026 Sora Kim.
+  </div>
+</div>
+
+</body>
+</html>
