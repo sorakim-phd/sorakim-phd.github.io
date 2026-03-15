@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Research program by Sora Kim on human-centered systems, regulatory UX, cognition, documentation, and decision support in GMP environments."
+    content="Research program by Sora Kim on human-centered systems, regulatory UX, procedural cognition, and decision support in high-stakes regulated environments."
   />
   <meta property="og:type" content="website">
   <meta property="og:title" content="Research — Sora Kim">
   <meta
     property="og:description"
-    content="Research directions in human-centered systems, regulatory UX, procedural cognition, and decision support for regulated environments."
+    content="Research directions in HCI, regulatory UX, procedural cognition, and theory-informed decision support for regulated environments."
   >
   <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
   <meta property="og:url" content="https://sorakim-phd.github.io/research.html">
@@ -46,10 +46,15 @@
       --pink:#ff6786;
       --purple:#b987ff;
       --green:#55d38a;
+      --soft-blue:rgba(77,163,255,0.12);
+      --soft-pink:rgba(255,103,134,0.10);
+      --soft-purple:rgba(185,135,255,0.11);
+      --soft-green:rgba(85,211,138,0.11);
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
@@ -114,14 +119,6 @@
       padding:118px 24px 88px;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:minmax(0, 1.06fr) minmax(320px, 0.94fr);
-      gap:18px;
-      align-items:start;
-      margin-bottom:18px;
-    }
-
     .card{
       border:1px solid var(--line);
       background:var(--panel);
@@ -131,14 +128,45 @@
       border-radius:var(--radius-xl);
     }
 
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0, 1.12fr) minmax(320px, 0.88fr);
+      gap:18px;
+      align-items:stretch;
+      margin-bottom:18px;
+    }
+
     .hero-card{
-      padding:22px 22px 24px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
+      padding:24px 24px 26px;
+      background:
+        radial-gradient(circle at 88% 14%, var(--soft-blue) 0, transparent 26%),
+        radial-gradient(circle at 16% 86%, var(--soft-purple) 0, transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(249,249,252,0.84));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      top:-80px;
+      right:-80px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.55), transparent 70%);
+      pointer-events:none;
     }
 
     .meta-card{
       padding:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,248,251,0.84));
+      background:
+        radial-gradient(circle at 84% 16%, var(--soft-green) 0, transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,251,0.84));
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:16px;
     }
 
     .kicker,
@@ -146,7 +174,10 @@
     .hint,
     .tagline,
     .mini-label,
-    .section-tag{
+    .section-tag,
+    .micro-label,
+    .subtle-line,
+    .identity-label{
       font-family:var(--mono);
     }
 
@@ -167,18 +198,54 @@
     .title{
       margin:0 0 14px 0;
       font-family:'Sora',sans-serif;
-      font-size:60px;
-      line-height:0.94;
-      letter-spacing:-0.065em;
+      font-size:62px;
+      line-height:0.93;
+      letter-spacing:-0.068em;
       font-weight:800;
-      max-width:11ch;
+      max-width:10.5ch;
+      position:relative;
+      z-index:1;
     }
 
     .lede{
       margin:0;
       font-size:15.5px;
       color:rgba(18,19,22,0.84);
-      max-width:68ch;
+      max-width:66ch;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-emphasis{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .emphasis-pill{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,0.70);
+      padding:14px 14px 13px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .emphasis-pill strong{
+      display:block;
+      font-family:'Sora',sans-serif;
+      font-size:16px;
+      line-height:1.05;
+      letter-spacing:-0.035em;
+      margin-bottom:5px;
+    }
+
+    .emphasis-pill span{
+      display:block;
+      font-size:12.5px;
+      color:#4a4d55;
     }
 
     .meta-row{
@@ -197,17 +264,62 @@
       background:rgba(255,255,255,0.62);
     }
 
-    .meta-card p{
-      margin:0 0 9px 0;
+    .identity-box{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:16px;
+      background:rgba(255,255,255,0.70);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .identity-label{
+      margin:0 0 8px 0;
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+
+    .identity-box h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      letter-spacing:-0.045em;
+    }
+
+    .identity-box p{
+      margin:0;
+      font-size:13.5px;
+      color:var(--muted-strong);
+    }
+
+    .meta-note{
+      display:grid;
+      gap:10px;
+    }
+
+    .meta-note p{
+      margin:0;
       font-size:13px;
       color:var(--muted-strong);
     }
 
-    .meta-card p:last-child{ margin-bottom:0; }
-
     .section-card{
       padding:20px;
       margin-top:16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .section-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:linear-gradient(90deg, rgba(77,163,255,0.82), rgba(185,135,255,0.72));
     }
 
     .section-head{
@@ -217,6 +329,8 @@
       gap:12px;
       margin-bottom:12px;
       flex-wrap:wrap;
+      position:relative;
+      z-index:1;
     }
 
     .h2{
@@ -234,7 +348,12 @@
       letter-spacing:0.04em;
     }
 
-    .focus-grid,
+    .focus-grid{
+      display:grid;
+      grid-template-columns:1.15fr 0.85fr 0.85fr;
+      gap:14px;
+    }
+
     .question-grid,
     .methods-grid{
       display:grid;
@@ -247,6 +366,26 @@
       border-radius:20px;
       background:rgba(255,255,255,0.72);
       padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .mini-card.featured{
+      background:
+        radial-gradient(circle at 88% 16%, var(--soft-blue) 0, transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(246,248,252,0.86));
+    }
+
+    .mini-card.secondary{
+      background:
+        radial-gradient(circle at 82% 18%, var(--soft-purple) 0, transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,252,0.84));
+    }
+
+    .mini-card.tertiary{
+      background:
+        radial-gradient(circle at 84% 18%, var(--soft-green) 0, transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,251,249,0.84));
     }
 
     .mini-label{
@@ -260,7 +399,7 @@
     .mini-card h3{
       margin:0 0 8px 0;
       font-family:'Sora',sans-serif;
-      font-size:20px;
+      font-size:21px;
       line-height:1.1;
       letter-spacing:-0.04em;
     }
@@ -269,6 +408,81 @@
       margin:0;
       font-size:13.5px;
       color:#41444b;
+    }
+
+    .mini-divider{
+      margin-top:12px;
+      padding-top:10px;
+      border-top:1px solid var(--line);
+      font-size:11px;
+      color:var(--muted);
+      font-family:var(--mono);
+    }
+
+    .current-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:16px;
+    }
+
+    .current-block{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,255,255,0.74);
+      padding:18px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .current-block.featured{
+      background:
+        radial-gradient(circle at 88% 16%, var(--soft-pink) 0, transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,249,252,0.86));
+    }
+
+    .current-block h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.1;
+      letter-spacing:-0.04em;
+    }
+
+    .current-block p{
+      margin:0 0 12px 0;
+      font-size:13.5px;
+      color:#41444b;
+    }
+
+    .current-block p:last-child{ margin-bottom:0; }
+
+    .subtle-line{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.62);
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .method-list,
+    .bullets{
+      margin:0;
+      padding-left:18px;
+      color:#44484f;
+      font-size:13px;
+    }
+
+    .method-list li,
+    .bullets li{
+      margin:6px 0;
+    }
+
+    .backbone-intro{
+      margin:0 0 14px 0;
+      font-size:14px;
+      color:#44484f;
+      max-width:74ch;
     }
 
     .arc-box{
@@ -309,7 +523,7 @@
     }
 
     .stage-card{
-      min-height:172px;
+      min-height:178px;
       padding:15px;
       border:1px solid var(--line);
       border-radius:20px;
@@ -365,59 +579,6 @@
       font-family:var(--mono);
       border-top:1px solid var(--line);
       padding-top:10px;
-    }
-
-    .current-grid{
-      display:grid;
-      grid-template-columns:1.06fr 0.94fr;
-      gap:16px;
-    }
-
-    .current-block{
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:rgba(255,255,255,0.72);
-      padding:16px;
-    }
-
-    .current-block h3{
-      margin:0 0 8px 0;
-      font-family:'Sora',sans-serif;
-      font-size:20px;
-      line-height:1.1;
-      letter-spacing:-0.04em;
-    }
-
-    .current-block p{
-      margin:0 0 12px 0;
-      font-size:13.5px;
-      color:#41444b;
-    }
-
-    .current-block p:last-child{ margin-bottom:0; }
-
-    .subtle-line{
-      margin-top:12px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.62);
-      font-family:var(--mono);
-      font-size:11px;
-      color:var(--muted);
-    }
-
-    .method-list,
-    .bullets{
-      margin:0;
-      padding-left:18px;
-      color:#44484f;
-      font-size:13px;
-    }
-
-    .method-list li,
-    .bullets li{
-      margin:6px 0;
     }
 
     .works{
@@ -478,22 +639,12 @@
       letter-spacing:0.05em;
     }
 
-    .concept-line,
     .status{
       margin-top:14px;
       padding:11px 13px;
       border-radius:16px;
       border:1px solid var(--line);
       font-size:12px;
-    }
-
-    .concept-line{
-      background:rgba(255,255,255,0.64);
-      color:var(--muted);
-      font-family:var(--mono);
-    }
-
-    .status{
       background:linear-gradient(180deg, rgba(238,246,255,0.9), rgba(245,249,255,0.96));
       color:#3e4a59;
     }
@@ -557,7 +708,8 @@
       .works,
       .focus-grid,
       .question-grid,
-      .methods-grid{
+      .methods-grid,
+      .hero-emphasis{
         grid-template-columns:1fr;
       }
 
@@ -584,62 +736,83 @@
   <div class="wrap">
     <div class="hero">
       <section class="card hero-card">
-        <div class="kicker">research / human-centered systems / regulated environments</div>
-        <h1 class="title">Research Direction</h1>
+        <div class="kicker">research / HCI / high-stakes procedural systems</div>
+        <h1 class="title">Human-centered systems research for regulated work.</h1>
         <p class="lede">
-          I study how documentation systems, procedural environments, and support tools shape human judgment in high-stakes regulated work. My research focuses on usability, cognition, traceability, and decision support in settings where compliance requirements and human reasoning must coexist.
+          I study how documentation systems, review workflows, and decision-support environments shape human judgment in high-stakes regulated settings. My work is HCI-first, with theoretical grounding in responsibility, interpretation, and accountability.
         </p>
+
+        <div class="hero-emphasis">
+          <div class="emphasis-pill">
+            <strong>HCI-first</strong>
+            <span>My main research identity is human-centered systems and design for complex work.</span>
+          </div>
+          <div class="emphasis-pill">
+            <strong>High-stakes settings</strong>
+            <span>I focus on procedural environments where judgment matters and errors carry real consequences.</span>
+          </div>
+          <div class="emphasis-pill">
+            <strong>Theory-informed</strong>
+            <span>I use conceptual work to deepen design questions, not to replace them.</span>
+          </div>
+        </div>
       </section>
 
       <aside class="card meta-card">
-        <div class="meta-row">
-          <span class="chip">HCI</span>
-          <span class="chip">regulatory UX</span>
-          <span class="chip">procedural cognition</span>
-          <span class="chip">decision support</span>
+        <div>
+          <div class="meta-row">
+            <span class="chip">HCI</span>
+            <span class="chip">regulatory UX</span>
+            <span class="chip">procedural cognition</span>
+            <span class="chip">decision support</span>
+          </div>
+
+          <div class="identity-box">
+            <div class="identity-label">research identity</div>
+            <h3>Designing for judgment under constraint.</h3>
+            <p>
+              I am interested in how people navigate procedural environments that are formally rigid, cognitively demanding, and difficult to redesign directly.
+            </p>
+          </div>
         </div>
-        <p>Main domain: GMP documentation, investigations, review workflows, and inspection-facing records.</p>
-        <p>Research interest: how procedural systems can become more usable, interpretable, and cognitively sustainable without compromising regulatory rigor.</p>
-        <p>Current bridge: linking design questions in human-centered systems with conceptual work on responsibility, closure, and AI-mediated support.</p>
+
+        <div class="meta-note">
+          <p>Main empirical domain: GMP documentation, review workflows, investigations, and inspection-facing records.</p>
+          <p>Core interest: making procedural systems more usable, legible, and cognitively sustainable without compromising regulatory rigor.</p>
+          <p>Theoretical backbone: responsibility, closure, interpretation, and AI-mediated support in high-stakes systems.</p>
+        </div>
       </aside>
     </div>
 
     <section class="card section-card">
       <div class="section-head">
-        <h2 class="h2">Research areas</h2>
-        <div class="hint">what I study across projects and papers</div>
+        <h2 class="h2">Research focus</h2>
+        <div class="hint">HCI-centered, theory-informed</div>
       </div>
 
       <div class="focus-grid">
-        <div class="mini-card">
-          <div class="mini-label">area 01</div>
-          <h3>Regulatory UX</h3>
+        <div class="mini-card featured">
+          <div class="mini-label">main lens</div>
+          <h3>Human-centered systems for high-stakes procedural work</h3>
           <p>
-            I examine how people navigate dense documentation, constrained workflows, and inspection-facing records in regulated environments where usability is often treated as secondary.
+            My research centers on how documentation, workflows, and support tools shape judgment in environments where people must work carefully, defensibly, and under strong formal constraints. I approach these as HCI problems: usability, interpretation, visibility, and reasoning support.
+          </p>
+          <div class="mini-divider">main agenda: design for judgment, not just efficiency</div>
+        </div>
+
+        <div class="mini-card secondary">
+          <div class="mini-label">supporting lens</div>
+          <h3>Regulatory UX and procedural cognition</h3>
+          <p>
+            I study how people interpret instructions, manage ambiguity, and navigate cognitively demanding documentation in regulated environments.
           </p>
         </div>
 
-        <div class="mini-card">
-          <div class="mini-label">area 02</div>
-          <h3>Procedural cognition</h3>
+        <div class="mini-card tertiary">
+          <div class="mini-label">supporting lens</div>
+          <h3>Responsibility and interpretive closure</h3>
           <p>
-            I study how people interpret instructions, manage ambiguity, and reason through procedural tasks when documents and systems place cognitive demands on everyday work.
-          </p>
-        </div>
-
-        <div class="mini-card">
-          <div class="mini-label">area 03</div>
-          <h3>Workflow visibility</h3>
-          <p>
-            I explore ways to make review interaction, traceability, bottlenecks, and document relationships more visible without altering validated systems directly.
-          </p>
-        </div>
-
-        <div class="mini-card">
-          <div class="mini-label">area 04</div>
-          <h3>Decision support in high-stakes systems</h3>
-          <p>
-            I am interested in how support tools, reasoning scaffolds, and AI-mediated representations shape judgment, interpretation, and responsibility under procedural pressure.
+            I use conceptual work on accountability and closure to better understand what support systems make visible, compress, or prematurely stabilize.
           </p>
         </div>
       </div>
@@ -648,31 +821,31 @@
     <section class="card section-card">
       <div class="section-head">
         <h2 class="h2">Core research questions</h2>
-        <div class="hint">agenda-centered, not paper-centered</div>
+        <div class="hint">from documents to decision support</div>
       </div>
 
       <div class="question-grid">
         <div class="mini-card">
           <div class="mini-label">question 01</div>
-          <h3>How do documents shape judgment?</h3>
+          <h3>How do procedural systems shape judgment?</h3>
           <p>
-            I ask how procedural language, document architecture, and review structures distribute interpretive burden across workers in regulated settings.
+            I ask how documentation structures, review formats, and workflow environments distribute interpretive burden across workers in regulated settings.
           </p>
         </div>
 
         <div class="mini-card">
           <div class="mini-label">question 02</div>
-          <h3>How do workflows shape interpretation?</h3>
+          <h3>Where does cognitive friction emerge?</h3>
           <p>
-            I study how review loops, traceability systems, and investigation formats influence what becomes visible, actionable, or cognitively difficult in everyday work.
+            I study where people pause, loop back, hesitate, or reconstruct meaning when written procedure and actual reasoning diverge.
           </p>
         </div>
 
         <div class="mini-card">
           <div class="mini-label">question 03</div>
-          <h3>How can support systems help without oversimplifying?</h3>
+          <h3>How can support tools help without flattening complexity?</h3>
           <p>
-            I explore human-centered tools that support navigation and reasoning while preserving interpretive openness instead of forcing premature closure.
+            I explore support layers, scaffolds, and interface interventions that improve navigation and reasoning while preserving interpretive openness.
           </p>
         </div>
 
@@ -680,7 +853,7 @@
           <div class="mini-label">question 04</div>
           <h3>What changes under AI mediation?</h3>
           <p>
-            I investigate how AI systems may accelerate decision closure, compress interpretation, and reshape accountability in high-stakes procedural environments.
+            I investigate how AI systems may accelerate closure, compress ambiguity, and reshape accountability in high-stakes procedural environments.
           </p>
         </div>
       </div>
@@ -697,7 +870,7 @@
           <div class="mini-label">qualitative</div>
           <h3>Field-based observation and close reading</h3>
           <p>
-            I use field observation, document analysis, and qualitative coding to understand how people actually work through regulated documentation and investigative processes.
+            I use document analysis, observation, and qualitative coding to understand how people actually work through regulated documentation, review, and investigative processes.
           </p>
         </div>
 
@@ -705,7 +878,7 @@
           <div class="mini-label">computational</div>
           <h3>Low-code and computational analysis</h3>
           <p>
-            I use Excel and Python to structure metadata, visualize workflow patterns, map cognitive pathways, and analyze document-level patterns in procedural systems.
+            I use Excel and Python to structure metadata, analyze workflow patterns, map cognitive pathways, and build lightweight evidence around judgment and friction in procedural systems.
           </p>
         </div>
       </div>
@@ -713,9 +886,44 @@
 
     <section class="card section-card">
       <div class="section-head">
-        <h2 class="h2">How the papers connect</h2>
-        <div class="hint">conceptual lenses supporting the broader agenda</div>
+        <h2 class="h2">Current empirical work</h2>
+        <div class="hint">public document analysis in progress</div>
       </div>
+
+      <div class="current-grid">
+        <div class="current-block featured">
+          <h3>FDA document analysis</h3>
+          <p>
+            My current empirical project examines how responsibility becomes stabilized within regulatory investigation documents. Using FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections, I analyze how agencies articulate responsibility, enforcement reasoning, and corrective action expectations in response to observed violations.
+          </p>
+          <p>
+            This project gives me a public document corpus for studying how procedural systems translate ambiguity into actionable decisions and how responsibility becomes legible in real-world regulatory settings.
+          </p>
+          <div class="subtle-line">current role in the program: empirical grounding for questions about reasoning, closure, and accountability in high-stakes document systems</div>
+        </div>
+
+        <div class="current-block">
+          <h3>Method and analytic focus</h3>
+          <ul class="method-list">
+            <li>Dataset: FDA Warning Letters with matched Form 483 observations when available</li>
+            <li>Unit of analysis: violation or observation blocks within inspection documents</li>
+            <li>Approach: qualitative document analysis combining close reading and structured coding</li>
+            <li>Focus: attribution language, procedural framing, corrective action expectations, and convergence patterns in regulatory reasoning</li>
+          </ul>
+          <div class="subtle-line">broader aim: connecting HCI questions about judgment and support with public evidence from real regulatory systems</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Conceptual backbone</h2>
+        <div class="hint">theory supporting my HCI agenda</div>
+      </div>
+
+      <p class="backbone-intro">
+        Alongside design-oriented and empirical work, I develop conceptual frameworks that help clarify how judgment, interpretation, and closure operate in high-stakes procedural environments. These are not a separate identity from my HCI work; they function as theoretical support for it.
+      </p>
 
       <div class="arc-box">
         <div class="arc-grid">
@@ -778,37 +986,6 @@
               <div class="stage-mini">supports research on decision support, AI mediation, and accountability timing</div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card section-card">
-      <div class="section-head">
-        <h2 class="h2">Current work</h2>
-        <div class="hint">empirical extensions in progress</div>
-      </div>
-
-      <div class="current-grid">
-        <div class="current-block">
-          <h3>FDA document analysis</h3>
-          <p>
-            My current empirical project examines how responsibility becomes stabilized within regulatory investigation documents. Using FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections, I analyze how agencies articulate responsibility, enforcement reasoning, and corrective action expectations in response to observed violations.
-          </p>
-          <p>
-            This project gives me a public document corpus for studying how procedural systems translate ambiguity into actionable decisions and how responsibility becomes legible in real-world regulatory settings.
-          </p>
-          <div class="subtle-line">current role in the program: connecting document analysis, investigation reasoning, and accountability under high-stakes procedural conditions</div>
-        </div>
-
-        <div class="current-block">
-          <h3>Method and analytic focus</h3>
-          <ul class="method-list">
-            <li>Dataset: FDA Warning Letters with matched Form 483 observations when available</li>
-            <li>Unit of analysis: violation or observation blocks within inspection documents</li>
-            <li>Approach: qualitative document analysis combining close reading and structured coding</li>
-            <li>Focus: attribution language, procedural framing, corrective action expectations, and convergence patterns in regulatory reasoning</li>
-          </ul>
-          <div class="subtle-line">broader aim: grounding conceptual questions in observable document systems while linking papers and design directions to a shared empirical domain</div>
         </div>
       </div>
     </section>
@@ -881,7 +1058,7 @@
 
     <div class="footer">
       <div>
-        Current emphasis: human-centered systems, regulatory UX, procedural cognition, and decision support in regulated environments.
+        Current emphasis: HCI, regulatory UX, procedural cognition, and theory-informed decision support in regulated environments.
       </div>
 
       <div class="btns">
