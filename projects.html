@@ -140,11 +140,11 @@ nav a.active{
   overflow:hidden;
   border-radius:var(--radius-2xl);
   padding:30px;
-  margin-bottom:34px;
+  margin-bottom:18px;
   background:
     radial-gradient(circle at 82% 12%, rgba(232,238,252,0.65), transparent 26%),
     radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
-    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.78));
+    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.80));
 }
 
 .hero::before{
@@ -187,37 +187,34 @@ nav a.active{
 .dot:nth-child(2){background:#febc2e}
 .dot:nth-child(3){background:#28c840}
 
-.hero-main{
+.hero-grid{
   position:relative;
   z-index:1;
   margin-top:34px;
   display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
+  grid-template-columns:minmax(0,1.15fr) minmax(340px,0.85fr);
+  gap:22px;
+  align-items:start;
 }
 
-.hero-top{
-  display:grid;
-  grid-template-columns:minmax(0,1.15fr) minmax(280px,0.85fr);
-  gap:18px;
-  align-items:stretch;
-}
-
-.hero-intro{
+.hero-left{
   border:1px solid var(--line);
-  border-radius:28px;
-  background:rgba(255,255,255,0.46);
-  padding:22px;
+  border-radius:30px;
+  padding:28px 28px 26px;
+  background:rgba(255,255,255,0.44);
   box-shadow:var(--shadow-soft);
-  min-height:100%;
 }
 
-.hero-intro-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:18px;
-  flex-wrap:wrap;
+.hero-right{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.hero-right-bottom{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 .eyebrow,
@@ -254,34 +251,34 @@ nav a.active{
 }
 
 .h1{
-  font-size:72px;
+  font-size:60px;
   line-height:0.92;
-  margin:10px 0 10px;
-  max-width:11ch;
+  margin:14px 0 14px;
+  max-width:9.5ch;
 }
 
 .lead{
   margin:0;
-  max-width:780px;
-  font-size:17px;
+  max-width:760px;
+  font-size:16px;
   color:rgba(29,29,31,0.86);
 }
 
 .hero-float{
-  min-width:220px;
-  max-width:260px;
-  padding:14px 14px 13px;
-  border-radius:22px;
+  margin-top:24px;
+  max-width:315px;
+  padding:16px;
+  border-radius:24px;
   border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.84));
+  background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
   box-shadow:var(--shadow-soft);
 }
 
 .hero-float strong{
   display:block;
   font-family:'Sora',sans-serif;
-  font-size:20px;
-  line-height:1.05;
+  font-size:18px;
+  line-height:1.08;
   letter-spacing:-0.04em;
   margin-bottom:6px;
 }
@@ -290,7 +287,7 @@ nav a.active{
   display:block;
   font-size:13px;
   color:#4b4e57;
-  line-height:1.5;
+  line-height:1.55;
 }
 
 .note{
@@ -309,23 +306,41 @@ nav a.active{
   background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95));
 }
 
-.note.large{
-  min-height:100%;
+.note.hero-note{
+  min-height:192px;
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
-.note-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
+.note h2,
+.panel h2,
+.summary-card h2{
+  font-size:18px;
+  line-height:1.08;
+  margin:0 0 8px;
 }
 
-.quick-grid{
+.note p,
+.panel p,
+.summary-card p{
+  margin:0;
+  font-size:14px;
+  color:#40434b;
+}
+
+.info-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
+  margin-bottom:12px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:28px;
 }
 
 .panel{
@@ -361,28 +376,6 @@ nav a.active{
 }
 .panel.soft-lilac::before{
   background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
-}
-
-.panel h2,
-.note h2,
-.summary-card h2{
-  font-size:18px;
-  line-height:1.08;
-  margin:0 0 8px;
-}
-
-.panel p,
-.note p,
-.summary-card p{
-  margin:0;
-  font-size:14px;
-  color:#40434b;
-}
-
-.summary-row{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
 }
 
 .summary-card{
@@ -425,7 +418,7 @@ nav a.active{
   justify-content:space-between;
   align-items:end;
   gap:16px;
-  margin:18px 0 18px;
+  margin:0 0 18px;
 }
 
 .section-title{
@@ -653,15 +646,19 @@ nav a.active{
 }
 
 @media (max-width:1180px){
-  .hero-top{
+  .hero-grid{
     grid-template-columns:1fr;
   }
 
-  .note-grid{
+  .hero-right-bottom{
     grid-template-columns:1fr 1fr;
   }
 
-  .summary-row{
+  .info-grid{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .stats-grid{
     grid-template-columns:1fr 1fr;
   }
 
@@ -686,23 +683,24 @@ nav a.active{
     padding:24px 18px;
   }
 
+  .hero-left{
+    padding:22px 20px;
+  }
+
   .h1{
-    font-size:48px;
+    font-size:46px;
     max-width:none;
   }
 
-  .hero-intro-top,
+  .hero-right-bottom,
+  .info-grid,
+  .stats-grid,
   .section-head,
   .project-top,
   .project-bottom{
+    grid-template-columns:1fr;
     flex-direction:column;
     align-items:flex-start;
-  }
-
-  .quick-grid,
-  .note-grid,
-  .summary-row{
-    grid-template-columns:1fr;
   }
 }
 </style>
@@ -726,107 +724,92 @@ nav a.active{
       <span class="dot"></span>
     </div>
 
-    <div class="hero-main">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <span class="eyebrow">projects / human-centered systems / regulated environments</span>
+        <h1 class="h1">Designing systems for complex procedural work.</h1>
+        <p class="lead">
+          These projects explore how human-centered design can improve access, review interaction, traceability, cognition, workflow observability, and investigation reasoning in validation-constrained GMP environments.
+        </p>
 
-      <div class="hero-top">
-        <div class="hero-intro">
-          <div class="hero-intro-top">
-            <div>
-              <span class="eyebrow">projects / human-centered systems / regulated environments</span>
-              <h1 class="h1">Designing systems for complex procedural work.</h1>
-              <p class="lead">
-                These projects explore how human-centered design can improve access, review interaction, traceability, cognition, workflow observability, and investigation reasoning in validation-constrained GMP environments.
-              </p>
-            </div>
+        <div class="hero-float">
+          <strong>Support judgment.</strong>
+          <span>Not replacement, not automation theater — just clearer procedural environments for real human work.</span>
+        </div>
+      </div>
 
-            <div class="hero-float">
-              <strong>Support judgment.</strong>
-              <span>Not replacement, not automation theater — just clearer procedural environments for real human work.</span>
-            </div>
-          </div>
+      <div class="hero-right">
+        <div class="note hero-note">
+          <h2>Portfolio structure</h2>
+          <p>
+            The projects below function as case studies and prototype artifacts. Some are also being extended into short papers, so the site connects design work with research writing.
+          </p>
         </div>
 
-        <div class="note large">
-          <div>
-            <h2>Portfolio structure</h2>
+        <div class="hero-right-bottom">
+          <div class="note">
+            <h2>Research arc</h2>
             <p>
-              The projects below function as case studies and prototype artifacts. Some are also being extended into short papers, so the site connects design work with research writing.
+              The sequence moves from information access to workflow interaction, then to traceability, cognitive pathways, workflow observability, and investigation reasoning.
+            </p>
+          </div>
+
+          <div class="note">
+            <h2>Why this feels like HCI</h2>
+            <p>
+              These projects treat regulated documentation systems not only as compliance tools, but as user environments that shape navigation, coordination, interpretation, and decision-making.
             </p>
           </div>
         </div>
       </div>
-
-      <div class="note-grid">
-        <div class="note">
-          <h2>Research arc</h2>
-          <p>
-            The sequence moves from information access to workflow interaction, then to traceability, cognitive pathways, workflow observability, and investigation reasoning.
-          </p>
-        </div>
-
-        <div class="note">
-          <h2>Why this feels like HCI</h2>
-          <p>
-            These projects treat regulated documentation systems not only as compliance tools, but as user environments that shape navigation, coordination, interpretation, and decision-making.
-          </p>
-        </div>
-
-        <div class="note">
-          <h2>Design stance</h2>
-          <p>
-            Most interventions remain external to validated source systems: metadata overlays, review scaffolds, observability layers, and reasoning-support structures rather than direct template modification.
-          </p>
-        </div>
-      </div>
-
-      <div class="quick-grid">
-        <div class="panel soft-blue">
-          <div class="panel-label">focus</div>
-          <h2>Human-centered regulatory UX</h2>
-          <p>Designing usable systems under compliance, documentation, and validation constraints.</p>
-        </div>
-
-        <div class="panel soft-green">
-          <div class="panel-label">methods</div>
-          <h2>Excel + Python + R</h2>
-          <p>Low-code system thinking through metadata structuring, workflow analysis, visualization, and prototype evaluation.</p>
-        </div>
-
-        <div class="panel soft-lilac">
-          <div class="panel-label">through-line</div>
-          <h2>Support judgment, not replace it</h2>
-          <p>Making procedural work clearer while keeping interpretation, accountability, and human reasoning visible.</p>
-        </div>
-      </div>
-
-      <div class="summary-row">
-        <div class="summary-card blue">
-          <div class="panel-label">series scope</div>
-          <div class="summary-number">6</div>
-          <p>Connected case studies across document usability, workflow interaction, cognition, and investigation support.</p>
-        </div>
-
-        <div class="summary-card green">
-          <div class="panel-label">paper-track</div>
-          <div class="summary-number">4</div>
-          <p>Projects being extended into short papers on accessibility, workflow friction, reasoning support, and regulatory UX.</p>
-        </div>
-
-        <div class="summary-card lilac">
-          <div class="panel-label">domain</div>
-          <div class="summary-number">GMP</div>
-          <p>Deviation, CAPA, SOP, audit-facing documentation, and other high-stakes procedural systems.</p>
-        </div>
-
-        <div class="summary-card sand">
-          <div class="panel-label">design condition</div>
-          <div class="summary-number">0</div>
-          <p>Direct modifications to validated source systems — interventions remain compliance-safe and external.</p>
-        </div>
-      </div>
-
     </div>
   </section>
+
+  <div class="info-grid">
+    <div class="panel soft-blue">
+      <div class="panel-label">focus</div>
+      <h2>Human-centered regulatory UX</h2>
+      <p>Designing usable systems under compliance, documentation, and validation constraints.</p>
+    </div>
+
+    <div class="panel soft-green">
+      <div class="panel-label">methods</div>
+      <h2>Excel + Python + R</h2>
+      <p>Low-code system thinking through metadata structuring, workflow analysis, visualization, and prototype evaluation.</p>
+    </div>
+
+    <div class="panel soft-lilac">
+      <div class="panel-label">through-line</div>
+      <h2>Support judgment, not replace it</h2>
+      <p>Making procedural work clearer while keeping interpretation, accountability, and human reasoning visible.</p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="summary-card blue">
+      <div class="panel-label">series scope</div>
+      <div class="summary-number">6</div>
+      <p>Connected case studies across document usability, workflow interaction, cognition, and investigation support.</p>
+    </div>
+
+    <div class="summary-card green">
+      <div class="panel-label">paper-track</div>
+      <div class="summary-number">4</div>
+      <p>Projects being extended into short papers on accessibility, workflow friction, reasoning support, and regulatory UX.</p>
+    </div>
+
+    <div class="summary-card lilac">
+      <div class="panel-label">domain</div>
+      <div class="summary-number">GMP</div>
+      <p>Deviation, CAPA, SOP, audit-facing documentation, and other high-stakes procedural systems.</p>
+    </div>
+
+    <div class="summary-card sand">
+      <div class="panel-label">design condition</div>
+      <div class="summary-number">0</div>
+      <p>Direct modifications to validated source systems — interventions remain compliance-safe and external.</p>
+    </div>
+  </div>
 
   <section>
     <div class="section-head">
@@ -931,7 +914,7 @@ nav a.active{
         </article>
       </a>
 
-      <a class="project-link" href="project-cross-reference.html">
+      <a class="project-link" href="project-cross-reference-system.html">
         <article class="project-card soft-lilac" id="project-3">
           <div class="project-top">
             <div>
