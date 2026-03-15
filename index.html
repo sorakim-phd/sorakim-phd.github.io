@@ -298,6 +298,14 @@ nav a.active{
   max-width:9.5ch;
 }
 
+.hi{
+  display:block;
+  font-size:0.34em;
+  line-height:1;
+  letter-spacing:-0.03em;
+  margin-bottom:14px;
+}
+
 .gradient-word{
   background:linear-gradient(180deg, #17181b 0%, #2d3748 100%);
   -webkit-background-clip:text;
@@ -411,10 +419,24 @@ nav a.active{
   gap:16px;
 }
 
+.project-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
 .project-card{
   border-radius:24px;
   padding:22px;
   transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  height:100%;
+}
+
+.project-link:hover .project-card{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  background:rgba(255,255,255,0.94);
+  box-shadow:var(--shadow-hover);
 }
 
 .project-card.visual{
@@ -464,10 +486,60 @@ nav a.active{
 }
 
 .paper-card{
-  border-radius:24px;
+  border-radius:26px;
   padding:22px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
+  background:linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,249,252,0.90));
   transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.paper-card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:5px;
+  background:linear-gradient(90deg, rgba(17,17,17,0.92), rgba(17,17,17,0.56));
+  opacity:0.92;
+}
+
+.paper-card:nth-child(1)::before{
+  background:linear-gradient(90deg, #111218, rgba(17,17,17,0.45));
+}
+.paper-card:nth-child(2)::before{
+  background:linear-gradient(90deg, #2a3342, rgba(42,51,66,0.38));
+}
+.paper-card:nth-child(3)::before{
+  background:linear-gradient(90deg, #3c2e50, rgba(60,46,80,0.34));
+}
+.paper-card:nth-child(4)::before{
+  background:linear-gradient(90deg, #4b4031, rgba(75,64,49,0.34));
+}
+
+.paper-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  background:rgba(255,255,255,0.96);
+  box-shadow:var(--shadow-hover);
+}
+
+.paper-kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  margin-bottom:10px;
+}
+
+.paper-claim{
+  font-family:'Sora',sans-serif;
+  font-size:18px;
+  line-height:1.18;
+  letter-spacing:-0.03em;
+  margin:0 0 12px;
+  color:#111218;
+  max-width:24ch;
 }
 
 .paper-card h3{
@@ -526,10 +598,6 @@ nav a.active{
   .profile-card,
   .hero-main{
     padding:24px 20px;
-  }
-
-  .profile{
-    grid-template-columns:1fr;
   }
 
   .avatar{
@@ -607,10 +675,11 @@ nav a.active{
       <div class="hero-main glass">
         <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments</div>
 
-        <h1 class="h1">
-          Designing <span class="gradient-word">systems</span><br>
-          for complex work.
-        </h1>
+<h1 class="h1">
+  <span class="hi">Hi 👋</span>
+  I design <span class="gradient-word">systems</span><br>
+  for complex work.
+</h1>
 
         <p class="lead">
           My work sits across HCI, regulatory UX, procedural cognition, and broader organizational systems. I study how documents, workflows, interfaces, and support structures shape navigation, reasoning, interpretation, and decision-making in high-stakes environments.
@@ -672,47 +741,53 @@ nav a.active{
     </div>
 
     <div class="project-grid">
-      <article class="project-card visual">
-        <div class="panel-label">project 01</div>
-        <h3>SOP Accessibility System</h3>
-        <p>
-          A document accessibility and information architecture project focused on searchability, metadata structuring, and cross-reference clarity in dense procedural archives.
-        </p>
-        <div class="project-meta">
-          <span>document UX</span>
-          <span>accessibility</span>
-          <span>information architecture</span>
-          <span>python</span>
-        </div>
-      </article>
+      <a class="project-link" href="project-sop-accessibility.html">
+        <article class="project-card visual">
+          <div class="panel-label">project 01</div>
+          <h3>SOP Accessibility System</h3>
+          <p>
+            A document accessibility and information architecture project focused on searchability, metadata structuring, and cross-reference clarity in dense procedural archives.
+          </p>
+          <div class="project-meta">
+            <span>document UX</span>
+            <span>accessibility</span>
+            <span>information architecture</span>
+            <span>python</span>
+          </div>
+        </article>
+      </a>
 
-      <article class="project-card soft-green">
-        <div class="panel-label">project 02</div>
-        <h3>Deviation–CAPA Workflow Interfaces</h3>
-        <p>
-          A workflow systems project examining how review structure, routing logic, visibility, and documentation flow shape coordination and reasoning.
-        </p>
-        <div class="project-meta">
-          <span>workflow UX</span>
-          <span>procedural systems</span>
-          <span>investigations</span>
-          <span>R</span>
-        </div>
-      </article>
+      <a class="project-link" href="project-deviation-capa-workflow.html">
+        <article class="project-card soft-green">
+          <div class="panel-label">project 02</div>
+          <h3>Deviation–CAPA Workflow Interfaces</h3>
+          <p>
+            A workflow systems project examining how review structure, routing logic, visibility, and documentation flow shape coordination and reasoning.
+          </p>
+          <div class="project-meta">
+            <span>workflow UX</span>
+            <span>procedural systems</span>
+            <span>investigations</span>
+            <span>R</span>
+          </div>
+        </article>
+      </a>
 
-      <article class="project-card soft-lilac">
-        <div class="panel-label">project 03</div>
-        <h3>RCA Reasoning Support</h3>
-        <p>
-          A reasoning-support direction exploring how scaffolds, prompts, and structured causal views can widen hypothesis space and reduce premature closure.
-        </p>
-        <div class="project-meta">
-          <span>judgment</span>
-          <span>reasoning support</span>
-          <span>high-stakes systems</span>
-          <span>human-AI direction</span>
-        </div>
-      </article>
+      <a class="project-link" href="project-rca-reasoning-scaffolder.html">
+        <article class="project-card soft-lilac">
+          <div class="panel-label">project 03</div>
+          <h3>RCA Reasoning Support</h3>
+          <p>
+            A reasoning-support direction exploring how scaffolds, prompts, and structured causal views can widen hypothesis space and reduce premature closure.
+          </p>
+          <div class="project-meta">
+            <span>judgment</span>
+            <span>reasoning support</span>
+            <span>high-stakes systems</span>
+            <span>human-AI direction</span>
+          </div>
+        </article>
+      </a>
     </div>
   </section>
 
@@ -731,7 +806,8 @@ nav a.active{
 
     <div class="paper-grid">
       <article class="paper-card">
-        <div class="panel-label">paper 01</div>
+        <div class="paper-kicker">paper 01</div>
+        <div class="paper-claim">Procedural access is not a convenience issue — it shapes cognition and practical usability.</div>
         <h3>SOP Accessibility Paper</h3>
         <p>
           Examines document accessibility, searchability, and metadata support in SOP-heavy environments where retrieval burden shapes cognitive effort and usability.
@@ -744,7 +820,8 @@ nav a.active{
       </article>
 
       <article class="paper-card">
-        <div class="panel-label">paper 02</div>
+        <div class="paper-kicker">paper 02</div>
+        <div class="paper-claim">Workflow design shapes not just speed, but clarity, coordination, and review outcomes.</div>
         <h3>Deviation–CAPA Workflow Paper</h3>
         <p>
           Focuses on workflow structure, review interaction, and documentation flow in deviation and CAPA environments where process design affects clarity and turnaround.
@@ -757,7 +834,8 @@ nav a.active{
       </article>
 
       <article class="paper-card">
-        <div class="panel-label">paper 03</div>
+        <div class="paper-kicker">paper 03</div>
+        <div class="paper-claim">Reasoning environments influence whether investigation work stays open or collapses too early.</div>
         <h3>RCA Reasoning Paper</h3>
         <p>
           Investigates how reasoning scaffolds and procedural structures shape causal exploration, interpretive openness, and closure tendencies in investigation work.
@@ -770,7 +848,8 @@ nav a.active{
       </article>
 
       <article class="paper-card">
-        <div class="panel-label">paper 04</div>
+        <div class="paper-kicker">paper 04</div>
+        <div class="paper-claim">Regulated documents and workflows should be understood as user environments, not only compliance artifacts.</div>
         <h3>Regulatory UX Concept Paper</h3>
         <p>
           Articulates a broader conceptual frame for understanding regulated documents and workflows as user environments that organize navigation, cognition, and decision-making.
