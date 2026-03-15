@@ -95,8 +95,39 @@ content="Research and design work on human-centered systems, regulatory UX, proc
   --accent-word:linear-gradient(180deg,#4a5368 0%,#2b3140 100%);
 }
 
-/* ===== DARK MODE ===== */
+/* ===== DARK MODE TOGGLE BUTTON ===== */
+.theme-toggle{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:100;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--btn-bg);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.theme-toggle:hover{
+  transform:scale(1.1);
+  box-shadow:var(--shadow-hover);
+}
+.theme-toggle:active{
+  transform:scale(0.95);
+}
+
+/* ===== DARK MODE (system preference fallback) ===== */
 @media(prefers-color-scheme:dark){
+  html:not([data-theme="light"]){
   :root{
     --bg:#0f1014;
     --panel:rgba(22,24,32,0.88);
@@ -168,6 +199,100 @@ content="Research and design work on human-centered systems, regulatory UX, proc
     --accent-word:linear-gradient(180deg,#8890a8 0%,#6878a0 100%);
   }
 }
+
+/* ===== DARK MODE (manual toggle) ===== */
+html[data-theme="dark"]{
+  --bg:#0f1014;
+  --panel:rgba(22,24,32,0.88);
+  --text:#e2e4ea;
+  --muted:#7a7d8a;
+  --muted-strong:#a8aab8;
+  --line:rgba(255,255,255,0.07);
+  --line-strong:rgba(255,255,255,0.13);
+  --shadow:0 18px 50px rgba(0,0,0,0.40);
+  --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
+  --shadow-hover:0 24px 54px rgba(0,0,0,0.50);
+  --body-bg:
+    radial-gradient(circle at 12% 16%,rgba(22,24,36,0.98) 0,transparent 40%),
+    radial-gradient(circle at 84% 22%,rgba(18,22,44,0.55) 0,transparent 34%),
+    radial-gradient(circle at 78% 72%,rgba(24,18,38,0.38) 0,transparent 26%),
+    linear-gradient(180deg,#0f1014 0%,#0c0d10 100%);
+  --nav-bg:rgba(18,20,28,0.85);
+  --nav-border:rgba(255,255,255,0.07);
+  --nav-hover:rgba(255,255,255,0.06);
+  --nav-active:rgba(255,255,255,0.10);
+  --profile-bg:linear-gradient(180deg,rgba(22,24,34,0.92),rgba(18,20,30,0.88));
+  --profile-bar:linear-gradient(180deg,rgba(26,28,40,0.96),rgba(20,22,34,0.90));
+  --contact-bg:linear-gradient(180deg,rgba(16,20,36,0.80),rgba(20,22,34,0.92));
+  --contact-status-color:#8899bb;
+  --contact-status-border:rgba(100,130,180,0.14);
+  --contact-status-bg:rgba(255,255,255,0.05);
+  --bubble-left-bg:rgba(28,30,42,0.95);
+  --bubble-left-color:#b8bac8;
+  --bubble-right-bg:linear-gradient(180deg,rgba(26,36,66,0.95),rgba(20,30,58,0.96));
+  --bubble-right-color:#a8bcdc;
+  --bubble-right-border:rgba(80,110,170,0.14);
+  --hero-main-bg:
+    radial-gradient(circle at 84% 18%,rgba(18,26,52,0.58),transparent 30%),
+    radial-gradient(circle at 16% 76%,rgba(24,16,40,0.30),transparent 22%),
+    linear-gradient(180deg,rgba(22,24,34,0.92),rgba(18,20,30,0.88));
+  --panel-blue:linear-gradient(180deg,rgba(18,26,52,0.60),rgba(22,24,34,0.88));
+  --panel-green:linear-gradient(180deg,rgba(14,28,22,0.65),rgba(22,24,34,0.88));
+  --panel-lilac:linear-gradient(180deg,rgba(26,18,44,0.65),rgba(22,24,34,0.88));
+  --panel-sand:linear-gradient(180deg,rgba(32,26,14,0.70),rgba(22,24,34,0.88));
+  --panel-hover:rgba(30,32,44,0.96);
+  --panel-p:#9a9daa;
+  --project-visual:linear-gradient(180deg,rgba(18,26,52,0.55),rgba(22,24,34,0.88));
+  --project-green:linear-gradient(180deg,rgba(14,28,22,0.60),rgba(22,24,34,0.88));
+  --project-lilac:linear-gradient(180deg,rgba(26,18,44,0.60),rgba(22,24,34,0.88));
+  --project-p:#9a9daa;
+  --paper-bg:linear-gradient(180deg,rgba(22,24,34,0.95),rgba(18,20,30,0.92));
+  --paper-hover:rgba(28,30,42,0.98);
+  --paper-p:#98a0b0;
+  --paper-claim:#d0d4e0;
+  --meta-bg:rgba(255,255,255,0.06);
+  --chip-bg:rgba(255,255,255,0.06);
+  --btn-bg:rgba(255,255,255,0.07);
+  --btn-hover:rgba(255,255,255,0.12);
+  --btn-primary:linear-gradient(180deg,rgba(26,36,66,0.80),rgba(22,24,34,0.90));
+  --hi:#e2e4ea;
+  --lead:rgba(210,214,226,0.84);
+  --gradient-word:linear-gradient(180deg,#c8ccd8 0%,#a0a8c0 100%);
+  --accent-word:linear-gradient(180deg,#8890a8 0%,#6878a0 100%);
+}
+
+html[data-theme="dark"] body::before{background:linear-gradient(180deg,rgba(0,0,0,0.14),rgba(0,0,0,0));}
+html[data-theme="dark"] .avatar{border-color:rgba(255,255,255,0.15);box-shadow:0 14px 32px rgba(0,0,0,0.45),0 0 0 4px rgba(255,255,255,0.07);}
+html[data-theme="dark"] .paper-card:nth-child(1)::before{background:linear-gradient(90deg,#5a6080,rgba(90,96,128,0.45));}
+html[data-theme="dark"] .paper-card:nth-child(2)::before{background:linear-gradient(90deg,#4a5878,rgba(74,88,120,0.38));}
+html[data-theme="dark"] .paper-card:nth-child(3)::before{background:linear-gradient(90deg,#6a4a80,rgba(106,74,128,0.34));}
+html[data-theme="dark"] .paper-card:nth-child(4)::before{background:linear-gradient(90deg,#7a6050,rgba(122,96,80,0.34));}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:100;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--btn-bg);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+}
+.theme-toggle:hover{transform:scale(1.1);box-shadow:var(--shadow-hover);}
+.theme-toggle:active{transform:scale(0.95);}
 
 /* ===== BASE ===== */
 *{box-sizing:border-box}
@@ -601,5 +726,40 @@ nav a.active{color:var(--text);background:var(--nav-active);}
   <div class="footer">Independent researcher · Human-centered systems for regulated environments · PhD applicant (Fall 2027)</div>
   <div class="credit-note">Concept, design, and code by Sora Kim.</div>
 </div>
+
+<!-- Dark mode toggle button -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  // Check saved preference or system preference
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = saved === 'dark' || (!saved && prefersDark);
+
+  if(isDark){
+    html.setAttribute('data-theme','dark');
+    toggle.textContent = '☀️';
+  } else {
+    html.setAttribute('data-theme','light');
+    toggle.textContent = '🌙';
+  }
+
+  toggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    if(current === 'dark'){
+      html.setAttribute('data-theme','light');
+      toggle.textContent = '🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      html.setAttribute('data-theme','dark');
+      toggle.textContent = '☀️';
+      localStorage.setItem('theme','dark');
+    }
+  });
+</script>
+
 </body>
 </html>
