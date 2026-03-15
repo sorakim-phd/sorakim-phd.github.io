@@ -295,19 +295,28 @@ nav a.active{
   letter-spacing:-0.07em;
   line-height:0.92;
   margin:0 0 16px;
-  max-width:9.5ch;
+  max-width:10.5ch;
 }
 
 .hi{
   display:block;
-  font-size:0.34em;
+  font-size:0.18em;
   line-height:1;
-  letter-spacing:-0.03em;
-  margin-bottom:14px;
+  letter-spacing:-0.01em;
+  margin-bottom:16px;
+  font-weight:700;
+  color:#2b3140;
 }
 
 .gradient-word{
   background:linear-gradient(180deg, #17181b 0%, #2d3748 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.accent-word{
+  background:linear-gradient(180deg, #4a5368 0%, #2b3140 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
@@ -537,9 +546,14 @@ nav a.active{
   font-size:18px;
   line-height:1.18;
   letter-spacing:-0.03em;
-  margin:0 0 12px;
+  margin:0 0 14px;
   color:#111218;
   max-width:24ch;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,0.78);
+  box-shadow:var(--shadow-soft);
 }
 
 .paper-card h3{
@@ -675,11 +689,11 @@ nav a.active{
       <div class="hero-main glass">
         <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments</div>
 
-<h1 class="h1">
-  <span class="hi">Hi 👋</span>
-  I design <span class="gradient-word">systems</span><br>
-  for complex work.
-</h1>
+        <h1 class="h1">
+          <span class="hi">Hi 👋</span>
+          I design <span class="gradient-word">systems</span><br>
+          for <span class="accent-word">complex work.</span>
+        </h1>
 
         <p class="lead">
           My work sits across HCI, regulatory UX, procedural cognition, and broader organizational systems. I study how documents, workflows, interfaces, and support structures shape navigation, reasoning, interpretation, and decision-making in high-stakes environments.
