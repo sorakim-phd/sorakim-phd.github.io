@@ -34,7 +34,6 @@ content="A human-centered workflow prototype exploring review delays, comment fr
   --accent-2:#edf6f2;
   --accent-3:#f3eefb;
   --accent-4:#f5f2ea;
-  --accent-5:#f8f1f4;
   --radius-xl:30px;
   --radius-lg:24px;
   --radius-md:18px;
@@ -43,7 +42,6 @@ content="A human-centered workflow prototype exploring review delays, comment fr
   --mono:'JetBrains Mono', monospace;
 }
 
-/* ===== DARK MODE ===== */
 html[data-theme="dark"]{
   --text:#e2e4ea;
   --muted:#7a7d8a;
@@ -167,14 +165,8 @@ html[data-theme="dark"] .theme-toggle{
   background:rgba(255,255,255,0.07);
 }
 
-.theme-toggle:hover{
-  transform:scale(1.1);
-  box-shadow:0 24px 54px rgba(0,0,0,0.50);
-}
-
-.theme-toggle:active{
-  transform:scale(0.95);
-}
+.theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
+.theme-toggle:active{ transform:scale(0.95); }
 
 .wrap{
   max-width:1180px;
@@ -227,8 +219,7 @@ html[data-theme="dark"] .hero::before{
 }
 
 .dot{
-  width:11px;
-  height:11px;
+  width:11px; height:11px;
   border-radius:50%;
   box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
 }
@@ -291,9 +282,7 @@ html[data-theme="dark"] .small-label{
   max-width:720px;
 }
 
-html[data-theme="dark"] .lead{
-  color:rgba(210,214,226,0.84);
-}
+html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 
 .meta-row{
   display:flex;
@@ -328,17 +317,11 @@ html[data-theme="dark"] .lead{
   border-color:var(--line-strong);
 }
 
-.btn.primary{
-  background:linear-gradient(180deg, rgba(233,238,249,0.92), rgba(255,255,255,0.88));
-}
-
 .btn.demo{
   background:linear-gradient(180deg, rgba(227,238,255,0.98), rgba(245,249,255,0.92));
   border:1px solid rgba(125,156,226,0.28);
   color:#244a9b;
-  box-shadow:
-    0 10px 28px rgba(80,110,180,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.72);
+  box-shadow:0 10px 28px rgba(80,110,180,0.12), inset 0 1px 0 rgba(255,255,255,0.72);
 }
 
 .btn.demo:hover{
@@ -348,25 +331,13 @@ html[data-theme="dark"] .lead{
   color:#1f3f86;
 }
 
-html[data-theme="dark"] .btn{
-  background:rgba(255,255,255,0.07);
-}
-
-html[data-theme="dark"] .btn:hover{
-  background:rgba(255,255,255,0.12);
-}
-
-html[data-theme="dark"] .btn.primary{
-  background:linear-gradient(180deg, rgba(26,36,66,0.80), rgba(22,24,34,0.90));
-}
+html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
+html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
 
 html[data-theme="dark"] .btn.demo{
   background:linear-gradient(180deg, rgba(36,52,92,0.92), rgba(28,36,58,0.92));
   border:1px solid rgba(148,173,255,0.18);
   color:#dce7ff;
-  box-shadow:
-    0 10px 24px rgba(0,0,0,0.24),
-    inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 html[data-theme="dark"] .btn.demo:hover{
@@ -375,10 +346,7 @@ html[data-theme="dark"] .btn.demo:hover{
   color:#eef3ff;
 }
 
-.hero-side{
-  display:grid;
-  gap:14px;
-}
+.hero-side{ display:grid; gap:14px; }
 
 .note{
   border-radius:22px;
@@ -390,21 +358,9 @@ html[data-theme="dark"] .note{
   background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
 }
 
-.note h3{
-  font-size:18px;
-  line-height:1.1;
-  margin:0 0 8px;
-}
-
-.note p{
-  margin:0;
-  font-size:14px;
-  color:#40434b;
-}
-
-html[data-theme="dark"] .note p{
-  color:#9a9daa;
-}
+.note h3{ font-size:18px; line-height:1.1; margin:0 0 8px; }
+.note p{ margin:0; font-size:14px; color:#40434b; }
+html[data-theme="dark"] .note p{ color:#9a9daa; }
 
 .flow-mini{
   display:flex;
@@ -423,9 +379,7 @@ html[data-theme="dark"] .note p{
   color:var(--muted);
 }
 
-html[data-theme="dark"] .flow-mini span{
-  background:rgba(255,255,255,0.06);
-}
+html[data-theme="dark"] .flow-mini span{ background:rgba(255,255,255,0.06); }
 
 .metrics{
   display:grid;
@@ -444,58 +398,24 @@ html[data-theme="dark"] .flow-mini span{
 .metric-card::before{
   content:"";
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
+  top:0; left:0; right:0;
   height:4px;
 }
 
-.metric-card.blue{
-  background:linear-gradient(180deg, rgba(233,238,249,0.72), rgba(255,255,255,0.9));
-}
-.metric-card.blue::before{
-  background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95));
-}
+.metric-card.blue{ background:linear-gradient(180deg, rgba(233,238,249,0.72), rgba(255,255,255,0.9)); }
+.metric-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
+.metric-card.green{ background:linear-gradient(180deg, rgba(237,246,242,0.78), rgba(255,255,255,0.9)); }
+.metric-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
+.metric-card.lilac{ background:linear-gradient(180deg, rgba(243,238,251,0.78), rgba(255,255,255,0.9)); }
+.metric-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
 
-.metric-card.green{
-  background:linear-gradient(180deg, rgba(237,246,242,0.78), rgba(255,255,255,0.9));
-}
-.metric-card.green::before{
-  background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95));
-}
+html[data-theme="dark"] .metric-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.90)); }
+html[data-theme="dark"] .metric-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.78), rgba(22,24,34,0.90)); }
+html[data-theme="dark"] .metric-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.78), rgba(22,24,34,0.90)); }
 
-.metric-card.lilac{
-  background:linear-gradient(180deg, rgba(243,238,251,0.78), rgba(255,255,255,0.9));
-}
-.metric-card.lilac::before{
-  background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95));
-}
-
-html[data-theme="dark"] .metric-card.blue{
-  background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.90));
-}
-html[data-theme="dark"] .metric-card.green{
-  background:linear-gradient(180deg, rgba(14,28,22,0.78), rgba(22,24,34,0.90));
-}
-html[data-theme="dark"] .metric-card.lilac{
-  background:linear-gradient(180deg, rgba(26,18,44,0.78), rgba(22,24,34,0.90));
-}
-
-.metric-number{
-  font-size:40px;
-  line-height:0.95;
-  margin:10px 0 8px;
-}
-
-.metric-card p{
-  margin:0;
-  font-size:13px;
-  color:#454850;
-}
-
-html[data-theme="dark"] .metric-card p{
-  color:#9a9daa;
-}
+.metric-number{ font-size:40px; line-height:0.95; margin:10px 0 8px; }
+.metric-card p{ margin:0; font-size:13px; color:#454850; }
+html[data-theme="dark"] .metric-card p{ color:#9a9daa; }
 
 .section-card{
   border-radius:26px;
@@ -508,9 +428,7 @@ html[data-theme="dark"] .metric-card p{
 .section-card::before{
   content:"";
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
+  top:0; left:0; right:0;
   height:4px;
 }
 
@@ -519,22 +437,10 @@ html[data-theme="dark"] .metric-card p{
 .section-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
 .section-card.sand::before{ background:linear-gradient(90deg, rgba(230,210,171,0.95), rgba(245,242,234,0.95)); }
 
-html[data-theme="dark"] .section-card.blue{
-  background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.green{
-  background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.lilac{
-  background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.sand{
-  background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
+html[data-theme="dark"] .section-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
+html[data-theme="dark"] .section-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
+html[data-theme="dark"] .section-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
+html[data-theme="dark"] .section-card.sand{ background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 
 .section-head{
   display:flex;
@@ -545,37 +451,13 @@ html[data-theme="dark"] .section-card.sand{
   flex-wrap:wrap;
 }
 
-.section-title{
-  font-size:28px;
-  margin:0;
-}
+.section-title{ font-size:28px; margin:0; }
+.section-card h2{ font-size:28px; margin:0 0 12px; }
+.section-card p{ margin:0 0 14px; font-size:15px; color:#40434b; }
+html[data-theme="dark"] .section-card p{ color:#9a9daa; }
 
-.section-card h2{
-  font-size:28px;
-  margin:0 0 12px;
-}
-
-.section-card p{
-  margin:0 0 14px;
-  font-size:15px;
-  color:#40434b;
-}
-
-html[data-theme="dark"] .section-card p{
-  color:#9a9daa;
-}
-
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:16px;
-}
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; }
 
 .card-block{
   border-radius:20px;
@@ -584,9 +466,7 @@ html[data-theme="dark"] .section-card p{
   box-shadow:var(--shadow-soft);
 }
 
-html[data-theme="dark"] .card-block{
-  background:rgba(255,255,255,0.04);
-}
+html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
 
 .card-block h3{
   margin:0 0 8px;
@@ -598,34 +478,14 @@ html[data-theme="dark"] .card-block{
   letter-spacing:0.04em;
 }
 
-.card-block p{
-  margin:0;
-  font-size:14px;
-  color:#3f4148;
-}
+.card-block p{ margin:0; font-size:14px; color:#3f4148; }
+html[data-theme="dark"] .card-block p{ color:#9a9daa; }
 
-html[data-theme="dark"] .card-block p{
-  color:#9a9daa;
-}
+.bullets{ margin:0; padding-left:18px; }
+.bullets li{ margin:0 0 8px; color:#41444c; }
+html[data-theme="dark"] .bullets li{ color:#9a9daa; }
 
-.bullets{
-  margin:0;
-  padding-left:18px;
-}
-
-.bullets li{
-  margin:0 0 8px;
-  color:#41444c;
-}
-
-html[data-theme="dark"] .bullets li{
-  color:#9a9daa;
-}
-
-.method-list{
-  display:grid;
-  gap:12px;
-}
+.method-list{ display:grid; gap:12px; }
 
 .method-item{
   border-radius:18px;
@@ -634,9 +494,7 @@ html[data-theme="dark"] .bullets li{
   box-shadow:var(--shadow-soft);
 }
 
-html[data-theme="dark"] .method-item{
-  background:rgba(255,255,255,0.04);
-}
+html[data-theme="dark"] .method-item{ background:rgba(255,255,255,0.04); }
 
 .method-item h3{
   margin:0 0 6px;
@@ -648,14 +506,8 @@ html[data-theme="dark"] .method-item{
   letter-spacing:0.04em;
 }
 
-.method-item p{
-  margin:0;
-  font-size:14px;
-}
-
-html[data-theme="dark"] .method-item p{
-  color:#9a9daa;
-}
+.method-item p{ margin:0; font-size:14px; }
+html[data-theme="dark"] .method-item p{ color:#9a9daa; }
 
 .table-wrap{
   overflow:auto;
@@ -664,22 +516,11 @@ html[data-theme="dark"] .method-item p{
   background:rgba(255,255,255,0.72);
 }
 
-html[data-theme="dark"] .table-wrap{
-  background:rgba(255,255,255,0.04);
-}
+html[data-theme="dark"] .table-wrap{ background:rgba(255,255,255,0.04); }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:680px;
-}
+table{ width:100%; border-collapse:collapse; min-width:680px; }
 
-th, td{
-  padding:14px 16px;
-  text-align:left;
-  border-bottom:1px solid var(--line);
-  font-size:14px;
-}
+th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--line); font-size:14px; }
 
 th{
   font-family:var(--mono);
@@ -690,13 +531,8 @@ th{
   background:rgba(255,255,255,0.82);
 }
 
-html[data-theme="dark"] th{
-  background:rgba(255,255,255,0.04);
-}
-
-tr:last-child td{
-  border-bottom:none;
-}
+html[data-theme="dark"] th{ background:rgba(255,255,255,0.04); }
+tr:last-child td{ border-bottom:none; }
 
 .quote-line{
   margin-top:10px;
@@ -708,12 +544,9 @@ tr:last-child td{
   color:#41444c;
 }
 
-html[data-theme="dark"] .quote-line{
-  background:rgba(255,255,255,0.04);
-  color:#9a9daa;
-}
+html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
 
-/* ===== Unified prototype viewer ===== */
+/* ===== prototype viewer ===== */
 .proto-viewer{
   display:grid;
   grid-template-columns:52px 1fr 52px;
@@ -721,9 +554,7 @@ html[data-theme="dark"] .quote-line{
   align-items:center;
 }
 
-.proto-slide-wrap{
-  min-width:0;
-}
+.proto-slide-wrap{ min-width:0; }
 
 .proto-image{
   width:100%;
@@ -733,9 +564,7 @@ html[data-theme="dark"] .quote-line{
   box-shadow:var(--shadow-soft);
 }
 
-.proto-meta{
-  margin-top:14px;
-}
+.proto-meta{ margin-top:14px; }
 
 .proto-meta h3{
   margin:0 0 8px;
@@ -747,24 +576,14 @@ html[data-theme="dark"] .quote-line{
   letter-spacing:0.04em;
 }
 
-.proto-meta p{
-  margin:0;
-  font-size:14px;
-  color:#3f4148;
-}
-
-html[data-theme="dark"] .proto-meta p{
-  color:#9a9daa;
-}
+.proto-meta p{ margin:0; font-size:14px; color:#3f4148; }
+html[data-theme="dark"] .proto-meta p{ color:#9a9daa; }
 
 .proto-nav{
-  width:52px;
-  height:52px;
-  border:none;
+  width:52px; height:52px;
   border-radius:999px;
   cursor:pointer;
-  font-size:18px;
-  font-weight:600;
+  font-size:18px; font-weight:600;
   color:var(--text);
   background:rgba(255,255,255,0.78);
   border:1px solid var(--line);
@@ -772,18 +591,9 @@ html[data-theme="dark"] .proto-meta p{
   transition:all .18s ease;
 }
 
-.proto-nav:hover{
-  transform:translateY(-1px);
-  background:rgba(255,255,255,0.96);
-}
-
-html[data-theme="dark"] .proto-nav{
-  background:rgba(255,255,255,0.06);
-}
-
-html[data-theme="dark"] .proto-nav:hover{
-  background:rgba(255,255,255,0.12);
-}
+.proto-nav:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.96); }
+html[data-theme="dark"] .proto-nav{ background:rgba(255,255,255,0.06); }
+html[data-theme="dark"] .proto-nav:hover{ background:rgba(255,255,255,0.12); }
 
 .proto-dots{
   display:flex;
@@ -794,8 +604,7 @@ html[data-theme="dark"] .proto-nav:hover{
 }
 
 .proto-dot{
-  width:10px;
-  height:10px;
+  width:10px; height:10px;
   border-radius:999px;
   border:none;
   cursor:pointer;
@@ -803,23 +612,14 @@ html[data-theme="dark"] .proto-nav:hover{
   transition:all .18s ease;
 }
 
-.proto-dot.active{
-  width:24px;
-  background:#8ea7e8;
-}
+.proto-dot.active{ width:24px; background:#8ea7e8; }
+html[data-theme="dark"] .proto-dot{ background:#4c5363; }
+html[data-theme="dark"] .proto-dot.active{ background:#9cb6ff; }
 
-html[data-theme="dark"] .proto-dot{
-  background:#4c5363;
-}
-
-html[data-theme="dark"] .proto-dot.active{
-  background:#9cb6ff;
-}
-
-/* ===== Feedback metric cards ===== */
+/* ===== feedback metrics — 3열 고정 ===== */
 .feedback-metrics{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns:repeat(3, 1fr);
   gap:12px;
   margin-top:10px;
 }
@@ -829,35 +629,18 @@ html[data-theme="dark"] .proto-dot.active{
   background:rgba(255,255,255,0.72);
   padding:14px;
   box-shadow:var(--shadow-soft);
-  min-height:190px;
   display:flex;
   flex-direction:column;
 }
 
-html[data-theme="dark"] .feedback-card{
-  background:rgba(255,255,255,0.04);
-}
+html[data-theme="dark"] .feedback-card{ background:rgba(255,255,255,0.04); }
 
-.feedback-card .small-label{
-  align-self:flex-start;
-  margin-bottom:10px;
-}
+.feedback-card .small-label{ align-self:flex-start; margin-bottom:10px; }
 
-.feedback-number{
-  font-size:28px;
-  line-height:1;
-  margin:8px 0 10px;
-}
+.feedback-number{ font-size:28px; line-height:1; margin:8px 0 10px; }
 
-.feedback-note{
-  font-size:13px;
-  color:#4a4d55;
-  margin:0;
-}
-
-html[data-theme="dark"] .feedback-note{
-  color:#9a9daa;
-}
+.feedback-note{ font-size:13px; color:#4a4d55; margin:0; }
+html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
 
 .footer{
   margin-top:34px;
@@ -870,65 +653,31 @@ html[data-theme="dark"] .feedback-note{
 @media (max-width:1080px){
   .hero-inner,
   .grid-2,
+  .grid-3,
   .metrics,
-  .grid-3{
+  .feedback-metrics{
     grid-template-columns:1fr;
   }
 }
 
 @media (max-width:760px){
   nav{
-    top:12px;
-    left:12px;
-    right:12px;
+    top:12px; left:12px; right:12px;
     justify-content:flex-start;
     overflow-x:auto;
-    gap:4px;
-    padding:5px;
+    gap:4px; padding:5px;
     -ms-overflow-style:none;
     scrollbar-width:none;
   }
-
   nav::-webkit-scrollbar{ display:none; }
-
-  nav a{
-    font-size:12px;
-    padding:7px 10px;
-  }
-
-  .wrap{
-    padding:80px 16px 60px;
-  }
-
-  .hero{
-    padding:24px 18px;
-  }
-
-  .title{
-    font-size:36px;
-  }
-
-  .theme-toggle{
-    bottom:16px;
-    right:16px;
-    width:44px;
-    height:44px;
-    font-size:18px;
-  }
-
-  .proto-viewer{
-    grid-template-columns:1fr;
-  }
-
-  .proto-nav{
-    width:100%;
-    height:42px;
-    border-radius:14px;
-  }
-
-  .feedback-card{
-    min-height:auto;
-  }
+  nav a{ font-size:12px; padding:7px 10px; }
+  .wrap{ padding:80px 16px 60px; }
+  .hero{ padding:24px 18px; }
+  .title{ font-size:36px; }
+  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
+  .proto-viewer{ grid-template-columns:1fr; }
+  .proto-nav{ width:100%; height:42px; border-radius:14px; }
+  .feedback-card{ min-height:auto; }
 }
 </style>
 </head>
@@ -1027,19 +776,9 @@ html[data-theme="dark"] .feedback-note{
       <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">review work is often hard to see</span>
     </div>
-    <p>
-      In regulated environments, document review is critical but often opaque. Deviation, CAPA, and
-      related records may pass through multiple reviewers, yet visibility into feedback burden, timing,
-      and revision-loop formation is limited.
-    </p>
-    <p>
-      As review cycles lengthen, teams often know that a document is “still under review,” but not
-      what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is
-      escalating across rounds.
-    </p>
-    <p>
-      The core problem is not only delay itself, but the lack of a shared operational view of that delay.
-    </p>
+    <p>In regulated environments, document review is critical but often opaque. Deviation, CAPA, and related records may pass through multiple reviewers, yet visibility into feedback burden, timing, and revision-loop formation is limited.</p>
+    <p>As review cycles lengthen, teams often know that a document is "still under review," but not what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is escalating across rounds.</p>
+    <p>The core problem is not only delay itself, but the lack of a shared operational view of that delay.</p>
   </section>
 
   <section class="section-card sand">
@@ -1059,10 +798,7 @@ html[data-theme="dark"] .feedback-note{
       </div>
       <div class="card-block">
         <h3>Why this mattered</h3>
-        <p>
-          These were not simply communication issues. They reflected a missing observability layer in
-          the review workflow — one that could make hidden friction visible before delays accumulated further.
-        </p>
+        <p>These were not simply communication issues. They reflected a missing observability layer in the review workflow — one that could make hidden friction visible before delays accumulated further.</p>
       </div>
     </div>
     <div class="quote-line">💬 In structured review systems, delay is not only a timing problem — it is also a visibility problem.</div>
@@ -1073,10 +809,7 @@ html[data-theme="dark"] .feedback-note{
       <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
-    <p>
-      How can review workflows be visualized in a way that helps users notice bottlenecks, comment
-      patterns, and revision burden earlier — without automating judgment or altering validated systems?
-    </p>
+    <p>How can review workflows be visualized in a way that helps users notice bottlenecks, comment patterns, and revision burden earlier — without automating judgment or altering validated systems?</p>
   </section>
 
   <section class="section-card blue">
@@ -1088,7 +821,7 @@ html[data-theme="dark"] .feedback-note{
       <div class="card-block">
         <h3>Before</h3>
         <ul class="bullets">
-          <li>Review status was often reduced to simple “in progress” updates.</li>
+          <li>Review status was often reduced to simple "in progress" updates.</li>
           <li>Delay patterns remained distributed across rounds, emails, and comments.</li>
           <li>Friction sources were interpreted informally and often from memory.</li>
           <li>Repeated loop formation could be felt, but not easily visualized.</li>
@@ -1125,7 +858,7 @@ html[data-theme="dark"] .feedback-note{
       </div>
       <div class="card-block">
         <h3>3. Simulation layer</h3>
-        <p>Let users explore how reviewer role, profile, comment framing, and round number may affect expected friction.</p>
+        <p>Let users explore how reviewer role, comment framing, and round number may affect expected friction.</p>
       </div>
     </div>
   </section>
@@ -1136,28 +869,21 @@ html[data-theme="dark"] .feedback-note{
       <span class="section-tag">prototype screenshots</span>
     </div>
 
-    <p>
-      The prototype demonstrates how an external workflow-support layer can make review burden,
-      revision density, and feedback patterns more legible without modifying validated documentation systems.
-      It was implemented as a lightweight interactive dashboard and presented as a testable artifact rather than a production platform.
-    </p>
+    <p>The prototype demonstrates how an external workflow-support layer can make review burden, revision density, and feedback patterns more legible without modifying validated documentation systems. It was implemented as a lightweight interactive dashboard and presented as a testable artifact rather than a production platform.</p>
 
     <div class="card-block">
       <div class="proto-viewer">
         <button class="proto-nav prev" type="button" onclick="changeProtoSlide(-1)">←</button>
-
         <div class="proto-slide-wrap">
           <img id="proto-image"
                src="assets/review-workflow-dashboard-overview.png"
                alt="Review workflow dashboard screenshot"
                class="proto-image">
-
           <div class="proto-meta">
             <h3 id="proto-title">Overview dashboard</h3>
             <p id="proto-caption">High-level dashboard view summarizing comment categories, severity, reviewer turnaround, and round distribution.</p>
           </div>
         </div>
-
         <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
       </div>
 
@@ -1207,12 +933,7 @@ html[data-theme="dark"] .feedback-note{
       <span class="section-tag">n = 6</span>
     </div>
 
-    <p>
-      A lightweight prototype feedback session was conducted with six participants.
-      All participants reported prior experience with document review, QA/QC review,
-      or regulated documentation. Familiarity with structured document-review workflows
-      was mixed: 66.7% reported being very familiar, while 33.3% reported being not familiar at all.
-    </p>
+    <p>A lightweight prototype feedback session was conducted with six participants. All participants reported prior experience with document review, QA/QC review, or regulated documentation. Familiarity with structured document-review workflows was mixed: 66.7% reported being very familiar, while 33.3% reported being not familiar at all.</p>
 
     <div class="feedback-metrics">
       <div class="feedback-card">
@@ -1220,25 +941,21 @@ html[data-theme="dark"] .feedback-note{
         <div class="feedback-number">4.83 / 5</div>
         <p class="feedback-note">5 participants rated 5, 1 participant rated 4.</p>
       </div>
-
       <div class="feedback-card">
         <div class="small-label">friction visibility</div>
         <div class="feedback-number">4.83 / 5</div>
         <p class="feedback-note">Users generally felt delays and feedback patterns were easier to notice.</p>
       </div>
-
       <div class="feedback-card">
         <div class="small-label">checklist clarity</div>
         <div class="feedback-number">5.0 / 5</div>
         <p class="feedback-note">All participants rated checklist/classifier features as understandable.</p>
       </div>
-
       <div class="feedback-card">
         <div class="small-label">simulation clarity</div>
         <div class="feedback-number">4.83 / 5</div>
         <p class="feedback-note">Simulation was generally easy to interpret after brief exploration.</p>
       </div>
-
       <div class="feedback-card">
         <div class="small-label">real-world usefulness</div>
         <div class="feedback-number">100%</div>
@@ -1256,25 +973,10 @@ html[data-theme="dark"] .feedback-note{
           <li>Document Journey — 16.7%</li>
         </ul>
       </div>
-
       <div class="card-block">
         <h3>Key interpretation</h3>
-        <p>
-          Users did not mainly struggle with the interface itself. Instead, one recurring insight was
-          that the workflow-friction concept initially felt unfamiliar. This suggests the need for brief
-          conceptual onboarding or contextual explanation when introducing the prototype to first-time users.
-        </p>
+        <p>Users did not mainly struggle with the interface itself. One recurring insight was that the workflow-friction concept initially felt unfamiliar — suggesting the need for brief conceptual onboarding when introducing the prototype to first-time users. This points toward adoption barriers being conceptual rather than interactional.</p>
       </div>
-    </div>
-
-    <div class="note" style="margin-top:16px;">
-      <h3>Qualitative takeaway</h3>
-      <p>
-        One participant noted that the prototype felt somewhat difficult at first because the concept itself
-        was unfamiliar, but after a short explanation it became easier to understand and was perceived as a
-        strong and useful idea. This suggests that the main adoption barrier may be conceptual onboarding,
-        not interaction complexity.
-      </p>
     </div>
   </section>
 
@@ -1331,11 +1033,7 @@ html[data-theme="dark"] .feedback-note{
 
     <div class="note" style="margin-top:16px;">
       <h3>Why the result matters</h3>
-      <p>
-        The main contribution is not simply efficiency. It is the transformation of hidden review work
-        into interpretable workflow signals. In other words, the prototype supports procedural visibility
-        and coordination without trying to automate reviewer judgment.
-      </p>
+      <p>The main contribution is not simply efficiency. It is the transformation of hidden review work into interpretable workflow signals. The prototype supports procedural visibility and coordination without trying to automate reviewer judgment.</p>
     </div>
   </section>
 
@@ -1344,16 +1042,8 @@ html[data-theme="dark"] .feedback-note{
       <h2 class="section-title">📄 Project extension</h2>
       <span class="section-tag">portfolio direction</span>
     </div>
-    <p>
-      This project currently functions as a portfolio-facing HCI case study rather than a finalized paper.
-      Its main contribution is to show how review friction, comment burden, and revision loops can be made
-      visible through a lightweight computational support prototype.
-    </p>
-    <p>
-      The broader design implication is that workflow dashboards in regulated environments can function as
-      coordination support — not just reporting tools. They can help teams interpret procedural conditions
-      earlier without intervening in validated documentation systems themselves.
-    </p>
+    <p>This project currently functions as a portfolio-facing HCI case study rather than a finalized paper. Its main contribution is to show how review friction, comment burden, and revision loops can be made visible through a lightweight computational support prototype.</p>
+    <p>The broader design implication is that workflow dashboards in regulated environments can function as coordination support — not just reporting tools. They can help teams interpret procedural conditions earlier without intervening in validated documentation systems themselves.</p>
   </section>
 
   <section class="section-card lilac">
@@ -1361,20 +1051,9 @@ html[data-theme="dark"] .feedback-note{
       <h2 class="section-title">💬 Reflection</h2>
       <span class="section-tag">why it is HCI</span>
     </div>
-    <p>
-      This project reframed review delay as both a workflow problem and an information-design problem.
-      What teams often experience as “slow review” is not only latency — it is also a failure of visibility,
-      categorization, and shared interpretation.
-    </p>
-    <p>
-      The prototype therefore acts less like an automation system and more like a human-centered support layer:
-      helping users notice, interpret, and respond to procedural friction before it expands into repeated loops.
-    </p>
-    <p>
-      Importantly, the feedback session also suggested that the main challenge was not interface complexity itself,
-      but initial unfamiliarity with the workflow-friction framing. That insight pushed the project from “dashboard UI”
-      toward a broader HCI question about how new procedural concepts become legible to users.
-    </p>
+    <p>This project reframed review delay as both a workflow problem and an information-design problem. What teams often experience as "slow review" is not only latency — it is also a failure of visibility, categorization, and shared interpretation.</p>
+    <p>The prototype therefore acts less like an automation system and more like a human-centered support layer: helping users notice, interpret, and respond to procedural friction before it expands into repeated loops.</p>
+    <p>Importantly, the feedback session also suggested that the main challenge was not interface complexity itself, but initial unfamiliarity with the workflow-friction framing. That insight pushed the project from "dashboard UI" toward a broader HCI question about how new procedural concepts become legible to users.</p>
   </section>
 
   <section class="section-card green">
@@ -1393,7 +1072,6 @@ html[data-theme="dark"] .feedback-note{
           <li>Pattern-based friction estimation and reviewer simulation</li>
         </ul>
       </div>
-
       <div class="card-block">
         <h3>Research / design</h3>
         <ul class="bullets">
@@ -1412,12 +1090,7 @@ html[data-theme="dark"] .feedback-note{
       <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
-    <p>
-      Developed an interactive workflow-support prototype that made review friction, feedback loops,
-      and revision burden more visible through heatmaps, comment classification, and reviewer simulation
-      in a compliance-safe documentation context.
-    </p>
-
+    <p>Developed an interactive workflow-support prototype that made review friction, feedback loops, and revision burden more visible through heatmaps, comment classification, and reviewer simulation in a compliance-safe documentation context.</p>
     <div class="hero-actions" style="margin-top:16px;">
       <a class="btn demo" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
       <a class="btn" href="projects.html">back to projects</a>
@@ -1438,60 +1111,22 @@ html[data-theme="dark"] .feedback-note{
   var saved = localStorage.getItem('theme');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   var isDark = saved === 'dark' || (!saved && prefersDark);
-
-  if(isDark){
-    html.setAttribute('data-theme','dark');
-    toggle.textContent='☀️';
-  } else {
-    html.setAttribute('data-theme','light');
-    toggle.textContent='🌙';
-  }
-
+  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
+  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
   toggle.addEventListener('click', function(){
     var current = html.getAttribute('data-theme');
-    if(current === 'dark'){
-      html.setAttribute('data-theme','light');
-      toggle.textContent='🌙';
-      localStorage.setItem('theme','light');
-    } else {
-      html.setAttribute('data-theme','dark');
-      toggle.textContent='☀️';
-      localStorage.setItem('theme','dark');
-    }
+    if(current === 'dark'){ html.setAttribute('data-theme','light'); toggle.textContent='🌙'; localStorage.setItem('theme','light'); }
+    else { html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
   });
 })();
 
 const protoSlides = [
-  {
-    image: "assets/review-workflow-dashboard-overview.png",
-    title: "Overview dashboard",
-    caption: "High-level dashboard view summarizing comment categories, severity, reviewer turnaround, and round distribution."
-  },
-  {
-    image: "assets/review-workflow-dashboard-heatmap.png",
-    title: "Friction heatmap",
-    caption: "Heatmap view highlighting where review delays and loop-heavy patterns accumulate across roles and document types."
-  },
-  {
-    image: "assets/review-workflow-dashboard-checklist.png",
-    title: "Checklist assistant / classifier",
-    caption: "Checklist and rule-based comment-classifier interface for standardizing review expectations and surfacing likely friction patterns."
-  },
-  {
-    image: "assets/review-workflow-dashboard-docjourney.png",
-    title: "Document journey",
-    caption: "Single-document journey view tracing review rounds, reopen events, and turnaround over time."
-  },
-  {
-    image: "assets/review-workflow-dashboard-beforeafter.png",
-    title: "Before / after comparison",
-    caption: "Comparison screen illustrating how workflow-support artifacts may change visibility, burden, and interpretability."
-  },
-  {
-    image: "assets/review-workflow-dashboard-reviewersimulation.png",
-    title: "Reviewer simulation",
-    caption: "Simulation interface exploring how reviewer role, profile, comment framing, and review round may affect expected friction."
-  }
+  { image:"assets/review-workflow-dashboard-overview.png", title:"Overview dashboard", caption:"High-level dashboard view summarizing comment categories, severity, reviewer turnaround, and round distribution." },
+  { image:"assets/review-workflow-dashboard-heatmap.png", title:"Friction heatmap", caption:"Heatmap view highlighting where review delays and loop-heavy patterns accumulate across roles and document types." },
+  { image:"assets/review-workflow-dashboard-checklist.png", title:"Checklist assistant / classifier", caption:"Checklist and rule-based comment-classifier interface for standardizing review expectations and surfacing likely friction patterns." },
+  { image:"assets/review-workflow-dashboard-docjourney.png", title:"Document journey", caption:"Single-document journey view tracing review rounds, reopen events, and turnaround over time." },
+  { image:"assets/review-workflow-dashboard-beforeafter.png", title:"Before / after comparison", caption:"Comparison screen illustrating how workflow-support artifacts may change visibility, burden, and interpretability." },
+  { image:"assets/review-workflow-dashboard-reviewersimulation.png", title:"Reviewer simulation", caption:"Simulation interface exploring how reviewer role, comment framing, and review round may affect expected friction." }
 ];
 
 let currentProtoSlide = 0;
@@ -1501,17 +1136,12 @@ function renderProtoSlide(){
   const title = document.getElementById("proto-title");
   const caption = document.getElementById("proto-caption");
   const dots = document.querySelectorAll(".proto-dot");
-
   if(!img || !title || !caption) return;
-
   img.src = protoSlides[currentProtoSlide].image;
   img.alt = protoSlides[currentProtoSlide].title;
   title.textContent = protoSlides[currentProtoSlide].title;
   caption.textContent = protoSlides[currentProtoSlide].caption;
-
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle("active", idx === currentProtoSlide);
-  });
+  dots.forEach((dot, idx) => { dot.classList.toggle("active", idx === currentProtoSlide); });
 }
 
 function changeProtoSlide(direction){
