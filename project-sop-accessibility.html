@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>SOP Accessibility System · Sora Kim</title>
+<title>Procedural Document Navigation & Search · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Case study for SOP Accessibility System — a human-centered document UX project improving navigation and retrievability in validated GMP documentation environments." />
+content="Case study for Procedural Document Navigation & Search — a human-centered document UX project improving navigation, retrievability, and search clarity in constrained documentation environments." />
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="SOP Accessibility System — Sora Kim">
+<meta property="og:title" content="Procedural Document Navigation & Search — Sora Kim">
 <meta property="og:description"
-content="A human-centered document UX project focused on searchability, keyword pathways, and cross-reference clarity in GMP documentation.">
+content="A human-centered document UX project focused on searchability, keyword pathways, and retrieval clarity in constrained procedural documentation environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/project-sop-accessibility.html">
 <meta property="og:site_name" content="Sora Kim">
@@ -405,23 +405,24 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     <div class="hero-inner">
       <div>
         <span class="eyebrow">📘 case study / document UX / regulated environments</span>
-        <h1 class="title">SOP Accessibility System</h1>
+        <h1 class="title">Procedural Document Navigation &amp; Search</h1>
         <p class="lead">
-          A human-centered document UX project focused on improving searchability, keyword pathways, and information access in scanned GMP SOP archives without altering validated files.
+          A human-centered document UX project focused on improving searchability, retrieval cues, and information access in constrained procedural document archives without altering validated source files.
         </p>
 
         <div class="meta-row">
           <span class="meta-chip">document UX</span>
           <span class="meta-chip">information architecture</span>
+          <span class="meta-chip">search interface</span>
           <span class="meta-chip">usability testing</span>
-          <span class="meta-chip">excel</span>
           <span class="meta-chip">python</span>
           <span class="meta-chip">R</span>
           <span class="meta-chip">paper in progress</span>
         </div>
 
         <div class="hero-actions">
-          <a class="btn primary" href="projects.html">back to projects</a>
+          <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">live demo</a>
+          <a class="btn" href="projects.html">back to projects</a>
           <a class="btn" href="papers.html">view papers</a>
         </div>
       </div>
@@ -429,7 +430,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <div class="hero-side">
         <div class="note">
           <h3>🎯 Core design question</h3>
-          <p>How can SOP retrievability be improved in a validated GMP environment where the source files themselves cannot be modified?</p>
+          <p>How can procedural document retrievability be improved in a controlled environment where the source files themselves cannot be modified?</p>
           <div class="flow-mini">
             <span>scanned archive</span>
             <span>keyword layer</span>
@@ -439,7 +440,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
 
         <div class="note">
           <h3>📝 Project role in the portfolio</h3>
-          <p>This project anchors the accessibility and document-navigation side of my HCI work, and is also being developed into a paper on document usability and compliance-constrained design in regulated systems.</p>
+          <p>This project anchors the document-navigation and accessibility side of my HCI work, and is also being developed into a paper on document usability and compliance-constrained design in high-stakes systems.</p>
           <div class="flow-mini">
             <span>project</span>
             <span>prototype</span>
@@ -452,19 +453,19 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
 
   <section class="metrics">
     <div class="metric-card blue">
-      <div class="small-label">scope</div>
-      <div class="metric-number">~500</div>
-      <p>SOPs reviewed across QA, QC, and Production contexts.</p>
+      <div class="small-label">participants</div>
+      <div class="metric-number">12</div>
+      <p>Prototype usability responses collected from frequent SOP users and one non-expert participant.</p>
     </div>
     <div class="metric-card green">
-      <div class="small-label">speed gain</div>
-      <div class="metric-number">70–80%</div>
-      <p>Observed reduction in search time during prototype-based user testing.</p>
+      <div class="small-label">ease of use</div>
+      <div class="metric-number">4.83/5</div>
+      <p>Mean rating for ease of finding relevant sections using the search interface.</p>
     </div>
     <div class="metric-card lilac">
-      <div class="small-label">validated file changes</div>
-      <div class="metric-number">0</div>
-      <p>No validated source documents or controlled SOP files were modified.</p>
+      <div class="small-label">workplace adoption</div>
+      <div class="metric-number">100%</div>
+      <p>All respondents said they would use a tool like this in their workplace if available.</p>
     </div>
   </section>
 
@@ -473,8 +474,8 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">problem framing</span>
     </div>
-    <p>In <strong>Good Manufacturing Practice (GMP)</strong> environments, all <strong>Standard Operating Procedures (SOPs)</strong> are tightly controlled. SOPs are the formal documents that tell analysts and operators exactly how regulated work should be performed, recorded, and reviewed.</p>
-    <p>In practice, these documents are essential to quality and compliance — but they are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling just to find the right procedure.</p>
+    <p>In regulated and procedure-heavy environments, formal operating documents are tightly controlled. These documents tell analysts and operators exactly how work should be performed, recorded, and reviewed.</p>
+    <p>In practice, such documents are essential to quality and compliance — but they are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling simply to find the right procedure.</p>
     <div class="quote-line">💬 Usability is often invisible in compliance-heavy systems, yet it strongly shapes efficiency, confidence, and error risk in everyday work.</div>
   </section>
 
@@ -487,7 +488,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <div class="card-block">
         <h3>Observed pain points</h3>
         <ul class="bullets">
-          <li>Scanned SOP files blocked keyword search.</li>
+          <li>Scanned procedural files blocked keyword search.</li>
           <li>Document titles were often too broad or too similar.</li>
           <li>Users opened multiple wrong files before locating the correct one.</li>
           <li>Urgent review situations amplified navigation burden and cognitive fatigue.</li>
@@ -495,7 +496,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       </div>
       <div class="card-block">
         <h3>Why this was difficult</h3>
-        <p>In a validated GMP environment, the source files themselves cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not "replace the system," but rather "improve usability without touching the validated archive."</p>
+        <p>In a controlled environment, source documents cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not "replace the system," but rather "improve usability without touching the archive itself."</p>
       </div>
     </div>
   </section>
@@ -505,7 +506,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
-    <p>How can a human-centered retrieval layer improve navigation and reduce documentation fatigue in a regulated environment where only validated materials can be used operationally?</p>
+    <p>How can a human-centered retrieval layer improve navigation and reduce documentation fatigue in a constrained environment where only approved materials can be used operationally?</p>
   </section>
 
   <section class="section-card green">
@@ -515,8 +516,8 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     </div>
     <div class="method-list">
       <div class="method-item">
-        <h3>1. Excel-based keyword mapping</h3>
-        <p>Reviewed approximately 500 SOPs and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.</p>
+        <h3>1. Metadata and keyword mapping</h3>
+        <p>Reviewed approximately 500 procedural documents and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.</p>
       </div>
       <div class="method-item">
         <h3>2. Structure and overlap analysis</h3>
@@ -524,12 +525,47 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       </div>
       <div class="method-item">
         <h3>3. Prototype artifact</h3>
-        <p>Created an external retrieval aid rather than a replacement system: a prototype accessibility artifact that allowed users to search by keywords, related process, and document cues without altering the validated SOP files themselves.</p>
+        <p>Created an external retrieval aid rather than a replacement system: a prototype accessibility layer that allowed users to search by keywords, document cues, and related terminology without altering validated source files.</p>
       </div>
       <div class="method-item">
         <h3>4. Prototype-based usability testing</h3>
-        <p>Conducted usability testing with QC users using the prototype artifact. The artifact was not deployed as a live GMP production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer.</p>
+        <p>Conducted usability testing with likely end users using the prototype artifact. The artifact was not deployed as a live production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section-card sand">
+    <div class="section-head">
+      <h2 class="section-title">🖥 Prototype interface</h2>
+      <span class="section-tag">prototype screenshots</span>
+    </div>
+
+    <p>
+      The prototype demonstrates how an external keyword-based accessibility layer can support procedural document retrieval without modifying validated files. It was implemented as a lightweight search interface and evaluated as an interactive artifact rather than a production system.
+    </p>
+
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Main search interface</h3>
+        <img src="assets/sop-search-interface.png" alt="Main interface of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
+        <p style="margin-top:8px;">The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow.</p>
+      </div>
+
+      <div class="card-block">
+        <h3>Search results</h3>
+        <img src="assets/sop-search-results.png" alt="Search result screen of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
+        <p style="margin-top:8px;">The result view shows document identifiers, page cues, highlighted matches, and ranked snippets designed to reduce navigation uncertainty.</p>
+      </div>
+    </div>
+
+    <div class="card-block" style="margin-top:16px;">
+      <h3>No-result feedback</h3>
+      <img src="assets/sop-search-no-results.png" alt="No result screen of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
+      <p style="margin-top:8px;">The no-result state was intentionally documented because user feedback showed that empty search states were an important point of confusion and therefore part of the design problem itself.</p>
+    </div>
+
+    <div class="hero-actions" style="margin-top:16px;">
+      <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">view live prototype</a>
     </div>
   </section>
 
@@ -541,26 +577,39 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     <div class="grid-2">
       <div class="card-block">
         <h3>Testing setup</h3>
-        <p>Because validated GMP environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live controlled system. Users were asked to complete retrieval tasks using the prototype artifact as a simulated accessibility layer.</p>
+        <p>Because controlled environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live system. Participants were asked to complete simple retrieval tasks using the prototype as a simulated accessibility layer.</p>
         <div class="flow-mini">
           <span>prototype artifact</span>
           <span>task-based test</span>
-          <span>QC users</span>
+          <span>n = 12</span>
         </div>
       </div>
       <div class="card-block">
         <h3>What was measured</h3>
         <ul class="bullets">
-          <li>time to locate a target SOP</li>
-          <li>number of wrong-document openings</li>
-          <li>user confidence in identifying the right file</li>
-          <li>qualitative feedback on navigational clarity</li>
+          <li>ease of finding relevant document sections</li>
+          <li>usefulness of titles, snippets, and highlighting</li>
+          <li>overall intuitiveness of the interface</li>
+          <li>qualitative feedback on confusion and ambiguity</li>
         </ul>
       </div>
     </div>
     <div class="note" style="margin-top:16px;">
+      <h3>Quantitative summary</h3>
+      <p>
+        A short usability survey was completed by 12 participants. Most respondents reported regular SOP use (91.7%) and daily SOP search behavior (91.7%). The prototype received high ratings for ease of use (mean 4.83/5), usefulness of search results (mean 4.50/5), and overall intuitiveness (mean 4.82/5).
+      </p>
+      <div class="flow-mini">
+        <span>regular SOP users: 91.7%</span>
+        <span>daily search: 91.7%</span>
+        <span>ease: 4.83 / 5</span>
+        <span>usefulness: 4.50 / 5</span>
+        <span>intuitiveness: 4.82 / 5</span>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px;">
       <h3>Why this matters</h3>
-      <p>The testing did not claim production deployment inside a validated GMP system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users perform retrieval work more efficiently and with less uncertainty?</p>
+      <p>The study did not claim production deployment inside a validated system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users perform retrieval work more efficiently and with less uncertainty?</p>
     </div>
   </section>
 
@@ -573,43 +622,48 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <table>
         <thead>
           <tr>
-            <th>Metric</th>
-            <th>Before</th>
-            <th>After prototype</th>
+            <th>Measure</th>
+            <th>Result</th>
             <th>Interpretation</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>SOP search time</td>
-            <td>~6–7 min</td>
-            <td>~1–2 min</td>
-            <td>Substantial improvement in retrievability</td>
+            <td>Regular procedural document users</td>
+            <td>91.7% (11/12)</td>
+            <td>Most participants were experienced documentation users.</td>
           </tr>
           <tr>
-            <td>User confidence</td>
-            <td>Low</td>
-            <td>Higher</td>
-            <td>Users reported clearer starting points</td>
+            <td>Daily search frequency</td>
+            <td>91.7% (11/12)</td>
+            <td>The study reflected real, frequent retrieval needs.</td>
           </tr>
           <tr>
-            <td>Wrong-document openings</td>
-            <td>Frequent</td>
-            <td>Reduced</td>
-            <td>Keyword-based cues improved navigation</td>
+            <td>Ease of finding relevant sections</td>
+            <td>Mean 4.83 / 5</td>
+            <td>Participants found the interface highly easy to use.</td>
           </tr>
           <tr>
-            <td>Compliance risk</td>
-            <td>None</td>
-            <td>None</td>
-            <td>No validated source files were modified</td>
+            <td>Usefulness of titles / snippets / highlighting</td>
+            <td>Mean 4.50 / 5</td>
+            <td>Result cues helped users identify relevant content quickly.</td>
+          </tr>
+          <tr>
+            <td>Overall intuitiveness</td>
+            <td>Mean 4.82 / 5</td>
+            <td>The interaction model felt natural and easy to follow.</td>
+          </tr>
+          <tr>
+            <td>Workplace adoption intent</td>
+            <td>100%</td>
+            <td>All respondents said they would use the tool if available in their workplace.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="note" style="margin-top:16px;">
-      <h3>💬 User response</h3>
-      <p>A representative reaction from testing was essentially: "Now I know where to look first." That shift mattered because the intervention did not simplify the SOP content itself; it improved how users approached the archive.</p>
+      <h3>💬 Qualitative feedback</h3>
+      <p>Participants were generally very positive about the prototype, but a few noted moments of confusion when a query returned no result or when multiple entries with similar titles appeared under different document IDs. Some of these issues were also related to the synthetic prototype corpus, which occasionally produced missing or overlapping entries. These observations pointed to future improvements in query feedback, document differentiation, and result explanation.</p>
     </div>
   </section>
 
@@ -618,7 +672,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">📄 Paper in progress</h2>
       <span class="section-tag">research output</span>
     </div>
-    <p>This project is being developed into a paper on accessibility, document usability, and compliance-constrained design in regulated environments. The paper extends the case study from a practical prototype into a broader HCI argument: usability improvements in validation-sensitive systems can often be achieved through external support layers rather than direct modification or replacement of the underlying system.</p>
+    <p>This project is being developed into a paper on accessibility, document usability, and compliance-constrained design in procedural environments. The paper extends the case study from a practical prototype into a broader HCI argument: usability improvements in validation-sensitive systems can often be achieved through external support layers rather than direct modification or replacement of the underlying system.</p>
     <p>The paper-in-progress uses this project to frame a broader question about how human-centered design can operate in environments where formal systems are difficult to modify, yet users still experience substantial navigational and cognitive burden.</p>
   </section>
 
@@ -627,8 +681,9 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">💬 Reflection</h2>
       <span class="section-tag">why it is HCI</span>
     </div>
-    <p>This project showed that usability problems in regulated environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.</p>
+    <p>This project showed that usability problems in constrained procedural environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.</p>
     <p>From an HCI perspective, the important insight was that meaningful design improvement did not require rewriting the validated system. An external, low-code accessibility layer was enough to improve user performance and reveal a concrete design opportunity.</p>
+    <p>Importantly, the study also showed that accessibility is not only about successful retrieval. Users needed clearer feedback when no result was returned and better differentiation between similarly titled entries. These observations helped frame the project not simply as a search aid, but as a broader HCI problem concerning uncertainty, navigation, and compliance-constrained document interaction.</p>
   </section>
 
   <section class="section-card green">
@@ -644,6 +699,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
           <li>Python for term inspection and structured pattern analysis</li>
           <li>R for lightweight analysis and visualization support</li>
           <li>Keyword mapping and document structuring</li>
+          <li>Streamlit prototype deployment</li>
         </ul>
       </div>
       <div class="card-block">
@@ -652,6 +708,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
           <li>Document UX framing</li>
           <li>Information architecture</li>
           <li>Prototype-based usability testing</li>
+          <li>Search-interface evaluation</li>
           <li>Compliance-constrained design reasoning</li>
         </ul>
       </div>
@@ -663,9 +720,10 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
-    <p>Designed and tested a human-centered SOP accessibility layer that improved retrieval speed and user confidence in a regulated GMP environment — and is now being extended into a paper on document usability in compliance-constrained systems.</p>
+    <p>Designed and tested a human-centered procedural document retrieval layer that improved clarity, confidence, and perceived usability in a constrained archive — and is now being extended into a paper on document interaction in compliance-sensitive systems.</p>
     <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn primary" href="projects.html">back to projects</a>
+      <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">live demo</a>
+      <a class="btn" href="projects.html">back to projects</a>
       <a class="btn" href="papers.html">papers</a>
       <a class="btn" href="index.html">home</a>
     </div>
