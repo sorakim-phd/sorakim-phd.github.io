@@ -4,17 +4,13 @@
 <meta charset="UTF-8" />
 <title>Papers · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<meta name="description"
-content="Papers and working manuscripts from Sora Kim’s research program on human-centered systems, regulatory UX, procedural cognition, responsibility, and AI-mediated decision support in regulated environments." />
-
+<meta name="description" content="Papers and working manuscripts from Sora Kim's research program on human-centered systems, regulatory UX, procedural cognition, responsibility, and AI-mediated decision support in regulated environments." />
 <meta property="og:type" content="website">
 <meta property="og:title" content="Papers — Sora Kim">
-<meta property="og:description" content="Current HCI paper directions and conceptual manuscripts from Sora Kim’s research program.">
+<meta property="og:description" content="Current HCI paper directions and conceptual manuscripts from Sora Kim's research program.">
 <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-phd.github.io/papers.html">
 <meta property="og:site_name" content="Sora Kim">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,31 +25,43 @@ content="Papers and working manuscripts from Sora Kim’s research program on hu
   --muted-strong:#4a4d56;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.13);
-
   --blue:#e8eefc;
   --green:#ebf7f1;
   --lilac:#f2edfc;
   --pink:#f9eef2;
   --sand:#f6f1e7;
   --silver:#f3f4f8;
-
   --blue-strong:#cddafb;
   --green-strong:#cbeedb;
   --lilac-strong:#ddd0fb;
   --pink-strong:#f3d7df;
   --sand-strong:#ebdec0;
   --silver-strong:#e1e5ef;
-
   --radius-2xl:34px;
   --radius-xl:28px;
   --radius-lg:22px;
   --radius-md:18px;
-
   --shadow:0 18px 55px rgba(15,23,42,0.08);
   --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
   --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
-
   --mono:'JetBrains Mono', monospace;
+}
+
+html[data-theme="dark"]{
+  --text:#e2e4ea;
+  --muted:#7a7d8a;
+  --muted-strong:#a8aab8;
+  --line:rgba(255,255,255,0.07);
+  --line-strong:rgba(255,255,255,0.13);
+  --panel:rgba(22,24,32,0.88);
+  --panel-strong:rgba(26,28,38,0.94);
+  --shadow:0 18px 55px rgba(0,0,0,0.40);
+  --shadow-soft:0 10px 28px rgba(0,0,0,0.28);
+  --shadow-hover:0 28px 70px rgba(0,0,0,0.55);
+  --blue-strong:rgba(100,130,220,0.3);
+  --green-strong:rgba(80,180,120,0.3);
+  --lilac-strong:rgba(160,120,240,0.3);
+  --pink-strong:rgba(220,120,150,0.3);
 }
 
 *{box-sizing:border-box}
@@ -71,6 +79,13 @@ body{
     radial-gradient(circle at 24% 84%, rgba(235,247,241,0.38) 0, transparent 22%),
     linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
   overflow-x:hidden;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 10% 12%, rgba(22,24,36,0.98) 0, transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(18,22,44,0.55) 0, transparent 28%),
+    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
 }
 
 body::before{
@@ -81,6 +96,9 @@ body::before{
   background:
     linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
     radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
+}
+html[data-theme="dark"] body::before{
+  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
 }
 
 nav{
@@ -98,6 +116,7 @@ nav{
   border-radius:999px;
   box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
+html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
 
 nav a{
   text-decoration:none;
@@ -109,27 +128,40 @@ nav a{
   transition:all .22s ease;
   white-space:nowrap;
 }
+nav a:hover{ color:var(--text); background:rgba(255,255,255,0.72); }
+html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
+nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
+html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
-nav a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,0.72);
+.theme-toggle{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:100;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.78);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
 }
+html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
+.theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
+.theme-toggle:active{ transform:scale(0.95); }
 
-nav a.active{
-  color:var(--text);
-  background:rgba(255,255,255,0.86);
-  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
-}
+.wrap{ max-width:1320px; margin:0 auto; padding:112px 28px 92px; }
 
-.wrap{
-  max-width:1320px;
-  margin:0 auto;
-  padding:112px 28px 92px;
-}
-
-.hero,
-.section-card,
-.paper{
+.hero,.section-card,.paper{
   border:1px solid var(--line);
   background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%);
@@ -148,6 +180,7 @@ nav a.active{
     radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
     linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.80));
 }
+html[data-theme="dark"] .hero{ background:linear-gradient(180deg, rgba(22,24,36,0.92), rgba(18,20,30,0.88)); }
 
 .hero::before{
   content:"";
@@ -157,6 +190,7 @@ nav a.active{
   border-bottom:1px solid var(--line);
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
+html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
 
 .hero::after{
   content:"";
@@ -170,21 +204,8 @@ nav a.active{
   pointer-events:none;
 }
 
-.window-dots{
-  position:absolute;
-  top:16px;
-  left:18px;
-  display:flex;
-  gap:7px;
-  z-index:2;
-}
-
-.window-dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
-}
+.window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
+.window-dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
 .window-dot:nth-child(1){background:#ff5f57}
 .window-dot:nth-child(2){background:#febc2e}
 .window-dot:nth-child(3){background:#28c840}
@@ -206,21 +227,11 @@ nav a.active{
   background:rgba(255,255,255,0.44);
   box-shadow:var(--shadow-soft);
 }
+html[data-theme="dark"] .hero-main{ background:rgba(255,255,255,0.04); }
 
-.hero-side{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:12px;
-}
+.hero-side{ display:grid; grid-template-columns:1fr; gap:12px; }
 
-.kicker,
-.chip,
-.hint,
-.paper-tagline,
-.mini-label,
-.status,
-.pill,
-.section-tag{
+.kicker,.chip,.hint,.paper-tagline,.mini-label,.status,.pill,.section-tag{
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -233,29 +244,16 @@ nav a.active{
   color:var(--muted);
   box-shadow:var(--shadow-soft);
 }
+html[data-theme="dark"] .kicker,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .hint,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .section-tag{ background:rgba(255,255,255,0.06); }
 
-.title,
-.h2,
-.paper-title,
-.side-card h3{
-  font-family:'Sora',sans-serif;
-  letter-spacing:-0.055em;
-}
-
-.title{
-  margin:14px 0 14px;
-  font-size:58px;
-  line-height:0.95;
-  font-weight:700;
-  max-width:8.5ch;
-}
-
-.intro{
-  margin:0;
-  max-width:760px;
-  font-size:16px;
-  color:rgba(29,29,31,0.86);
-}
+.title,.h2,.paper-title,.side-card h3{ font-family:'Sora',sans-serif; letter-spacing:-0.055em; }
+.title{ margin:14px 0 14px; font-size:58px; line-height:0.95; font-weight:700; max-width:8.5ch; }
+.intro{ margin:0; max-width:760px; font-size:16px; color:rgba(29,29,31,0.86); }
+html[data-theme="dark"] .intro{ color:rgba(210,214,226,0.84); }
 
 .hero-note{
   margin-top:24px;
@@ -266,23 +264,10 @@ nav a.active{
   background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
   box-shadow:var(--shadow-soft);
 }
-
-.hero-note strong{
-  display:block;
-  font-family:'Sora',sans-serif;
-  font-size:18px;
-  line-height:1.08;
-  letter-spacing:-0.04em;
-  margin-bottom:6px;
-  font-weight:600;
-}
-
-.hero-note span{
-  display:block;
-  font-size:14px;
-  color:#4b4e57;
-  line-height:1.6;
-}
+html[data-theme="dark"] .hero-note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
+.hero-note strong{ display:block; font-family:'Sora',sans-serif; font-size:18px; line-height:1.08; letter-spacing:-0.04em; margin-bottom:6px; font-weight:600; }
+.hero-note span{ display:block; font-size:14px; color:#4b4e57; line-height:1.6; }
+html[data-theme="dark"] .hero-note span{ color:#9a9daa; }
 
 .side-card{
   position:relative;
@@ -292,48 +277,18 @@ nav a.active{
   padding:18px;
   box-shadow:var(--shadow);
 }
+.side-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
+.side-card.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92)); }
+.side-card.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
+.side-card.soft-pink{ background:linear-gradient(180deg, rgba(249,238,242,0.76), rgba(255,255,255,0.92)); }
+.side-card.soft-pink::before{ background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96)); }
+html[data-theme="dark"] .side-card.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.70), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .side-card.soft-pink{ background:linear-gradient(180deg, rgba(40,18,26,0.70), rgba(22,24,34,0.92)); }
 
-.side-card::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:4px;
-}
-
-.side-card.soft-green{
-  background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92));
-}
-.side-card.soft-green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
-}
-
-.side-card.soft-pink{
-  background:linear-gradient(180deg, rgba(249,238,242,0.76), rgba(255,255,255,0.92));
-}
-.side-card.soft-pink::before{
-  background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96));
-}
-
-.meta-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
-
-.side-card h3{
-  margin:0 0 8px 0;
-  font-size:18px;
-  line-height:1.08;
-  font-weight:600;
-}
-
-.side-card p{
-  margin:0;
-  font-size:14px;
-  color:#40434b;
-  line-height:1.7;
-}
+.meta-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.side-card h3{ margin:0 0 8px 0; font-size:18px; line-height:1.08; font-weight:600; }
+.side-card p{ margin:0; font-size:14px; color:#40434b; line-height:1.7; }
+html[data-theme="dark"] .side-card p{ color:#9a9daa; }
 
 .section-card{
   position:relative;
@@ -343,36 +298,14 @@ nav a.active{
   margin-top:16px;
   background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(249,249,252,0.84));
 }
+html[data-theme="dark"] .section-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 
-.section-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:14px;
-  flex-wrap:wrap;
-}
+.section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.h2{ margin:8px 0 0; font-size:32px; line-height:1.08; font-weight:600; }
+.section-intro{ margin:0 0 14px 0; font-size:14px; color:#44484f; max-width:78ch; line-height:1.7; }
+html[data-theme="dark"] .section-intro{ color:#9a9daa; }
 
-.h2{
-  margin:8px 0 0;
-  font-size:32px;
-  line-height:1.08;
-  font-weight:600;
-}
-
-.section-intro{
-  margin:0 0 14px 0;
-  font-size:14px;
-  color:#44484f;
-  max-width:78ch;
-  line-height:1.7;
-}
-
-.papers{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
+.papers{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 
 .paper{
   position:relative;
@@ -381,14 +314,7 @@ nav a.active{
   padding:22px;
   transition:transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
 }
-
-.paper::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:4px;
-}
-
+.paper::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
 .paper::after{
   content:"";
   position:absolute;
@@ -401,140 +327,54 @@ nav a.active{
   pointer-events:none;
   opacity:.95;
 }
+.paper:hover{ transform:translateY(-6px); border-color:var(--line-strong); box-shadow:var(--shadow-hover); }
 
-.paper:hover{
-  transform:translateY(-6px);
-  border-color:var(--line-strong);
-  background:rgba(255,255,255,0.96);
-  box-shadow:var(--shadow-hover);
-}
+.paper.hci-paper.blue{ background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93)); }
+.paper.hci-paper.blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
+.paper.hci-paper.green{ background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93)); }
+.paper.hci-paper.green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
+.paper.hci-paper.purple{ background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93)); }
+.paper.hci-paper.purple::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
+.paper.hci-paper.pink{ background:linear-gradient(180deg, rgba(249,238,242,0.8), rgba(255,255,255,0.93)); }
+.paper.hci-paper.pink::before{ background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96)); }
+.paper.concept-paper.blue{ background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93)); }
+.paper.concept-paper.blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
+.paper.concept-paper.pink{ background:linear-gradient(180deg, rgba(249,238,242,0.8), rgba(255,255,255,0.93)); }
+.paper.concept-paper.pink::before{ background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96)); }
+.paper.concept-paper.purple{ background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93)); }
+.paper.concept-paper.purple::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
+.paper.concept-paper.green{ background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93)); }
+.paper.concept-paper.green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
 
-.paper.hci-paper.blue{
-  background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93));
-}
-.paper.hci-paper.blue::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
-}
+html[data-theme="dark"] .paper.hci-paper.blue,
+html[data-theme="dark"] .paper.concept-paper.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .paper.hci-paper.green,
+html[data-theme="dark"] .paper.concept-paper.green{ background:linear-gradient(180deg, rgba(14,28,22,0.72), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .paper.hci-paper.purple,
+html[data-theme="dark"] .paper.concept-paper.purple{ background:linear-gradient(180deg, rgba(26,18,44,0.72), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .paper.hci-paper.pink,
+html[data-theme="dark"] .paper.concept-paper.pink{ background:linear-gradient(180deg, rgba(40,18,26,0.72), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .paper:hover{ background:rgba(255,255,255,0.06); }
 
-.paper.hci-paper.green{
-  background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93));
-}
-.paper.hci-paper.green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
-}
-
-.paper.hci-paper.purple{
-  background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93));
-}
-.paper.hci-paper.purple::before{
-  background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
-}
-
-.paper.hci-paper.pink{
-  background:linear-gradient(180deg, rgba(249,238,242,0.8), rgba(255,255,255,0.93));
-}
-.paper.hci-paper.pink::before{
-  background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96));
-}
-
-.paper.concept-paper.blue{
-  background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93));
-}
-.paper.concept-paper.blue::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
-}
-
-.paper.concept-paper.pink{
-  background:linear-gradient(180deg, rgba(249,238,242,0.8), rgba(255,255,255,0.93));
-}
-.paper.concept-paper.pink::before{
-  background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96));
-}
-
-.paper.concept-paper.purple{
-  background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93));
-}
-.paper.concept-paper.purple::before{
-  background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96));
-}
-
-.paper.concept-paper.green{
-  background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93));
-}
-.paper.concept-paper.green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
-}
-
-.paper-top{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
-  position:relative;
-  z-index:1;
-}
-
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  flex:0 0 auto;
-}
-
+.paper-top{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:12px; position:relative; z-index:1; }
+.dot{ width:10px; height:10px; border-radius:50%; flex:0 0 auto; }
 .dot-blue{background:#8fb2ff}
 .dot-pink{background:#f0a8bb}
 .dot-purple{background:#c7a2ff}
 .dot-green{background:#8fd9ae}
+.pill{ white-space:nowrap; text-transform:uppercase; letter-spacing:0.04em; }
 
-.pill{
-  white-space:nowrap;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-}
+.paper-title{ margin:0 0 8px 0; font-size:30px; font-weight:600; line-height:1.08; position:relative; z-index:1; }
+.paper-tagline{ margin:0 0 12px 0; text-transform:uppercase; letter-spacing:0.05em; position:relative; z-index:1; }
 
-.paper-title{
-  margin:0 0 8px 0;
-  font-size:30px;
-  font-weight:600;
-  line-height:1.08;
-  position:relative;
-  z-index:1;
-}
+.abstract{ margin:0 0 12px 0; font-size:15px; color:rgba(18,19,22,0.82); line-height:1.72; position:relative; z-index:1; }
+html[data-theme="dark"] .abstract{ color:rgba(210,214,226,0.82); }
 
-.paper-tagline{
-  margin:0 0 12px 0;
-  text-transform:uppercase;
-  letter-spacing:0.05em;
-  position:relative;
-  z-index:1;
-}
+.meta{ margin:0; padding-left:18px; color:#44484f; font-size:14px; line-height:1.7; position:relative; z-index:1; }
+html[data-theme="dark"] .meta{ color:#9a9daa; }
+.meta li{ margin:6px 0; }
 
-.abstract{
-  margin:0 0 12px 0;
-  font-size:15px;
-  color:rgba(18,19,22,0.82);
-  line-height:1.72;
-  position:relative;
-  z-index:1;
-}
-
-.meta{
-  margin:0;
-  padding-left:18px;
-  color:#44484f;
-  font-size:14px;
-  line-height:1.7;
-  position:relative;
-  z-index:1;
-}
-
-.meta li{
-  margin:6px 0;
-}
-
-.concept-line,
-.progress{
+.concept-line,.progress{
   margin-top:14px;
   padding:11px 13px;
   border-radius:16px;
@@ -544,30 +384,14 @@ nav a.active{
   position:relative;
   z-index:1;
 }
+html[data-theme="dark"] .concept-line,
+html[data-theme="dark"] .progress{ background:rgba(255,255,255,0.04); }
+.concept-line{ color:var(--muted); font-size:12px; }
+.progress{ color:#57606f; font-size:12px; text-transform:uppercase; letter-spacing:0.03em; }
+html[data-theme="dark"] .progress{ color:#9a9daa; }
 
-.concept-line{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.progress{
-  color:#57606f;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:0.03em;
-}
-
-.links{
-  margin-top:14px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  position:relative;
-  z-index:1;
-}
-
-.links a,
-.abstract-toggle{
+.links{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; position:relative; z-index:1; }
+.links a,.abstract-toggle{
   display:inline-flex;
   align-items:center;
   gap:10px;
@@ -582,25 +406,15 @@ nav a.active{
   box-shadow:var(--shadow-soft);
   font-size:13px;
 }
+.links a:hover,.abstract-toggle:hover{ background:rgba(255,255,255,0.86); transform:translateY(-1px); }
+html[data-theme="dark"] .links a,
+html[data-theme="dark"] .abstract-toggle{ background:rgba(255,255,255,0.07); }
+html[data-theme="dark"] .links a:hover,
+html[data-theme="dark"] .abstract-toggle:hover{ background:rgba(255,255,255,0.12); }
+.abstract-toggle{ cursor:pointer; font-family:inherit; }
 
-.links a:hover,
-.abstract-toggle:hover{
-  background:rgba(255,255,255,0.86);
-  transform:translateY(-1px);
-}
-
-.abstract-toggle{
-  cursor:pointer;
-  font-family:inherit;
-}
-
-.abstract-content{
-  display:none;
-}
-
-.abstract-content.open{
-  display:block;
-}
+.abstract-content{ display:none; }
+.abstract-content.open{ display:block; }
 
 .footer{
   margin-top:28px;
@@ -615,53 +429,23 @@ nav a.active{
   font-size:12px;
 }
 
-.site-credit{
-  margin-top:16px;
-  font-size:12px;
-  color:var(--muted);
-  text-align:right;
-}
+.site-credit{ margin-top:16px; font-size:12px; color:var(--muted); text-align:right; }
 
 @media (max-width:1180px){
-  .hero-grid,
-  .papers{
-    grid-template-columns:1fr;
-  }
-
-  .title{
-    max-width:none;
-  }
+  .hero-grid,.papers{ grid-template-columns:1fr; }
+  .title{ max-width:none; }
 }
 
 @media (max-width:860px){
-  nav{
-    left:14px;
-    right:14px;
-    justify-content:flex-start;
-    overflow:auto;
-  }
-
-  .wrap{
-    padding:98px 18px 72px;
-  }
-
-  .hero{
-    padding:24px 18px;
-  }
-
-  .hero-main{
-    padding:22px 20px;
-  }
-
-  .title{
-    font-size:46px;
-  }
-
-  .section-head,
-  .footer{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
+  nav::-webkit-scrollbar{ display:none; }
+  nav a{ font-size:12px; padding:7px 10px; }
+  .wrap{ padding:80px 18px 72px; }
+  .hero{ padding:24px 18px; }
+  .hero-main{ padding:22px 20px; }
+  .title{ font-size:42px; }
+  .section-head,.footer{ flex-direction:column; align-items:flex-start; }
+  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
 }
 </style>
 </head>
@@ -680,24 +464,17 @@ nav a.active{
 <div class="wrap">
   <section class="hero">
     <div class="window-dots">
-      <span class="window-dot"></span>
-      <span class="window-dot"></span>
-      <span class="window-dot"></span>
+      <span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span>
     </div>
 
     <div class="hero-grid">
       <div class="hero-main">
         <div class="kicker">papers / HCI papers / conceptual manuscripts</div>
         <h1 class="title">Papers & manuscripts</h1>
-        <p class="intro">
-          This page brings together two layers of writing in my research program. The HCI papers are the main research direction. The conceptual manuscripts provide theoretical grounding for them.
-        </p>
-
+        <p class="intro">This page brings together two layers of writing in my research program. The HCI papers are the main research direction. The conceptual manuscripts provide theoretical grounding for them.</p>
         <div class="hero-note">
           <strong>Writing structure.</strong>
-          <span>
-            The HCI papers grow directly from the project portfolio. The conceptual manuscripts clarify how judgment, interpretation, responsibility, and closure operate across those same procedural environments.
-          </span>
+          <span>The HCI papers grow directly from the project portfolio. The conceptual manuscripts clarify how judgment, interpretation, responsibility, and closure operate across those same procedural environments.</span>
         </div>
       </div>
 
@@ -709,11 +486,8 @@ nav a.active{
             <span class="chip">design-oriented</span>
           </div>
           <h3>Four paper directions tied to the project portfolio.</h3>
-          <p>
-            These papers develop the case studies and prototypes into HCI arguments about usability, workflow friction, reasoning support, and regulatory UX.
-          </p>
+          <p>These papers develop the case studies and prototypes into HCI arguments about usability, workflow friction, reasoning support, and regulatory UX.</p>
         </div>
-
         <div class="side-card soft-pink">
           <div class="meta-row">
             <span class="chip">conceptual manuscripts</span>
@@ -723,9 +497,7 @@ nav a.active{
             <span class="chip">PAC</span>
           </div>
           <h3>Conceptual grounding for the broader research agenda.</h3>
-          <p>
-            These manuscripts support the HCI work by clarifying interpretive expectations, procedural cognition, investigative closure, and AI-mediated convergence.
-          </p>
+          <p>These manuscripts support the HCI work by clarifying interpretive expectations, procedural cognition, investigative closure, and AI-mediated convergence.</p>
         </div>
       </div>
     </div>
@@ -739,13 +511,9 @@ nav a.active{
       </div>
       <div class="hint">main HCI-facing writing directions</div>
     </div>
-
-    <p class="section-intro">
-      These papers grow directly from the project portfolio and represent the main HCI-facing writing directions in the research program.
-    </p>
+    <p class="section-intro">These papers grow directly from the project portfolio and represent the main HCI-facing writing directions in the research program.</p>
 
     <div class="papers">
-
       <article class="paper hci-paper blue">
         <div class="paper-top">
           <span class="dot dot-blue"></span>
@@ -753,19 +521,14 @@ nav a.active{
           <span class="pill">document usability</span>
           <span class="pill">accessibility</span>
         </div>
-
         <h2 class="paper-title">SOP Accessibility Paper</h2>
         <p class="paper-tagline">project-linked HCI paper</p>
-        <p class="abstract">
-          A paper on accessibility, document usability, and compliance-constrained design in regulated environments, developed from the SOP accessibility project.
-        </p>
-
+        <p class="abstract">A paper on accessibility, document usability, and compliance-constrained design in regulated environments, developed from the SOP accessibility project.</p>
         <ul class="meta">
           <li>Focus: searchability, keyword pathways, and navigation in scanned SOP archives.</li>
           <li>Design argument: usability improvements can emerge through external support layers without changing validated source files.</li>
           <li>Contribution: positions accessibility as a serious HCI issue in compliance-heavy documentation systems.</li>
         </ul>
-
         <div class="progress">Paper direction active</div>
       </article>
 
@@ -776,19 +539,14 @@ nav a.active{
           <span class="pill">workflow UX</span>
           <span class="pill">review interaction</span>
         </div>
-
         <h2 class="paper-title">Deviation–CAPA Workflow Paper</h2>
         <p class="paper-tagline">project-linked HCI paper</p>
-        <p class="abstract">
-          A paper on review interaction, workflow friction, and documentation burden in validated deviation–CAPA systems.
-        </p>
-
+        <p class="abstract">A paper on review interaction, workflow friction, and documentation burden in validated deviation–CAPA systems.</p>
         <ul class="meta">
           <li>Focus: review clarity, feedback consistency, revision loops, and turnaround delays.</li>
           <li>Design argument: validated documentation systems still produce interaction problems that can be studied and redesigned around.</li>
           <li>Contribution: reframes documentation review as an interaction system rather than a purely administrative sequence.</li>
         </ul>
-
         <div class="progress">Paper direction active</div>
       </article>
 
@@ -799,19 +557,14 @@ nav a.active{
           <span class="pill">reasoning support</span>
           <span class="pill">investigations</span>
         </div>
-
         <h2 class="paper-title">RCA Reasoning Paper</h2>
         <p class="paper-tagline">project-linked HCI paper</p>
-        <p class="abstract">
-          A paper on investigation reasoning, causal scaffolding, and human-centered support for deviation analysis in regulated environments.
-        </p>
-
+        <p class="abstract">A paper on investigation reasoning, causal scaffolding, and human-centered support for deviation analysis in regulated environments.</p>
         <ul class="meta">
           <li>Focus: how investigators sustain or lose alternative hypotheses during root cause analysis.</li>
           <li>Design argument: lightweight reasoning scaffolds can broaden causal exploration without altering validated documentation structures.</li>
           <li>Contribution: treats investigation quality as a cognitive systems design problem rather than only an individual skill issue.</li>
         </ul>
-
         <div class="progress">Paper direction active</div>
       </article>
 
@@ -822,22 +575,16 @@ nav a.active{
           <span class="pill">regulatory UX</span>
           <span class="pill">concept paper</span>
         </div>
-
         <h2 class="paper-title">Regulatory UX Concept Paper</h2>
         <p class="paper-tagline">project-linked HCI paper</p>
-        <p class="abstract">
-          A broader HCI paper on human-centered design for regulated procedural environments, connecting the project portfolio into a unified design argument.
-        </p>
-
+        <p class="abstract">A broader HCI paper on human-centered design for regulated procedural environments, connecting the project portfolio into a unified design argument.</p>
         <ul class="meta">
           <li>Focus: what it means to design for usability, judgment, and coordination in validation-constrained systems.</li>
           <li>Design argument: regulated documentation systems should be understood as interaction environments, not only compliance infrastructures.</li>
           <li>Contribution: frames regulatory UX as a broader HCI space.</li>
         </ul>
-
         <div class="progress">Paper direction active</div>
       </article>
-
     </div>
   </section>
 
@@ -849,13 +596,9 @@ nav a.active{
       </div>
       <div class="hint">theoretical support for the broader agenda</div>
     </div>
-
-    <p class="section-intro">
-      These manuscripts provide conceptual grounding for the broader research program. They are not separate from the HCI agenda, but help explain the organizational and interpretive dynamics behind the systems I study.
-    </p>
+    <p class="section-intro">These manuscripts provide conceptual grounding for the broader research program. They are not separate from the HCI agenda, but help explain the organizational and interpretive dynamics behind the systems I study.</p>
 
     <div class="papers">
-
       <article class="paper concept-paper blue">
         <div class="paper-top">
           <span class="dot dot-blue"></span>
@@ -863,26 +606,19 @@ nav a.active{
           <span class="pill">anticipatory alignment</span>
           <span class="pill">organizational infrastructures</span>
         </div>
-
         <h2 class="paper-title">Anticipated Accountability Convergence</h2>
         <p class="paper-tagline">conceptual manuscript</p>
-
         <div class="links">
           <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
           <a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
         </div>
-
         <div class="abstract-content">
-          <p class="abstract">
-            Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
-          </p>
-
+          <p class="abstract">Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.</p>
           <ul class="meta">
             <li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
             <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
             <li>Contribution: theorizes accountability as a prospective organizational condition rather than a purely retrospective evaluative event.</li>
           </ul>
-
           <div class="concept-line">before action → interpretive expectations are prospectively aligned</div>
         </div>
       </article>
@@ -894,28 +630,20 @@ nav a.active{
           <span class="pill">procedural texts</span>
           <span class="pill">document architecture</span>
         </div>
-
         <h2 class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</h2>
         <p class="paper-tagline">conceptual + empirical manuscript</p>
-
         <div class="links">
           <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
           <a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
         </div>
-
         <div class="abstract-content">
-          <p class="abstract">
-            Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
-          </p>
-
+          <p class="abstract">Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.</p>
           <ul class="meta">
             <li>Empirical pilot: 500 procedurally realistic sentences derived from public regulatory and safety documentation.</li>
             <li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentence architecture.</li>
             <li>Contribution: shows how responsibility-relevant judgment is embedded in procedural documentation itself.</li>
           </ul>
-
           <div class="concept-line">during execution → sentence structure shapes interpretive burden and attributable judgment</div>
-
           <div class="progress">Empirical expansion in progress</div>
         </div>
       </article>
@@ -927,26 +655,19 @@ nav a.active{
           <span class="pill">investigations</span>
           <span class="pill">closure pressure</span>
         </div>
-
         <h2 class="paper-title">Responsibility Convergence in Organizational Investigations</h2>
         <p class="paper-tagline">conceptual manuscript</p>
-
         <div class="links">
           <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
           <a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
         </div>
-
         <div class="abstract-content">
-          <p class="abstract">
-            Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
-          </p>
-
+          <p class="abstract">Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.</p>
           <ul class="meta">
             <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
             <li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
             <li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures rather than a simple individual bias.</li>
           </ul>
-
           <div class="concept-line">after events → causal ambiguity is translated into administratively actionable responsibility</div>
         </div>
       </article>
@@ -958,44 +679,34 @@ nav a.active{
           <span class="pill">AI mediation</span>
           <span class="pill">temporal accountability</span>
         </div>
-
         <h2 class="paper-title">Premature Accountability Convergence</h2>
         <p class="paper-tagline">conceptual manuscript</p>
-
         <div class="links">
           <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
           <a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
         </div>
-
         <div class="abstract-content">
-          <p class="abstract">
-            Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
-          </p>
-
+          <p class="abstract">Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.</p>
           <ul class="meta">
             <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
             <li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
             <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
           </ul>
-
           <div class="concept-line">under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined</div>
         </div>
       </article>
-
     </div>
   </section>
 
   <div class="footer">
-    <div>
-      Current emphasis: project-linked HCI papers and conceptual manuscripts within a shared research program.
-    </div>
-    <div>
-      Papers / manuscripts / research writing
-    </div>
+    <div>Current emphasis: project-linked HCI papers and conceptual manuscripts within a shared research program.</div>
+    <div>Papers / manuscripts / research writing</div>
   </div>
 
   <div class="site-credit">© 2026 Sora Kim</div>
 </div>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
 
 <script>
 document.querySelectorAll('.abstract-toggle').forEach(button => {
@@ -1006,6 +717,28 @@ document.querySelectorAll('.abstract-toggle').forEach(button => {
     button.textContent = isOpen ? 'Hide abstract' : 'Abstract';
   });
 });
+
+(function(){
+  var toggle = document.getElementById('themeToggle');
+  var html = document.documentElement;
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = saved === 'dark' || (!saved && prefersDark);
+  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
+  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
+  toggle.addEventListener('click', function(){
+    var current = html.getAttribute('data-theme');
+    if(current === 'dark'){
+      html.setAttribute('data-theme','light');
+      toggle.textContent='🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      html.setAttribute('data-theme','dark');
+      toggle.textContent='☀️';
+      localStorage.setItem('theme','dark');
+    }
+  });
+})();
 </script>
 
 </body>
