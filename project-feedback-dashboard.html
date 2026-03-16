@@ -89,8 +89,7 @@ html[data-theme="dark"] body::before{
 
 nav{
   position:fixed;
-  top:18px;
-  right:18px;
+  top:18px; right:18px;
   z-index:60;
   display:flex;
   gap:8px;
@@ -119,14 +118,8 @@ nav a{
   white-space:nowrap;
 }
 
-nav a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,0.7);
-}
-
-html[data-theme="dark"] nav a:hover{
-  background:rgba(255,255,255,0.06);
-}
+nav a:hover{ color:var(--text); background:rgba(255,255,255,0.7); }
+html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 
 nav a.active{
   color:var(--text);
@@ -134,17 +127,13 @@ nav a.active{
   box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
 }
 
-html[data-theme="dark"] nav a.active{
-  background:rgba(255,255,255,0.10);
-}
+html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
 .theme-toggle{
   position:fixed;
-  bottom:24px;
-  right:24px;
+  bottom:24px; right:24px;
   z-index:100;
-  width:48px;
-  height:48px;
+  width:48px; height:48px;
   border-radius:50%;
   border:1px solid var(--line);
   background:rgba(255,255,255,0.78);
@@ -161,10 +150,7 @@ html[data-theme="dark"] nav a.active{
   outline:none;
 }
 
-html[data-theme="dark"] .theme-toggle{
-  background:rgba(255,255,255,0.07);
-}
-
+html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
 .theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
 .theme-toggle:active{ transform:scale(0.95); }
 
@@ -179,8 +165,7 @@ html[data-theme="dark"] .theme-toggle{
 .metric-card,
 .note,
 .card-block,
-.method-item,
-.feedback-card{
+.method-item{
   border:1px solid var(--line);
   background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%);
@@ -211,8 +196,7 @@ html[data-theme="dark"] .hero::before{
 
 .window-dots{
   position:absolute;
-  top:16px;
-  left:18px;
+  top:16px; left:18px;
   display:flex;
   gap:7px;
   z-index:2;
@@ -263,17 +247,12 @@ html[data-theme="dark"] .small-label{
 .section-title,
 .metric-number,
 .note h3,
-.section-card h2,
-.feedback-number{
+.section-card h2{
   font-family:'Sora',sans-serif;
   letter-spacing:-0.05em;
 }
 
-.title{
-  font-size:56px;
-  line-height:0.95;
-  margin:14px 0 14px;
-}
+.title{ font-size:56px; line-height:0.95; margin:14px 0 14px; }
 
 .lead{
   font-size:16px;
@@ -284,18 +263,8 @@ html[data-theme="dark"] .small-label{
 
 html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 
-.meta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:16px 0 18px;
-}
-
-.hero-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
+.meta-row{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 18px; }
+.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
 
 .btn{
   padding:10px 15px;
@@ -362,12 +331,7 @@ html[data-theme="dark"] .note{
 .note p{ margin:0; font-size:14px; color:#40434b; }
 html[data-theme="dark"] .note p{ color:#9a9daa; }
 
-.flow-mini{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
+.flow-mini{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
 
 .flow-mini span{
   font-family:var(--mono);
@@ -546,7 +510,6 @@ tr:last-child td{ border-bottom:none; }
 
 html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
 
-/* ===== prototype viewer ===== */
 .proto-viewer{
   display:grid;
   grid-template-columns:52px 1fr 52px;
@@ -616,32 +579,6 @@ html[data-theme="dark"] .proto-nav:hover{ background:rgba(255,255,255,0.12); }
 html[data-theme="dark"] .proto-dot{ background:#4c5363; }
 html[data-theme="dark"] .proto-dot.active{ background:#9cb6ff; }
 
-/* ===== feedback metrics — 3열 고정 ===== */
-.feedback-metrics{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:12px;
-  margin-top:10px;
-}
-
-.feedback-card{
-  border-radius:18px;
-  background:rgba(255,255,255,0.72);
-  padding:14px;
-  box-shadow:var(--shadow-soft);
-  display:flex;
-  flex-direction:column;
-}
-
-html[data-theme="dark"] .feedback-card{ background:rgba(255,255,255,0.04); }
-
-.feedback-card .small-label{ align-self:flex-start; margin-bottom:10px; }
-
-.feedback-number{ font-size:28px; line-height:1; margin:8px 0 10px; }
-
-.feedback-note{ font-size:13px; color:#4a4d55; margin:0; }
-html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
-
 .footer{
   margin-top:34px;
   border-top:1px solid var(--line);
@@ -651,23 +588,15 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
 }
 
 @media (max-width:1080px){
-  .hero-inner,
-  .grid-2,
-  .grid-3,
-  .metrics,
-  .feedback-metrics{
-    grid-template-columns:1fr;
-  }
+  .hero-inner, .grid-2, .grid-3, .metrics{ grid-template-columns:1fr; }
 }
 
 @media (max-width:760px){
   nav{
     top:12px; left:12px; right:12px;
     justify-content:flex-start;
-    overflow-x:auto;
-    gap:4px; padding:5px;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
+    overflow-x:auto; gap:4px; padding:5px;
+    -ms-overflow-style:none; scrollbar-width:none;
   }
   nav::-webkit-scrollbar{ display:none; }
   nav a{ font-size:12px; padding:7px 10px; }
@@ -677,7 +606,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
   .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
   .proto-viewer{ grid-template-columns:1fr; }
   .proto-nav{ width:100%; height:42px; border-radius:14px; }
-  .feedback-card{ min-height:auto; }
 }
 </style>
 </head>
@@ -697,20 +625,13 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
 
   <section class="hero">
     <div class="window-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
-
     <div class="hero-inner">
       <div>
         <span class="eyebrow">📊 case study / workflow friction / regulated environments</span>
         <h1 class="title">Smart Feedback &amp; Review Dashboard</h1>
-        <p class="lead">
-          An interactive workflow-support prototype designed to make review delays, feedback loops,
-          and revision burden more visible in structured document environments.
-        </p>
-
+        <p class="lead">An interactive workflow-support prototype designed to make review delays, feedback loops, and revision burden more visible in structured document environments.</p>
         <div class="meta-row">
           <span class="meta-chip">workflow friction</span>
           <span class="meta-chip">dashboard prototype</span>
@@ -720,7 +641,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
           <span class="meta-chip">streamlit</span>
           <span class="meta-chip">usability feedback</span>
         </div>
-
         <div class="hero-actions">
           <a class="btn demo" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
           <a class="btn" href="#prototype-gallery">see prototype screens</a>
@@ -728,7 +648,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
           <a class="btn" href="projects.html">back to projects</a>
         </div>
       </div>
-
       <div class="hero-side">
         <div class="note">
           <h3>⚙️ Core design question</h3>
@@ -739,7 +658,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
             <span>non-invasive layer</span>
           </div>
         </div>
-
         <div class="note">
           <h3>📝 Portfolio role</h3>
           <p>This project extends my HCI portfolio from search and access into review coordination — showing how friction in procedural work can be surfaced through a lightweight computational support layer.</p>
@@ -868,17 +786,12 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
       <h2 class="section-title">🖥 Prototype interface</h2>
       <span class="section-tag">prototype screenshots</span>
     </div>
-
     <p>The prototype demonstrates how an external workflow-support layer can make review burden, revision density, and feedback patterns more legible without modifying validated documentation systems. It was implemented as a lightweight interactive dashboard and presented as a testable artifact rather than a production platform.</p>
-
     <div class="card-block">
       <div class="proto-viewer">
         <button class="proto-nav prev" type="button" onclick="changeProtoSlide(-1)">←</button>
         <div class="proto-slide-wrap">
-          <img id="proto-image"
-               src="assets/review-workflow-dashboard-overview.png"
-               alt="Review workflow dashboard screenshot"
-               class="proto-image">
+          <img id="proto-image" src="assets/review-workflow-dashboard-overview.png" alt="Review workflow dashboard screenshot" class="proto-image">
           <div class="proto-meta">
             <h3 id="proto-title">Overview dashboard</h3>
             <p id="proto-caption">High-level dashboard view summarizing comment categories, severity, reviewer turnaround, and round distribution.</p>
@@ -886,7 +799,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
         </div>
         <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
       </div>
-
       <div class="proto-dots">
         <button class="proto-dot active" type="button" onclick="setProtoSlide(0)"></button>
         <button class="proto-dot" type="button" onclick="setProtoSlide(1)"></button>
@@ -896,7 +808,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
         <button class="proto-dot" type="button" onclick="setProtoSlide(5)"></button>
       </div>
     </div>
-
     <div class="hero-actions" style="margin-top:16px;">
       <a class="btn demo" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
     </div>
@@ -927,56 +838,50 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
     </div>
   </section>
 
+  <!-- usability testing — sop 스타일 동일 구조 -->
   <section class="section-card lilac" id="usability-feedback">
     <div class="section-head">
       <h2 class="section-title">👥 Lightweight usability feedback</h2>
       <span class="section-tag">n = 6</span>
     </div>
 
-    <p>A lightweight prototype feedback session was conducted with six participants. All participants reported prior experience with document review, QA/QC review, or regulated documentation. Familiarity with structured document-review workflows was mixed: 66.7% reported being very familiar, while 33.3% reported being not familiar at all.</p>
-
-    <div class="feedback-metrics">
-      <div class="feedback-card">
-        <div class="small-label">purpose clarity</div>
-        <div class="feedback-number">4.83 / 5</div>
-        <p class="feedback-note">5 participants rated 5, 1 participant rated 4.</p>
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Testing setup</h3>
+        <p>Because validated systems cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live system. Participants were asked to explore the dashboard and complete lightweight review tasks using it as a simulated workflow-support layer.</p>
+        <div class="flow-mini">
+          <span>prototype artifact</span>
+          <span>exploratory session</span>
+          <span>n = 6</span>
+        </div>
       </div>
-      <div class="feedback-card">
-        <div class="small-label">friction visibility</div>
-        <div class="feedback-number">4.83 / 5</div>
-        <p class="feedback-note">Users generally felt delays and feedback patterns were easier to notice.</p>
-      </div>
-      <div class="feedback-card">
-        <div class="small-label">checklist clarity</div>
-        <div class="feedback-number">5.0 / 5</div>
-        <p class="feedback-note">All participants rated checklist/classifier features as understandable.</p>
-      </div>
-      <div class="feedback-card">
-        <div class="small-label">simulation clarity</div>
-        <div class="feedback-number">4.83 / 5</div>
-        <p class="feedback-note">Simulation was generally easy to interpret after brief exploration.</p>
-      </div>
-      <div class="feedback-card">
-        <div class="small-label">real-world usefulness</div>
-        <div class="feedback-number">100%</div>
-        <p class="feedback-note">All participants said a tool like this could be useful in real workflows.</p>
+      <div class="card-block">
+        <h3>What was measured</h3>
+        <ul class="bullets">
+          <li>purpose clarity and overall interpretability</li>
+          <li>visibility of friction and revision patterns</li>
+          <li>clarity of checklist and classifier features</li>
+          <li>ease of using the reviewer simulation</li>
+          <li>perceived real-world usefulness</li>
+        </ul>
       </div>
     </div>
 
-    <div class="grid-2" style="margin-top:16px;">
-      <div class="card-block">
-        <h3>Most useful features</h3>
-        <ul class="bullets">
-          <li>Friction Heatmap — 33.3%</li>
-          <li>Reviewer Simulation — 33.3%</li>
-          <li>Checklist Assistant / Comment Classifier — 16.7%</li>
-          <li>Document Journey — 16.7%</li>
-        </ul>
+    <div class="note" style="margin-top:16px;">
+      <h3>Quantitative summary</h3>
+      <p>A short usability survey was completed by six participants. All reported prior experience with document review, QA/QC, or regulated documentation. The prototype received high ratings across all dimensions: purpose clarity (4.83/5), friction visibility (4.83/5), checklist clarity (5.0/5), simulation clarity (4.83/5), and real-world usefulness (100%).</p>
+      <div class="flow-mini">
+        <span>purpose clarity: 4.83 / 5</span>
+        <span>friction visibility: 4.83 / 5</span>
+        <span>checklist clarity: 5.0 / 5</span>
+        <span>simulation clarity: 4.83 / 5</span>
+        <span>real-world usefulness: 100%</span>
       </div>
-      <div class="card-block">
-        <h3>Key interpretation</h3>
-        <p>Users did not mainly struggle with the interface itself. One recurring insight was that the workflow-friction concept initially felt unfamiliar — suggesting the need for brief conceptual onboarding when introducing the prototype to first-time users. This points toward adoption barriers being conceptual rather than interactional.</p>
-      </div>
+    </div>
+
+    <div class="note" style="margin-top:16px;">
+      <h3>Key interpretation</h3>
+      <p>Users did not mainly struggle with the interface itself. One recurring insight was that the workflow-friction concept initially felt unfamiliar — suggesting the need for brief conceptual onboarding when introducing the prototype to first-time users. This points toward adoption barriers being conceptual rather than interactional. Most useful features were Friction Heatmap (33.3%), Reviewer Simulation (33.3%), Checklist Assistant / Comment Classifier (16.7%), and Document Journey (16.7%).</p>
     </div>
   </section>
 
@@ -985,7 +890,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
       <h2 class="section-title">📊 Results & implications</h2>
       <span class="section-tag">workflow support, not automation</span>
     </div>
-
     <div class="table-wrap">
       <table>
         <thead>
@@ -1030,7 +934,6 @@ html[data-theme="dark"] .feedback-note{ color:#9a9daa; }
         </tbody>
       </table>
     </div>
-
     <div class="note" style="margin-top:16px;">
       <h3>Why the result matters</h3>
       <p>The main contribution is not simply efficiency. It is the transformation of hidden review work into interpretable workflow signals. The prototype supports procedural visibility and coordination without trying to automate reviewer judgment.</p>
