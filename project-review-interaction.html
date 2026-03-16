@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Review Interaction in Deviation & CAPA Management · Sora Kim</title>
+<title>Review Workflow Friction & Feedback Loops · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Case study for Human-Centered Review Interaction in Deviation & CAPA Management — a workflow UX project on feedback consistency, review clarity, and turnaround time in validated GMP documentation systems." />
+content="Case study for Review Workflow Friction & Feedback Loops — a workflow UX project on feedback consistency, review clarity, and revision cycles in validated documentation systems." />
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Review Interaction in Deviation & CAPA Management — Sora Kim">
+<meta property="og:title" content="Review Workflow Friction & Feedback Loops — Sora Kim">
 <meta property="og:description"
-content="A human-centered workflow UX project focused on review clarity, feedback consistency, and turnaround time in validated GMP documentation systems.">
+content="A human-centered workflow UX project focused on review clarity, feedback consistency, and revision cycles in validated documentation systems.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/project-review-interaction.html">
 <meta property="og:site_name" content="Sora Kim">
@@ -100,7 +100,10 @@ nav{
   border-radius:999px;
   box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
-html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
+html[data-theme="dark"] nav{
+  background:rgba(18,20,28,0.85);
+  border-color:rgba(255,255,255,0.07);
+}
 
 nav a{
   text-decoration:none;
@@ -320,13 +323,13 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
 
     <div class="hero-inner">
       <div>
-        <span class="eyebrow">💊 case study / workflow UX / regulated environments</span>
-        <h1 class="title">Review Interaction in Deviation &amp; CAPA Management</h1>
-        <p class="lead">A human-centered workflow UX project focused on improving feedback consistency, review clarity, and turnaround time in validated GMP documentation systems.</p>
+        <span class="eyebrow">📘 case study / workflow UX / regulated environments</span>
+        <h1 class="title">Review Workflow Friction &amp; Feedback Loops</h1>
+        <p class="lead">A human-centered workflow UX project focused on improving feedback consistency, review clarity, and revision cycles in validated documentation systems.</p>
         <div class="meta-row">
           <span class="meta-chip">workflow UX</span>
           <span class="meta-chip">review interaction</span>
-          <span class="meta-chip">usability survey</span>
+          <span class="meta-chip">feedback loops</span>
           <span class="meta-chip">excel</span>
           <span class="meta-chip">python</span>
           <span class="meta-chip">paper in progress</span>
@@ -339,7 +342,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <div class="hero-side">
         <div class="note">
           <h3>🎯 Core design question</h3>
-          <p>How might review clarity, feedback consistency, and turnaround time be improved while maintaining full compliance within validated GMP documentation systems?</p>
+          <p>How might review clarity, feedback consistency, and turnaround time be improved while maintaining full compliance within validated documentation systems?</p>
           <div class="flow-mini">
             <span>submission</span><span>review loop</span><span>clearer feedback</span>
           </div>
@@ -357,14 +360,14 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
 
   <section class="metrics">
     <div class="metric-card blue">
-      <div class="small-label">interaction map</div>
-      <div class="metric-number">1</div>
-      <p>A structured workflow layer connecting deviation, investigation, and CAPA review interactions.</p>
+      <div class="small-label">workflow scope</div>
+      <div class="metric-number">3</div>
+      <p>Deviation, investigation, and CAPA review stages mapped as a single interaction system.</p>
     </div>
     <div class="metric-card green">
-      <div class="small-label">clarity gain</div>
-      <div class="metric-number">+30%</div>
-      <p>Expected improvement in feedback consistency through reviewer checklist standardization.</p>
+      <div class="small-label">main friction</div>
+      <div class="metric-number">loops</div>
+      <p>Repeated revision cycles emerged as the central usability burden in the review process.</p>
     </div>
     <div class="metric-card lilac">
       <div class="small-label">validated template changes</div>
@@ -378,9 +381,9 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">human burden of compliance</span>
     </div>
-    <p>In pharmaceutical manufacturing, a <strong>Deviation</strong> occurs whenever an operation diverges from an approved procedure — even a brief delay or temperature fluctuation. Each deviation must be formally investigated and connected to a <strong>CAPA (Corrective and Preventive Action)</strong> plan that prevents recurrence.</p>
-    <p>While these processes are essential for product safety and regulatory compliance, they also generate substantial cognitive and administrative burden for analysts and QA reviewers. In many GMP environments, deviation and CAPA documents are stored as <strong>validated Word templates</strong>. Because these templates are validated, their structure cannot be modified without system re-validation.</p>
-    <p>As a result, workflow design is effectively locked, and review inefficiencies accumulate inside compliance constraints. This creates a gap between regulatory rigor and human sustainability in documentation work.</p>
+    <p>In pharmaceutical manufacturing, a <strong>deviation</strong> occurs whenever an operation diverges from an approved procedure. Each deviation must be formally investigated and connected to a <strong>CAPA (Corrective and Preventive Action)</strong> plan intended to prevent recurrence.</p>
+    <p>These processes are essential for product safety and regulatory compliance, but they also create substantial cognitive and administrative burden for document owners and reviewers. In many regulated environments, deviation and CAPA records are maintained within <strong>validated Word-based templates</strong>, meaning their structure cannot be casually redesigned without triggering re-validation.</p>
+    <p>As a result, workflow friction accumulates inside a documentation system that is structurally rigid but socially variable: the format is fixed, yet the review experience still depends heavily on reviewer style, comment habits, and interpretation differences.</p>
   </section>
 
   <section class="section-card sand">
@@ -392,15 +395,15 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <div class="card-block">
         <h3>Observed pain points</h3>
         <ul class="bullets">
-          <li>Different QA reviewers applied different feedback standards and writing styles.</li>
-          <li>Batch numbers, deviation IDs, and analyst names had to be repeatedly copied across documents.</li>
+          <li>Different reviewers applied different feedback standards and writing styles.</li>
+          <li>Batch numbers, deviation IDs, and analyst names had to be repeatedly copied across linked records.</li>
           <li>Even small clarifications could trigger multi-day review loops.</li>
           <li>Repeated revisions increased fatigue and reduced confidence for document owners.</li>
         </ul>
       </div>
       <div class="card-block">
         <h3>Why this mattered</h3>
-        <p>These patterns did not reflect individual failure. They reflected a structural interaction problem: human reviewers had to compensate for rigid documentation systems that offered little support for consistency, visibility, or efficient review coordination.</p>
+        <p>These patterns did not reflect individual failure. They reflected a structural interaction problem: people had to compensate for rigid documentation systems that offered little support for consistency, visibility, or efficient review coordination.</p>
       </div>
     </div>
     <div class="quote-line">💬 In regulated environments, safety protocols protect the product — but not always the people maintaining them.</div>
@@ -411,7 +414,37 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
-    <p>How might we improve review clarity, feedback consistency, and turnaround time while maintaining full compliance within validated GMP documentation systems?</p>
+    <p>How might review clarity, feedback consistency, and turnaround time be improved while maintaining full compliance within validated documentation systems?</p>
+  </section>
+
+  <section class="section-card blue">
+    <div class="section-head">
+      <h2 class="section-title">↔ Workflow change illustration</h2>
+      <span class="section-tag">before / after</span>
+    </div>
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Before</h3>
+        <ul class="bullets">
+          <li>Reviewer expectations remained tacit rather than visible.</li>
+          <li>Comments arrived in inconsistent formats and levels of detail.</li>
+          <li>Document owners often revised reactively, not strategically.</li>
+          <li>Revision loops accumulated without a clear sense of bottleneck location.</li>
+          <li>Turnaround time depended on reviewer-specific styles.</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>After</h3>
+        <ul class="bullets">
+          <li>Recurring comment types are clustered into clearer review categories.</li>
+          <li>A checklist layer makes feedback expectations more legible.</li>
+          <li>Revision patterns can be tracked across stages and reviewers.</li>
+          <li>Loop-heavy zones become visible through timestamp-based workflow mapping.</li>
+          <li>The system shifts from opaque review interaction to more observable review logic.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote-line">This project reframes review delay not as a matter of individual slowness, but as a workflow legibility problem within a constrained documentation system.</div>
   </section>
 
   <section class="section-card green">
@@ -422,19 +455,19 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     <div class="method-list">
       <div class="method-item">
         <h3>1. Review interaction mapping (Excel)</h3>
-        <p>Constructed a structured mapping of the deviation → investigation → CAPA review cycle using shared identifiers such as deviation ID, batch number, analyst ID, reviewer ID, and revision timestamp.</p>
+        <p>Constructed a structured map of the deviation → investigation → CAPA review cycle using shared identifiers such as deviation ID, batch number, document owner, reviewer role, and revision timestamp.</p>
       </div>
       <div class="method-item">
         <h3>2. Reviewer checklist prototype</h3>
-        <p>Developed a standardized QA checklist derived from recurring historical review comments. Similar issues were clustered and translated into a more consistent review schema.</p>
+        <p>Developed a standardized checklist derived from recurring historical review comments. Similar issues were grouped and translated into a more consistent review schema.</p>
       </div>
       <div class="method-item">
         <h3>3. Feedback latency heatmap</h3>
-        <p>Used revision timestamps to visualize high-density revision zones, slow review periods, and recurring bottleneck points. Excel handled the first-pass mapping, while Python can extend this into reviewer-by-reviewer latency distributions.</p>
+        <p>Used revision timestamps to visualize high-density revision zones, slow review periods, and recurring bottleneck points. Excel handled first-pass workflow mapping, while Python can extend the model into reviewer-by-reviewer latency distributions.</p>
       </div>
       <div class="method-item">
         <h3>4. Analyst usability survey</h3>
-        <p>Conducted a short Likert-scale survey to capture analyst perceptions of feedback clarity, review fairness, workload, and turnaround expectations.</p>
+        <p>Designed a short Likert-scale survey to capture analyst perceptions of feedback clarity, review fairness, workload, and turnaround expectations within documentation review cycles.</p>
       </div>
     </div>
   </section>
@@ -448,7 +481,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       <div class="card-block">
         <h3>What Python adds</h3>
         <ul class="bullets">
-          <li>turnaround-time distributions by reviewer</li>
+          <li>turnaround-time distributions by reviewer or stage</li>
           <li>revision loop frequency analysis</li>
           <li>bottleneck detection across document stages</li>
           <li>comment clustering and repeated-friction patterns</li>
@@ -456,7 +489,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       </div>
       <div class="card-block">
         <h3>Why it matters</h3>
-        <p>Python makes the workflow argument more rigorous. Instead of only saying that review felt inconsistent, it allows the project to show where delays accumulate, which reviewers or stages create more loops, and how friction patterns repeat across the documentation lifecycle.</p>
+        <p>Python makes the workflow argument more rigorous. Instead of only saying that review felt inconsistent, it allows the project to show where delays accumulate, which stages create more loops, and how friction patterns repeat across the lifecycle of controlled documents.</p>
       </div>
     </div>
   </section>
@@ -469,6 +502,161 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     <div class="grid-2">
       <div class="card-block">
         <h3>Evaluation setup</h3>
-        <p>Because validated templates could not be redesigned directly, the intervention remained external to the live controlled system. The review interaction map, checklist prototype, and heatmap views were treated as workflow-support artifacts rather than system replacements.</p>
+        <p>Because validated templates could not be redesigned directly, the intervention remained external to the live controlled system. The interaction map, checklist prototype, and latency views were treated as workflow-support artifacts rather than system replacements.</p>
         <div class="flow-mini">
-          <span>review artifacts</span><span>survey</span><span>workflow insight</span>
+          <span>review artifacts</span>
+          <span>survey</span>
+          <span>workflow insight</span>
+        </div>
+      </div>
+      <div class="card-block">
+        <h3>What was assessed</h3>
+        <ul class="bullets">
+          <li>perceived clarity of reviewer feedback</li>
+          <li>consistency of review expectations</li>
+          <li>confidence during revision cycles</li>
+          <li>perceived fairness of turnaround logic</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px;">
+      <h3>Why this matters</h3>
+      <p>The project does not claim that formal review authority should be removed. Instead, it asks a more HCI-relevant question: can workflow-support artifacts make review interaction more legible, less repetitive, and less cognitively draining without disrupting compliance?</p>
+    </div>
+  </section>
+
+  <section class="section-card sand">
+    <div class="section-head">
+      <h2 class="section-title">📊 Expected findings</h2>
+      <span class="section-tag">hypothesized outcomes</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Current condition</th>
+            <th>Expected effect of workflow support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Feedback consistency</td>
+            <td>Reviewer-specific and variable</td>
+            <td>More standardized and legible through checklist scaffolds</td>
+          </tr>
+          <tr>
+            <td>Revision burden</td>
+            <td>Repeated loopbacks on small issues</td>
+            <td>Reduced ambiguity in what counts as sufficient revision</td>
+          </tr>
+          <tr>
+            <td>Workflow visibility</td>
+            <td>Bottlenecks are difficult to localize</td>
+            <td>Delays and loop-heavy stages become more observable</td>
+          </tr>
+          <tr>
+            <td>Analyst confidence</td>
+            <td>Often reactive and uncertain</td>
+            <td>Higher confidence through clearer review logic</td>
+          </tr>
+          <tr>
+            <td>Compliance risk</td>
+            <td>None</td>
+            <td>None — support layer remains external to validated templates</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section-card blue">
+    <div class="section-head">
+      <h2 class="section-title">📄 Paper in progress</h2>
+      <span class="section-tag">research output</span>
+    </div>
+    <p>This project is being developed into a paper on workflow friction, feedback loops, and human-centered review support in regulated documentation systems. The paper extends the case study from practical workflow pain points into a broader HCI argument about how review infrastructures create hidden burdens through opacity, inconsistency, and repeated loopbacks.</p>
+    <p>More broadly, the project asks how human-centered design can operate in environments where the formal structure of documentation is difficult to change, yet the interactional burden of review remains substantial.</p>
+  </section>
+
+  <section class="section-card lilac">
+    <div class="section-head">
+      <h2 class="section-title">💬 Reflection</h2>
+      <span class="section-tag">why it is HCI</span>
+    </div>
+    <p>This project treats review not as a neutral administrative step, but as an interaction system. The central issue is not simply whether feedback exists, but how that feedback is structured, interpreted, and translated into repeated work.</p>
+    <p>From an HCI perspective, the important insight is that workflow friction can emerge even when everyone is acting correctly. Review loops, inconsistent expectations, and hidden bottlenecks are interaction problems embedded in procedural systems.</p>
+    <p>In that sense, the project expands my research from document accessibility into workflow legibility: not just helping users find the right document, but helping them understand where they are in a multi-stage review process and why work keeps looping back.</p>
+  </section>
+
+  <section class="section-card green">
+    <div class="section-head">
+      <h2 class="section-title">🛠 Tools & skills</h2>
+      <span class="section-tag">methods + implementation</span>
+    </div>
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Technical</h3>
+        <ul class="bullets">
+          <li>Excel workflow mapping</li>
+          <li>Python for timestamp and loop pattern analysis</li>
+          <li>comment clustering and friction pattern analysis</li>
+          <li>workflow-support artifact design</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>Research / design</h3>
+        <ul class="bullets">
+          <li>workflow UX framing</li>
+          <li>review interaction analysis</li>
+          <li>feedback consistency modeling</li>
+          <li>compliance-constrained design reasoning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card blue">
+    <div class="section-head">
+      <h2 class="section-title">✨ One-line summary</h2>
+      <span class="section-tag">project takeaway</span>
+    </div>
+    <p>Analyzed review workflow friction in deviation and CAPA documentation as a human-centered interaction problem, and proposed lightweight support layers to improve feedback consistency, revision clarity, and workflow visibility without altering validated templates.</p>
+    <div class="hero-actions" style="margin-top:16px;">
+      <a class="btn primary" href="projects.html">back to projects</a>
+      <a class="btn" href="papers.html">papers</a>
+      <a class="btn" href="index.html">home</a>
+    </div>
+  </section>
+
+  <div class="footer">© 2026 Sora Kim.</div>
+</div>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+<script>
+(function(){
+  var toggle = document.getElementById('themeToggle');
+  var html = document.documentElement;
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = saved === 'dark' || (!saved && prefersDark);
+  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
+  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
+  toggle.addEventListener('click', function(){
+    var current = html.getAttribute('data-theme');
+    if(current === 'dark'){
+      html.setAttribute('data-theme','light');
+      toggle.textContent='🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      html.setAttribute('data-theme','dark');
+      toggle.textContent='☀️';
+      localStorage.setItem('theme','dark');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
