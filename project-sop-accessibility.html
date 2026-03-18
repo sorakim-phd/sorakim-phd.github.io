@@ -2,1353 +2,252 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>SOP Accessibility in Regulated Environments · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="description"
-content="Case study for SOP Accessibility in Regulated Environments — a human-centered document UX project exploring accessibility, cognitive friction, judgment, and AI-mediated support in compliance-constrained procedural systems." />
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="SOP Accessibility in Regulated Environments — Sora Kim">
-<meta property="og:description"
-content="A human-centered document UX project on SOP accessibility, cognitive friction, downstream judgment, and AI-mediated support in regulated work environments.">
-<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
-<meta property="og:url" content="https://sorakim-lab.github.io/project-sop-accessibility.html">
-<meta property="og:site_name" content="Sora Kim">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#f5f5f7;
-  --panel:rgba(255,255,255,0.84);
-  --panel-strong:rgba(255,255,255,0.92);
-  --text:#121316;
-  --muted:#6e6e73;
-  --muted-strong:#4d4f57;
-  --line:rgba(17,17,17,0.08);
-  --line-strong:rgba(17,17,17,0.12);
-  --accent:#e9eef9;
-  --accent-2:#edf6f2;
-  --accent-3:#f3eefb;
-  --accent-4:#f5f2ea;
-  --radius-xl:30px;
-  --radius-lg:24px;
-  --radius-md:18px;
-  --shadow:0 18px 50px rgba(15,23,42,0.08);
-  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
-  --mono:'JetBrains Mono', monospace;
-}
-
-/* ===== DARK MODE ===== */
-html[data-theme="dark"]{
-  --text:#e2e4ea;
-  --muted:#7a7d8a;
-  --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07);
-  --line-strong:rgba(255,255,255,0.13);
-  --panel:rgba(22,24,32,0.88);
-  --shadow:0 18px 50px rgba(0,0,0,0.40);
-  --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text);
-  line-height:1.7;
-  background:
-    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
-    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
-  transition:background 0.3s ease, color 0.3s ease;
+  font-family:'Inter', sans-serif;
+  background:#f6f7fb;
+  color:#111;
 }
 
-html[data-theme="dark"] body{
-  background:
-    radial-gradient(circle at 12% 16%, rgba(22,24,36,0.98) 0, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(18,22,44,0.55) 0, transparent 34%),
-    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
+.container{
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 24px;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+h1{
+  font-size:34px;
+  margin-bottom:10px;
 }
 
-html[data-theme="dark"] body::before{
-  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
+p{
+  color:#555;
+  line-height:1.6;
 }
 
-nav{
-  position:fixed;
-  top:18px;
-  right:18px;
-  z-index:60;
-  display:flex;
-  gap:8px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,0.6);
-  background:rgba(255,255,255,0.58);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
-}
-
-html[data-theme="dark"] nav{
-  background:rgba(18,20,28,0.85);
-  border-color:rgba(255,255,255,0.07);
-}
-
-nav a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:500;
-  padding:8px 12px;
-  border-radius:999px;
-  transition:all .22s ease;
-  white-space:nowrap;
-}
-
-nav a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,0.7);
-}
-
-html[data-theme="dark"] nav a:hover{
-  background:rgba(255,255,255,0.06);
-}
-
-nav a.active{
-  color:var(--text);
-  background:rgba(255,255,255,0.82);
-  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
-}
-
-html[data-theme="dark"] nav a.active{
-  background:rgba(255,255,255,0.10);
-}
-
-.theme-toggle{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:100;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  transition:transform .2s ease, box-shadow .2s ease;
-  -webkit-tap-highlight-color:transparent;
-  outline:none;
-}
-
-html[data-theme="dark"] .theme-toggle{
-  background:rgba(255,255,255,0.07);
-}
-
-.theme-toggle:hover{
-  transform:scale(1.1);
-  box-shadow:0 24px 54px rgba(0,0,0,0.50);
-}
-
-.theme-toggle:active{
-  transform:scale(0.95);
-}
-
-.wrap{
-  max-width:1180px;
-  margin:0 auto;
-  padding:112px 28px 92px;
-}
-
-.hero,
-.section-card,
-.metric-card,
-.note,
-.card-block,
-.method-item{
-  border:1px solid var(--line);
-  background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%);
-  -webkit-backdrop-filter:blur(20px) saturate(150%);
-  box-shadow:var(--shadow);
-}
-
-.hero{
-  border-radius:var(--radius-xl);
-  padding:30px;
-  position:relative;
-  overflow:hidden;
-  margin-bottom:22px;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:52px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
-}
-
-html[data-theme="dark"] .hero::before{
-  background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90));
-}
-
-.window-dots{
-  position:absolute;
-  top:16px;
-  left:18px;
-  display:flex;
-  gap:7px;
-  z-index:2;
-}
-
-.dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
-}
-
-.dot:nth-child(1){background:#ff5f57}
-.dot:nth-child(2){background:#febc2e}
-.dot:nth-child(3){background:#28c840}
-
-.hero-inner{
-  margin-top:38px;
-  display:grid;
-  grid-template-columns:1.08fr 0.92fr;
-  gap:22px;
-  align-items:start;
-}
-
-.eyebrow,
-.section-tag,
-.meta-chip,
-.small-label{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:7px 11px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background:rgba(255,255,255,0.72);
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
-}
-
-html[data-theme="dark"] .eyebrow,
-html[data-theme="dark"] .section-tag,
-html[data-theme="dark"] .meta-chip,
-html[data-theme="dark"] .small-label{
-  background:rgba(255,255,255,0.06);
-}
-
-.title,
-.section-title,
-.metric-number,
-.note h3,
-.section-card h2{
-  font-family:'Sora',sans-serif;
-  letter-spacing:-0.05em;
-}
-
-.title{
-  font-size:60px;
-  line-height:0.95;
-  margin:14px 0 14px;
-}
-
-.lead{
-  font-size:16px;
-  color:rgba(29,29,31,0.84);
-  margin:0 0 16px;
-  max-width:680px;
-}
-
-html[data-theme="dark"] .lead{
-  color:rgba(210,214,226,0.84);
-}
-
-.meta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:16px 0 18px;
-}
-
-.hero-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+.section{
+  margin-top:80px;
 }
 
 .btn{
-  padding:10px 15px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.76);
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:10px;
   text-decoration:none;
-  color:var(--text);
-  font-size:13px;
-  font-weight:500;
-  white-space:nowrap;
-  box-shadow:var(--shadow-soft);
-  transition:transform .18s ease, background .18s ease, border-color .18s ease;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  background:rgba(255,255,255,0.94);
-  border-color:var(--line-strong);
-}
-
-.btn.primary{
-  background:linear-gradient(180deg, rgba(233,238,249,0.92), rgba(255,255,255,0.88));
-}
-
-.btn.demo{
-  background:linear-gradient(180deg, rgba(227,238,255,0.98), rgba(245,249,255,0.92));
-  border:1px solid rgba(125,156,226,0.28);
-  color:#244a9b;
-  box-shadow:
-    0 10px 28px rgba(80,110,180,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.72);
-}
-
-.btn.demo:hover{
-  transform:translateY(-1px);
-  background:linear-gradient(180deg, rgba(236,243,255,1), rgba(248,251,255,0.96));
-  border-color:rgba(125,156,226,0.38);
-  color:#1f3f86;
-}
-
-html[data-theme="dark"] .btn{
-  background:rgba(255,255,255,0.07);
-}
-
-html[data-theme="dark"] .btn:hover{
-  background:rgba(255,255,255,0.12);
-}
-
-html[data-theme="dark"] .btn.primary{
-  background:linear-gradient(180deg, rgba(26,36,66,0.80), rgba(22,24,34,0.90));
-}
-
-html[data-theme="dark"] .btn.demo{
-  background:linear-gradient(180deg, rgba(36,52,92,0.92), rgba(28,36,58,0.92));
-  border:1px solid rgba(148,173,255,0.18);
-  color:#dce7ff;
-  box-shadow:
-    0 10px 24px rgba(0,0,0,0.24),
-    inset 0 1px 0 rgba(255,255,255,0.04);
-}
-
-html[data-theme="dark"] .btn.demo:hover{
-  background:linear-gradient(180deg, rgba(44,61,104,0.96), rgba(30,39,64,0.96));
-  border-color:rgba(148,173,255,0.28);
-  color:#eef3ff;
-}
-
-.hero-side{
-  display:grid;
-  gap:14px;
-}
-
-.note{
-  border-radius:22px;
-  padding:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
-}
-
-html[data-theme="dark"] .note{
-  background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
-}
-
-.note h3{
-  font-size:18px;
-  line-height:1.1;
-  margin:0 0 8px;
-}
-
-.note p{
-  margin:0;
+  margin-right:10px;
+  margin-top:15px;
   font-size:14px;
-  color:#40434b;
 }
 
-html[data-theme="dark"] .note p{
-  color:#9a9daa;
+.demo{
+  background:#111;
+  color:white;
 }
 
-.flow-mini{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:12px;
+.ai{
+  background:#eaeefc;
+  color:#111;
 }
 
-.flow-mini span{
-  font-family:var(--mono);
-  font-size:11px;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.76);
-  color:var(--muted);
-}
-
-html[data-theme="dark"] .flow-mini span{
-  background:rgba(255,255,255,0.06);
-}
-
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:14px;
-  margin:18px 0 8px;
-}
-
-.metric-card{
-  border-radius:22px;
-  padding:18px;
+.slider{
   position:relative;
-  overflow:hidden;
+  margin-top:40px;
 }
 
-.metric-card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:4px;
+.slide{
+  display:none;
 }
 
-.metric-card.blue{
-  background:linear-gradient(180deg, rgba(233,238,249,0.72), rgba(255,255,255,0.9));
-}
-.metric-card.blue::before{
-  background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95));
+.slide.active{
+  display:block;
 }
 
-.metric-card.green{
-  background:linear-gradient(180deg, rgba(237,246,242,0.78), rgba(255,255,255,0.9));
-}
-.metric-card.green::before{
-  background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95));
+.slide img{
+  width:100%;
+  border-radius:16px;
 }
 
-.metric-card.lilac{
-  background:linear-gradient(180deg, rgba(243,238,251,0.78), rgba(255,255,255,0.9));
-}
-.metric-card.lilac::before{
-  background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95));
-}
-
-html[data-theme="dark"] .metric-card.blue{
-  background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.90));
-}
-html[data-theme="dark"] .metric-card.green{
-  background:linear-gradient(180deg, rgba(14,28,22,0.78), rgba(22,24,34,0.90));
-}
-html[data-theme="dark"] .metric-card.lilac{
-  background:linear-gradient(180deg, rgba(26,18,44,0.78), rgba(22,24,34,0.90));
-}
-
-.metric-number{
-  font-size:40px;
-  line-height:0.95;
-  margin:10px 0 8px;
-}
-
-.metric-card p{
-  margin:0;
-  font-size:13px;
-  color:#454850;
-}
-
-html[data-theme="dark"] .metric-card p{
-  color:#9a9daa;
-}
-
-.section-card{
-  border-radius:26px;
-  padding:22px;
-  margin-top:18px;
-  position:relative;
-  overflow:hidden;
-}
-
-.section-card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:4px;
-}
-
-.section-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
-.section-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
-.section-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
-.section-card.sand::before{ background:linear-gradient(90deg, rgba(230,210,171,0.95), rgba(245,242,234,0.95)); }
-
-html[data-theme="dark"] .section-card.blue{
-  background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.green{
-  background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.lilac{
-  background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-html[data-theme="dark"] .section-card.sand{
-  background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92));
-  border-color:var(--line);
-}
-
-.section-head{
+.nav{
   display:flex;
   justify-content:space-between;
-  align-items:end;
-  gap:16px;
-  margin-bottom:12px;
-  flex-wrap:wrap;
-}
-
-.section-title{
-  font-size:28px;
-  margin:0;
-}
-
-.section-card h2{
-  font-size:28px;
-  margin:0 0 12px;
-}
-
-.section-card p{
-  margin:0 0 14px;
-  font-size:15px;
-  color:#40434b;
-}
-
-html[data-theme="dark"] .section-card p{
-  color:#9a9daa;
-}
-
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-.card-block{
-  border-radius:20px;
-  background:rgba(255,255,255,0.74);
-  padding:16px;
-  box-shadow:var(--shadow-soft);
-}
-
-html[data-theme="dark"] .card-block{
-  background:rgba(255,255,255,0.04);
-}
-
-.card-block h3{
-  margin:0 0 8px;
-  font-size:13px;
-  color:var(--muted);
-  font-family:var(--mono);
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-}
-
-.card-block p{
-  margin:0;
-  font-size:14px;
-  color:#3f4148;
-}
-
-html[data-theme="dark"] .card-block p{
-  color:#9a9daa;
-}
-
-.bullets{
-  margin:0;
-  padding-left:18px;
-}
-
-.bullets li{
-  margin:0 0 8px;
-  color:#41444c;
-}
-
-html[data-theme="dark"] .bullets li{
-  color:#9a9daa;
-}
-
-.method-list{
-  display:grid;
-  gap:12px;
-}
-
-.method-item{
-  border-radius:18px;
-  padding:14px;
-  background:rgba(255,255,255,0.72);
-  box-shadow:var(--shadow-soft);
-}
-
-html[data-theme="dark"] .method-item{
-  background:rgba(255,255,255,0.04);
-}
-
-.method-item h3{
-  margin:0 0 6px;
-  font-size:14px;
-  font-family:var(--mono);
-  color:var(--muted);
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-}
-
-.method-item p{
-  margin:0;
-  font-size:14px;
-}
-
-html[data-theme="dark"] .method-item p{
-  color:#9a9daa;
-}
-
-.table-wrap{
-  overflow:auto;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:rgba(255,255,255,0.72);
-}
-
-html[data-theme="dark"] .table-wrap{
-  background:rgba(255,255,255,0.04);
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:640px;
-}
-
-th, td{
-  padding:14px 16px;
-  text-align:left;
-  border-bottom:1px solid var(--line);
-  font-size:14px;
-}
-
-th{
-  font-family:var(--mono);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-  color:var(--muted);
-  background:rgba(255,255,255,0.82);
-}
-
-html[data-theme="dark"] th{
-  background:rgba(255,255,255,0.04);
-}
-
-tr:last-child td{
-  border-bottom:none;
-}
-
-.quote-line{
   margin-top:10px;
-  padding:12px 14px;
-  border:1px solid var(--line);
+}
+
+.nav button{
+  padding:8px 12px;
+  border:none;
+  background:#111;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.card{
+  background:white;
+  padding:24px;
   border-radius:16px;
-  background:rgba(255,255,255,0.68);
-  font-size:13px;
-  color:#41444c;
-}
-
-html[data-theme="dark"] .quote-line{
-  background:rgba(255,255,255,0.04);
-  color:#9a9daa;
-}
-
-/* ===== Unified prototype viewer ===== */
-.proto-viewer{
-  display:grid;
-  grid-template-columns:52px 1fr 52px;
-  gap:14px;
-  align-items:center;
-}
-
-.proto-slide-wrap{
-  min-width:0;
-}
-
-.proto-image{
-  width:100%;
-  display:block;
-  border-radius:18px;
-  border:1px solid var(--line);
-  box-shadow:var(--shadow-soft);
-}
-
-.proto-meta{
-  margin-top:14px;
-}
-
-.proto-meta h3{
-  margin:0 0 8px;
-  font-size:13px;
-  color:var(--muted);
-  font-family:var(--mono);
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-}
-
-.proto-meta p{
-  margin:0;
-  font-size:14px;
-  color:#3f4148;
-}
-
-html[data-theme="dark"] .proto-meta p{
-  color:#9a9daa;
-}
-
-.proto-nav{
-  width:52px;
-  height:52px;
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  font-size:18px;
-  font-weight:600;
-  color:var(--text);
-  background:rgba(255,255,255,0.78);
-  border:1px solid var(--line);
-  box-shadow:var(--shadow-soft);
-  transition:all .18s ease;
-}
-
-.proto-nav:hover{
-  transform:translateY(-1px);
-  background:rgba(255,255,255,0.96);
-}
-
-html[data-theme="dark"] .proto-nav{
-  background:rgba(255,255,255,0.06);
-}
-
-html[data-theme="dark"] .proto-nav:hover{
-  background:rgba(255,255,255,0.12);
-}
-
-.proto-dots{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin-top:16px;
-}
-
-.proto-dot{
-  width:10px;
-  height:10px;
-  border-radius:999px;
-  border:none;
-  cursor:pointer;
-  background:#d2d6df;
-  transition:all .18s ease;
-}
-
-.proto-dot.active{
-  width:24px;
-  background:#8ea7e8;
-}
-
-html[data-theme="dark"] .proto-dot{
-  background:#4c5363;
-}
-
-html[data-theme="dark"] .proto-dot.active{
-  background:#9cb6ff;
-}
-
-.footer{
-  margin-top:34px;
-  border-top:1px solid var(--line);
-  padding-top:18px;
-  font-size:12px;
-  color:var(--muted);
-}
-
-@media (max-width:1080px){
-  .hero-inner,
-  .grid-2,
-  .metrics{
-    grid-template-columns:1fr;
-  }
-}
-
-@media (max-width:760px){
-  nav{
-    top:12px;
-    left:12px;
-    right:12px;
-    justify-content:flex-start;
-    overflow-x:auto;
-    gap:4px;
-    padding:5px;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
-  }
-
-  nav::-webkit-scrollbar{ display:none; }
-
-  nav a{
-    font-size:12px;
-    padding:7px 10px;
-  }
-
-  .wrap{
-    padding:80px 16px 60px;
-  }
-
-  .hero{
-    padding:24px 18px;
-  }
-
-  .title{
-    font-size:38px;
-  }
-
-  .theme-toggle{
-    bottom:16px;
-    right:16px;
-    width:44px;
-    height:44px;
-    font-size:18px;
-  }
-
-  .proto-viewer{
-    grid-template-columns:1fr;
-  }
-
-  .proto-nav{
-    width:100%;
-    height:42px;
-    border-radius:14px;
-  }
+  margin-top:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a class="active" href="projects.html">Projects</a>
-  <a href="research.html">Research</a>
-  <a href="papers.html">Papers</a>
-  <a href="about.html">About</a>
-  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
-</nav>
+<div class="container">
 
-<div class="wrap">
-  <section class="hero">
-    <div class="window-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+<h1>SOP Accessibility + Support Layer</h1>
 
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">📘 case study / SOP accessibility / regulated environments</span>
-        <h1 class="title">SOP Accessibility in Regulated Environments</h1>
-        <p class="lead">
-          Standard Operating Procedures (SOPs) are not just reference documents in regulated work. They shape how people locate information, interpret requirements, and act under constraint. This project explores how documentation structure creates accessibility barriers and cognitive friction in high-stakes environments, and how a lightweight support layer can open a broader path toward judgment-aware and AI-mediated procedural assistance.
-        </p>
+<p>
+This project explores how procedural documentation systems shape human judgment in regulated environments.
+Rather than treating SOP access as simple retrieval, this prototype introduces a support layer that makes reasoning, context, and document relationships visible.
+</p>
 
-        <div class="meta-row">
-          <span class="meta-chip">SOP accessibility</span>
-          <span class="meta-chip">cognitive friction</span>
-          <span class="meta-chip">search interface</span>
-          <span class="meta-chip">usability testing</span>
-          <span class="meta-chip">python</span>
-          <span class="meta-chip">AI-mediated support</span>
-        </div>
+<a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank">Live Demo (UI Prototype)</a>
+<a class="btn ai" href="https://sop-accessibility-ai.streamlit.app/" target="_blank">AI Extension Demo</a>
 
-        <div class="hero-actions">
-          <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
-          <a class="btn" href="projects.html">back to projects</a>
-          <a class="btn" href="papers.html">view papers</a>
-        </div>
-      </div>
 
-      <div class="hero-side">
-        <div class="note">
-          <h3>🎯 Core design question</h3>
-          <p>How can procedural documents be made easier to search, navigate, and interpret in regulated work environments — without modifying validated source files?</p>
-          <div class="flow-mini">
-            <span>procedural archive</span>
-            <span>accessibility layer</span>
-            <span>lower friction</span>
-          </div>
-        </div>
+<!-- ================== SLIDER ================== -->
 
-        <div class="note">
-          <h3>📝 Project role in the portfolio</h3>
-          <p>This project serves as an entry point into my broader research on how documentation structure shapes cognitive burden, downstream judgment, and responsibility in regulated systems. It also lays the groundwork for future AI-mediated interfaces that support navigation and reasoning without replacing human judgment.</p>
-          <div class="flow-mini">
-            <span>documents</span>
-            <span>judgment</span>
-            <span>AI support</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="section">
+<h2>Prototype Walkthrough</h2>
 
-  <section class="metrics">
-    <div class="metric-card blue">
-      <div class="small-label">participants</div>
-      <div class="metric-number">12</div>
-      <p>Prototype usability responses collected from frequent procedural document users and one non-expert participant.</p>
-    </div>
-    <div class="metric-card green">
-      <div class="small-label">ease of use</div>
-      <div class="metric-number">4.83/5</div>
-      <p>Mean rating for ease of finding relevant sections using the search interface.</p>
-    </div>
-    <div class="metric-card lilac">
-      <div class="small-label">workplace adoption</div>
-      <div class="metric-number">100%</div>
-      <p>All respondents said they would use a tool like this in their workplace if available.</p>
-    </div>
-  </section>
+<div class="slider">
 
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">🧩 Background</h2>
-      <span class="section-tag">problem framing</span>
-    </div>
-    <p>In regulated and procedure-heavy environments, formal operating documents shape how work is performed, checked, and reviewed. These documents are not merely references; they are part of the infrastructure through which high-stakes work becomes legible, repeatable, and auditable.</p>
-    <p>In practice, however, procedural archives are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling simply to find the right procedure.</p>
-    <p>At the sentence and section level, procedural documents often introduce complexity through nested conditions, fragmented instructions, and cross-references spread across multiple locations. These structural features can create cognitive friction, where effort is spent not on the task itself, but on locating, interpreting, and navigating the document before action can even begin.</p>
-    <p>Importantly, this burden is not distributed evenly. In document-heavy systems, more experienced workers often accumulate informal knowledge of naming conventions, archive structure, and likely file locations, while less experienced workers may take much longer to locate the same material. In that sense, access to procedural information can become partly experience-dependent, even when the formal system is the same for everyone.</p>
-    <p>More broadly, navigation burden does not stop at retrieval. When documentation is difficult to access or interpret, the resulting hesitation, workaround behavior, or procedural mismatch can later appear as an individual performance issue rather than as a property of the documentation system itself.</p>
-    <div class="quote-line">💬 In regulated systems, documentation does not simply store instructions. It shapes how work is found, understood, and later judged.</div>
-  </section>
-
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">⚠️ Problem</h2>
-      <span class="section-tag">document friction</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Observed pain points</h3>
-        <ul class="bullets">
-          <li>Scanned procedural files blocked keyword search.</li>
-          <li>Document titles were often too broad or too similar.</li>
-          <li>Users opened multiple wrong files before locating the correct one.</li>
-          <li>Access often depended on prior familiarity with naming conventions and archive structure.</li>
-          <li>Time-sensitive review situations amplified navigation burden and interpretive uncertainty.</li>
-        </ul>
-      </div>
-      <div class="card-block">
-        <h3>Why this was difficult</h3>
-        <p>In controlled environments, source documents cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not “replace the system,” but rather “improve accessibility without touching the archive itself.” At the same time, the deeper question was not only how to make retrieval easier, but how to reduce the hidden burden that documentation structure places on downstream judgment and action.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">🎯 Design question</h2>
-      <span class="section-tag">HCI framing</span>
-    </div>
-    <p>How can a human-centered retrieval layer improve accessibility and reduce cognitive friction in a constrained environment where only approved materials can be used operationally — while opening a path toward interfaces that make procedural reasoning more legible?</p>
-  </section>
-
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">↔ System change illustration</h2>
-      <span class="section-tag">before / after</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Before</h3>
-        <ul class="bullets">
-          <li>Title-based browsing across scanned files</li>
-          <li>Keyword search unavailable or unreliable</li>
-          <li>Users manually opened multiple documents</li>
-          <li>Relevant sections had to be found by scrolling and memory</li>
-          <li>Similar titles increased uncertainty during retrieval</li>
-        </ul>
-      </div>
-      <div class="card-block">
-        <h3>After</h3>
-        <ul class="bullets">
-          <li>Keyword-based entry into the document archive</li>
-          <li>Ranked results with snippets and highlighted matches</li>
-          <li>Document identifiers and page cues surfaced early</li>
-          <li>No-result states handled more explicitly</li>
-          <li>A lightweight support layer improved navigation without changing source files</li>
-        </ul>
-      </div>
-    </div>
-    <div class="quote-line">This project shows how a lightweight accessibility layer can improve procedural document navigation without altering controlled source documents — a first step toward broader interfaces for judgment support in regulated work.</div>
-  </section>
-
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🧠 Method</h2>
-      <span class="section-tag">low-code + mixed methods</span>
-    </div>
-    <div class="method-list">
-      <div class="method-item">
-        <h3>1. Metadata and keyword mapping</h3>
-        <p>Reviewed approximately 500 procedural documents and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.</p>
-      </div>
-      <div class="method-item">
-        <h3>2. Structure and overlap analysis</h3>
-        <p>Used Excel and Python to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents. This step also helped surface how archive structure and document similarity could create retrieval burden beyond a single missing search feature.</p>
-      </div>
-      <div class="method-item">
-        <h3>3. Prototype artifact</h3>
-        <p>Created an external retrieval aid rather than a replacement system: a prototype accessibility layer that allowed users to search by keywords, document cues, and related terminology without altering validated source files.</p>
-      </div>
-      <div class="method-item">
-        <h3>4. Prototype-based usability testing</h3>
-        <p>Conducted usability testing with likely end users using the prototype artifact. The artifact was not deployed as a live production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer and as a way to study how documentation access shapes confidence, uncertainty, and navigation experience.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">🖥 Prototype interface</h2>
-      <span class="section-tag">prototype screenshots</span>
-    </div>
-
-    <p>
-      The prototype demonstrates how an external keyword-based accessibility layer can support procedural document retrieval without modifying validated files. It was implemented as a lightweight search interface and evaluated as an interactive artifact rather than a production system.
-    </p>
-
-    <div class="card-block">
-      <div class="proto-viewer">
-        <button class="proto-nav prev" type="button" onclick="changeProtoSlide(-1)">←</button>
-
-        <div class="proto-slide-wrap">
-          <img id="proto-image"
-               src="assets/sop-search-interface.png"
-               alt="Prototype interface screenshot"
-               class="proto-image">
-
-          <div class="proto-meta">
-            <h3 id="proto-title">Main search interface</h3>
-            <p id="proto-caption">The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow.</p>
-          </div>
-
-          <div class="proto-dots">
-            <button class="proto-dot active" type="button" onclick="setProtoSlide(0)" aria-label="Show prototype slide 1"></button>
-            <button class="proto-dot" type="button" onclick="setProtoSlide(1)" aria-label="Show prototype slide 2"></button>
-            <button class="proto-dot" type="button" onclick="setProtoSlide(2)" aria-label="Show prototype slide 3"></button>
-          </div>
-        </div>
-
-        <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">🧪 Usability study</h2>
-      <span class="section-tag">early evaluation</span>
-    </div>
-
-    <div class="note">
-      <h3>What was tested</h3>
-      <p>
-        A short usability survey was completed by 12 participants. Most respondents reported regular SOP use (91.7%) and daily SOP search behavior (91.7%). The prototype received high ratings for ease of use (mean 4.83/5), usefulness of search results (mean 4.50/5), and overall intuitiveness (mean 4.82/5).
-      </p>
-      <div class="flow-mini">
-        <span>regular SOP users: 91.7%</span>
-        <span>daily search: 91.7%</span>
-        <span>ease: 4.83 / 5</span>
-        <span>usefulness: 4.50 / 5</span>
-        <span>intuitiveness: 4.82 / 5</span>
-      </div>
-    </div>
-
-    <div class="note" style="margin-top:16px;">
-      <h3>Why this matters</h3>
-      <p>The study did not claim production deployment inside a validated system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users navigate procedural information more efficiently and with less uncertainty? The answer was yes — which suggests that even before automation enters the workflow, interface design can reduce hidden burden in documentation-heavy environments.</p>
-    </div>
-  </section>
-
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">📊 Results & impact</h2>
-      <span class="section-tag">evidence</span>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Measure</th>
-            <th>Result</th>
-            <th>Interpretation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Regular procedural document users</td>
-            <td>91.7% (11/12)</td>
-            <td>Most participants were experienced documentation users.</td>
-          </tr>
-          <tr>
-            <td>Daily search frequency</td>
-            <td>91.7% (11/12)</td>
-            <td>The study reflected real, frequent retrieval needs.</td>
-          </tr>
-          <tr>
-            <td>Ease of finding relevant sections</td>
-            <td>Mean 4.83 / 5</td>
-            <td>Participants found the interface highly easy to use.</td>
-          </tr>
-          <tr>
-            <td>Usefulness of titles / snippets / highlighting</td>
-            <td>Mean 4.50 / 5</td>
-            <td>Result cues helped users identify relevant content quickly.</td>
-          </tr>
-          <tr>
-            <td>Overall intuitiveness</td>
-            <td>Mean 4.82 / 5</td>
-            <td>The interaction model felt natural and easy to follow.</td>
-          </tr>
-          <tr>
-            <td>Workplace adoption intent</td>
-            <td>100%</td>
-            <td>All respondents said they would use the tool if available in their workplace.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note" style="margin-top:16px;">
-      <h3>💬 Qualitative feedback</h3>
-      <p>Participants were generally very positive about the prototype, but a few noted moments of confusion when a query returned no result or when multiple entries with similar titles appeared under different document IDs. Some of these issues were also related to the synthetic prototype corpus, which occasionally produced missing or overlapping entries. These observations pointed to future improvements in query feedback, document differentiation, and result explanation.</p>
-    </div>
-  </section>
-
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🔗 Connection to the broader research program</h2>
-      <span class="section-tag">documents → judgment → responsibility</span>
-    </div>
-    <p>This project begins with a practical question about document retrieval, but its broader significance lies in what retrieval difficulty reveals. When documentation is hard to search, fragmented across sections, or cognitively demanding to interpret, the burden does not disappear after access is achieved. It travels downstream into hesitation, workaround behavior, variable interpretation, and later judgments about whether someone followed procedure correctly.</p>
-    <p>For that reason, I treat this prototype not only as an accessibility tool, but as the first layer of a broader research program on how documentation structure shapes cognitive friction, worker judgment, and responsibility in regulated systems. In this framing, SOP accessibility is not separate from accountability; it is one of the conditions under which accountability is produced.</p>
-    <div class="flow-mini">
-      <span>documentation structure</span>
-      <span>cognitive friction</span>
-      <span>judgment under constraint</span>
-      <span>responsibility</span>
-    </div>
-  </section>
-
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">🤖 Future AI direction</h2>
-      <span class="section-tag">AI-mediated support</span>
-    </div>
-    <p>This project also points toward a future AI-mediated interface layer. Importantly, the goal is not to replace procedural reading with automated answers or to delegate compliance decisions to a model. Instead, the value of AI here would be to support navigation, surface relevant cross-references, clarify why a document or section is being retrieved, and make procedural reasoning more legible to the user.</p>
-    <p>In other words, the long-term direction is not “AI as autopilot,” but AI as a support interface that helps users move through complex procedural archives with more clarity and less hidden burden. Framed this way, AI becomes part of a responsibility-sensitive design strategy: it should expand visibility into documentation and reasoning, not collapse judgment into black-box output.</p>
-  </section>
-
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">📄 Paper in progress</h2>
-      <span class="section-tag">research output</span>
-    </div>
-    <p>This project is being developed into a paper on accessibility, document usability, and compliance-constrained design in procedural environments. The paper extends the case study from a practical prototype into a broader HCI argument: accessibility improvements in validation-sensitive systems can often be achieved through external support layers rather than direct modification or replacement of the underlying system.</p>
-    <p>It also serves as an entry point into a larger research agenda on how documentation structure shapes cognitive friction, downstream judgment, and responsibility in high-constraint work settings. In later stages of this research program, that question expands toward AI-mediated interfaces that support procedural reasoning while preserving human accountability.</p>
-  </section>
-
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">💬 Reflection</h2>
-      <span class="section-tag">why it matters</span>
-    </div>
-    <p>This project showed that accessibility problems in constrained procedural environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.</p>
-    <p>From an HCI perspective, the important insight was that meaningful design improvement did not require rewriting the validated system. An external, low-code accessibility layer was enough to improve user performance and reveal a concrete design opportunity.</p>
-    <p>More importantly, the project clarified a broader conceptual point for my research: documentation design is not only about access. It also shapes how uncertainty is managed, how action is guided, and how later responsibility may be assigned. That is why I see this project as both a usable prototype and a conceptual foundation for future work on judgment-aware and AI-mediated interfaces in regulated systems.</p>
-  </section>
-
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🛠 Tools & skills</h2>
-      <span class="section-tag">methods + implementation</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Technical</h3>
-        <ul class="bullets">
-          <li>Excel metadata indexing</li>
-          <li>Python for term inspection and structured pattern analysis</li>
-          <li>Keyword mapping and document structuring</li>
-          <li>Streamlit prototype deployment</li>
-        </ul>
-      </div>
-      <div class="card-block">
-        <h3>Research / design</h3>
-        <ul class="bullets">
-          <li>SOP accessibility framing</li>
-          <li>Information architecture</li>
-          <li>Prototype-based usability testing</li>
-          <li>Search-interface evaluation</li>
-          <li>Compliance-constrained design reasoning</li>
-          <li>AI-mediated support framing</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">✨ One-line summary</h2>
-      <span class="section-tag">project takeaway</span>
-    </div>
-    <p>Designed and tested a human-centered accessibility layer for SOP retrieval that improved clarity, confidence, and perceived usability in a constrained archive — while positioning documentation structure as a key site where cognitive friction, downstream judgment, and future AI-mediated support can be studied in regulated work environments.</p>
-    <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
-      <a class="btn" href="projects.html">back to projects</a>
-      <a class="btn" href="papers.html">papers</a>
-      <a class="btn" href="index.html">home</a>
-    </div>
-  </section>
-
-  <div class="footer">© 2026 Sora Kim.</div>
+<div class="slide active">
+<img src="assets/sop-accessibility-ai-1.png">
+<div class="card">
+<h3>Search + Retrieval Interface</h3>
+<p>
+This screen shows keyword-based SOP retrieval. Instead of returning documents as static results,
+the interface highlights matched phrases and surfaces relevant sections.
+</p>
+</div>
 </div>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+<div class="slide">
+<img src="assets/sop-accessibility-ai-2.png">
+<div class="card">
+<h3>Context + Related Procedures</h3>
+<p>
+Beyond direct matches, the system surfaces related procedures and neighboring documentation.
+This addresses fragmentation across SOPs and supports cross-document navigation.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="assets/sop-accessibility-ai-3.png">
+<div class="card">
+<h3>Reasoning Support Layer</h3>
+<p>
+This layer introduces reasoning support notes. Instead of giving answers,
+it keeps alternative interpretations visible and prevents premature closure during investigation.
+</p>
+</div>
+</div>
+
+</div>
+
+<div class="nav">
+<button onclick="prev()">←</button>
+<button onclick="next()">→</button>
+</div>
+
+</div>
+
+
+<!-- ================== AI SECTION ================== -->
+
+<div class="section">
+<h2>AI-Mediated Support Layer</h2>
+
+<div class="card">
+<p>
+This prototype was extended with an AI-oriented support layer to explore how procedural systems
+can better support human reasoning.
+</p>
+
+<p>
+The goal is not to automate compliance decisions or replace human judgment.
+Instead, the system focuses on making reasoning processes more visible, surfacing ambiguity,
+and maintaining multiple possible interpretations.
+</p>
+
+<p>
+In its current form, the reasoning support is rule-based.
+However, this structure can be extended using large language models (LLMs).
+</p>
+
+<p>
+In a future extension, LLMs could generate context-sensitive reasoning notes based on:
+</p>
+
+<ul>
+<li>user query</li>
+<li>retrieved SOP content</li>
+<li>document relationships</li>
+</ul>
+
+<p>
+Importantly, the role of LLMs here is not to produce final answers,
+but to support interpretive reasoning, highlight uncertainty, and preserve decision transparency.
+</p>
+
+<p>
+Framed this way, AI becomes part of a responsibility-sensitive design approach:
+it expands visibility into documentation and reasoning, rather than collapsing judgment into black-box outputs.
+</p>
+</div>
+
+</div>
+
+
+<!-- ================== WHY IT MATTERS ================== -->
+
+<div class="section">
+<h2>Why this matters</h2>
+
+<p>
+In regulated environments, errors are often attributed to individuals,
+while underlying documentation structures remain invisible.
+</p>
+
+<p>
+This project shows that improving accessibility, context visibility,
+and reasoning support can shift how responsibility is produced and interpreted within procedural systems.
+</p>
+
+</div>
+
+</div>
+
 
 <script>
-(function(){
-  var toggle = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var isDark = saved === 'dark' || (!saved && prefersDark);
+let index = 0;
+const slides = document.querySelectorAll(".slide");
 
-  if(isDark){
-    html.setAttribute('data-theme','dark');
-    toggle.textContent='☀️';
-  } else {
-    html.setAttribute('data-theme','light');
-    toggle.textContent='🌙';
-  }
-
-  toggle.addEventListener('click', function(){
-    var current = html.getAttribute('data-theme');
-    if(current === 'dark'){
-      html.setAttribute('data-theme','light');
-      toggle.textContent='🌙';
-      localStorage.setItem('theme','light');
-    } else {
-      html.setAttribute('data-theme','dark');
-      toggle.textContent='☀️';
-      localStorage.setItem('theme','dark');
-    }
-  });
-})();
-
-const protoSlides = [
-  {
-    image: "assets/sop-search-interface.png",
-    title: "Main search interface",
-    caption: "The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow."
-  },
-  {
-    image: "assets/sop-search-results.png",
-    title: "Search results",
-    caption: "The result view shows document identifiers, page cues, highlighted matches, and ranked snippets designed to reduce navigation uncertainty."
-  },
-  {
-    image: "assets/sop-search-no-results.png",
-    title: "No-result feedback",
-    caption: "The no-result state was intentionally documented because user feedback showed that empty search states were an important point of confusion and therefore part of the design problem itself."
-  }
-];
-
-let currentProtoSlide = 0;
-
-function renderProtoSlide(){
-  const img = document.getElementById("proto-image");
-  const title = document.getElementById("proto-title");
-  const caption = document.getElementById("proto-caption");
-  const dots = document.querySelectorAll(".proto-dot");
-
-  if(!img || !title || !caption) return;
-
-  img.src = protoSlides[currentProtoSlide].image;
-  img.alt = protoSlides[currentProtoSlide].title;
-  title.textContent = protoSlides[currentProtoSlide].title;
-  caption.textContent = protoSlides[currentProtoSlide].caption;
-
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle("active", idx === currentProtoSlide);
-  });
+function show(i){
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
 }
 
-function changeProtoSlide(direction){
-  currentProtoSlide += direction;
-  if(currentProtoSlide < 0) currentProtoSlide = protoSlides.length - 1;
-  if(currentProtoSlide >= protoSlides.length) currentProtoSlide = 0;
-  renderProtoSlide();
+function next(){
+  index = (index + 1) % slides.length;
+  show(index);
 }
 
-function setProtoSlide(index){
-  currentProtoSlide = index;
-  renderProtoSlide();
+function prev(){
+  index = (index - 1 + slides.length) % slides.length;
+  show(index);
 }
-
-document.addEventListener("DOMContentLoaded", renderProtoSlide);
 </script>
 
 </body>
