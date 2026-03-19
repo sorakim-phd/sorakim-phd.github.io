@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>RCA Reasoning Scaffolder · Sora Kim</title>
+<title>SOP Accessibility in Regulated Environments · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Case study for RCA Reasoning Scaffolder — a human-centered investigation support project exploring structured reasoning in GMP deviation investigations." />
+
+<meta name="description"
+content="Case study for SOP Accessibility in Regulated Environments — a human-centered document UX project exploring accessibility, cognitive friction, judgment, and AI-mediated support in compliance-constrained procedural systems." />
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="RCA Reasoning Scaffolder — Sora Kim">
-<meta property="og:description" content="A human-centered investigation support project focused on structured reasoning, hypothesis exploration, and causal visibility in GMP deviation investigations.">
+<meta property="og:title" content="SOP Accessibility in Regulated Environments — Sora Kim">
+<meta property="og:description"
+content="A human-centered document UX project on SOP accessibility, cognitive friction, downstream judgment, and AI-mediated support in regulated work environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
-<meta property="og:url" content="https://sorakim-lab.github.io/project-rca-reasoning-scaffolder.html">
+<meta property="og:url" content="https://sorakim-lab.github.io/project-sop-accessibility.html">
 <meta property="og:site_name" content="Sora Kim">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#f5f5f7;
@@ -31,57 +37,83 @@
   --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
   --mono:'JetBrains Mono', monospace;
 }
+
 html[data-theme="dark"]{
-  --text:#e2e4ea; --muted:#7a7d8a; --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.13);
+  --text:#e2e4ea;
+  --muted:#7a7d8a;
+  --muted-strong:#a8aab8;
+  --line:rgba(255,255,255,0.07);
+  --line-strong:rgba(255,255,255,0.13);
   --panel:rgba(22,24,32,0.88);
-  --shadow:0 18px 50px rgba(0,0,0,0.40); --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
+  --shadow:0 18px 50px rgba(0,0,0,0.40);
+  --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
 }
-*{box-sizing:border-box} html{scroll-behavior:smooth}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text); line-height:1.7;
+  color:var(--text);
+  line-height:1.7;
   background:
     radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
     radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
     linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
   transition:background 0.3s ease, color 0.3s ease;
 }
+
 html[data-theme="dark"] body{
   background:
     radial-gradient(circle at 12% 16%, rgba(22,24,36,0.98) 0, transparent 40%),
     radial-gradient(circle at 84% 22%, rgba(18,22,44,0.55) 0, transparent 34%),
     linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
 }
+
 body::before{
-  content:""; position:fixed; inset:0; pointer-events:none;
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
   background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
 }
-html[data-theme="dark"] body::before{ background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0)); }
+
+html[data-theme="dark"] body::before{
+  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
+}
+
 nav{
-  position:fixed; top:18px; right:18px; z-index:60;
+  position:fixed;
+  top:18px; right:18px; z-index:60;
   display:flex; gap:8px; padding:8px;
   border:1px solid rgba(255,255,255,0.6);
   background:rgba(255,255,255,0.58);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
 html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
+
 nav a{
-  text-decoration:none; color:var(--muted); font-size:13px; font-weight:500;
-  padding:8px 12px; border-radius:999px; transition:all .22s ease; white-space:nowrap;
+  text-decoration:none; color:var(--muted);
+  font-size:13px; font-weight:500;
+  padding:8px 12px; border-radius:999px;
+  transition:all .22s ease; white-space:nowrap;
 }
 nav a:hover{ color:var(--text); background:rgba(255,255,255,0.7); }
 html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 nav a.active{ color:var(--text); background:rgba(255,255,255,0.82); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
 html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
+
 .theme-toggle{
   position:fixed; bottom:24px; right:24px; z-index:100;
   width:48px; height:48px; border-radius:50%;
-  border:1px solid var(--line); background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.78);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
   box-shadow:var(--shadow); cursor:pointer;
   display:flex; align-items:center; justify-content:center;
   font-size:20px; transition:transform .2s ease, box-shadow .2s ease;
@@ -90,12 +122,17 @@ html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
 .theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
 .theme-toggle:active{ transform:scale(0.95); }
+
 .wrap{ max-width:1180px; margin:0 auto; padding:112px 28px 92px; }
+
 .hero,.section-card,.metric-card,.note,.card-block,.method-item{
-  border:1px solid var(--line); background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border:1px solid var(--line);
+  background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
   box-shadow:var(--shadow);
 }
+
 .hero{ border-radius:var(--radius-xl); padding:30px; position:relative; overflow:hidden; margin-bottom:22px; }
 .hero::before{
   content:""; position:absolute; inset:0 0 auto 0; height:52px;
@@ -103,32 +140,41 @@ html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
 html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
+
 .window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
 .dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
-.dot:nth-child(1){background:#ff5f57} .dot:nth-child(2){background:#febc2e} .dot:nth-child(3){background:#28c840}
+.dot:nth-child(1){background:#ff5f57}
+.dot:nth-child(2){background:#febc2e}
+.dot:nth-child(3){background:#28c840}
+
 .hero-inner{ margin-top:38px; display:grid; grid-template-columns:1.08fr 0.92fr; gap:22px; align-items:start; }
+
 .eyebrow,.section-tag,.meta-chip,.small-label{
-  display:inline-flex; align-items:center; gap:8px; padding:7px 11px;
-  border:1px solid var(--line); border-radius:999px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 11px; border:1px solid var(--line); border-radius:999px;
   background:rgba(255,255,255,0.72); font-family:var(--mono); font-size:11px; color:var(--muted);
 }
 html[data-theme="dark"] .eyebrow,
 html[data-theme="dark"] .section-tag,
 html[data-theme="dark"] .meta-chip,
 html[data-theme="dark"] .small-label{ background:rgba(255,255,255,0.06); }
+
 .title,.section-title,.metric-number,.note h3,.section-card h2{ font-family:'Sora',sans-serif; letter-spacing:-0.05em; }
 .title{ font-size:60px; line-height:0.95; margin:14px 0 14px; }
 .lead{ font-size:16px; color:rgba(29,29,31,0.84); margin:0 0 16px; max-width:680px; }
 html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 .meta-row{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 18px; }
 .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+
 .btn{
   padding:10px 15px; border-radius:14px; border:1px solid var(--line);
   background:rgba(255,255,255,0.76); text-decoration:none; color:var(--text);
-  font-size:13px; font-weight:500; white-space:nowrap; box-shadow:var(--shadow-soft);
+  font-size:13px; font-weight:500; white-space:nowrap;
+  box-shadow:var(--shadow-soft);
   transition:transform .18s ease, background .18s ease, border-color .18s ease;
 }
 .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.94); border-color:var(--line-strong); }
+
 .btn.demo{
   background:linear-gradient(180deg, rgba(227,238,255,0.98), rgba(245,249,255,0.92));
   border:1px solid rgba(125,156,226,0.28); color:#244a9b;
@@ -139,6 +185,7 @@ html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
   background:linear-gradient(180deg, rgba(236,243,255,1), rgba(248,251,255,0.96));
   border-color:rgba(125,156,226,0.38); color:#1f3f86;
 }
+
 .btn.ai-demo{
   background:linear-gradient(180deg, rgba(239,238,251,0.98), rgba(248,247,255,0.94));
   border:1px solid rgba(160,138,220,0.28); color:#5d3ea8;
@@ -148,47 +195,36 @@ html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
   background:linear-gradient(180deg, rgba(245,242,255,1), rgba(250,248,255,0.96));
   border-color:rgba(160,138,220,0.38); color:#4f3297;
 }
+
 html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
 html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
 html[data-theme="dark"] .btn.demo{
   background:linear-gradient(180deg, rgba(36,52,92,0.92), rgba(28,36,58,0.92));
   border:1px solid rgba(148,173,255,0.18); color:#dce7ff;
+  box-shadow:0 10px 24px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 html[data-theme="dark"] .btn.demo:hover{
   background:linear-gradient(180deg, rgba(44,61,104,0.96), rgba(30,39,64,0.96));
   border-color:rgba(148,173,255,0.28); color:#eef3ff;
 }
-.btn.ai-demo{
-  background:linear-gradient(180deg, rgba(239,238,251,0.98), rgba(248,247,255,0.94));
-  border:1px solid rgba(160,138,220,0.28); color:#5d3ea8;
-  box-shadow:0 10px 28px rgba(122,93,194,0.10), inset 0 1px 0 rgba(255,255,255,0.72);
-}
-.btn.ai-demo:hover{
-  background:linear-gradient(180deg, rgba(245,242,255,1), rgba(250,248,255,0.96));
-  border-color:rgba(160,138,220,0.38); color:#4f3297;
-}
 html[data-theme="dark"] .btn.ai-demo{
   background:linear-gradient(180deg, rgba(65,45,108,0.92), rgba(42,31,72,0.94));
   border:1px solid rgba(198,180,255,0.14); color:#f0eaff;
+  box-shadow:0 10px 24px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 html[data-theme="dark"] .btn.ai-demo:hover{
   background:linear-gradient(180deg, rgba(77,55,126,0.96), rgba(48,35,84,0.96));
   border-color:rgba(198,180,255,0.22); color:#faf7ff;
 }
-html[data-theme="dark"] .btn.ai-demo{
-  background:linear-gradient(180deg, rgba(65,45,108,0.92), rgba(42,31,72,0.94));
-  border:1px solid rgba(198,180,255,0.14); color:#f0eaff;
-}
-html[data-theme="dark"] .btn.ai-demo:hover{
-  background:linear-gradient(180deg, rgba(77,55,126,0.96), rgba(48,35,84,0.96));
-  border-color:rgba(198,180,255,0.22); color:#faf7ff;
-}
+
 .hero-side{ display:grid; gap:14px; }
+
 .note{ border-radius:22px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88)); }
 html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 .note h3{ font-size:18px; line-height:1.1; margin:0 0 8px; }
 .note p{ margin:0; font-size:14px; color:#40434b; }
 html[data-theme="dark"] .note p{ color:#9a9daa; }
+
 .flow-mini{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
 .flow-mini span{
   font-family:var(--mono); font-size:11px; padding:7px 10px;
@@ -196,6 +232,7 @@ html[data-theme="dark"] .note p{ color:#9a9daa; }
   background:rgba(255,255,255,0.76); color:var(--muted);
 }
 html[data-theme="dark"] .flow-mini span{ background:rgba(255,255,255,0.06); }
+
 .metrics{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin:18px 0 8px; }
 .metric-card{ border-radius:22px; padding:18px; position:relative; overflow:hidden; }
 .metric-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
@@ -205,15 +242,13 @@ html[data-theme="dark"] .flow-mini span{ background:rgba(255,255,255,0.06); }
 .metric-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
 .metric-card.lilac{ background:linear-gradient(180deg, rgba(243,238,251,0.78), rgba(255,255,255,0.9)); }
 .metric-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
-.metric-card.sand{ background:linear-gradient(180deg, rgba(245,242,234,0.78), rgba(255,255,255,0.9)); }
-.metric-card.sand::before{ background:linear-gradient(90deg, rgba(230,210,171,0.95), rgba(245,242,234,0.95)); }
 html[data-theme="dark"] .metric-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.90)); }
 html[data-theme="dark"] .metric-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.78), rgba(22,24,34,0.90)); }
 html[data-theme="dark"] .metric-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.78), rgba(22,24,34,0.90)); }
-html[data-theme="dark"] .metric-card.sand{ background:linear-gradient(180deg, rgba(32,26,14,0.78), rgba(22,24,34,0.90)); }
 .metric-number{ font-size:40px; line-height:0.95; margin:10px 0 8px; }
 .metric-card p{ margin:0; font-size:13px; color:#454850; }
 html[data-theme="dark"] .metric-card p{ color:#9a9daa; }
+
 .section-card{ border-radius:26px; padding:22px; margin-top:18px; position:relative; overflow:hidden; }
 .section-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
 .section-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
@@ -224,27 +259,32 @@ html[data-theme="dark"] .section-card.blue{ background:linear-gradient(180deg, r
 html[data-theme="dark"] .section-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 html[data-theme="dark"] .section-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 html[data-theme="dark"] .section-card.sand{ background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
+
 .section-head{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
 .section-title{ font-size:28px; margin:0; }
 .section-card h2{ font-size:28px; margin:0 0 12px; }
 .section-card p{ margin:0 0 14px; font-size:15px; color:#40434b; }
 html[data-theme="dark"] .section-card p{ color:#9a9daa; }
+
 .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; }
+
 .card-block{ border-radius:20px; background:rgba(255,255,255,0.74); padding:16px; box-shadow:var(--shadow-soft); }
 html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
 .card-block h3{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .card-block p{ margin:0; font-size:14px; color:#3f4148; }
 html[data-theme="dark"] .card-block p{ color:#9a9daa; }
+
 .bullets{ margin:0; padding-left:18px; }
 .bullets li{ margin:0 0 8px; color:#41444c; }
 html[data-theme="dark"] .bullets li{ color:#9a9daa; }
+
 .method-list{ display:grid; gap:12px; }
 .method-item{ border-radius:18px; padding:14px; background:rgba(255,255,255,0.72); box-shadow:var(--shadow-soft); }
 html[data-theme="dark"] .method-item{ background:rgba(255,255,255,0.04); }
 .method-item h3{ margin:0 0 6px; font-size:14px; font-family:var(--mono); color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .method-item p{ margin:0; font-size:14px; }
 html[data-theme="dark"] .method-item p{ color:#9a9daa; }
+
 .table-wrap{ overflow:auto; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,0.72); }
 html[data-theme="dark"] .table-wrap{ background:rgba(255,255,255,0.04); }
 table{ width:100%; border-collapse:collapse; min-width:640px; }
@@ -252,39 +292,28 @@ th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--line);
 th{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); background:rgba(255,255,255,0.82); }
 html[data-theme="dark"] th{ background:rgba(255,255,255,0.04); }
 tr:last-child td{ border-bottom:none; }
+
 .quote-line{ margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,0.68); font-size:13px; color:#41444c; }
 html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
 
 /* Demo feature list */
-.demo-features{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
-.demo-feature-item{
-  display:flex; align-items:flex-start; gap:10px;
-  padding:12px 14px; background:rgba(255,255,255,0.6);
-  border:1px solid var(--line); border-radius:14px;
-  font-size:13px; color:var(--muted-strong); line-height:1.5;
+.demo-features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
 }
-html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
-.demo-feature-icon{ font-size:16px; flex-shrink:0; margin-top:1px; }
-
-/* Finding highlight */
-.finding-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:16px; }
-.finding-item{
-  padding:16px; border-radius:16px;
-  border:1px solid var(--line); background:rgba(255,255,255,0.74);
-  box-shadow:var(--shadow-soft);
-}
-html[data-theme="dark"] .finding-item{ background:rgba(255,255,255,0.04); }
-.finding-before{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#dc2626; margin-bottom:6px; }
-.finding-after{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#16a34a; margin-bottom:6px; }
-.finding-val{ font-family:var(--mono); font-size:22px; font-weight:700; color:#111827; margin-bottom:4px; }
-.finding-desc{ font-size:13px; color:#6b7280; line-height:1.5; }
-
-.demo-features{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
 .demo-feature-item{
-  display:flex; align-items:flex-start; gap:10px;
-  padding:12px 14px; background:rgba(255,255,255,0.6);
-  border:1px solid var(--line); border-radius:14px;
-  font-size:13px; color:var(--muted-strong); line-height:1.5;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  background:rgba(255,255,255,0.6);
+  border:1px solid var(--line);
+  border-radius:14px;
+  font-size:13px;
+  color:var(--muted-strong);
+  line-height:1.5;
 }
 html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
 .demo-feature-icon{ font-size:16px; flex-shrink:0; margin-top:1px; }
@@ -292,7 +321,7 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
 .footer{ margin-top:34px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
 
 @media (max-width:1080px){
-  .hero-inner,.grid-2,.grid-3,.metrics,.finding-row,.demo-features{ grid-template-columns:1fr; }
+  .hero-inner,.grid-2,.metrics,.demo-features{ grid-template-columns:1fr; }
 }
 @media (max-width:760px){
   nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
@@ -300,7 +329,7 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
   nav a{ font-size:12px; padding:7px 10px; }
   .wrap{ padding:80px 16px 60px; }
   .hero{ padding:24px 18px; }
-  .title{ font-size:40px; }
+  .title{ font-size:38px; }
   .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
 }
 </style>
@@ -326,21 +355,20 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
     </div>
     <div class="hero-inner">
       <div>
-        <span class="eyebrow">📘 case study / investigation support / regulated environments</span>
-        <h1 class="title">RCA Reasoning Scaffolder</h1>
-        <p class="lead">A human-centered investigation support project focused on improving how investigators structure, externalize, and sustain causal reasoning during GMP deviation investigations — without modifying validated documentation systems.</p>
+        <span class="eyebrow">📘 case study / SOP accessibility / regulated environments</span>
+        <h1 class="title">SOP Accessibility in Regulated Environments</h1>
+        <p class="lead">Standard Operating Procedures (SOPs) are not just reference documents in regulated work. They shape how people locate information, interpret requirements, and act under constraint. This project explores how documentation structure creates accessibility barriers and cognitive friction in high-stakes environments, and how a lightweight support layer can open a broader path toward judgment-aware and AI-mediated procedural assistance.</p>
         <div class="meta-row">
-          <span class="meta-chip">root cause analysis</span>
-          <span class="meta-chip">investigation reasoning</span>
-          <span class="meta-chip">cognitive support</span>
-          <span class="meta-chip">usability study</span>
+          <span class="meta-chip">SOP accessibility</span>
+          <span class="meta-chip">cognitive friction</span>
+          <span class="meta-chip">search interface</span>
+          <span class="meta-chip">usability testing</span>
           <span class="meta-chip">python</span>
-          <span class="meta-chip">streamlit</span>
-          <span class="meta-chip">paper in progress</span>
+          <span class="meta-chip">AI-mediated support</span>
         </div>
         <div class="hero-actions">
-          <a class="btn demo" href="https://rca-reasoning-scaffolder.streamlit.app/" target="_blank" rel="noopener noreferrer">UI Prototype Demo ↗</a>
-          <a class="btn ai-demo" href="https://rca-reasoning-scaffolder-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">AI Extension Demo ↗</a>
+          <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">UI Prototype Demo ↗</a>
+          <a class="btn ai-demo" href="https://sop-accessibility-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">AI Extension Demo ↗</a>
           <a class="btn" href="projects.html">back to projects</a>
           <a class="btn" href="papers.html">view papers</a>
         </div>
@@ -348,16 +376,20 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
       <div class="hero-side">
         <div class="note">
           <h3>🎯 Core design question</h3>
-          <p>How can investigation reasoning be supported without modifying validated GMP documentation systems?</p>
+          <p>How can procedural documents be made easier to search, navigate, and interpret in regulated work environments — without modifying validated source files?</p>
           <div class="flow-mini">
-            <span>deviation</span><span>reasoning scaffold</span><span>causal visibility</span>
+            <span>procedural archive</span>
+            <span>accessibility layer</span>
+            <span>lower friction</span>
           </div>
         </div>
         <div class="note">
           <h3>📝 Project role in the portfolio</h3>
-          <p>This project anchors the investigation-support side of my HCI work and is also being developed into a paper on cognitive-pathway modeling, procedural mismatch, and human reasoning under regulatory constraint.</p>
+          <p>This project serves as an entry point into my broader research on how documentation structure shapes cognitive burden, downstream judgment, and responsibility in regulated systems. It also lays the groundwork for future AI-mediated interfaces that support navigation and reasoning without replacing human judgment.</p>
           <div class="flow-mini">
-            <span>project</span><span>scaffold</span><span>paper</span>
+            <span>documents</span>
+            <span>judgment</span>
+            <span>AI support</span>
           </div>
         </div>
       </div>
@@ -368,18 +400,18 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
   <section class="metrics">
     <div class="metric-card blue">
       <div class="small-label">participants</div>
-      <div class="metric-number">15</div>
-      <p>All participants had GMP or quality systems experience. 80% reported frequent RCA experience.</p>
+      <div class="metric-number">12</div>
+      <p>Prototype usability responses collected from frequent procedural document users and one non-expert participant.</p>
     </div>
     <div class="metric-card green">
-      <div class="small-label">overall helpfulness</div>
-      <div class="metric-number">5.0 / 5</div>
-      <p>All 15 participants rated the tool as helpful for RCA. 100% said they would use it in real work.</p>
+      <div class="small-label">ease of use</div>
+      <div class="metric-number">4.83/5</div>
+      <p>Mean rating for ease of finding relevant sections using the search interface.</p>
     </div>
     <div class="metric-card lilac">
-      <div class="small-label">validated file changes</div>
-      <div class="metric-number">0</div>
-      <p>No validated GMP documentation systems or formal records needed to be changed.</p>
+      <div class="small-label">workplace adoption</div>
+      <div class="metric-number">100%</div>
+      <p>All respondents said they would use a tool like this in their workplace if available.</p>
     </div>
   </section>
 
@@ -389,31 +421,34 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
       <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">problem framing</span>
     </div>
-    <p>In <strong>Good Manufacturing Practice (GMP)</strong> environments, deviations require structured investigations to identify root causes and determine corrective and preventive actions. These investigations are typically documented through <strong>Root Cause Analysis (RCA)</strong> — a formal process connecting the observed event to its underlying causes and informing CAPA planning.</p>
-    <p>In practice, investigators must connect multiple contributing conditions — procedures, equipment states, environmental factors, and operator actions — while producing a clear written explanation suitable for quality review and regulatory documentation.</p>
-    <p>This creates a tension between how reasoning actually unfolds and how investigation narratives are expected to be written.</p>
-    <div class="quote-line">💬 Human reasoning is often exploratory and branching, while procedural documentation expects a linear and stable explanation.</div>
+    <p>In regulated and procedure-heavy environments, formal operating documents shape how work is performed, checked, and reviewed. These documents are not merely references; they are part of the infrastructure through which high-stakes work becomes legible, repeatable, and auditable.</p>
+    <p>In practice, however, procedural archives are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling simply to find the right procedure.</p>
+    <p>At the sentence and section level, procedural documents often introduce complexity through nested conditions, fragmented instructions, and cross-references spread across multiple locations. These structural features can create cognitive friction, where effort is spent not on the task itself, but on locating, interpreting, and navigating the document before action can even begin.</p>
+    <p>Importantly, this burden is not distributed evenly. In document-heavy systems, more experienced workers often accumulate informal knowledge of naming conventions, archive structure, and likely file locations, while less experienced workers may take much longer to locate the same material. In that sense, access to procedural information can become partly experience-dependent, even when the formal system is the same for everyone.</p>
+    <p>More broadly, navigation burden does not stop at retrieval. When documentation is difficult to access or interpret, the resulting hesitation, workaround behavior, or procedural mismatch can later appear as an individual performance issue rather than as a property of the documentation system itself.</p>
+    <div class="quote-line">💬 In regulated systems, documentation does not simply store instructions. It shapes how work is found, understood, and later judged.</div>
   </section>
 
-  <!-- OBSERVATION -->
+  <!-- PROBLEM -->
   <section class="section-card sand">
     <div class="section-head">
       <h2 class="section-title">⚠️ Observation</h2>
-      <span class="section-tag">reasoning friction</span>
+      <span class="section-tag">document friction</span>
     </div>
     <div class="grid-2">
       <div class="card-block">
         <h3>Observed pain points</h3>
         <ul class="bullets">
-          <li>Investigations frequently converged on a single explanation early in the reasoning process.</li>
-          <li>Alternative causal hypotheses became harder to maintain once documentation turned linear.</li>
-          <li>Causal reasoning was largely internal and difficult to externalize.</li>
-          <li>Complex contributing factors could disappear during narrative compression.</li>
+          <li>Scanned procedural files blocked keyword search.</li>
+          <li>Document titles were often too broad or too similar.</li>
+          <li>Users opened multiple wrong files before locating the correct one.</li>
+          <li>Access often depended on prior familiarity with naming conventions and archive structure.</li>
+          <li>Time-sensitive review situations amplified navigation burden and interpretive uncertainty.</li>
         </ul>
       </div>
       <div class="card-block">
         <h3>Why this was difficult</h3>
-        <p>In a regulated GMP environment, investigation quality depends not only on domain knowledge but also on how well reasoning can be structured under documentation pressure. The challenge was not "change the official RCA system," but rather "support better reasoning without touching validated documentation workflows."</p>
+        <p>In controlled environments, source documents cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not "replace the system," but rather "improve accessibility without touching the archive itself." At the same time, the deeper question was not only how to make retrieval easier, but how to reduce the hidden burden that documentation structure places on downstream judgment and action.</p>
       </div>
     </div>
   </section>
@@ -424,114 +459,158 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
       <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
-    <p>How can a lightweight reasoning scaffold help investigators preserve broader causal exploration in GMP deviation analysis while remaining compatible with validated documentation practices?</p>
+    <p>How can a human-centered retrieval layer improve accessibility and reduce cognitive friction in a constrained environment where only approved materials can be used operationally — while opening a path toward interfaces that make procedural reasoning more legible?</p>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section-card blue">
+    <div class="section-head">
+      <h2 class="section-title">↔ System change illustration</h2>
+      <span class="section-tag">before / after</span>
+    </div>
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Before</h3>
+        <ul class="bullets">
+          <li>Title-based browsing across scanned files</li>
+          <li>Keyword search unavailable or unreliable</li>
+          <li>Users manually opened multiple documents</li>
+          <li>Relevant sections had to be found by scrolling and memory</li>
+          <li>Similar titles increased uncertainty during retrieval</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>After</h3>
+        <ul class="bullets">
+          <li>Keyword-based entry into the document archive</li>
+          <li>Ranked results with snippets and highlighted matches</li>
+          <li>Document identifiers and page cues surfaced early</li>
+          <li>No-result states handled more explicitly</li>
+          <li>A lightweight support layer improved navigation without changing source files</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote-line">This project shows how a lightweight accessibility layer can improve procedural document navigation without altering controlled source documents — a first step toward broader interfaces for judgment support in regulated work.</div>
   </section>
 
   <!-- METHOD -->
   <section class="section-card green">
     <div class="section-head">
       <h2 class="section-title">🧠 Method</h2>
-      <span class="section-tag">low-code + qualitative</span>
+      <span class="section-tag">low-code + mixed methods</span>
     </div>
     <div class="method-list">
       <div class="method-item">
-        <h3>1. RCA structure mapping</h3>
-        <p>Mapped typical RCA reasoning structures using common investigation templates and 5-Whys logic to identify where explanation paths tend to narrow too quickly.</p>
+        <h3>1. Metadata and keyword mapping</h3>
+        <p>Reviewed approximately 500 procedural documents and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.</p>
       </div>
       <div class="method-item">
-        <h3>2. Lightweight scaffold design</h3>
-        <p>Designed a reasoning scaffold that prompted investigators to consider alternative hypotheses and parallel contributing conditions before settling on a final explanatory path.</p>
+        <h3>2. Structure and overlap analysis</h3>
+        <p>Used Excel and Python to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents. This step also helped surface how archive structure and document similarity could create retrieval burden beyond a single missing search feature.</p>
       </div>
       <div class="method-item">
-        <h3>3. Causal diagram support</h3>
-        <p>Introduced simple causal diagrams to externalize intermediate reasoning steps and make branching pathways more visible during investigation work.</p>
+        <h3>3. Prototype artifact</h3>
+        <p>Created an external retrieval aid rather than a replacement system: a prototype accessibility layer that allowed users to search by keywords, document cues, and related terminology without altering validated source files.</p>
       </div>
       <div class="method-item">
-        <h3>4. Prototype-based usability study</h3>
-        <p>Conducted a structured usability study with 15 GMP-experienced participants, measuring changes in reasoning breadth, interface usability, and accountability attribution before and after scaffold use.</p>
+        <h3>4. Prototype-based usability testing</h3>
+        <p>Conducted usability testing with likely end users using the prototype artifact. The artifact was not deployed as a live production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer and as a way to study how documentation access shapes confidence, uncertainty, and navigation experience.</p>
       </div>
     </div>
   </section>
 
-  <!-- PROTOTYPE -->
+  <!-- UI PROTOTYPE — no screenshots, demo link + feature list -->
   <section class="section-card sand">
     <div class="section-head">
-      <h2 class="section-title">🖥 Prototype</h2>
-      <span class="section-tag">UI + AI extension</span>
+      <h2 class="section-title">🖥 UI prototype</h2>
+      <span class="section-tag">original search interface</span>
     </div>
-    <p>The prototype is a step-by-step reasoning scaffold that guides investigators through hypothesis generation, factor review, and evidence attachment before committing to a final explanation. The AI extension adds reasoning-space expansion — surfacing alternative causal pathways and flagging premature accountability convergence.</p>
+    <p>The original UI prototype demonstrates how an external keyword-based accessibility layer can support procedural document retrieval without modifying validated files. It was implemented as a lightweight search interface and evaluated as an interactive artifact rather than a production system.</p>
     <div class="hero-actions" style="margin:16px 0 8px;">
-      <a class="btn demo" href="https://rca-reasoning-scaffolder.streamlit.app/" target="_blank" rel="noopener noreferrer">Open UI Prototype Demo ↗</a>
-      <a class="btn ai-demo" href="https://rca-reasoning-scaffolder-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">Open AI Extension Demo ↗</a>
+      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Open UI Prototype Demo ↗</a>
     </div>
     <div class="demo-features">
       <div class="demo-feature-item">
         <span class="demo-feature-icon">🔍</span>
-        <span>Step-by-step hypothesis tracking — Active, Narrowed, and Dropped states kept visible throughout</span>
+        <span>Keyword search across synthetic GMP-style SOPs with ranked results and snippet highlighting</span>
       </div>
       <div class="demo-feature-item">
-        <span class="demo-feature-icon">🧩</span>
-        <span>Contributing factor and evidence attachment per hypothesis before closure</span>
+        <span class="demo-feature-icon">📄</span>
+        <span>Document identifiers and page cues surfaced at the point of retrieval</span>
       </div>
       <div class="demo-feature-item">
         <span class="demo-feature-icon">⚠️</span>
-        <span>Closure signal — live indicator of reasoning pressure as hypotheses narrow</span>
+        <span>Explicit no-result feedback — treating empty states as a document usability signal, not a user error</span>
       </div>
       <div class="demo-feature-item">
-        <span class="demo-feature-icon">🤖</span>
-        <span>AI extension: PAC detection and alternative pathway surfacing to resist premature blame attribution</span>
+        <span class="demo-feature-icon">📊</span>
+        <span>Per-result feedback logging to capture retrieval success and failure patterns</span>
       </div>
     </div>
   </section>
 
-  <!-- EVALUATION -->
+  <!-- AI EXTENSION — merged, no screenshots -->
+  <section class="section-card lilac">
+    <div class="section-head">
+      <h2 class="section-title">🤖 AI extension</h2>
+      <span class="section-tag">reasoning support layer</span>
+    </div>
+    <p>After building the original SOP accessibility interface, I extended the prototype into a lightweight AI-oriented support layer. The extension does not replace document reading or make compliance decisions. Instead, it explains why a result appeared, surfaces related procedures, and adds a reasoning support note intended to keep multiple interpretations visible during navigation.</p>
+    <p>This extension was added because retrieval alone does not fully resolve hidden burden in procedural systems. Even after locating a document, users may still need help understanding why it is relevant, what adjacent procedures should be reviewed, and where ambiguity remains. The support layer therefore addresses not only access, but also the interpretive work that follows access.</p>
+    <div class="hero-actions" style="margin:16px 0 8px;">
+      <a class="btn ai-demo" href="https://sop-accessibility-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">Open AI Extension Demo ↗</a>
+    </div>
+    <div class="demo-features">
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">💬</span>
+        <span>Explains why each result appeared — making retrieval logic visible rather than implicit</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">📎</span>
+        <span>Surfaces related procedures and neighboring documents that may bear on the same task</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">💡</span>
+        <span>Adds reasoning support notes to keep interpretive openness alive during navigation</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🛡️</span>
+        <span>Designed as support, not autopilot — no compliance answers, no black-box output</span>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="card-block">
+        <h3>Design principle</h3>
+        <p>The extension was designed as support, not autopilot. It does not output a final compliance answer. Instead, it expands context, surfaces connections, and helps users keep interpretive openness alive while moving through procedural archives.</p>
+      </div>
+      <div class="card-block">
+        <h3>Future direction</h3>
+        <p>In its current form, reasoning support is implemented as a lightweight, rule-based layer. The same structure could later be extended with LLMs to generate more context-sensitive reasoning notes — not to produce final answers, but to support interpretive reasoning and keep decision transparency visible rather than collapsing judgment into black-box output.</p>
+      </div>
+    </div>
+    <div class="quote-line">Framed this way, AI becomes part of a responsibility-sensitive design strategy: it expands visibility into documentation and reasoning, rather than replacing human judgment.</div>
+  </section>
+
+  <!-- USABILITY STUDY -->
   <section class="section-card lilac">
     <div class="section-head">
       <h2 class="section-title">🧪 Usability study</h2>
-      <span class="section-tag">N = 15 · GMP-experienced participants</span>
+      <span class="section-tag">early evaluation</span>
     </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Evaluation setup</h3>
-        <p>Participants read a standardised GMP deviation scenario and recorded their initial causal assessment. They then used the scaffold prototype and completed a structured survey measuring usability, reasoning change, and accountability attribution. All 15 participants had GMP or quality systems experience; 53% reported frequent RCA experience.</p>
-        <div class="flow-mini">
-          <span>pre-use assessment</span><span>scaffold use</span><span>post-use survey</span>
-        </div>
-      </div>
-      <div class="card-block">
-        <h3>What was measured</h3>
-        <ul class="bullets">
-          <li>change in number of causes considered (pre vs. post)</li>
-          <li>whether new causes were surfaced that were not initially considered</li>
-          <li>whether the scaffold pushed toward individual blame attribution</li>
-          <li>whether multiple explanations remained visible</li>
-          <li>ease of use, interface clarity, and real-world adoption intent</li>
-        </ul>
+    <div class="note">
+      <h3>What was tested</h3>
+      <p>A short usability survey was completed by 12 participants. Most respondents reported regular SOP use (91.7%) and daily SOP search behavior (91.7%). The prototype received high ratings for ease of use (mean 4.83/5), usefulness of search results (mean 4.50/5), and overall intuitiveness (mean 4.82/5).</p>
+      <div class="flow-mini">
+        <span>regular SOP users: 91.7%</span>
+        <span>daily search: 91.7%</span>
+        <span>ease: 4.83 / 5</span>
+        <span>usefulness: 4.50 / 5</span>
+        <span>intuitiveness: 4.82 / 5</span>
       </div>
     </div>
-
-    <!-- KEY FINDINGS — reasoning change -->
     <div class="note" style="margin-top:16px;">
-      <h3>🔑 Key finding: reasoning breadth increased</h3>
-      <p>Before using the scaffold, 80% of participants believed the deviation had only one possible cause. After using the scaffold, 80% reported an increase in the number of causes they were considering — and 80% said they had thought of new causes they had not previously considered. The three participants who reported no change were those with the most extensive GMP investigation experience.</p>
-    </div>
-
-    <div class="finding-row">
-      <div class="finding-item">
-        <div class="finding-before">Before scaffold</div>
-        <div class="finding-val">80%</div>
-        <div class="finding-desc">believed only one cause existed for the deviation</div>
-      </div>
-      <div class="finding-item">
-        <div class="finding-after">After scaffold</div>
-        <div class="finding-val">80%</div>
-        <div class="finding-desc">reported an increase in the number of causes considered</div>
-      </div>
-      <div class="finding-item">
-        <div class="finding-after">New causes surfaced</div>
-        <div class="finding-val">80%</div>
-        <div class="finding-desc">considered causes they had not thought of before using the scaffold</div>
-      </div>
+      <h3>Why this matters</h3>
+      <p>The study did not claim production deployment inside a validated system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users navigate procedural information more efficiently and with less uncertainty? The answer was yes — which suggests that even before automation enters the workflow, interface design can reduce hidden burden in documentation-heavy environments.</p>
     </div>
   </section>
 
@@ -539,7 +618,7 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
   <section class="section-card blue">
     <div class="section-head">
       <h2 class="section-title">📊 Results & impact</h2>
-      <span class="section-tag">usability + accountability</span>
+      <span class="section-tag">evidence</span>
     </div>
     <div class="table-wrap">
       <table>
@@ -547,91 +626,35 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
           <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
         </thead>
         <tbody>
-          <tr><td>Ease of use</td><td>5.0 / 5 (15/15)</td><td>All participants rated the tool as easy to use. 3 who initially rated 4/5 said they would revise to 5/5 after clarification.</td></tr>
-          <tr><td>Interface structure clarity (Hypothesis / Factor / Evidence)</td><td>5.0 / 5 (15/15)</td><td>The scaffold structure was immediately legible to all GMP-experienced participants.</td></tr>
-          <tr><td>Workflow naturalness</td><td>5.0 / 5 (15/15)</td><td>The step-by-step flow felt compatible with existing investigation practice.</td></tr>
-          <tr><td>Tool pushed toward individual blame</td><td>1.0 / 5 (15/15 strongly disagree)</td><td>No participant felt the scaffold narrowed attribution toward a specific person or action.</td></tr>
-          <tr><td>Tool helped maintain multiple explanations</td><td>5.0 / 5 (15/15)</td><td>All participants felt the scaffold actively preserved reasoning breadth.</td></tr>
-          <tr><td>Responsibility felt fixed more quickly than in typical RCA</td><td>1.0 / 5 (15/15 strongly disagree)</td><td>The scaffold did not accelerate premature accountability convergence.</td></tr>
-          <tr><td>Overall helpfulness for RCA</td><td>5.0 / 5 (15/15)</td><td>All participants rated the tool as helpful for the RCA process.</td></tr>
-          <tr><td>Real-world adoption intent</td><td>100% (15/15)</td><td>All participants said they would use this tool in actual investigation work.</td></tr>
+          <tr><td>Regular procedural document users</td><td>91.7% (11/12)</td><td>Most participants were experienced documentation users.</td></tr>
+          <tr><td>Daily search frequency</td><td>91.7% (11/12)</td><td>The study reflected real, frequent retrieval needs.</td></tr>
+          <tr><td>Ease of finding relevant sections</td><td>Mean 4.83 / 5</td><td>Participants found the interface highly easy to use.</td></tr>
+          <tr><td>Usefulness of titles / snippets / highlighting</td><td>Mean 4.50 / 5</td><td>Result cues helped users identify relevant content quickly.</td></tr>
+          <tr><td>Overall intuitiveness</td><td>Mean 4.82 / 5</td><td>The interaction model felt natural and easy to follow.</td></tr>
+          <tr><td>Workplace adoption intent</td><td>100%</td><td>All respondents said they would use the tool if available in their workplace.</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note" style="margin-top:16px;">
       <h3>💬 Qualitative feedback</h3>
-      <p>The most common improvement suggestion was that the concept of a "reasoning scaffold" itself was unfamiliar — participants noted that GMP environments typically prioritize rapid closure, and that the tool's value would benefit from a brief conceptual introduction. This finding points toward adoption barriers being <em>conceptual</em> rather than interactional: the interface itself was clear, but the idea that investigation reasoning deserves structured support was new.</p>
+      <p>Participants were generally very positive about the prototype, but a few noted moments of confusion when a query returned no result or when multiple entries with similar titles appeared under different document IDs. These observations pointed to future improvements in query feedback, document differentiation, and result explanation.</p>
     </div>
   </section>
 
-  <!-- ACCOUNTABILITY FINDING -->
-  <section class="section-card sand">
+  <!-- CONNECTION TO RESEARCH PROGRAM -->
+  <section class="section-card green">
     <div class="section-head">
-      <h2 class="section-title">🔥 Accountability finding</h2>
-      <span class="section-tag">PAC counter-evidence</span>
+      <h2 class="section-title">🔗 Connection to the broader research program</h2>
+      <span class="section-tag">documents → judgment → responsibility</span>
     </div>
-    <p>One of the central concerns in my broader research program is premature accountability convergence (PAC) — the tendency for regulated investigation systems to narrow responsibility toward individual actors before systemic factors have been fully examined. The usability study provides direct evidence on this point.</p>
-    <div class="grid-3" style="margin-top:14px;">
-      <div class="card-block">
-        <h3>Q11 — Individual blame pressure</h3>
-        <p>15/15 participants strongly disagreed that the scaffold pushed them toward attributing the cause to a specific individual or action.</p>
-      </div>
-      <div class="card-block">
-        <h3>Q12 — Multiple explanations</h3>
-        <p>15/15 participants agreed that the scaffold actively helped them maintain multiple possible explanations rather than converging too quickly.</p>
-      </div>
-      <div class="card-block">
-        <h3>Q13 — Closure speed</h3>
-        <p>15/15 participants strongly disagreed that responsibility felt fixed more quickly than in a typical RCA process.</p>
-      </div>
+    <p>This project begins with a practical question about document retrieval, but its broader significance lies in what retrieval difficulty reveals. When documentation is hard to search, fragmented across sections, or cognitively demanding to interpret, the burden does not disappear after access is achieved. It travels downstream into hesitation, workaround behavior, variable interpretation, and later judgments about whether someone followed procedure correctly.</p>
+    <p>For that reason, I treat this prototype not only as an accessibility tool, but as the first layer of a broader research program on how documentation structure shapes cognitive friction, worker judgment, and responsibility in regulated systems. In this framing, SOP accessibility is not separate from accountability; it is one of the conditions under which accountability is produced.</p>
+    <div class="flow-mini">
+      <span>documentation structure</span>
+      <span>cognitive friction</span>
+      <span>judgment under constraint</span>
+      <span>responsibility</span>
     </div>
-    <div class="quote-line" style="margin-top:14px;">This is not only a usability result — it is empirical evidence that a lightweight reasoning scaffold can resist premature accountability convergence in regulated investigation environments.</div>
-  </section>
-
-  <!-- AI EXTENSION -->
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">🤖 AI extension — counter-PAC design</h2>
-      <span class="section-tag">reasoning space expander</span>
-    </div>
-    <p>Most AI systems applied to investigation or decision-support tasks are designed to converge: they surface the most likely explanation, rank causes by probability, or recommend a single corrective action. In the context of regulated investigation, this convergence tendency directly accelerates what I call <strong>Premature Accountability Convergence (PAC)</strong> — the process by which responsibility is stabilized toward an individual actor before systemic contributors have been examined.</p>
-    <p>This AI extension is designed to do the opposite. Rather than collapsing reasoning toward a single explanation, it is explicitly architected to <strong>expand reasoning space</strong> — surfacing alternative causal pathways, flagging premature individual-blame language, and prompting investigators to consider what has not yet been examined before closure.</p>
-
-    <div class="grid-2" style="margin-top:14px;">
-      <div class="card-block">
-        <h3>Conventional AI in investigation</h3>
-        <p>Typical AI tools in regulated environments are optimized for speed and consistency — they generate likely root causes, suggest CAPA actions, or summarize deviation patterns. These outputs accelerate convergence: the first plausible explanation becomes the default, and accountability stabilizes quickly. This is PAC via AI infrastructure.</p>
-      </div>
-      <div class="card-block">
-        <h3>Counter-PAC design principle</h3>
-        <p>This extension is built on the opposite premise: AI should <em>widen</em> the reasoning field, not narrow it. It does not output a final answer. Instead, it detects premature blame language, surfaces alternative causal pathways that may be closing off, and generates reopening questions — keeping interpretive openness alive before the investigation narrative compresses.</p>
-      </div>
-    </div>
-
-    <div class="hero-actions" style="margin:16px 0 8px;">
-      <a class="btn ai-demo" href="https://rca-reasoning-scaffolder-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">Open AI Extension Demo ↗</a>
-    </div>
-
-    <div class="demo-features">
-      <div class="demo-feature-item">
-        <span class="demo-feature-icon">⚠️</span>
-        <span>PAC detection — flags individual-blame language before it closes off systemic exploration</span>
-      </div>
-      <div class="demo-feature-item">
-        <span class="demo-feature-icon">🌿</span>
-        <span>Alternative pathway surfacing — generates procedural, contextual, and organizational causal pathways not yet examined</span>
-      </div>
-      <div class="demo-feature-item">
-        <span class="demo-feature-icon">❓</span>
-        <span>Reopening questions — prompts the investigator to ask what would need to be true for the current hypothesis to be wrong</span>
-      </div>
-      <div class="demo-feature-item">
-        <span class="demo-feature-icon">🛡️</span>
-        <span>No final answer output — AI is explicitly constrained from producing compliance conclusions or blame attributions</span>
-      </div>
-    </div>
-
-    <div class="quote-line" style="margin-top:16px;">💬 When AI systems generate single-cause explanations in regulated environments, they do not just summarize — they accelerate accountability convergence. This prototype explores what happens when AI is designed to resist that tendency instead.</div>
   </section>
 
   <!-- PAPER -->
@@ -640,18 +663,19 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
       <h2 class="section-title">📄 Paper in progress</h2>
       <span class="section-tag">research output</span>
     </div>
-    <p>This project is being developed into a paper on cognitive-pathway modeling, procedural mismatch, and human reasoning under regulatory constraint. The paper extends the case study into a broader HCI argument about how investigation reasoning unfolds under documentation pressure in regulated environments.</p>
-    <p>The broader contribution is that procedural systems are written as linear sequences, while human reasoning unfolds as adaptive path structures. The gap between written procedure and actual cognitive navigation can therefore be studied and treated as a design problem rather than merely a user problem.</p>
+    <p>This project is being developed into a paper on accessibility, document usability, and compliance-constrained design in procedural environments. The paper extends the case study from a practical prototype into a broader HCI argument: accessibility improvements in validation-sensitive systems can often be achieved through external support layers rather than direct modification or replacement of the underlying system.</p>
+    <p>It also serves as an entry point into a larger research agenda on how documentation structure shapes cognitive friction, downstream judgment, and responsibility in high-constraint work settings. In later stages of this research program, that question expands toward AI-mediated interfaces that support procedural reasoning while preserving human accountability.</p>
   </section>
 
   <!-- REFLECTION -->
   <section class="section-card lilac">
     <div class="section-head">
       <h2 class="section-title">💬 Reflection</h2>
-      <span class="section-tag">why it is HCI</span>
+      <span class="section-tag">why it matters</span>
     </div>
-    <p>This project reframes investigation quality as a cognitive systems design issue rather than purely an individual skill problem. In other words, weak investigations are not always the result of weak investigators; they can also emerge from reasoning environments that encourage premature linearization.</p>
-    <p>From an HCI perspective, the important insight is that supporting structured exploration of causal pathways can improve investigation reasoning without compromising regulatory documentation requirements. The usability study further showed that the main adoption barrier is conceptual rather than interactional — suggesting that the next design challenge is not interface clarity, but how to make the value of reasoning support legible to users who have been trained to close investigations quickly.</p>
+    <p>This project showed that accessibility problems in constrained procedural environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.</p>
+    <p>From an HCI perspective, the important insight was that meaningful design improvement did not require rewriting the validated system. An external, low-code accessibility layer was enough to improve user performance and reveal a concrete design opportunity.</p>
+    <p>More importantly, the project clarified a broader conceptual point for my research: documentation design is not only about access. It also shapes how uncertainty is managed, how action is guided, and how later responsibility may be assigned. That is why I see this project as both a usable prototype and a conceptual foundation for future work on judgment-aware and AI-mediated interfaces in regulated systems.</p>
   </section>
 
   <!-- TOOLS -->
@@ -662,22 +686,23 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
     </div>
     <div class="grid-2">
       <div class="card-block">
-        <h3>Technical / design</h3>
+        <h3>Technical</h3>
         <ul class="bullets">
-          <li>Python / Streamlit prototype development</li>
-          <li>Reasoning scaffold design and hypothesis tracking logic</li>
-          <li>Causal diagramming and investigation flow mapping</li>
-          <li>AI extension: PAC detection and pathway expansion</li>
+          <li>Excel metadata indexing</li>
+          <li>Python for term inspection and structured pattern analysis</li>
+          <li>Keyword mapping and document structuring</li>
+          <li>Streamlit prototype deployment</li>
         </ul>
       </div>
       <div class="card-block">
-        <h3>Research / conceptual</h3>
+        <h3>Research / design</h3>
         <ul class="bullets">
-          <li>RCA workflow analysis</li>
-          <li>Cognitive support framing</li>
-          <li>Structured usability study design and analysis</li>
+          <li>SOP accessibility framing</li>
+          <li>Information architecture</li>
+          <li>Prototype-based usability testing</li>
+          <li>Search-interface evaluation</li>
           <li>Compliance-constrained design reasoning</li>
-          <li>Premature accountability convergence (PAC) framing</li>
+          <li>AI-mediated support framing</li>
         </ul>
       </div>
     </div>
@@ -689,10 +714,10 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
       <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
-    <p>Designed and evaluated a human-centered RCA reasoning scaffold that measurably increased causal breadth, preserved multiple explanations, and resisted premature accountability convergence — without altering validated GMP documentation systems.</p>
+    <p>Designed and tested a human-centered accessibility layer for SOP retrieval that improved clarity, confidence, and perceived usability in a constrained archive — while positioning documentation structure as a key site where cognitive friction, downstream judgment, and future AI-mediated support can be studied in regulated work environments.</p>
     <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn demo" href="https://rca-reasoning-scaffolder.streamlit.app/" target="_blank" rel="noopener noreferrer">UI Prototype Demo ↗</a>
-      <a class="btn ai-demo" href="https://rca-reasoning-scaffolder-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">AI Extension Demo ↗</a>
+      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">UI Prototype Demo ↗</a>
+      <a class="btn ai-demo" href="https://sop-accessibility-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">AI Extension Demo ↗</a>
       <a class="btn" href="projects.html">back to projects</a>
       <a class="btn" href="papers.html">papers</a>
       <a class="btn" href="index.html">home</a>
