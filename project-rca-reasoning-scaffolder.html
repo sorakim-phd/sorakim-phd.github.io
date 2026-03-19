@@ -158,6 +158,23 @@ html[data-theme="dark"] .btn.demo:hover{
   background:linear-gradient(180deg, rgba(44,61,104,0.96), rgba(30,39,64,0.96));
   border-color:rgba(148,173,255,0.28); color:#eef3ff;
 }
+.btn.ai-demo{
+  background:linear-gradient(180deg, rgba(239,238,251,0.98), rgba(248,247,255,0.94));
+  border:1px solid rgba(160,138,220,0.28); color:#5d3ea8;
+  box-shadow:0 10px 28px rgba(122,93,194,0.10), inset 0 1px 0 rgba(255,255,255,0.72);
+}
+.btn.ai-demo:hover{
+  background:linear-gradient(180deg, rgba(245,242,255,1), rgba(250,248,255,0.96));
+  border-color:rgba(160,138,220,0.38); color:#4f3297;
+}
+html[data-theme="dark"] .btn.ai-demo{
+  background:linear-gradient(180deg, rgba(65,45,108,0.92), rgba(42,31,72,0.94));
+  border:1px solid rgba(198,180,255,0.14); color:#f0eaff;
+}
+html[data-theme="dark"] .btn.ai-demo:hover{
+  background:linear-gradient(180deg, rgba(77,55,126,0.96), rgba(48,35,84,0.96));
+  border-color:rgba(198,180,255,0.22); color:#faf7ff;
+}
 html[data-theme="dark"] .btn.ai-demo{
   background:linear-gradient(180deg, rgba(65,45,108,0.92), rgba(42,31,72,0.94));
   border:1px solid rgba(198,180,255,0.14); color:#f0eaff;
@@ -261,6 +278,16 @@ html[data-theme="dark"] .finding-item{ background:rgba(255,255,255,0.04); }
 .finding-after{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#16a34a; margin-bottom:6px; }
 .finding-val{ font-family:var(--mono); font-size:22px; font-weight:700; color:#111827; margin-bottom:4px; }
 .finding-desc{ font-size:13px; color:#6b7280; line-height:1.5; }
+
+.demo-features{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+.demo-feature-item{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:12px 14px; background:rgba(255,255,255,0.6);
+  border:1px solid var(--line); border-radius:14px;
+  font-size:13px; color:var(--muted-strong); line-height:1.5;
+}
+html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
+.demo-feature-icon{ font-size:16px; flex-shrink:0; margin-top:1px; }
 
 .footer{ margin-top:34px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
 
@@ -559,6 +586,52 @@ html[data-theme="dark"] .finding-item{ background:rgba(255,255,255,0.04); }
       </div>
     </div>
     <div class="quote-line" style="margin-top:14px;">This is not only a usability result — it is empirical evidence that a lightweight reasoning scaffold can resist premature accountability convergence in regulated investigation environments.</div>
+  </section>
+
+  <!-- AI EXTENSION -->
+  <section class="section-card lilac">
+    <div class="section-head">
+      <h2 class="section-title">🤖 AI extension — counter-PAC design</h2>
+      <span class="section-tag">reasoning space expander</span>
+    </div>
+    <p>Most AI systems applied to investigation or decision-support tasks are designed to converge: they surface the most likely explanation, rank causes by probability, or recommend a single corrective action. In the context of regulated investigation, this convergence tendency directly accelerates what I call <strong>Premature Accountability Convergence (PAC)</strong> — the process by which responsibility is stabilized toward an individual actor before systemic contributors have been examined.</p>
+    <p>This AI extension is designed to do the opposite. Rather than collapsing reasoning toward a single explanation, it is explicitly architected to <strong>expand reasoning space</strong> — surfacing alternative causal pathways, flagging premature individual-blame language, and prompting investigators to consider what has not yet been examined before closure.</p>
+
+    <div class="grid-2" style="margin-top:14px;">
+      <div class="card-block">
+        <h3>Conventional AI in investigation</h3>
+        <p>Typical AI tools in regulated environments are optimized for speed and consistency — they generate likely root causes, suggest CAPA actions, or summarize deviation patterns. These outputs accelerate convergence: the first plausible explanation becomes the default, and accountability stabilizes quickly. This is PAC via AI infrastructure.</p>
+      </div>
+      <div class="card-block">
+        <h3>Counter-PAC design principle</h3>
+        <p>This extension is built on the opposite premise: AI should <em>widen</em> the reasoning field, not narrow it. It does not output a final answer. Instead, it detects premature blame language, surfaces alternative causal pathways that may be closing off, and generates reopening questions — keeping interpretive openness alive before the investigation narrative compresses.</p>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="margin:16px 0 8px;">
+      <a class="btn ai-demo" href="https://rca-reasoning-scaffolder-ai.streamlit.app/" target="_blank" rel="noopener noreferrer">Open AI Extension Demo ↗</a>
+    </div>
+
+    <div class="demo-features">
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">⚠️</span>
+        <span>PAC detection — flags individual-blame language before it closes off systemic exploration</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🌿</span>
+        <span>Alternative pathway surfacing — generates procedural, contextual, and organizational causal pathways not yet examined</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">❓</span>
+        <span>Reopening questions — prompts the investigator to ask what would need to be true for the current hypothesis to be wrong</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🛡️</span>
+        <span>No final answer output — AI is explicitly constrained from producing compliance conclusions or blame attributions</span>
+      </div>
+    </div>
+
+    <div class="quote-line" style="margin-top:16px;">💬 When AI systems generate single-cause explanations in regulated environments, they do not just summarize — they accelerate accountability convergence. This prototype explores what happens when AI is designed to resist that tendency instead.</div>
   </section>
 
   <!-- PAPER -->
