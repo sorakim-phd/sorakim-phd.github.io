@@ -120,18 +120,18 @@ nav {
 .page-wrap {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 80px 32px 120px;
-  display: grid;
-  grid-template-columns: var(--sidebar-w) 1fr;
-  gap: 0 72px;
-  align-items: start;
+  padding: 80px 32px 120px 272px;
 }
 
 .sidebar {
-  position: sticky;
+  position: fixed;
   top: 72px;
-  padding-top: 8px;
-  z-index: 1;
+  left: 0;
+  width: 240px;
+  padding: 24px 28px;
+  z-index: 10;
+  overflow-y: auto;
+  height: calc(100vh - 72px);
 }
 .breadcrumb {
   font-family: var(--mono);
@@ -335,7 +335,7 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 @media(max-width:900px){
-  .page-wrap { grid-template-columns: 1fr; gap: 0; }
+  .page-wrap { padding: 80px 24px 120px; }
   .sidebar { display: none; }
   .meta-row { grid-template-columns: 1fr; }
   .meta-cell { border-right: none; border-bottom: var(--pixel-border); }
