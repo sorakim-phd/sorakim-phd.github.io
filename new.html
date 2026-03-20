@@ -181,7 +181,6 @@ nav {
   letter-spacing: 0.06em;
 }
 
-/* fixed research box */
 .info-block {
   background: var(--bg);
   border: var(--pixel-border);
@@ -265,7 +264,6 @@ nav {
   font-size: 8px;
 }
 
-/* PIXEL DETAILS */
 .px-row {
   display: flex;
   gap: 14px;
@@ -500,7 +498,7 @@ nav {
 .paper-card:nth-child(5):hover .paper-num {
   color: rgba(255,255,255,0.82);
 }
-.paper-card:nth-child(5):hover .paper-p,
+.paper-card:nth-child(5):hover .paper-sub,
 .paper-card:nth-child(5):hover .paper-tag {
   color: rgba(255,255,255,0.68);
   border-color: rgba(255,255,255,0.28);
@@ -514,15 +512,15 @@ nav {
   margin-bottom: 8px;
   display: block;
 }
-.paper-claim {
+.paper-title {
   font-family: var(--sora);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
-.paper-p {
+.paper-sub {
   font-size: 11px;
   color: var(--muted);
   line-height: 1.62;
@@ -639,7 +637,7 @@ nav {
   <section class="hero">
     <div class="hero-left">
       <div class="avatar-wrap">
-        <img src="./assets/sora-kim-headshot-1024.jpg" alt="Sora Kim">
+        <img src="./assets/sora-kim.jpg" alt="Sora Kim">
       </div>
 
       <div>
@@ -672,7 +670,6 @@ nav {
       <div class="eyebrow">human-centered systems · regulated environments</div>
 
       <div class="px-row">
-        <!-- pixel SOP doc -->
         <svg class="px" width="36" height="52" viewBox="0 0 9 13" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="7" height="13" fill="currentColor" opacity=".12"/>
           <rect x="0" y="0" width="7" height="1" fill="currentColor" opacity=".6"/>
@@ -688,7 +685,6 @@ nav {
           <rect x="1" y="10" width="4" height="1" fill="currentColor" opacity=".25"/>
         </svg>
 
-        <!-- pixel computer -->
         <svg class="px" width="64" height="52" viewBox="0 0 16 13" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="16" height="10" fill="currentColor" opacity=".8"/>
           <rect x="1" y="1" width="14" height="8" fill="var(--bg)"/>
@@ -797,8 +793,8 @@ nav {
     <div class="paper-grid">
       <article class="paper-card">
         <span class="paper-num">// paper_01</span>
-        <div class="paper-claim">Procedural access matters for cognition, not just convenience.</div>
-        <p class="paper-p">SOP Accessibility and Compliance-Constrained Design</p>
+        <div class="paper-title">Accessibility, Document Usability, and Compliance-Constrained Design in Regulated Environments</div>
+        <p class="paper-sub">Examines retrieval burden, keyword pathways, and compliance-safe usability improvement in scanned SOP archives.</p>
         <div class="paper-tags">
           <span class="paper-tag">document UX</span>
           <span class="paper-tag">accessibility</span>
@@ -807,8 +803,8 @@ nav {
 
       <article class="paper-card">
         <span class="paper-num">// paper_02</span>
-        <div class="paper-claim">Closure pressure can narrow reasoning before systemic causes fully emerge.</div>
-        <p class="paper-p">Reasoning Under Closure Pressure: Scaffolding RCA</p>
+        <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
+        <p class="paper-sub">Studies how investigatory environments narrow causal exploration and how interface scaffolds can preserve interpretive breadth.</p>
         <div class="paper-tags">
           <span class="paper-tag">reasoning</span>
           <span class="paper-tag">investigation</span>
@@ -817,8 +813,8 @@ nav {
 
       <article class="paper-card">
         <span class="paper-num">// paper_03</span>
-        <div class="paper-claim">Loopbacks and hesitation can signal system-level friction rather than user failure.</div>
-        <p class="paper-p">Document Navigation as a Design Problem</p>
+        <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
+        <p class="paper-sub">Reframes loopbacks, hesitation, and dependency gaps as system-level navigation problems rather than individual failure.</p>
         <div class="paper-tags">
           <span class="paper-tag">navigation</span>
           <span class="paper-tag">traceability</span>
@@ -827,8 +823,8 @@ nav {
 
       <article class="paper-card">
         <span class="paper-num">// paper_04</span>
-        <div class="paper-claim">Observability can support coordination under procedural constraint.</div>
-        <p class="paper-p">Workflow Friction in Deviation–CAPA Review</p>
+        <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
+        <p class="paper-sub">Focuses on visibility, coordination burden, and review structure in multi-stage quality workflows.</p>
         <div class="paper-tags">
           <span class="paper-tag">workflow UX</span>
           <span class="paper-tag">observability</span>
@@ -837,8 +833,8 @@ nav {
 
       <article class="paper-card">
         <span class="paper-num">// paper_05</span>
-        <div class="paper-claim">Regulated workflows are user environments, not just compliance artifacts.</div>
-        <p class="paper-p">Regulatory UX: Toward a Human-Centered Framework</p>
+        <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
+        <p class="paper-sub">Develops a broader design language for regulated work environments, treating procedures and review systems as user environments.</p>
         <div class="paper-tags">
           <span class="paper-tag">regulatory UX</span>
           <span class="paper-tag">concept paper</span>
