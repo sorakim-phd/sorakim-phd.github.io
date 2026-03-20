@@ -6,529 +6,342 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Sora Kim — HCI researcher studying judgment, accountability, and human-centered design in regulated environments." />
 
-<link rel="icon" href="./assets/favicon-light.png">
 <link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ── TOKENS ───────────────────────────────────────────── */
 :root {
-  --bg: #f8f8f6;
-  --bg2: #f0f0ee;
-  --bg3: #e8e8e6;
-  --text: #111214;
-  --muted: #626872;
-  --muted2: #8a9099;
-  --accent: #1a1a1a;
-  --accent-light: #f0f0ee;
-  --pixel-border: 1px solid #222;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Inter', sans-serif;
+  --bg:        #f7f7f5;
+  --bg2:       #eceae4;
+  --bg3:       #e2e0d9;
+  --text:      #0f0f0e;
+  --muted:     #5a5a54;
+  --faint:     #999890;
+  --hr:        rgba(15,15,14,.13);
+  --hrh:       rgba(15,15,14,.80);
+  --amber:     #8B7355;
+  --mono:      'DM Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --nav-h:     52px;
+  --wrap:      1080px;
 }
 html[data-theme="dark"] {
-  --bg: #111317;
-  --bg2: #1a1e25;
-  --bg3: #232833;
-  --text: #f2f4f7;
-  --muted: #98a1ad;
-  --muted2: #7d8794;
-  --accent: #e0e0e0;
-  --accent-light: #232833;
-  --pixel-border: 1px solid #e0e0e0;
+  --bg:        #0d0d0b;
+  --bg2:       #141412;
+  --bg3:       #1c1c19;
+  --text:      #efede5;
+  --muted:     #96948c;
+  --faint:     #57574f;
+  --hr:        rgba(239,237,229,.10);
+  --hrh:       rgba(239,237,229,.72);
+  --amber:     #b09870;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+
+/* ── RESET ────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  min-height: 100vh;
-  transition: background 0.25s, color 0.25s;
-  line-height: 1.7;
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-size:15px;
+  min-height:100vh; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s, color .25s;
 }
-a { color: inherit; }
-img { display: block; max-width: 100%; }
-::selection { background: var(--text); color: var(--bg); }
+a { color:inherit; text-decoration:none }
+img { display:block; max-width:100% }
+::selection { background:var(--text); color:var(--bg) }
 
-#progress-bar {
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;
-  background: #8B7355;
-  width: 0%;
-  z-index: 200;
-  transition: width 0.1s linear;
-}
-
+/* ── NAV ──────────────────────────────────────────────── */
 nav {
-  position: fixed;
-  top: 3px; left: 0; right: 0;
-  z-index: 100;
-  border-bottom: var(--pixel-border);
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 48px;
-  transition: background 0.25s;
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:var(--nav-h); background:var(--bg);
+  border-bottom:1px solid var(--hrh);
+  display:flex; align-items:stretch;
+  transition:background .25s;
 }
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.nav-brand {
+  display:flex; align-items:center; gap:9px;
+  padding:0 20px;
+  font-family:var(--mono); font-size:12px; font-weight:500;
+  letter-spacing:.05em;
+  border-right:1px solid var(--hrh);
+  flex-shrink:0;
 }
-.blink {
-  width: 8px; height: 8px;
-  background: #8B7355;
-  display: inline-block;
-  animation: blink 1.2s step-end infinite;
+.pulse {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--amber);
+  animation:pulse 2.4s ease-in-out infinite;
 }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.nav-links { display: flex; }
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1) }
+  50%      { opacity:.35; transform:scale(.65) }
+}
+.nav-links { display:flex; flex:1; overflow:hidden }
 .nav-links a {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 0 14px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  border-left: var(--pixel-border);
-  transition: all 0.12s ease;
-  letter-spacing: 0.04em;
+  font-family:var(--mono); font-size:11px;
+  color:var(--muted); letter-spacing:.05em;
+  padding:0 16px; display:flex; align-items:center;
+  border-right:1px solid var(--hr);
+  transition:background .12s, color .12s;
+  white-space:nowrap;
 }
-.nav-links a:hover, .nav-links a.active { background: var(--text); color: var(--bg); }
+.nav-links a:hover,
+.nav-links a.active { background:var(--text); color:var(--bg) }
+.nav-end { display:flex; margin-left:auto }
 .theme-btn {
-  width: 48px; height: 48px;
-  border: none; border-left: var(--pixel-border);
-  background: transparent; cursor: pointer;
-  font-size: 16px; display: flex; align-items: center; justify-content: center;
-  color: var(--text); transition: all 0.12s ease; font-family: var(--mono);
+  width:var(--nav-h); border:none; border-left:1px solid var(--hrh);
+  background:transparent; cursor:pointer;
+  font-family:var(--mono); font-size:14px; color:var(--text);
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
 }
-.theme-btn:hover { background: var(--text); color: var(--bg); }
+.theme-btn:hover { background:var(--text); color:var(--bg) }
 
+/* ── WRAP ─────────────────────────────────────────────── */
 .wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 80px 24px 80px;
+  max-width:var(--wrap); margin:0 auto;
+  padding:calc(var(--nav-h) + 44px) 24px 100px;
 }
 
+/* ── HERO ─────────────────────────────────────────────── */
 .hero {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  border: var(--pixel-border);
-  margin-top: 28px;
-  margin-bottom: 40px;
-  align-items: start;
+  display:grid; grid-template-columns:256px 1fr;
+  border:1px solid var(--hrh);
+  margin-bottom:64px;
 }
-.hero-left {
-  border-right: var(--pixel-border);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  background: var(--bg2);
+.hero-side {
+  border-right:1px solid var(--hrh);
+  background:var(--bg2);
+  padding:26px 22px;
+  display:flex; flex-direction:column; gap:18px;
 }
-.avatar-wrap {
-  width: 160px; height: 160px;
-  border: var(--pixel-border);
-  overflow: hidden;
-  background: var(--bg3);
+.avatar {
+  width:144px; height:144px;
+  border:1px solid var(--hrh);
+  overflow:hidden; background:var(--bg3); flex-shrink:0;
 }
-.avatar-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
-  filter: grayscale(100%) contrast(1.08) brightness(0.98);
+.avatar img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 15%;
+  filter:grayscale(100%) contrast(1.06) brightness(.99);
 }
-.px-name {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.id-name {
+  font-size:18px; font-weight:600;
+  letter-spacing:-.03em; margin-bottom:4px;
 }
-.px-role {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  line-height: 1.8;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.id-role {
+  font-family:var(--mono); font-size:9.5px;
+  color:var(--muted); line-height:1.9;
+  text-transform:uppercase; letter-spacing:.07em;
 }
-.info-block {
-  background: var(--bg);
-  border: 1px solid #222;
-  padding: 10px 14px;
-  overflow-x: auto;
+.code-block {
+  background:var(--bg); border:1px solid var(--hrh);
+  padding:10px 13px; overflow-x:auto;
 }
-.info-block pre {
-  margin: 0;
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--muted);
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  letter-spacing: 0.02em;
+.code-block pre {
+  font-family:var(--mono); font-size:11px;
+  line-height:2; color:var(--muted);
+  white-space:pre-wrap; word-break:break-word;
 }
-.key { color: #8B7355; font-weight: 700; }
-.val { color: var(--text); }
-.cmt { opacity: 0.55; }
-
-.px-links { display: flex; flex-direction: column; }
-.px-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 9px 12px;
-  border: var(--pixel-border);
-  margin-top: -1px;
-  text-decoration: none;
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-  transition: all 0.12s ease;
+.ck { color:var(--amber); font-weight:500 }
+.cv { color:var(--text) }
+.cc { opacity:.42 }
+.side-nav { display:flex; flex-direction:column }
+.side-link {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:9px 11px;
+  border:1px solid var(--hrh); margin-top:-1px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em;
+  transition:background .12s, color .12s;
 }
-.px-link:hover { background: var(--text); color: var(--bg); }
-.arr { opacity: 0.45; }
-
+.side-link:hover { background:var(--text); color:var(--bg) }
+.arr { opacity:.32 }
 .contact-line {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  border-top: 1px dashed var(--muted2);
-  padding-top: 12px;
+  font-family:var(--mono); font-size:9.5px; color:var(--faint);
+  border-top:1px dashed var(--faint); padding-top:13px;
 }
-.contact-line a { color: var(--muted); text-decoration: none; }
-.contact-line a:hover { color: var(--text); }
+.contact-line a { color:var(--faint) }
+.contact-line a:hover { color:var(--text) }
 
-.hero-right {
-  padding: 32px 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+/* ── HERO MAIN ────────────────────────────────────────── */
+.hero-main {
+  padding:36px 40px;
+  display:flex; flex-direction:column; gap:28px;
 }
 .eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-family:var(--mono); font-size:9.5px;
+  color:var(--faint); text-transform:uppercase;
+  letter-spacing:.13em;
+  display:flex; align-items:center; gap:7px;
 }
-.eyebrow::before { content: '▶'; font-size: 8px; color: #8B7355; }
-
-.hero-title {
-  font-size: 46px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
+.eyebrow::before { content:'▸'; font-size:9px; color:var(--amber) }
+.hero-h {
+  font-size:44px; font-weight:600;
+  letter-spacing:-.04em; line-height:1.07;
 }
-.hero-title .dim { color: var(--muted2); }
-
-.hero-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-  max-width: 520px;
-  border-left: 3px solid #8B7355;
-  padding-left: 14px;
-  opacity: 0.85;
+.hero-h .dim { color:var(--muted) }
+.lede {
+  font-size:13.5px; color:var(--muted);
+  line-height:1.84; max-width:520px;
+  border-left:2px solid var(--amber);
+  padding-left:16px;
 }
 
-.stat-row {
-  display: flex;
-  border: var(--pixel-border);
+/* ── STATS ────────────────────────────────────────────── */
+.stats {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--hrh);
 }
 .stat {
-  flex: 1;
-  padding: 14px 16px;
-  text-align: center;
-  border-right: var(--pixel-border);
+  padding:16px 12px; text-align:center;
+  border-right:1px solid var(--hrh);
 }
-.stat:last-child { border-right: none; }
+.stat:last-child { border-right:none }
 .stat-n {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  display: block;
-  line-height: 1;
-  margin-bottom: 4px;
+  display:block; font-size:30px; font-weight:600;
+  letter-spacing:-.05em; line-height:1; margin-bottom:5px;
 }
 .stat-l {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  display: block;
+  font-family:var(--mono); font-size:9px;
+  color:var(--muted); text-transform:uppercase; letter-spacing:.09em;
 }
 
-.axis-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: var(--pixel-border);
-  margin-top: 8px;
-}
-.axis { padding: 16px 18px; border-right: var(--pixel-border); }
-.axis:last-child { border-right: none; }
-.axis-n {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: #8B7355;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-}
-.axis-t {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-.axis-d { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-.section { margin-bottom: 56px; }
+/* ── SECTIONS ─────────────────────────────────────────── */
+.sec { margin-bottom:60px }
 .sec-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: var(--pixel-border);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid var(--hrh);
+  padding-bottom:10px; margin-bottom:22px;
 }
-.sec-title {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.sec-label {
+  font-family:var(--mono); font-size:10.5px; font-weight:500;
+  text-transform:uppercase; letter-spacing:.1em;
+  display:flex; align-items:center; gap:6px;
 }
-.sec-title::before { content: '#'; color: #8B7355; }
+.sec-label::before { content:'#'; color:var(--amber) }
 .see-all {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border: var(--pixel-border);
-  transition: all 0.12s ease;
+  font-family:var(--mono); font-size:9.5px;
+  color:var(--muted); text-transform:uppercase; letter-spacing:.08em;
+  padding:5px 11px; border:1px solid var(--hrh);
+  transition:background .12s, color .12s;
 }
-.see-all:hover { background: var(--text); color: var(--bg); }
+.see-all:hover { background:var(--text); color:var(--bg) }
 
+/* ── PROJECT GRID ─────────────────────────────────────── */
 .proj-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  border: var(--pixel-border);
-  gap: 0;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--hrh);
 }
-.proj-link { text-decoration: none; color: inherit; display: block; }
 .proj-card {
-  padding: 20px;
-  border-right: var(--pixel-border);
-  transition: all 0.2s ease;
-  height: 100%;
+  padding:22px 20px;
+  border-right:1px solid var(--hrh);
+  display:flex; flex-direction:column;
+  transition:background .18s, color .18s, transform .18s;
+  cursor:pointer;
 }
-.proj-card:last-child { border-right: none; }
-.proj-link:hover .proj-card {
-  background: var(--text);
-  color: var(--bg);
-  transform: translateY(-2px);
+.proj-card:last-child { border-right:none }
+.proj-card:hover {
+  background:var(--text); color:var(--bg);
+  transform:translateY(-2px);
 }
-.proj-link:hover .proj-num,
-.proj-link:hover .proj-p { color: rgba(255,255,255,0.6); }
-.proj-link:hover .proj-tag { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.25); }
+.proj-card:hover .proj-num,
+.proj-card:hover .proj-desc { color:rgba(255,255,255,.52) }
+.proj-card:hover .tag {
+  color:rgba(255,255,255,.5);
+  border-color:rgba(255,255,255,.18);
+}
 .proj-num {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted2);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-  display: block;
+  font-family:var(--mono); font-size:9px;
+  color:var(--faint); text-transform:uppercase;
+  letter-spacing:.1em; margin-bottom:12px;
 }
-.proj-h {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  line-height: 1.3;
+.proj-title {
+  font-size:14.5px; font-weight:600;
+  letter-spacing:-.02em; line-height:1.3; margin-bottom:9px;
 }
-.proj-p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 14px;
+.proj-desc {
+  font-size:12px; color:var(--muted);
+  line-height:1.75; margin-bottom:16px; flex:1;
 }
-.proj-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-.proj-tag {
-  font-family: var(--mono);
-  font-size: 9px;
-  padding: 3px 7px;
-  border: 1px solid var(--muted2);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.tags { display:flex; gap:5px; flex-wrap:wrap }
+.tag {
+  font-family:var(--mono); font-size:9px;
+  padding:3px 7px; border:1px solid var(--hr);
+  color:var(--faint); text-transform:uppercase; letter-spacing:.04em;
 }
 
-.paper-note {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.82;
-  border-left: 3px solid #8B7355;
-  padding-left: 14px;
-  margin-bottom: 20px;
-  max-width: 640px;
+/* ── PAPERS STRIP ─────────────────────────────────────── */
+.papers-strip {
+  border:1px solid var(--hrh);
+  display:grid; grid-template-columns:1fr auto;
+  align-items:center;
 }
-.paper-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: var(--pixel-border);
+.papers-strip-body {
+  padding:20px 24px;
+  border-right:1px solid var(--hrh);
+  font-size:13.5px; color:var(--muted); line-height:1.8;
 }
-.paper-card {
-  padding: 18px;
-  border-right: var(--pixel-border);
-  border-bottom: var(--pixel-border);
-  transition: background 0.12s ease;
+.papers-strip-body strong {
+  color:var(--text); font-weight:500;
 }
-.paper-card:nth-child(2n) { border-right: none; }
-.paper-card:nth-child(5) {
-  grid-column: 1 / -1;
-  border-right: none;
-  border-bottom: none;
-  border-top: var(--pixel-border);
-  background: var(--bg2);
+.papers-strip-cta { padding:0 24px; flex-shrink:0 }
+.papers-btn {
+  font-family:var(--mono); font-size:10px;
+  text-transform:uppercase; letter-spacing:.09em;
+  padding:9px 16px; border:1px solid var(--hrh);
+  white-space:nowrap; display:inline-block;
+  transition:background .12s, color .12s;
 }
-.paper-card:nth-child(3),
-.paper-card:nth-child(4) { border-bottom: none; }
-.paper-card:hover { background: var(--bg2); }
-.paper-card:nth-child(5):hover { background: var(--text); color: var(--bg); }
-.paper-card:nth-child(5):hover .paper-num { color: rgba(255,255,255,0.7); }
-.paper-card:nth-child(5):hover .paper-sub,
-.paper-card:nth-child(5):hover .paper-method,
-.paper-card:nth-child(5):hover .paper-tag { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.25); }
-.paper-num {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted2);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-  display: block;
-}
-.paper-title {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-.paper-sub {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 8px;
-}
-.paper-method {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted2);
-  margin-bottom: 10px;
-  letter-spacing: 0.02em;
-}
-.paper-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-.paper-tag {
-  font-family: var(--mono);
-  font-size: 9px;
-  padding: 3px 7px;
-  border: 1px solid var(--muted2);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
+.papers-btn:hover { background:var(--text); color:var(--bg) }
 
+/* ── FOOTER ───────────────────────────────────────────── */
 .footer {
-  border-top: var(--pixel-border);
-  padding-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  flex-wrap: wrap;
-  gap: 8px;
+  border-top:1px solid var(--hrh); padding-top:18px;
+  display:flex; justify-content:space-between;
+  font-family:var(--mono); font-size:9.5px;
+  color:var(--faint); text-transform:uppercase; letter-spacing:.06em;
+  flex-wrap:wrap; gap:8px;
 }
-.footer a { color: var(--muted); text-decoration: none; }
-.footer a:hover { color: var(--text); }
+.footer a { color:var(--faint) }
+.footer a:hover { color:var(--text) }
 
-.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-@media(max-width:900px){
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { border-right: none; border-bottom: var(--pixel-border); }
-  .hero-title { font-size: 36px; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .proj-card { border-right: none; border-bottom: var(--pixel-border); }
-  .proj-card:last-child { border-bottom: none; }
-  .paper-grid { grid-template-columns: 1fr; }
-  .paper-card { border-right: none; border-bottom: var(--pixel-border); }
-  .paper-card:last-child { border-bottom: none; }
-  .paper-card:nth-child(5) { border-bottom: none; }
-  .axis-row { grid-template-columns: 1fr; }
-  .axis { border-right: none; border-bottom: var(--pixel-border); }
-  .axis:last-child { border-bottom: none; }
-  .stat-row { flex-wrap: wrap; }
-  .stat { min-width: 50%; border-bottom: var(--pixel-border); }
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media(max-width:860px) {
+  .hero { grid-template-columns:1fr }
+  .hero-side { border-right:none; border-bottom:1px solid var(--hrh) }
+  .hero-h { font-size:34px }
+  .proj-grid { grid-template-columns:1fr }
+  .proj-card { border-right:none; border-bottom:1px solid var(--hrh) }
+  .proj-card:last-child { border-bottom:none }
+  .stats { grid-template-columns:1fr 1fr }
+  .stat:nth-child(2) { border-right:none }
+  .stat:nth-child(3) { grid-column:1/-1; border-top:1px solid var(--hrh); border-right:none }
+  .papers-strip { grid-template-columns:1fr }
+  .papers-strip-body { border-right:none; border-bottom:1px solid var(--hrh) }
+  .papers-strip-cta { padding:16px 24px }
 }
-@media(max-width:600px){
-  nav { padding: 0 12px; }
-  .nav-links { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { padding: 0 10px; font-size: 11px; white-space: nowrap; }
-  .wrap { padding: 64px 12px 60px; }
-  .hero-right { padding: 16px; }
-  .hero-left { padding: 18px; }
-  .hero-title { font-size: 28px; }
-  .avatar-wrap { width: 120px; height: 120px; }
-  .footer { flex-direction: column; gap: 4px; }
-  .sec-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+@media(max-width:600px) {
+  .wrap { padding:calc(var(--nav-h) + 24px) 14px 80px }
+  .hero-main { padding:22px 18px }
+  .hero-h { font-size:27px }
+  .avatar { width:120px; height:120px }
+  .nav-links { overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none }
+  .nav-links::-webkit-scrollbar { display:none }
+  .nav-links a { padding:0 11px; font-size:10px }
+  .footer { flex-direction:column; gap:4px }
 }
 </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
-
 <nav>
-  <a class="nav-logo" href="index.html">
-    <span class="blink"></span>sora kim
+  <a class="nav-brand" href="index.html">
+    <span class="pulse"></span>sora kim
   </a>
   <div class="nav-links">
     <a class="active" href="index.html">home</a>
@@ -536,182 +349,147 @@ nav {
     <a href="research.html">research</a>
     <a href="papers.html">papers</a>
     <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank">cv ↗</a>
   </div>
-  <button class="theme-btn" id="themeToggle" aria-label="toggle dark mode">◐</button>
+  <div class="nav-end">
+    <button class="theme-btn" id="themeToggle" aria-label="toggle theme">◐</button>
+  </div>
 </nav>
 
 <div class="wrap">
-  <section class="hero fade-up">
-    <div class="hero-left">
-      <div class="avatar-wrap">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-side">
+      <div class="avatar">
         <img src="./assets/sora-kim.jpg" alt="Sora Kim">
       </div>
       <div>
-        <div class="px-name">Sora Kim</div>
-        <div class="px-role">Independent Researcher<br>HCI · Regulatory UX<br>Seoul, Korea</div>
+        <div class="id-name">Sora Kim</div>
+        <div class="id-role">Independent Researcher<br>HCI · Regulatory UX<br>Seoul, Korea</div>
       </div>
-      <div class="info-block">
-<pre><span class="cmt"># research_index</span>
-<span class="key">focus   </span> = <span class="val">"judgment & accountability as system outcomes"</span>
-<span class="key">method  </span> = <span class="val">"human-centered system interventions"</span>
-<span class="key">context </span> = <span class="val">"high-stakes regulated environments"</span>
+      <div class="code-block">
+<pre><span class="cc"># research_index</span>
+<span class="ck">focus  </span> = <span class="cv">"judgment &amp; accountability"</span>
+<span class="ck">method </span> = <span class="cv">"usability · trace · prototype"</span>
+<span class="ck">site   </span> = <span class="cv">"regulated environments"</span>
 </pre>
       </div>
-      <div class="px-links">
-        <a class="px-link" href="projects.html"><span>projects</span><span class="arr">→</span></a>
-        <a class="px-link" href="research.html"><span>research</span><span class="arr">→</span></a>
-        <a class="px-link" href="papers.html"><span>papers</span><span class="arr">→</span></a>
-        <a class="px-link" href="about.html"><span>about</span><span class="arr">→</span></a>
-        <a class="px-link" href="assets/sora-kim-cv.pdf" target="_blank"><span>cv (pdf)</span><span class="arr">↗</span></a>
+      <div class="side-nav">
+        <a class="side-link" href="projects.html"><span>projects</span><span class="arr">→</span></a>
+        <a class="side-link" href="research.html"><span>research</span><span class="arr">→</span></a>
+        <a class="side-link" href="papers.html"><span>papers</span><span class="arr">→</span></a>
+        <a class="side-link" href="about.html"><span>about</span><span class="arr">→</span></a>
+        <a class="side-link" href="assets/sora-kim-cv.pdf" target="_blank"><span>cv (pdf)</span><span class="arr">↗</span></a>
       </div>
       <div class="contact-line">
         <a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a>
       </div>
     </div>
 
-    <div class="hero-right">
+    <div class="hero-main">
       <div class="eyebrow">human-centered systems · regulated environments</div>
-      <h1 class="hero-title">
+      <h1 class="hero-h">
         I study how regulated systems<br>
         <span class="dim">shape human judgment.</span>
       </h1>
-      <p class="hero-desc">
-        Procedures are not neutral.<br>
-        They organize how people search, interpret, and justify decisions.<br><br>
-        These systems do not merely support decisions — they systematically produce how responsibility is assigned.
+      <p class="lede">
+        In pilot and task-based studies (N=52) across pharmaceutical QC and
+        regulated work settings, I examine how procedural systems constrain
+        causal reasoning under time and interface pressure — combining usability
+        testing, behavioral trace analysis, and prototype interventions. In one
+        pilot study, all five investigators initially converged on a single cause,
+        revising toward systemic explanations only when given structured time and
+        support, highlighting how design can expand reasoning pathways and make
+        alternative explanations visible.
       </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-n">6</span><span class="stat-l">Research Projects</span></div>
-        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Papers in Progress</span></div>
-        <div class="stat"><span class="stat-n">52</span><span class="stat-l">Study Participants</span></div>
-      </div>
-      <div class="axis-row">
-        <div class="axis">
-          <div class="axis-n">axis_01</div>
-          <div class="axis-t">Responsibility Formation</div>
-          <div class="axis-d">Examines how investigation procedures impose closure pressure and structure causal reasoning, shifting responsibility formation from individual attribution to system-driven convergence.</div>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-n">6</span>
+          <span class="stat-l">Research Projects</span>
         </div>
-        <div class="axis">
-          <div class="axis-n">axis_02</div>
-          <div class="axis-t">Cognitive Friction Mechanisms</div>
-          <div class="axis-d">Investigates how document structure generates retrieval difficulty, navigation breakdown, and interpretive variance — shaping how decisions are formed and justified in practice.</div>
+        <div class="stat">
+          <span class="stat-n">5</span>
+          <span class="stat-l">Usability-Tested Prototypes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">52</span>
+          <span class="stat-l">Study Participants</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section fade-up">
+  <!-- ── FEATURED PROJECTS ── -->
+  <section class="sec">
     <div class="sec-head">
-      <span class="sec-title">featured_projects</span>
-      <a class="see-all" href="projects.html">view details →</a>
+      <span class="sec-label">featured_projects</span>
+      <a class="see-all" href="projects.html">view all 6 →</a>
     </div>
     <div class="proj-grid">
-      <a class="proj-link" href="project-sop-accessibility.html">
+      <a href="project-sop-accessibility.html" style="display:contents">
         <article class="proj-card">
-          <span class="proj-num">// featured_01</span>
-          <h3 class="proj-h">SOP Accessibility System</h3>
-          <p class="proj-p">Searchable support layer built over approximately 500 scanned SOP PDFs; reduced retrieval time from 6–7 minutes to 1–2 minutes in study tasks.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">document UX</span>
-            <span class="proj-tag">retrieval</span>
-            <span class="proj-tag">live demo</span>
+          <div class="proj-num">// featured_01</div>
+          <div class="proj-title">SOP Accessibility System</div>
+          <p class="proj-desc">A retrieval-focused interface for navigating procedural documents. Evaluated through task-based experiments (N=12), showing reduced retrieval time (6–7 min → 1–2 min) and changes in navigation behavior under constrained search conditions.</p>
+          <div class="tags">
+            <span class="tag">document UX</span>
+            <span class="tag">retrieval</span>
+            <span class="tag">N=12</span>
+            <span class="tag">live demo</span>
           </div>
         </article>
       </a>
-      <a class="proj-link" href="project-rca-reasoning-scaffolder.html">
+      <a href="project-rca-reasoning-scaffolder.html" style="display:contents">
         <article class="proj-card">
-          <span class="proj-num">// featured_02</span>
-          <h3 class="proj-h">RCA Reasoning Scaffolder</h3>
-          <p class="proj-p">Studies closure pressure in root cause analysis; participants expanded causal breadth when using a scaffold designed to keep alternative hypotheses in view.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">reasoning</span>
-            <span class="proj-tag">investigation</span>
-            <span class="proj-tag">live demo</span>
+          <div class="proj-num">// featured_02</div>
+          <div class="proj-title">RCA Reasoning Scaffolder</div>
+          <p class="proj-desc">A reasoning scaffold designed to counter premature causal convergence in investigation workflows. In pilot usability testing (N=15), 80% of participants expanded causal breadth, with all initially individual-blame hypotheses revised toward systemic explanations.</p>
+          <div class="tags">
+            <span class="tag">reasoning</span>
+            <span class="tag">investigation</span>
+            <span class="tag">N=15</span>
+            <span class="tag">live demo</span>
           </div>
         </article>
       </a>
-      <a class="proj-link" href="project-cognitive-navigation-explorer.html">
+      <a href="project-cognitive-navigation-explorer.html" style="display:contents">
         <article class="proj-card">
-          <span class="proj-num">// featured_03</span>
-          <h3 class="proj-h">Cognitive Navigation Explorer</h3>
-          <p class="proj-p">Uses loopbacks, hesitation, and cross-reference jumps as behavioral traces of structural friction in constrained documentation environments.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">behavioral traces</span>
-            <span class="proj-tag">navigation</span>
-            <span class="proj-tag">live demo</span>
+          <div class="proj-num">// featured_03</div>
+          <div class="proj-title">Cognitive Navigation Explorer</div>
+          <p class="proj-desc">A behavioral tracking prototype examining how users traverse document networks under constrained visibility. In a task-based study (N=5), all participants revisited at least one document, suggesting that navigation structure directly shapes attention allocation and judgment pathways.</p>
+          <div class="tags">
+            <span class="tag">behavioral traces</span>
+            <span class="tag">navigation</span>
+            <span class="tag">N=5</span>
+            <span class="tag">live demo</span>
           </div>
         </article>
       </a>
     </div>
   </section>
 
-  <section class="section fade-up">
+  <!-- ── PAPERS ── -->
+  <section class="sec">
     <div class="sec-head">
-      <span class="sec-title">papers_in_progress</span>
-      <a class="see-all" href="papers.html">see all 5 →</a>
+      <span class="sec-label">papers</span>
+      <a class="see-all" href="papers.html">see all 9 →</a>
     </div>
-    <p class="paper-note">
-      Across projects, I examine how procedural systems shape search, navigation, reasoning, and accountability in high-stakes work — and how interface design can make those structures more visible and more workable.
-    </p>
-    <div class="paper-grid">
-      <article class="paper-card">
-        <span class="paper-num">// paper_01</span>
-        <div class="paper-title">Accessibility, Document Usability, and Compliance-Constrained Design in Regulated Environments</div>
-        <p class="paper-sub">Examines searchability, keyword pathways, and retrieval burden in scanned SOP archives, arguing that usability improvement can emerge through external support layers without modifying validated source files.</p>
-        <div class="paper-method">method: usability study (N=12) · corpus analysis</div>
-        <div class="paper-tags">
-          <span class="paper-tag">document UX</span>
-          <span class="paper-tag">accessibility</span>
-        </div>
-      </article>
-      <article class="paper-card">
-        <span class="paper-num">// paper_02</span>
-        <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
-        <p class="paper-sub">Combines a pilot observation of premature causal convergence with an interface evaluation showing how scaffolds can preserve interpretive breadth under investigation pressure.</p>
-        <div class="paper-method">method: pilot observation (N=5) · scaffold evaluation (N=15)</div>
-        <div class="paper-tags">
-          <span class="paper-tag">reasoning</span>
-          <span class="paper-tag">investigation</span>
-        </div>
-      </article>
-      <article class="paper-card">
-        <span class="paper-num">// paper_03</span>
-        <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
-        <p class="paper-sub">Combines cross-reference infrastructure with navigation tracking to reframe loopbacks and dependency gaps as signals of document-structure failure rather than individual error.</p>
-        <div class="paper-method">method: cross-reference evaluation (N=17) · navigation tracking (N=5)</div>
-        <div class="paper-tags">
-          <span class="paper-tag">navigation</span>
-          <span class="paper-tag">traceability</span>
-        </div>
-      </article>
-      <article class="paper-card">
-        <span class="paper-num">// paper_04</span>
-        <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
-        <p class="paper-sub">Reframes documentation review as an interaction system, examining how opacity in multi-stage quality workflows makes coordination burden and delay accumulation difficult to see.</p>
-        <div class="paper-method">method: prototype evaluation (N=6) · workflow analysis</div>
-        <div class="paper-tags">
-          <span class="paper-tag">workflow UX</span>
-          <span class="paper-tag">observability</span>
-        </div>
-      </article>
-      <article class="paper-card">
-        <span class="paper-num">// paper_05 · research backbone</span>
-        <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
-        <p class="paper-sub">Develops a broader HCI framework for regulated work environments, treating procedural documents and review systems as active interaction settings rather than neutral containers of compliance information.</p>
-        <div class="paper-method">method: conceptual synthesis · design framework</div>
-        <div class="paper-tags">
-          <span class="paper-tag">regulatory UX</span>
-          <span class="paper-tag">concept paper</span>
-        </div>
-      </article>
+    <div class="papers-strip">
+      <div class="papers-strip-body">
+        <strong>Five HCI papers and four STS manuscripts</strong> examining how procedural systems shape navigation, reasoning, and accountability in regulated environments. The HCI work develops empirical and design-oriented arguments, while the STS manuscripts provide theoretical grounding for responsibility and judgment.
+      </div>
+      <div class="papers-strip-cta">
+        <a class="papers-btn" href="papers.html">view papers →</a>
+      </div>
     </div>
   </section>
 
-  <div class="footer fade-up">
-    <span>Design, concept & code by Sora Kim</span>
-    <span><a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a></span>
+  <div class="footer">
+    <span>Design, concept &amp; code — Sora Kim</span>
+    <a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a>
   </div>
+
 </div>
 
 <script>
@@ -719,28 +497,16 @@ nav {
   var btn = document.getElementById('themeToggle');
   var html = document.documentElement;
   var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
-  btn.addEventListener('click', function(){
-    var dark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', dark ? 'light' : 'dark');
-    localStorage.setItem('theme', dark ? 'light' : 'dark');
+  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (saved === null && sysDark)) {
+    html.setAttribute('data-theme', 'dark');
+  }
+  btn.addEventListener('click', function() {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
   });
 })();
-
-window.addEventListener('scroll', function() {
-  var scrollTop = window.scrollY;
-  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById('progress-bar').style.width = pct + '%';
-});
-
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 </script>
 </body>
 </html>
