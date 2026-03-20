@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <title>Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sora Kim — Researcher working on judgment, procedural systems, and human-centered design in regulated environments." />
+<meta name="description" content="Sora Kim — HCI researcher studying judgment, procedural systems, and human-centered design in regulated environments." />
 
 <link rel="icon" href="./assets/favicon-light.png">
 <link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
@@ -18,8 +18,10 @@
 :root {
   --bg: #efeff1;
   --bg2: #e4e6ea;
+  --bg3: #d9dde4;
   --text: #111214;
   --muted: #626872;
+  --muted2: #7d8591;
   --accent: #2f56ff;
   --accent-light: #dfe6ff;
   --pixel-border: 2px solid #111214;
@@ -29,8 +31,10 @@
 html[data-theme="dark"] {
   --bg: #111317;
   --bg2: #1a1e25;
+  --bg3: #232833;
   --text: #f2f4f7;
   --muted: #98a1ad;
+  --muted2: #7d8794;
   --accent: #8ea5ff;
   --accent-light: #1d2643;
   --pixel-border: 2px solid #f2f4f7;
@@ -45,6 +49,12 @@ body {
   transition: background 0.25s, color 0.25s;
 }
 a { color: inherit; }
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
 
 nav {
   position: fixed;
@@ -126,7 +136,7 @@ nav {
 /* HERO */
 .hero {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 0;
   border: var(--pixel-border);
   margin-top: 28px;
@@ -141,8 +151,8 @@ nav {
   background: var(--bg2);
 }
 .avatar-wrap {
-  width: 100px;
-  height: 100px;
+  width: 136px;
+  height: 136px;
   border: var(--pixel-border);
   overflow: hidden;
 }
@@ -150,11 +160,16 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.05);
+  filter: grayscale(100%) contrast(1.15) brightness(0.95);
+  transition: filter 0.28s ease;
 }
+.avatar-wrap:hover img {
+  filter: grayscale(0%) contrast(1.05);
+}
+
 .px-name {
   font-family: var(--sora);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.04em;
 }
@@ -165,6 +180,8 @@ nav {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+
+/* fixed research box */
 .info-block {
   background: var(--bg);
   border: var(--pixel-border);
@@ -172,6 +189,7 @@ nav {
   font-size: 11px;
   line-height: 1.9;
   color: var(--muted);
+  overflow-x: auto;
 }
 .info-block pre {
   margin: 0;
@@ -179,7 +197,9 @@ nav {
   font-size: 11px;
   line-height: 1.9;
   color: var(--muted);
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .key { color: var(--accent); font-weight: 700; }
 .val { color: var(--text); }
@@ -258,18 +278,18 @@ nav {
 
 .hero-title {
   font-family: var(--sora);
-  font-size: 50px;
+  font-size: 54px;
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.92;
 }
-.hero-title .dim { color: var(--muted); }
+.hero-title .dim { color: var(--muted2); }
 
 .hero-desc {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.82;
-  max-width: 500px;
+  max-width: 560px;
   border-left: 3px solid var(--accent);
   padding-left: 14px;
 }
@@ -543,7 +563,7 @@ nav {
 @media(max-width:900px){
   .hero { grid-template-columns: 1fr; }
   .hero-left { border-right: none; border-bottom: var(--pixel-border); }
-  .hero-title { font-size: 36px; }
+  .hero-title { font-size: 38px; }
   .proj-grid { grid-template-columns: 1fr; }
   .proj-card { border-right: none; border-bottom: var(--pixel-border); }
   .proj-card:last-child { border-bottom: none; }
@@ -574,9 +594,13 @@ nav {
   .wrap { padding: 64px 12px 60px; }
   .hero-right { padding: 16px; }
   .hero-left { padding: 18px; }
-  .hero-title { font-size: 26px; }
+  .hero-title { font-size: 28px; }
   .stat-row { flex-wrap: wrap; }
   .stat { min-width: 50%; }
+  .avatar-wrap {
+    width: 112px;
+    height: 112px;
+  }
   .info-block pre { font-size: 10px; }
   .px-row svg {
     width: 36px !important;
@@ -615,19 +639,19 @@ nav {
   <section class="hero">
     <div class="hero-left">
       <div class="avatar-wrap">
-        <img src="assets/sorakim-profile.png" alt="Sora Kim">
+        <img src="./assets/sora-kim-headshot-1024.jpg" alt="Sora Kim">
       </div>
 
       <div>
         <div class="px-name">Sora Kim</div>
-        <div class="px-role">Independent Researcher<br>PhD Applicant · Fall 2027<br>Seoul, Korea</div>
+        <div class="px-role">HCI Researcher<br>PhD Applicant · Fall 2027<br>Seoul, Korea</div>
       </div>
 
       <div class="info-block">
 <pre><span class="cmt"># research_index</span>
-<span class="key">focus    </span> = <span class="val">"judgment"</span>
-<span class="key">method   </span> = <span class="val">"human-centered systems"</span>
-<span class="key">context  </span> = <span class="val">"regulated environments"</span>
+<span class="key">focus   </span> = <span class="val">"judgment"</span>
+<span class="key">method  </span> = <span class="val">"human-centered systems"</span>
+<span class="key">context </span> = <span class="val">"regulated environments"</span>
 </pre>
       </div>
 
@@ -687,7 +711,7 @@ nav {
       <p class="hero-desc">
         Procedures are not neutral.<br>
         They shape how people interpret, decide, and coordinate.<br>
-        My work focuses on how documentation, workflow structure, and interface design influence reasoning in constrained environments.
+        My work examines how documentation, workflow structure, and interface design influence reasoning in constrained environments.
       </p>
 
       <div class="stat-row">
@@ -700,7 +724,7 @@ nav {
         <div class="axis">
           <div class="axis-n">axis_01</div>
           <div class="axis-t">Investigation & Responsibility</div>
-          <div class="axis-d">How systems shape causal reasoning and responsibility attribution — and how design can keep interpretive space open.</div>
+          <div class="axis-d">How systems shape causal reasoning and responsibility attribution — and how design can keep interpretive space open longer.</div>
         </div>
         <div class="axis">
           <div class="axis-n">axis_02</div>
@@ -711,11 +735,10 @@ nav {
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="section">
     <div class="sec-head">
       <span class="sec-title">featured_projects</span>
-      <a class="see-all" href="projects.html">see all 6 →</a>
+      <a class="see-all" href="projects.html">see all 3 →</a>
     </div>
 
     <div class="proj-grid">
@@ -760,7 +783,6 @@ nav {
     </div>
   </section>
 
-  <!-- PAPERS -->
   <section class="section">
     <div class="sec-head">
       <span class="sec-title">papers_in_progress</span>
