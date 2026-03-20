@@ -5,742 +5,324 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Projects — Sora Kim</title>
 <meta name="description" content="Projects by Sora Kim on Regulatory UX — how systems shape human judgment in compliance-constrained environments." />
-<meta property="og:type" content="website">
-<meta property="og:title" content="Projects — Sora Kim">
-<meta property="og:description" content="Regulatory UX research: how procedural systems constrain and support human judgment in GMP environments.">
-<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
-<meta property="og:url" content="https://sorakim-lab.github.io/projects.html">
-<meta property="og:site_name" content="Sora Kim">
+
+<link rel="icon" href="./assets/favicon-light.png">
+<link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#f5f5f7;
-  --panel:rgba(255,255,255,0.82);
-  --panel-strong:rgba(255,255,255,0.92);
-  --text:#111218;
-  --muted:#6d6f78;
-  --muted-strong:#4a4d56;
-  --line:rgba(17,17,17,0.08);
-  --line-strong:rgba(17,17,17,0.13);
-  --blue:#e8eefc; --green:#ebf7f1; --lilac:#f2edfc; --sand:#f6f1e7; --silver:#f3f4f8;
-  --blue-strong:#cddafb; --green-strong:#cbeedb; --lilac-strong:#ddd0fb;
-  --sand-strong:#ebdec0; --silver-strong:#e1e5ef;
-  --radius-2xl:34px; --radius-xl:28px; --radius-lg:22px; --radius-md:18px;
-  --shadow:0 18px 55px rgba(15,23,42,0.08);
-  --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
-  --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
-  --mono:'JetBrains Mono', monospace;
+:root{--bg:#f8f8f6;--bg2:#f0f0ee;--bg3:#e8e8e6;--text:#111214;--muted:#626872;--muted2:#8a9099;--accent:#1a1a1a;--pixel-border:1px solid #222;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
+html[data-theme="dark"]{--bg:#111317;--bg2:#1a1e25;--bg3:#232833;--text:#f2f4f7;--muted:#98a1ad;--muted2:#7d8794;--accent:#e0e0e0;--pixel-border:1px solid #e0e0e0}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;transition:background .3s,color .3s;line-height:1.7}
+a{color:inherit;text-decoration:none}::selection{background:var(--text);color:var(--bg)}
+
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#8B7355;width:0%;z-index:200;transition:width .1s linear}
+
+.top-nav{position:fixed;top:3px;left:0;right:0;z-index:100;border-bottom:var(--pixel-border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:48px;transition:background .3s}
+.nav-logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.blink{width:8px;height:8px;background:#8B7355;display:inline-block;animation:blink 1.2s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.nav-links{display:flex}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;border-left:var(--pixel-border);transition:all .1s;letter-spacing:.04em}
+.nav-links a:hover,.nav-links a.active{background:var(--text);color:var(--bg)}
+.theme-btn{width:48px;height:48px;border:none;border-left:var(--pixel-border);background:transparent;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .1s;font-family:var(--mono)}
+.theme-btn:hover{background:var(--text);color:var(--bg)}
+
+.wrap{max-width:1100px;margin:0 auto;padding:80px 32px 120px}
+
+/* HERO */
+.page-hero{border:var(--pixel-border);margin-bottom:64px;display:grid;grid-template-columns:1fr 1fr}
+.hero-left{padding:36px;border-right:var(--pixel-border);background:var(--bg2)}
+.hero-right{padding:36px}
+.hero-eyebrow{font-family:var(--mono);font-size:9px;color:#8B7355;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.hero-eyebrow::before{content:'▶';font-size:8px}
+.hero-title{font-size:36px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
+.hero-desc{font-size:14px;color:var(--muted);line-height:1.8;max-width:480px;border-left:3px solid #8B7355;padding-left:14px}
+.hero-info{display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%}
+.info-cell{padding:22px;border-bottom:var(--pixel-border);border-right:var(--pixel-border)}
+.info-cell:nth-child(2n){border-right:none}
+.info-cell:nth-last-child(-n+2){border-bottom:none}
+.info-label{font-family:var(--mono);font-size:9px;color:#8B7355;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.info-num{font-size:32px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
+.info-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* AXIS HEADER */
+.axis-head{display:flex;align-items:center;gap:0;margin-bottom:24px}
+.axis-label{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#8B7355;padding:8px 14px;border:var(--pixel-border);background:var(--bg2)}
+.axis-title{font-size:20px;font-weight:700;letter-spacing:-.02em;padding:8px 18px;border:var(--pixel-border);border-left:none;flex:1}
+.axis-section{margin-bottom:64px}
+
+/* PROJECT GRID */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--pixel-border)}
+.proj-link{display:block;text-decoration:none;color:inherit}
+.proj-card{padding:28px;border-right:var(--pixel-border);border-bottom:var(--pixel-border);transition:background .15s ease;height:100%}
+.proj-grid .proj-link:nth-child(2n) .proj-card{border-right:none}
+.proj-grid .proj-link:nth-last-child(-n+2) .proj-card{border-bottom:none}
+.proj-grid .proj-link:last-child:nth-child(odd) .proj-card{border-bottom:none;border-right:none}
+.proj-link:hover .proj-card{background:var(--text);color:var(--bg)}
+
+.proj-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.proj-num{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em}
+.proj-chips{display:flex;gap:6px;flex-wrap:wrap}
+.proj-chip{font-family:var(--mono);font-size:9px;padding:3px 8px;border:var(--pixel-border);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.proj-link:hover .proj-chip{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)}
+.proj-link:hover .proj-num{color:rgba(255,255,255,.5)}
+.proj-link:hover .proj-desc{color:rgba(255,255,255,.7)}
+.proj-link:hover .proj-result{color:rgba(255,255,255,.6)}
+.proj-link:hover .proj-arrow{color:rgba(255,255,255,.9)}
+
+.proj-h{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.proj-result{font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;padding:10px 12px;background:rgba(0,0,0,.03);border:var(--pixel-border);margin-bottom:16px}
+html[data-theme="dark"] .proj-result{background:rgba(255,255,255,.03)}
+.proj-link:hover .proj-result{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.proj-bottom{display:flex;align-items:center;justify-content:space-between}
+.proj-n-chip{font-family:var(--mono);font-size:10px;color:var(--muted2)}
+.proj-arrow{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* DIVIDER */
+.section-divider{border:none;border-top:var(--pixel-border);margin:0 0 64px;opacity:.4}
+
+.footer{border-top:var(--pixel-border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap;gap:8px;margin-top:40px}
+.btn-row{display:flex}
+.btn{display:inline-flex;align-items:center;padding:7px 14px;border:var(--pixel-border);margin-right:-1px;text-decoration:none;color:var(--muted);font-size:10px;font-family:var(--mono);letter-spacing:.04em;font-weight:500;transition:all .1s;background:var(--bg);white-space:nowrap}
+.btn:hover{background:var(--text);color:var(--bg)}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .page-hero{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:var(--pixel-border)}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card{border-right:none!important}
+  .proj-grid .proj-link:nth-last-child(-n+2) .proj-card{border-bottom:var(--pixel-border)}
+  .proj-grid .proj-link:last-child .proj-card{border-bottom:none}
+  .axis-head{flex-direction:column;align-items:flex-start}.axis-title{border-left:var(--pixel-border);margin-top:-1px}
+  .hero-info{grid-template-columns:1fr}
+  .info-cell{border-right:none!important}
+  .wrap{padding:72px 16px 80px}
 }
-html[data-theme="dark"]{
-  --text:#e2e4ea; --muted:#7a7d8a; --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.13);
-  --panel:rgba(22,24,32,0.88);
-  --shadow:0 18px 55px rgba(0,0,0,0.40);
-  --shadow-soft:0 10px 28px rgba(0,0,0,0.28);
-  --shadow-hover:0 28px 70px rgba(0,0,0,0.50);
-  --blue-strong:#2a3a6a; --green-strong:#1a3a2a; --lilac-strong:#3a2a5a;
-  --sand-strong:#3a2e1a; --silver-strong:#2a2e3a;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text); line-height:1.65;
-  background:
-    radial-gradient(circle at 10% 12%, rgba(255,255,255,0.98) 0, rgba(255,255,255,0.72) 15%, transparent 42%),
-    radial-gradient(circle at 88% 12%, rgba(232,238,252,0.72) 0, transparent 28%),
-    radial-gradient(circle at 78% 72%, rgba(242,237,252,0.45) 0, transparent 26%),
-    radial-gradient(circle at 24% 84%, rgba(235,247,241,0.38) 0, transparent 22%),
-    linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
-  transition:background 0.3s ease, color 0.3s ease;
-}
-html[data-theme="dark"] body{
-  background:
-    radial-gradient(circle at 10% 12%, rgba(22,24,36,0.98) 0, transparent 42%),
-    radial-gradient(circle at 88% 12%, rgba(18,22,44,0.55) 0, transparent 28%),
-    radial-gradient(circle at 78% 72%, rgba(24,18,38,0.38) 0, transparent 26%),
-    radial-gradient(circle at 24% 84%, rgba(14,28,22,0.30) 0, transparent 22%),
-    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
-}
-body::before{
-  content:""; position:fixed; inset:0; pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
-}
-html[data-theme="dark"] body::before{ background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0)); }
-
-nav{
-  position:fixed; top:18px; right:18px; z-index:60;
-  display:flex; gap:8px; padding:8px;
-  border:1px solid rgba(255,255,255,0.65);
-  background:rgba(255,255,255,0.56);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.06);
-}
-html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
-nav a{ text-decoration:none; color:var(--muted); font-size:13px; font-weight:500; padding:8px 12px; border-radius:999px; transition:all .22s ease; white-space:nowrap; }
-nav a:hover{ color:var(--text); background:rgba(255,255,255,0.72); }
-html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
-nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
-html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
-
-.theme-toggle{
-  position:fixed; bottom:24px; right:24px; z-index:100;
-  width:48px; height:48px; border-radius:50%;
-  border:1px solid var(--line); background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; justify-content:center;
-  font-size:20px; transition:transform .2s ease, box-shadow .2s ease;
-  -webkit-tap-highlight-color:transparent; outline:none;
-}
-html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
-.theme-toggle:hover{ transform:scale(1.1); box-shadow:var(--shadow-hover); }
-.theme-toggle:active{ transform:scale(0.95); }
-
-.wrap{ max-width:1320px; margin:0 auto; padding:112px 28px 92px; }
-
-.hero,.note,.panel,.summary-card,.project-card{
-  border:1px solid var(--line); background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
-  box-shadow:var(--shadow);
-}
-
-.hero{
-  position:relative; overflow:hidden; border-radius:var(--radius-2xl);
-  padding:30px; margin-bottom:18px;
-  background:
-    radial-gradient(circle at 82% 12%, rgba(232,238,252,0.65), transparent 26%),
-    radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
-    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.80));
-}
-html[data-theme="dark"] .hero{
-  background:
-    radial-gradient(circle at 82% 12%, rgba(18,26,52,0.65), transparent 26%),
-    radial-gradient(circle at 12% 88%, rgba(24,16,40,0.42), transparent 24%),
-    linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
-}
-.hero::before{
-  content:""; position:absolute; inset:0 0 auto 0; height:54px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
-}
-html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
-.hero::after{
-  content:""; position:absolute; right:-120px; top:-120px;
-  width:360px; height:360px; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.52), transparent 70%);
-  pointer-events:none;
-}
-
-.window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
-.dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
-.dot:nth-child(1){background:#ff5f57} .dot:nth-child(2){background:#febc2e} .dot:nth-child(3){background:#28c840}
-
-.hero-grid{
-  position:relative; z-index:1; margin-top:34px;
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:22px; align-items:start;
-}
-.hero-left{
-  border:1px solid var(--line); border-radius:30px; padding:28px 28px 26px;
-  background:rgba(255,255,255,0.44); box-shadow:var(--shadow-soft);
-}
-html[data-theme="dark"] .hero-left{ background:rgba(255,255,255,0.04); }
-.hero-right{ display:grid; grid-template-columns:1fr; gap:12px; }
-.hero-right-bottom{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-.eyebrow,.section-tag,.panel-label,.meta-chip,.status-chip,.track-chip{
-  display:inline-flex; align-items:center; gap:8px; padding:7px 11px;
-  border:1px solid var(--line); border-radius:999px;
-  background:rgba(255,255,255,0.78); font-family:var(--mono); font-size:11px; color:var(--muted);
-  box-shadow:var(--shadow-soft);
-}
-html[data-theme="dark"] .eyebrow,
-html[data-theme="dark"] .section-tag,
-html[data-theme="dark"] .panel-label,
-html[data-theme="dark"] .meta-chip,
-html[data-theme="dark"] .status-chip,
-html[data-theme="dark"] .track-chip{ background:rgba(255,255,255,0.06); }
-
-.track-chip.paper{ background:rgba(242,237,252,0.9); }
-.track-chip.pilot{ background:rgba(232,238,252,0.9); }
-.track-chip.prototype{ background:rgba(235,247,241,0.9); }
-html[data-theme="dark"] .track-chip.paper{ background:rgba(60,40,90,0.60); }
-html[data-theme="dark"] .track-chip.pilot{ background:rgba(24,34,70,0.60); }
-html[data-theme="dark"] .track-chip.prototype{ background:rgba(16,40,28,0.60); }
-
-.h1,.section-title,.project-card h3,.note h2,.panel h2,.summary-card h2{
-  font-family:'Sora',sans-serif; letter-spacing:-0.055em;
-}
-.h1{ font-size:58px; line-height:0.95; margin:14px 0 14px; max-width:11ch; }
-.lead{ margin:0; max-width:760px; font-size:16px; color:rgba(29,29,31,0.86); }
-html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
-
-.hero-float{
-  margin-top:24px; max-width:520px; padding:16px 18px; border-radius:24px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
-  box-shadow:var(--shadow-soft);
-}
-html[data-theme="dark"] .hero-float{ background:linear-gradient(180deg, rgba(26,28,40,0.93), rgba(20,22,34,0.86)); }
-.hero-float strong{ display:block; font-family:'Sora',sans-serif; font-size:18px; line-height:1.08; letter-spacing:-0.04em; margin-bottom:6px; }
-.hero-float span{ display:block; font-size:14px; color:#4b4e57; line-height:1.6; }
-html[data-theme="dark"] .hero-float span{ color:#9a9daa; }
-
-.note{
-  position:relative; overflow:hidden; border-radius:24px; padding:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
-}
-html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
-.note::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95)); }
-.note.hero-note{ min-height:192px; display:flex; flex-direction:column; justify-content:center; }
-.note.soft-blue-note{ background:linear-gradient(180deg, rgba(232,238,252,0.72), rgba(255,255,255,0.92)); }
-.note.soft-blue-note::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
-.note.soft-green-note{ background:linear-gradient(180deg, rgba(235,247,241,0.78), rgba(255,255,255,0.92)); }
-.note.soft-green-note::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
-.note.soft-lilac-note{ background:linear-gradient(180deg, rgba(242,237,252,0.80), rgba(255,255,255,0.92)); }
-.note.soft-lilac-note::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-html[data-theme="dark"] .note.soft-blue-note{ background:linear-gradient(180deg, rgba(18,26,52,0.70), rgba(22,24,34,0.92)); }
-html[data-theme="dark"] .note.soft-green-note{ background:linear-gradient(180deg, rgba(14,28,22,0.70), rgba(22,24,34,0.92)); }
-html[data-theme="dark"] .note.soft-lilac-note{ background:linear-gradient(180deg, rgba(26,18,44,0.70), rgba(22,24,34,0.92)); }
-.note h2,.panel h2,.summary-card h2{ font-size:18px; line-height:1.08; margin:0 0 8px; }
-.note p,.panel p,.summary-card p{ margin:0; font-size:14px; color:#40434b; }
-html[data-theme="dark"] .note p, html[data-theme="dark"] .panel p, html[data-theme="dark"] .summary-card p{ color:#9a9daa; }
-
-.info-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:12px; }
-.stats-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:28px; }
-
-.panel{ position:relative; overflow:hidden; border-radius:22px; padding:18px; }
-.panel::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
-.panel.soft-blue{ background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92)); }
-.panel.soft-blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
-.panel.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92)); }
-.panel.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
-.panel.soft-lilac{ background:linear-gradient(180deg, rgba(242,237,252,0.76), rgba(255,255,255,0.92)); }
-.panel.soft-lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-html[data-theme="dark"] .panel.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.66), rgba(22,24,34,0.92)); }
-html[data-theme="dark"] .panel.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.72), rgba(22,24,34,0.92)); }
-html[data-theme="dark"] .panel.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.76), rgba(22,24,34,0.92)); }
-
-.summary-card{
-  position:relative; overflow:hidden; border-radius:24px; padding:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.90));
-}
-html[data-theme="dark"] .summary-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.90)); }
-.summary-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
-.summary-card.blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
-.summary-card.green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
-.summary-card.lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-.summary-card.sand::before{ background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96)); }
-.summary-number{ font-family:'Sora',sans-serif; font-size:36px; line-height:1; letter-spacing:-0.06em; margin:10px 0 8px; }
-
-.section-head{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin:0 0 18px; }
-.section-title{ font-size:32px; margin:8px 0 0; }
-.section-sub{ max-width:900px; font-size:15px; color:var(--muted-strong); margin:8px 0 0; }
-
-.project-list{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.project-link{ text-decoration:none; color:inherit; display:block; }
-
-.project-card{
-  border-radius:30px; padding:24px;
-  transition:transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
-  position:relative; overflow:hidden; height:100%;
-}
-.project-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
-.project-card::after{
-  content:""; position:absolute; right:-82px; top:-82px;
-  width:240px; height:240px; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.48), transparent 70%);
-  pointer-events:none; opacity:.95;
-}
-.project-card:hover{ transform:translateY(-6px); border-color:var(--line-strong); background:rgba(255,255,255,0.96); box-shadow:var(--shadow-hover); }
-html[data-theme="dark"] .project-card:hover{ background:rgba(30,32,44,0.96); }
-
-.project-card.soft-sand{ background:linear-gradient(180deg, rgba(246,241,231,0.9), rgba(255,255,255,0.93)); }
-.project-card.soft-sand::before{ background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96)); }
-.project-card.soft-silver{ background:linear-gradient(180deg, rgba(243,244,248,0.98), rgba(255,255,255,0.94)); }
-.project-card.soft-silver::before{ background:linear-gradient(90deg, var(--silver-strong), rgba(243,244,248,0.96)); }
-.project-card.soft-blue{ background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93)); }
-.project-card.soft-blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
-.project-card.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93)); }
-.project-card.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
-.project-card.soft-lilac{ background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93)); }
-.project-card.soft-lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-.project-card.soft-sky{ background:linear-gradient(180deg, rgba(224,240,255,0.85), rgba(255,255,255,0.93)); }
-.project-card.soft-sky::before{ background:linear-gradient(90deg, #b8d8f8, rgba(224,240,255,0.96)); }
-
-html[data-theme="dark"] .project-card.soft-sand{ background:linear-gradient(180deg, rgba(32,26,14,0.90), rgba(22,24,34,0.93)); }
-html[data-theme="dark"] .project-card.soft-silver{ background:linear-gradient(180deg, rgba(28,30,40,0.98), rgba(22,24,34,0.94)); }
-html[data-theme="dark"] .project-card.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.68), rgba(22,24,34,0.93)); }
-html[data-theme="dark"] .project-card.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.76), rgba(22,24,34,0.93)); }
-html[data-theme="dark"] .project-card.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.80), rgba(22,24,34,0.93)); }
-html[data-theme="dark"] .project-card.soft-sky{ background:linear-gradient(180deg, rgba(14,26,44,0.85), rgba(22,24,34,0.93)); }
-
-.project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:14px; position:relative; z-index:1; }
-.project-card h3{ font-size:28px; line-height:1.05; margin:10px 0 10px; max-width:18ch; }
-.project-card p{ font-size:15px; color:#40434b; margin:0 0 14px; }
-html[data-theme="dark"] .project-card p{ color:#9a9daa; }
-.project-meta{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 16px; position:relative; z-index:1; }
-.meta-chip{ padding:6px 10px; }
-.project-body{ display:grid; grid-template-columns:1fr; gap:14px; position:relative; z-index:1; }
-.project-body.two-col{ grid-template-columns:1fr 1fr; }
-.bullets{ margin:0; padding-left:18px; }
-.bullets li{ margin:0 0 6px; color:#41444c; }
-html[data-theme="dark"] .bullets li{ color:#9a9daa; }
-
-.card-block{
-  border:1px solid var(--line); border-radius:20px;
-  background:rgba(255,255,255,0.76); padding:16px; box-shadow:var(--shadow-soft);
-}
-html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
-.card-block h4{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
-.card-block p{ margin:0; color:#3f4148; font-size:14px; }
-html[data-theme="dark"] .card-block p{ color:#9a9daa; }
-
-.section-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 28px; }
-.section-divider-line{ flex:1; height:1px; background:var(--line); }
-
-.project-bottom{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; position:relative; z-index:1; }
-.project-signal{ display:flex; gap:8px; flex-wrap:wrap; }
-.project-arrow{
-  font-family:var(--mono); font-size:12px; color:var(--muted);
-  display:inline-flex; align-items:center; gap:8px;
-  padding:10px 14px; border-radius:14px; border:1px solid var(--line);
-  background:rgba(255,255,255,0.78); box-shadow:var(--shadow-soft);
-  transition:all .2s ease;
-}
-html[data-theme="dark"] .project-arrow{ background:rgba(255,255,255,0.06); }
-.project-link:hover .project-arrow{ background:rgba(255,255,255,0.94); color:var(--text); transform:translateY(-1px); }
-html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,255,255,0.12); }
-
-.footer{ margin-top:42px; border-top:1px solid var(--line); padding-top:18px; font-size:13px; color:var(--muted); }
-.credit-note{ margin-top:10px; font-size:12px; color:var(--muted); line-height:1.65; }
-
-@media (max-width:1180px){
-  .hero-grid{ grid-template-columns:1fr; }
-  .hero-right-bottom{ grid-template-columns:1fr 1fr; }
-  .info-grid{ grid-template-columns:1fr 1fr 1fr; }
-  .stats-grid{ grid-template-columns:1fr 1fr; }
-  .project-list{ grid-template-columns:1fr; }
-  .project-body.two-col{ grid-template-columns:1fr; }
-}
-@media (max-width:860px){
-  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
-  nav::-webkit-scrollbar{ display:none; }
-  nav a{ font-size:12px; padding:7px 10px; }
-  .wrap{ padding:80px 16px 60px; }
-  .hero{ padding:24px 18px; }
-  .hero-left{ padding:22px 20px; }
-  .h1{ font-size:38px; max-width:none; }
-  .hero-float{ max-width:none; width:100%; }
-  .hero-right-bottom,.info-grid,.stats-grid,.section-head,.project-top,.project-bottom{ grid-template-columns:1fr; flex-direction:column; align-items:flex-start; }
-  .project-card h3{ font-size:24px; }
-  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
+@media(max-width:600px){
+  .top-nav{padding:0 12px}.nav-links{overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{padding:0 9px;font-size:11px;white-space:nowrap}
+  .hero-title{font-size:28px}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a class="active" href="projects.html">Projects</a>
-  <a href="research.html">Research</a>
-  <a href="papers.html">Papers</a>
-  <a href="about.html">About</a>
-  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+<div id="progress-bar"></div>
+
+<nav class="top-nav">
+  <a class="nav-logo" href="index.html"><span class="blink"></span>sora kim</a>
+  <div class="nav-links">
+    <a href="index.html">home</a>
+    <a class="active" href="projects.html">projects</a>
+    <a href="research.html">research</a>
+    <a href="papers.html">papers</a>
+    <a href="about.html">about</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+  </div>
+  <button class="theme-btn" id="themeToggle">◐</button>
 </nav>
 
 <div class="wrap">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="window-dots">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  <div class="page-hero fade-up">
+    <div class="hero-left">
+      <div class="hero-eyebrow">research projects</div>
+      <h1 class="hero-title">How systems shape human judgment.</h1>
+      <p class="hero-desc">Six empirical projects across two research axes — how GMP systems shape causal reasoning under investigation pressure, and how they shape navigation in procedural document environments. Every design response holds the same condition: compliance-safe, external, non-invasive.</p>
     </div>
-    <div class="hero-grid">
-      <div class="hero-left">
-        <span class="eyebrow">projects / regulatory UX / human judgment in regulated environments</span>
-        <h1 class="h1">How systems shape human judgment.</h1>
-        <p class="lead">
-          I study what I call <em>Regulatory UX</em> — the interaction experience of workers inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures organize navigation, cognition, and decision-making. These six projects are the empirical ground for that argument.
-        </p>
-        <div class="hero-float">
-          <strong>Two research axes, one argument:</strong>
-          <span>How do GMP systems shape reasoning? (Investigation axis) — and how do they shape navigation? (Access axis.) Every project examines one angle of that constraint — and every design response holds the same condition: compliance-safe, external, non-invasive.</span>
+    <div class="hero-right">
+      <div class="hero-info">
+        <div class="info-cell">
+          <div class="info-label">// projects</div>
+          <div class="info-num">6</div>
+          <div class="info-desc">Across two research axes — reasoning and navigation</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">// participants</div>
+          <div class="info-num">52</div>
+          <div class="info-desc">All GMP-experienced practitioners</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">// adoption intent</div>
+          <div class="info-num">100%</div>
+          <div class="info-desc">Across all usability studies</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">// papers</div>
+          <div class="info-num">5</div>
+          <div class="info-desc">In progress across projects</div>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="note hero-note">
-          <h2>Research statement</h2>
-          <p>I study how regulatory systems shape human judgment — through document design, workflow structure, and investigation scaffolding — in compliance-constrained GMP environments. Six projects examine this across two axes: how workers reason under investigation pressure, and how they navigate procedural document environments.</p>
-        </div>
-        <div class="hero-right-bottom">
-          <div class="note">
-            <h2>Design condition</h2>
-            <p>No validated source files are modified. All interventions are compliance-safe and external — support layers only.</p>
-          </div>
-          <div class="note">
-            <h2>Regulatory UX concept</h2>
-            <p>The umbrella framework connecting all six projects — currently being developed as a standalone concept paper.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INFO PANELS -->
-  <div class="info-grid">
-    <div class="panel soft-blue">
-      <div class="panel-label">research concept</div>
-      <h2>Regulatory UX</h2>
-      <p>The interaction experience of workers inside compliance-constrained systems — where procedural structure shapes navigation, interpretation, and decision-making.</p>
-    </div>
-    <div class="panel soft-green">
-      <div class="panel-label">core claim</div>
-      <h2>Constraint shapes cognition</h2>
-      <p>Regulated document systems don't just store information. They determine how workers search, reason, assign blame, and close investigations.</p>
-    </div>
-    <div class="panel soft-lilac">
-      <div class="panel-label">design direction</div>
-      <h2>Expand, don't replace</h2>
-      <p>Design interventions should expand human reasoning and navigation space — not compress judgment into premature convergence.</p>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-grid">
-    <div class="summary-card blue">
-      <div class="panel-label">HCI projects</div>
-      <div class="summary-number">6</div>
-      <p>Six empirical projects across two research axes — reasoning under investigation pressure, and navigation in GMP document environments.</p>
+  <!-- AXIS 01 -->
+  <section class="axis-section fade-up">
+    <div class="axis-head">
+      <div class="axis-label">axis_01 · reasoning</div>
+      <div class="axis-title">How GMP systems shape causal reasoning</div>
     </div>
-    <div class="summary-card green">
-      <div class="panel-label">papers in progress</div>
-      <div class="summary-number">5</div>
-      <p>SOP accessibility, RCA reasoning, premature causal convergence, document navigation, and the Regulatory UX concept paper.</p>
-    </div>
-    <div class="summary-card lilac">
-      <div class="panel-label">total participants</div>
-      <div class="summary-number">52</div>
-      <p>Across usability studies: N=12, N=15, N=17, N=6, N=5, N=5 — all GMP-experienced practitioners.</p>
-    </div>
-    <div class="summary-card sand">
-      <div class="panel-label">adoption intent</div>
-      <div class="summary-number">100%</div>
-      <p>Across all usability studies, every participant indicated they would use the prototype in their actual work.</p>
-    </div>
-  </div>
+    <div class="proj-grid">
 
-  <!-- ======= GROUP 1: REASONING & INVESTIGATION ======= -->
-  <section>
-    <div class="section-head">
-      <div>
-        <span class="section-tag">axis 01 · reasoning &amp; investigation</span>
-        <h2 class="section-title">How GMP systems shape causal reasoning</h2>
-        <p class="section-sub">These two projects examine how investigation workflows constrain reasoning — through closure pressure, premature convergence, and accountability structures that compress judgment before the causal picture is complete.</p>
-      </div>
-    </div>
-
-    <div class="project-list">
-
-      <!-- RCA Reasoning Scaffolder -->
-      <a class="project-link" href="project-rca-reasoning-scaffolder.html">
-        <article class="project-card soft-sand">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">reasoning · 01</div>
-              <h3>RCA Reasoning Scaffolder</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 15</span>
-              <span class="track-chip paper">paper-track</span>
+      <a class="proj-link" href="project-rca-reasoning-scaffolder.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// reasoning · 01</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=15</span>
+              <span class="proj-chip">paper-track</span>
             </div>
           </div>
-          <p>A human-centered scaffold for root cause analysis, designed to keep causal hypotheses open and resist the structural pressure toward premature accountability convergence that GMP investigation workflows produce.</p>
-          <div class="project-meta">
-            <span class="meta-chip">reasoning design</span>
-            <span class="meta-chip">causal mapping</span>
-            <span class="meta-chip">PAC counter-design</span>
-            <span class="meta-chip">streamlit</span>
-            <span class="meta-chip">python</span>
+          <div class="proj-h">RCA Reasoning Scaffolder</div>
+          <p class="proj-desc">A human-centered scaffold keeping causal hypotheses open and resisting premature accountability convergence in GMP deviation investigations.</p>
+          <div class="proj-result">80% increased causal breadth · 15/15 no premature convergence · 5.0/5 helpfulness</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">reasoning design · PAC counter-design · streamlit</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Root cause analysis (RCA) narratives in pharmaceutical quality investigations converge on individual blame — not because evidence demands it, but because document structure and closure pressure do.</li>
-                <li>Investigators lack a layer for maintaining and comparing alternative causal hypotheses before committing to formal documentation.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=15. 80% of participants increased causal breadth. All 5 who initially attributed causes to individual error revised toward systemic factors. 15/15 reported no premature accountability convergence after using the scaffold.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
-      <!-- Premature Causal Convergence -->
-      <a class="project-link" href="project-premature-causal-convergence.html">
-        <article class="project-card soft-silver">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">reasoning · 02</div>
-              <h3>Premature Causal Convergence in RCA</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 5</span>
-              <span class="track-chip paper">paper-track</span>
+      <a class="proj-link" href="project-premature-causal-convergence.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// reasoning · 02</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=5</span>
+              <span class="proj-chip">pilot study</span>
             </div>
           </div>
-          <p>A pilot study showing that pharmaceutical QC practitioners universally begin out-of-specification (OOS) deviation analysis with a single cause — and that closure pressure in investigation workflows truncates reasoning before systemic factors can surface.</p>
-          <div class="project-meta">
-            <span class="meta-chip">premature causal convergence</span>
-            <span class="meta-chip">closure pressure</span>
-            <span class="meta-chip">pilot study</span>
-            <span class="meta-chip">time-based observation</span>
+          <div class="proj-h">Premature Causal Convergence in RCA</div>
+          <p class="proj-desc">A pilot study showing that GMP practitioners universally begin OOS deviation analysis with a single cause — and that closure pressure truncates reasoning before systemic factors surface.</p>
+          <div class="proj-result">5/5 began with one cause · 5/5 revised within 10 min · structural, not cognitive</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">closure pressure · time-based observation · pilot</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>In pharmaceutical quality practice, investigators spend less than 10 minutes on initial causal analysis before documentation begins — not by choice, but because investigation timelines structurally demand early closure.</li>
-                <li>Single-cause convergence at the outset is universal across practitioners, regardless of what type of cause they identify.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=5. 5/5 began with a single cause. 5/5 revised and expanded their causal model within 10 minutes when given time — confirming that the problem is structural, not cognitive.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
     </div>
   </section>
 
-  <!-- ======= SECTION DIVIDER ======= -->
-  <div class="section-divider">
-    <div class="section-divider-line"></div>
-    <span class="section-tag">axis 02 · navigation &amp; access</span>
-    <div class="section-divider-line"></div>
-  </div>
+  <hr class="section-divider">
 
-  <!-- ======= GROUP 2: NAVIGATION & ACCESS ======= -->
-  <section>
-    <div class="section-head">
-      <div>
-        <span class="section-tag">axis 02 · navigation &amp; access</span>
-        <h2 class="section-title">How GMP systems shape document navigation</h2>
-        <p class="section-sub">These four projects examine how procedural document environments constrain access, navigation, and review — through unsearchable archives, fragmented cross-references, opaque review cycles, and invisible navigation friction.</p>
-      </div>
+  <!-- AXIS 02 -->
+  <section class="axis-section fade-up">
+    <div class="axis-head">
+      <div class="axis-label">axis_02 · navigation</div>
+      <div class="axis-title">How GMP systems shape document navigation</div>
     </div>
+    <div class="proj-grid">
 
-    <div class="project-list">
-
-      <!-- SOP Accessibility -->
-      <a class="project-link" href="project-sop-accessibility.html">
-        <article class="project-card soft-blue">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">navigation · 01</div>
-              <h3>SOP Accessibility in GMP Environments</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 12</span>
-              <span class="track-chip paper">paper-track</span>
+      <a class="proj-link" href="project-sop-accessibility.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// navigation · 01</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=12</span>
+              <span class="proj-chip">paper-track</span>
             </div>
           </div>
-          <p>A human-centered document UX project improving retrievability across scanned standard operating procedure (SOP) archives in a pharmaceutical quality control lab — demonstrating that usability gains can emerge through external support layers without modifying validated source files.</p>
-          <div class="project-meta">
-            <span class="meta-chip">document UX</span>
-            <span class="meta-chip">information retrieval</span>
-            <span class="meta-chip">streamlit</span>
-            <span class="meta-chip">python</span>
-            <span class="meta-chip">usability study</span>
+          <div class="proj-h">SOP Accessibility System</div>
+          <p class="proj-desc">A compliance-safe retrieval layer that makes scanned SOP archives searchable — treating document accessibility as an HCI problem, not an infrastructure one.</p>
+          <div class="proj-result">4.8/5 ease of use · 4.8/5 intuitiveness · 12/12 adoption intent</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">document UX · retrieval · streamlit · python</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Scanned procedure documents (SOPs) were stored as unsearchable PDFs — QC analysts spent 6–7 minutes per document retrieval using manual scrolling through hundreds of files.</li>
-                <li>Access failure is a judgment failure: workers who cannot find the right procedure at the right moment cannot apply it correctly.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=12. Retrieval time reduced from ~6–7 min to ~1–2 min. 4.83/5 usability. 100% adoption intent. Deployed at sora-sop-demo.streamlit.app.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
-      <!-- Cross-Reference -->
-      <a class="project-link" href="project-cross-reference.html">
-        <article class="project-card soft-lilac">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">navigation · 02</div>
-              <h3>Cross-Reference System for GMP Documentation</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 17</span>
-              <span class="track-chip paper">paper-track</span>
+      <a class="proj-link" href="project-cross-reference.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// navigation · 02</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=17</span>
+              <span class="proj-chip">paper-track</span>
             </div>
           </div>
-          <p>A metadata-driven cross-reference system improving document traceability and reducing cognitive load across deviation reports, corrective and preventive action (CAPA) records, change controls, and related pharmaceutical quality documentation.</p>
-          <div class="project-meta">
-            <span class="meta-chip">traceability</span>
-            <span class="meta-chip">metadata mapping</span>
-            <span class="meta-chip">streamlit</span>
-            <span class="meta-chip">python</span>
-            <span class="meta-chip">network analysis</span>
+          <div class="proj-h">Cross-Reference System for GMP Documentation</div>
+          <p class="proj-desc">A metadata-driven traceability system that makes document linkage visible across deviation, CAPA, and change control records — redistributing cognitive work from people to the system.</p>
+          <div class="proj-result">30–60% faster task completion · 2× document discovery · 70–90% path completion</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">traceability · networkx · metadata mapping</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Validated quality records (deviation reports, CAPAs, change controls) could not be automatically interlinked — practitioners manually cross-referenced record IDs across fragmented systems.</li>
-                <li>Version inconsistency and lookup burden weakened both daily work and regulatory inspection readiness.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=17. Task completion time reduced 30–60%. Documents discovered per session increased 2–3×. Path completion rate up from 30–50% to 70–90%. 17/17 adoption intent.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
-      <!-- Cognitive Navigation Explorer -->
-      <a class="project-link" href="project-cognitive-navigation-explorer.html">
-        <article class="project-card soft-green">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">navigation · 03</div>
-              <h3>Cognitive Navigation Explorer</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 5</span>
-              <span class="track-chip prototype">prototype study</span>
+      <a class="proj-link" href="project-cognitive-navigation-explorer.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// navigation · 03</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=5</span>
+              <span class="proj-chip">prototype study</span>
             </div>
           </div>
-          <p>A behavioral tracking prototype that records how GMP practitioners navigate procedural documents — capturing loopbacks, cross-reference jumps, and hesitation patterns as structured data.</p>
-          <div class="project-meta">
-            <span class="meta-chip">document navigation</span>
-            <span class="meta-chip">loopback tracking</span>
-            <span class="meta-chip">behavioral data</span>
-            <span class="meta-chip">streamlit</span>
-            <span class="meta-chip">python</span>
+          <div class="proj-h">Cognitive Navigation Explorer</div>
+          <p class="proj-desc">A behavioral tracking prototype recording how GMP practitioners navigate procedural documents — capturing loopbacks, cross-reference jumps, and hesitation patterns as structured data.</p>
+          <div class="proj-result">5/5 loopback · 5.0/5 usability · SOP structure identified as friction source</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">loopback tracking · behavioral data · streamlit</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Navigation friction in pharmaceutical procedural documentation is invisible — when practitioners loop back or hesitate between documents, that behavior leaves no trace in current quality systems.</li>
-                <li>Without behavioral data, it is impossible to distinguish interface usability problems from document structure problems.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=5. 5/5 exhibited loopback behavior. 5.0/5 usability across all dimensions. Less experienced practitioners identified standard operating procedure (SOP) structure — not the interface — as the source of navigation confusion. 100% adoption intent.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
-      <!-- Smart Feedback & Review Dashboard -->
-      <a class="project-link" href="project-feedback-dashboard.html">
-        <article class="project-card soft-sky">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">navigation · 04</div>
-              <h3>Smart Feedback &amp; Review Dashboard</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">N = 6</span>
-              <span class="track-chip prototype">prototype study</span>
+      <a class="proj-link" href="project-feedback-dashboard.html">
+        <div class="proj-card">
+          <div class="proj-top">
+            <span class="proj-num">// navigation · 04</span>
+            <div class="proj-chips">
+              <span class="proj-chip">N=6</span>
+              <span class="proj-chip">prototype study</span>
             </div>
           </div>
-          <p>A compliance-safe workflow observability prototype visualizing reviewer workload, feedback patterns, and latency bottlenecks in deviation–CAPA (corrective and preventive action) review cycles — built from existing documentation metadata without modifying validated templates.</p>
-          <div class="project-meta">
-            <span class="meta-chip">workflow observability</span>
-            <span class="meta-chip">review interaction</span>
-            <span class="meta-chip">latency analysis</span>
-            <span class="meta-chip">streamlit</span>
-            <span class="meta-chip">python</span>
+          <div class="proj-h">Smart Feedback &amp; Review Dashboard</div>
+          <p class="proj-desc">An interactive workflow-support prototype making review delays, feedback loops, and revision burden visible in structured document environments — without modifying validated systems.</p>
+          <div class="proj-result">5.0/5 checklist clarity · 4.83/5 friction visibility · 100% adoption intent</div>
+          <div class="proj-bottom">
+            <span class="proj-n-chip">workflow friction · TF-IDF · dashboard · streamlit</span>
+            <span class="proj-arrow">→</span>
           </div>
-          <div class="project-body two-col">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Quality review cycles (deviation reports → QA review → CAPA closure) were opaque — workload imbalance, delay accumulation, and inconsistent reviewer feedback were invisible to both reviewers and submitters.</li>
-                <li>Teams lacked a shared visual layer for workflow coordination and bottleneck detection.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Results</h4>
-              <p>N=6 (5 GMP-experienced, 1 non-GMP). All participants expressed clear intent to adopt the tool after reviewing the prototype interface.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
+        </div>
       </a>
 
     </div>
   </section>
 
   <div class="footer">
-    Independent researcher · Regulatory UX — human judgment in compliance-constrained systems · GMP environments · HCI
+    <span>© 2026 Sora Kim · Regulatory UX · GMP environments · HCI</span>
+    <div class="btn-row">
+      <a class="btn" href="index.html">home</a>
+      <a class="btn" href="papers.html">papers →</a>
+    </div>
   </div>
-  <div class="credit-note">© 2026 Sora Kim.</div>
-</div>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+</div>
 
 <script>
 (function(){
-  var toggle = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var isDark = saved === 'dark' || (!saved && prefersDark);
-  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
-  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
-  toggle.addEventListener('click', function(){
-    var current = html.getAttribute('data-theme');
-    if(current === 'dark'){
-      html.setAttribute('data-theme','light');
-      toggle.textContent='🌙';
-      localStorage.setItem('theme','light');
-    } else {
-      html.setAttribute('data-theme','dark');
-      toggle.textContent='☀️';
-      localStorage.setItem('theme','dark');
-    }
-  });
+  var btn=document.getElementById('themeToggle'),html=document.documentElement,saved=localStorage.getItem('theme'),prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(saved==='dark'||(!saved&&prefersDark))html.setAttribute('data-theme','dark');
+  btn.addEventListener('click',function(){var dark=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',dark?'light':'dark');localStorage.setItem('theme',dark?'light':'dark');});
 })();
+window.addEventListener('scroll',function(){var s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?(s/d)*100:0;document.getElementById('progress-bar').style.width=p+'%';});
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08});
+document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
 </script>
-
 </body>
 </html>
