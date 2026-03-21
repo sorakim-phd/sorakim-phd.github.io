@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cognitive Navigation Explorer — Sora Kim</title>
-  <meta name="description" content="Cognitive Navigation Explorer — a behavioral tracking prototype surfacing documentation friction through navigation paths, loopbacks, and hesitation patterns in GMP environments." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cognitive Navigation Explorer — Sora Kim</title>
+<meta content="Cognitive Navigation Explorer — a behavioral tracking prototype showing how navigation paths and loopbacks reveal document friction." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -213,327 +214,308 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="breadcrumb">
-        <a href="index.html">home</a> /
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="layout">
+<aside class="sidebar">
+<div class="breadcrumb">
+<a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
         <span style="color:var(--text-2)">navigation explorer</span>
-      </div>
-      <nav class="side-nav">
-        <a href="#overview" class="active">Overview</a>
-        <a href="#problem">Problem</a>
-        <a href="#method">Method</a>
-        <a href="#prototype">Prototype</a>
-        <a href="#study">Study</a>
-        <a href="#findings">Findings</a>
-        <a href="#paper">Paper</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-
-      <!-- HERO -->
-      <section class="sec" id="overview" style="margin-bottom:40px">
-        <div class="proj-eyebrow reveal">navigation axis · project 03</div>
-        <h1 class="proj-title reveal">Cognitive Navigation Explorer</h1>
-        <div class="proj-chips reveal">
-          <span class="chip">document navigation</span>
-          <span class="chip">loopback tracking</span>
-          <span class="chip">behavioral data</span>
-          <span class="chip">python</span>
-          <span class="chip">streamlit</span>
-          <span class="chip">deployed</span>
-        </div>
-        <p class="proj-lead reveal">
-          Loopbacks are not simply user error — they may reflect moments where the document system failed to resolve a judgment demand on the first pass. This prototype tracks navigation paths, loopbacks, and hesitation patterns as behavioral data, making documentation friction observable without modifying validated systems.
-        </p>
-        <p class="proj-claim reveal">
-          This project reframes loopback behavior as analyzable evidence of document-structural friction, not just inefficient navigation.
-        </p>
-        <div class="flow reveal">
-          <span class="flow-tag on">document structure</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">navigation behavior</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">loopback / hesitation</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">investigation friction</span>
-        </div>
-        <div class="btn-row reveal">
-          <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-          <a class="btn" href="projects.html">← All projects</a>
-        </div>
-      </section>
-
-      <!-- META -->
-      <div class="meta-row reveal">
-        <div class="meta-cell">
-          <div class="meta-label">Participants</div>
-          <div class="meta-num">N=20</div>
-          <div class="meta-desc">GMP-experienced · OOS investigation background</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Loopback signal</div>
-          <div class="meta-num">20/20</div>
-          <div class="meta-desc">Loopback navigation appeared across all participant sessions</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Ease of use</div>
-          <div class="meta-num">5.0/5</div>
-          <div class="meta-desc">Interface was rated highly usable across participants</div>
-        </div>
-      </div>
-
-      <!-- PROBLEM -->
-      <section class="sec reveal" id="problem">
-        <div class="sec-eyebrow">01</div>
-        <h2 class="sec-title">Problem</h2>
-        <hr class="sec-divider">
-        <p class="body-text">GMP procedural documentation is a network, not a flat archive. A single deviation investigation may require navigating across SOPs, method validation documents, specification references, and training records — but the links between them are textual rather than interactive, and the navigation burden falls entirely on the practitioner.</p>
-        <p class="body-text">If we can observe how practitioners actually move through documents — where they go first, where they return, where they hesitate — we can surface structural properties of the documentation system that are otherwise invisible. Navigation behavior is a behavioral trace of documentation friction.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Observed pain points</div>
-            <ul class="bullets">
-              <li>Cross-references are textual ("refer to SOP-QC-004") rather than navigable</li>
-              <li>Related documents distributed without clear pathways between them</li>
-              <li>Less experienced users face significantly higher navigation burden</li>
-              <li>Loopback behavior is common but invisible in standard workflows</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Research opportunity</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Navigation behavior contains information practitioners cannot always articulate. A loopback reveals that something in the previously visited document was not resolved — but without tracking, that signal disappears. This prototype makes those signals visible, turning implicit navigation friction into observable, structured data.</p>
-          </div>
-        </div>
-        <div class="quote">A return click can be evidence that the path forward was not yet legible.</div>
-      </section>
-
-      <!-- METHOD -->
-      <section class="sec reveal" id="method">
-        <div class="sec-eyebrow">02</div>
-        <h2 class="sec-title">Method</h2>
-        <hr class="sec-divider">
-        <div class="steps">
-          <div class="step">
-            <div class="step-n">01</div>
-            <div>
-              <div class="step-label">Document set design</div>
-              <p>Constructed 7 synthetic GMP documents (SOPs, analytical method protocol, reference specification) reflecting a realistic OOS investigation workflow — with intentional cross-referencing fragmentation to create naturalistic navigation demands.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">02</div>
-            <div>
-              <div class="step-label">Scenario</div>
-              <p>Participants were given a standardised OOS scenario (ELISA assay result exceeding specification) and asked to find the relevant procedures and documents. No guidance or hints were provided.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">03</div>
-            <div>
-              <div class="step-label">Behavioral tracking</div>
-              <p>The prototype automatically recorded from_doc → to_doc transitions, action type (forward / cross-reference / loopback), visit count per document, and time spent per document. Data exported as CSV per participant session.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">04</div>
-            <div>
-              <div class="step-label">Usability study · N=20</div>
-              <p>Post-task survey measured navigation clarity, cross-reference usefulness, real-world utility, and collected qualitative feedback on confusion points and improvement suggestions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROTOTYPE -->
-      <section class="sec reveal" id="prototype">
-        <div class="sec-eyebrow">03</div>
-        <h2 class="sec-title">Prototype</h2>
-        <hr class="sec-divider">
-        <p class="body-text">The Cognitive Navigation Explorer presents participants with a GMP document set and an OOS investigation scenario. As participants navigate, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
-        <div class="btn-row" style="margin-bottom:16px">
-          <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-        </div>
-        <div class="carousel-wrap">
-          <div class="carousel-header">
-            <div class="carousel-label"><span class="carousel-dot"></span>Prototype · 3 views</div>
-            <div class="carousel-nav">
-              <button class="carousel-btn" id="prevBtn">←</button>
-              <span class="carousel-counter" id="counter">1 / 3</span>
-              <button class="carousel-btn" id="nextBtn">→</button>
-            </div>
-          </div>
-          <div class="carousel-track">
-            <div class="carousel-slide active">
-              <img src="assets/navigation-1.png" alt="Start screen" loading="lazy">
-              <div class="carousel-caption">screen 01 · start — participant ID entry · navigation tracking begins automatically</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/navigation-2.png" alt="Document navigation screen" loading="lazy">
-              <div class="carousel-caption">screen 02 · navigation — OOS scenario · 7 GMP documents · cross-reference links · loopback badge</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/navigation-3.png" alt="Results screen" loading="lazy">
-              <div class="carousel-caption">screen 03 · results — navigation path network · visit count · time per document · sequence log · CSV export</div>
-            </div>
-          </div>
-        </div>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">What it tracks</div>
-            <ul class="bullets">
-              <li>from_doc → to_doc transitions with action type (forward / cross-reference / loopback)</li>
-              <li>Visit count and time spent per document</li>
-              <li>Post-session directed network graph visualization</li>
-              <li>CSV export per session for multi-participant aggregation</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Design principle</div>
-            <ul class="bullets">
-              <li>No deployment inside validated systems required</li>
-              <li>Behavioral data as proxy for document-structural friction</li>
-              <li>Interface separates tool usability from document friction — by design</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- STUDY -->
-      <section class="sec reveal" id="study">
-        <div class="sec-eyebrow">04</div>
-        <h2 class="sec-title">Usability Study</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">N=20 GMP-experienced practitioners, all with OOS investigation experience and daily procedural document use. Post-task survey measured five dimensions: document list clarity, content readability, cross-reference clarity, navigation awareness, and real-world usefulness.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">First document opened</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Most participants opened an analyst-related document first — reflecting experience-based heuristics (pipetting errors are the most common ELISA OOS cause in practice). A minority opened the Reference Specification first to establish acceptance criteria before investigating.</p>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Experience vs. navigation difficulty</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Participants with 5+ years GMP experience reported no confusion about navigation direction. Less experienced participants reported difficulty identifying which document to navigate to next, but generally attributed this to SOP structure ambiguity rather than to the prototype interface.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINDINGS -->
-      <section class="sec reveal" id="findings">
-        <div class="sec-eyebrow">05</div>
-        <h2 class="sec-title">Findings</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">All 20 participants revisited at least one document. The most common loopback pattern was Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. All usability dimensions were rated highly (5.0/5 across participants), indicating that the interface itself did not introduce additional friction. Participants often identified SOP structure, rather than the prototype interface, as the main source of navigation difficulty.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
-            <tbody>
-              <tr><td>Document list clarity</td><td>5.0/5</td><td>Interface list was rated highly legible across participants</td></tr>
-              <tr><td>Content readability</td><td>5.0/5</td><td>Synthetic documents were generally experienced as realistic and easy to follow</td></tr>
-              <tr><td>Cross-reference clarity</td><td>5.0/5</td><td>Navigable cross-references were rated as useful during task completion</td></tr>
-              <tr><td>Navigation awareness</td><td>5.0/5</td><td>Participants reported being able to track where they were in the document set</td></tr>
-              <tr><td>Real-world usefulness</td><td>5.0/5</td><td>Participants rated the tool highly for potential GMP-related use</td></tr>
-              <tr><td>Loopback occurrence</td><td>20/20</td><td>Loopback navigation appeared in every participant session, suggesting a structural rather than isolated behavioral pattern</td></tr>
-              <tr><td>Source of confusion</td><td>SOP structure (not interface)</td><td>Less experienced participants generally identified document design — rather than the prototype — as the main friction source</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="quote">When less experienced participants struggled with cross-reference navigation, they did not say “this tool is confusing.” They more often pointed to the SOP structure itself as the reason the next step was not obvious.</div>
-        <div class="flow" style="margin-top:20px;margin-bottom:0">
-          <span class="flow-tag on">document structure</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">navigation behavior</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">loopback / hesitation</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">investigation friction</span>
-        </div>
-      </section>
-
-      <!-- PAPER -->
-      <section class="sec reveal" id="paper">
-        <div class="sec-eyebrow">06</div>
-        <h2 class="sec-title">Paper</h2>
-        <hr class="sec-divider">
-        <div class="paper-block">
-          <div class="paper-row">
-            <div class="paper-row-label">Claim</div>
-            <div class="paper-row-content">
-              <p class="paper-claim">Navigation behavior can function as a useful proxy for document-structural friction, and lightweight interactive prototypes can make that behavior observable without requiring deployment inside validated systems.</p>
-            </div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Contributes a methodological argument: behavioral navigation tracking surfaces documentation friction in regulated environments. Loopback is reframed as a structural signal rather than as simple individual error.</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Status</div>
-            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Links</div>
-            <div class="paper-row-content">
-              <div class="btn-row">
-                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
-                <a class="btn" href="papers.html">→ Papers page</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="page-footer reveal">
-        <span class="footer-note">navigation axis · project 03</span>
-        <div class="footer-nav">
-          <a href="projects.html" class="footer-btn">← Projects</a>
-          <a href="index.html" class="footer-btn">Home</a>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <script>
+</div>
+<nav class="side-nav">
+<a class="active" href="#overview">Overview</a>
+<a href="#problem">Problem</a>
+<a href="#method">Method</a>
+<a href="#prototype">Prototype</a>
+<a href="#study">Study</a>
+<a href="#findings">Findings</a>
+<a href="#paper">Paper</a>
+</nav>
+</aside>
+<main class="content">
+<!-- HERO -->
+<section class="sec" id="overview" style="margin-bottom:40px">
+<div class="proj-eyebrow reveal">navigation axis · project 03</div>
+<h1 class="proj-title reveal">Cognitive Navigation Explorer</h1>
+<div class="proj-chips reveal">
+<span class="chip">document navigation</span>
+<span class="chip">loopback tracking</span>
+<span class="chip">behavioral data</span>
+<span class="chip">python</span>
+<span class="chip">streamlit</span>
+<span class="chip">deployed</span>
+</div>
+<p class="proj-lead reveal">Loopbacks are not simply user error — they can mark moments where the document system did not resolve a judgment demand on the first pass. This prototype tracks navigation paths, hesitation, and returns so hidden document friction becomes visible.</p>
+<p class="proj-claim reveal">This project treats navigation behavior as analyzable evidence of document-structural friction, not merely inefficient searching.</p>
+<div class="flow reveal">
+<span class="flow-tag on">document structure</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">navigation behavior</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">loopback / hesitation</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">investigation friction</span>
+</div>
+<div class="btn-row reveal">
+<a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+<a class="btn" href="projects.html">← All projects</a>
+</div>
+</section>
+<!-- META -->
+<div class="meta-row reveal">
+<div class="meta-cell">
+<div class="meta-label">Participants</div>
+<div class="meta-num">pilot</div>
+<div class="meta-desc">GMP-experienced · OOS investigation background</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Loopback signal</div>
+<div class="meta-num">recurring</div>
+<div class="meta-desc">Loopback navigation appeared across all participant sessions</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Ease of use</div>
+<div class="meta-num">high</div>
+<div class="meta-desc">Interface was rated highly usable across participants</div>
+</div>
+</div>
+<!-- PROBLEM -->
+<section class="sec reveal" id="problem">
+<div class="sec-eyebrow">01</div>
+<h2 class="sec-title">Problem</h2>
+<hr class="sec-divider"/>
+<p class="body-text">GMP procedural documentation is a network, not a flat archive. A single deviation investigation may require navigating across SOPs, method validation documents, specification references, and training records — but the links between them are textual rather than interactive, and the navigation burden falls entirely on the practitioner.</p>
+<p class="body-text">If we can observe how practitioners actually move through documents — where they go first, where they return, where they hesitate — we can surface structural properties of the documentation system that are otherwise invisible. Navigation behavior can be read as a trace of documentation friction.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Observed pain points</div>
+<ul class="bullets">
+<li>Cross-references are textual ("refer to SOP-QC-004") rather than navigable</li>
+<li>Related documents distributed without clear pathways between them</li>
+<li>Less experienced users face significantly higher navigation burden</li>
+<li>Loopback behavior is common but invisible in standard workflows</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Research opportunity</div>
+<p class="body-text" style="margin:0;font-size:13px;">Navigation behavior contains information practitioners cannot always articulate. A loopback suggests that something in the previously visited document was not resolved — but without tracking, that signal disappears. This prototype makes those signals visible, turning implicit navigation friction into observable, structured data.</p>
+</div>
+</div>
+<div class="quote">A return click can be evidence that the path forward was not yet legible.</div>
+</section>
+<!-- METHOD -->
+<section class="sec reveal" id="method">
+<div class="sec-eyebrow">02</div>
+<h2 class="sec-title">Method</h2>
+<hr class="sec-divider"/>
+<div class="steps">
+<div class="step">
+<div class="step-n">01</div>
+<div>
+<div class="step-label">Document set design</div>
+<p>Constructed 7 synthetic GMP documents (SOPs, analytical method protocol, reference specification) reflecting a realistic OOS investigation workflow — with intentional cross-referencing fragmentation to create naturalistic navigation demands.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">02</div>
+<div>
+<div class="step-label">Scenario</div>
+<p>Participants were given a standardised OOS scenario (ELISA assay result exceeding specification) and asked to find the relevant procedures and documents. No guidance or hints were provided.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">03</div>
+<div>
+<div class="step-label">Behavioral tracking</div>
+<p>The prototype automatically recorded from_doc → to_doc transitions, action type (forward / cross-reference / loopback), visit count per document, and time spent per document. Data exported as CSV per participant session.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">04</div>
+<div>
+<div class="step-label">Usability study · pilot sample</div>
+<p>Post-task survey measured navigation clarity, cross-reference usefulness, real-world utility, and collected qualitative feedback on confusion points and improvement suggestions.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- PROTOTYPE -->
+<section class="sec reveal" id="prototype">
+<div class="sec-eyebrow">03</div>
+<h2 class="sec-title">Prototype</h2>
+<hr class="sec-divider"/>
+<p class="body-text">The Cognitive Navigation Explorer presents participants with a GMP document set and an OOS investigation scenario. As participants navigate, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
+<div class="btn-row" style="margin-bottom:16px">
+<a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+</div>
+<div class="carousel-wrap">
+<div class="carousel-header">
+<div class="carousel-label"><span class="carousel-dot"></span>Prototype · 3 views</div>
+<div class="carousel-nav">
+<button class="carousel-btn" id="prevBtn">←</button>
+<span class="carousel-counter" id="counter">1 / 3</span>
+<button class="carousel-btn" id="nextBtn">→</button>
+</div>
+</div>
+<div class="carousel-track">
+<div class="carousel-slide active">
+<img alt="Start screen" loading="lazy" src="assets/navigation-1.png"/>
+<div class="carousel-caption">screen 01 · start — participant ID entry · navigation tracking begins automatically</div>
+</div>
+<div class="carousel-slide">
+<img alt="Document navigation screen" loading="lazy" src="assets/navigation-2.png"/>
+<div class="carousel-caption">screen 02 · navigation — OOS scenario · 7 GMP documents · cross-reference links · loopback badge</div>
+</div>
+<div class="carousel-slide">
+<img alt="Results screen" loading="lazy" src="assets/navigation-3.png"/>
+<div class="carousel-caption">screen 03 · results — navigation path network · visit count · time per document · sequence log · CSV export</div>
+</div>
+</div>
+</div>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">What it tracks</div>
+<ul class="bullets">
+<li>from_doc → to_doc transitions with action type (forward / cross-reference / loopback)</li>
+<li>Visit count and time spent per document</li>
+<li>Post-session directed network graph visualization</li>
+<li>CSV export per session for multi-participant aggregation</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Design principle</div>
+<ul class="bullets">
+<li>No deployment inside validated systems required</li>
+<li>Behavioral data as a proxy for document-structural friction</li>
+<li>Interface separates tool usability from document friction — by design</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- STUDY -->
+<section class="sec reveal" id="study">
+<div class="sec-eyebrow">04</div>
+<h2 class="sec-title">Usability Study</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">GMP-experienced practitioners with OOS investigation experience and daily procedural document use participated in a pilot evaluation. The post-task survey focused on document list clarity, content readability, cross-reference clarity, navigation awareness, and practical usefulness.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">First document opened</div>
+<p class="body-text" style="margin:0;font-size:13px;">Most participants opened an analyst-related document first — reflecting experience-based heuristics (pipetting errors are the most common ELISA OOS cause in practice). A minority opened the Reference Specification first to establish acceptance criteria before investigating.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Experience vs. navigation difficulty</div>
+<p class="body-text" style="margin:0;font-size:13px;">Participants with 5+ years GMP experience reported no confusion about navigation direction. Less experienced participants reported difficulty identifying which document to navigate to next, but generally attributed this to SOP structure ambiguity rather than to the prototype interface.</p>
+</div>
+</div>
+</section>
+<!-- FINDINGS -->
+<section class="sec reveal" id="findings">
+<div class="sec-eyebrow">05</div>
+<h2 class="sec-title">Findings</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Participants routinely revisited at least one document. The most common loopback pattern was Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. Usability ratings were positive, suggesting that the interface itself did not introduce additional friction. Participants often identified SOP structure, rather than the prototype interface, as the main source of navigation difficulty.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Document list clarity</td><td>high</td><td>Interface list was rated highly legible across participants</td></tr>
+<tr><td>Content readability</td><td>high</td><td>Synthetic documents were generally experienced as realistic and easy to follow</td></tr>
+<tr><td>Cross-reference clarity</td><td>high</td><td>Navigable cross-references were rated as useful during task completion</td></tr>
+<tr><td>Navigation awareness</td><td>high</td><td>Participants reported being able to track where they were in the document set</td></tr>
+<tr><td>Real-world usefulness</td><td>high</td><td>Participants rated the tool highly for potential GMP-related use</td></tr>
+<tr><td>Loopback occurrence</td><td>observed across sessions</td><td>Loopback navigation appeared repeatedly, suggesting a structural rather than isolated behavioral pattern</td></tr>
+<tr><td>Source of confusion</td><td>SOP structure (not interface)</td><td>Less experienced participants generally identified document design — rather than the prototype — as the main friction source</td></tr>
+</tbody>
+</table>
+</div>
+<div class="quote">When less experienced participants struggled with cross-reference navigation, they did not say “this tool is confusing.” They more often pointed to the SOP structure itself as the reason the next step was not obvious.</div>
+<div class="flow" style="margin-top:20px;margin-bottom:0">
+<span class="flow-tag on">document structure</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">navigation behavior</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">loopback / hesitation</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">investigation friction</span>
+</div>
+</section>
+<!-- PAPER -->
+<section class="sec reveal" id="paper">
+<div class="sec-eyebrow">06</div>
+<h2 class="sec-title">Paper</h2>
+<hr class="sec-divider"/>
+<div class="paper-block">
+<div class="paper-row">
+<div class="paper-row-label">Claim</div>
+<div class="paper-row-content">
+<p class="paper-claim">Navigation behavior can function as evidence of document-structural friction rather than mere user inefficiency, making hidden navigation burden observable without deployment inside validated systems.</p>
+</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">What it does</div>
+<div class="paper-row-content">Contributes a methodological argument: behavioral navigation tracking surfaces documentation friction in regulated environments. Loopback is reframed as a structural signal rather than as simple individual error.</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Status</div>
+<div class="paper-row-content">Preprint · 2026 · SSRN</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Links</div>
+<div class="paper-row-content">
+<div class="btn-row">
+<a class="btn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="btn" href="papers.html">→ Papers page</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">navigation axis · project 03</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="index.html">Home</a>
+</div>
+</div>
+</main>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -612,6 +594,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

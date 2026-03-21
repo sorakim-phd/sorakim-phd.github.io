@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Feedback & Review Dashboard — Sora Kim</title>
-  <meta name="description" content="Smart Feedback & Review Dashboard — a workflow observability prototype making review delays and feedback patterns visible in regulated documentation systems." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Feedback &amp; Review Dashboard — Sora Kim</title>
+<meta content="Smart Feedback &amp; Review Dashboard — a workflow observability prototype for hidden review burden in regulated systems." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -220,373 +221,352 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="breadcrumb">
-        <a href="index.html">home</a> /
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="layout">
+<aside class="sidebar">
+<div class="breadcrumb">
+<a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
         <span style="color:var(--text-2)">feedback dashboard</span>
-      </div>
-      <nav class="side-nav">
-        <a href="#overview" class="active">Overview</a>
-        <a href="#problem">Problem</a>
-        <a href="#method">Method</a>
-        <a href="#prototype">Prototype</a>
-        <a href="#visibility">Visibility Layer</a>
-        <a href="#study">Study</a>
-        <a href="#findings">Findings</a>
-        <a href="#paper">Paper</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-
-      <!-- HERO -->
-      <section class="sec" id="overview" style="margin-bottom:40px">
-        <div class="proj-eyebrow reveal">navigation axis · project 04</div>
-        <h1 class="proj-title reveal">Smart Feedback &amp; Review Dashboard</h1>
-        <div class="proj-chips reveal">
-          <span class="chip">workflow friction</span>
-          <span class="chip">dashboard prototype</span>
-          <span class="chip">TF-IDF clustering</span>
-          <span class="chip">python</span>
-          <span class="chip">streamlit</span>
-          <span class="chip">deployed</span>
-        </div>
-        <p class="proj-lead reveal">
-          Coordination breakdown is not sudden — it is produced, delay by delay, within review cycles. This prototype makes review delays, feedback loops, and revision burden visible without modifying validated documentation systems.
-        </p>
-        <p class="proj-claim reveal">
-          This project argues that review friction can be studied as an observability problem: delay, revision, and coordination become legible before they become formal failure.
-        </p>
-        <div class="reveal" style="margin-bottom:24px;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);">
-          <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px;">Research Question</div>
-          <p style="font-size:14px;font-weight:500;color:var(--text-2);line-height:1.65;">How can workflow friction be made visible in regulated systems without collapsing human judgment into automated outputs?</p>
-        </div>
-        <div class="flow reveal">
-          <span class="flow-tag on">hidden friction</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">visible pattern</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">earlier sense-making</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">judgment supported</span>
-        </div>
-        <div class="btn-row reveal">
-          <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-          <a class="btn" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank" rel="noopener">Visibility Layer ↗</a>
-          <a class="btn" href="projects.html">← All projects</a>
-        </div>
-      </section>
-
-      <!-- META -->
-      <div class="meta-row reveal">
-        <div class="meta-cell">
-          <div class="meta-label">Participants</div>
-          <div class="meta-num">N=20</div>
-          <div class="meta-desc">QA/QC-experienced · document review background</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Checklist clarity</div>
-          <div class="meta-num">5.0/5</div>
-          <div class="meta-desc">Highest-rated feature · friction visibility 4.83/5</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Adoption intent</div>
-          <div class="meta-num">20/20</div>
-          <div class="meta-desc">All participants indicated real-world usefulness</div>
-        </div>
-      </div>
-
-      <!-- PROBLEM -->
-      <section class="sec reveal" id="problem">
-        <div class="sec-eyebrow">01</div>
-        <h2 class="sec-title">Problem</h2>
-        <hr class="sec-divider">
-        <p class="body-text">In regulated environments, document review is critical but opaque. Deviation, CAPA, and related records pass through multiple reviewers — yet visibility into feedback burden, timing, and revision-loop formation is limited.</p>
-        <p class="body-text">Teams know a document is "still under review," but not what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is escalating across rounds. The core problem is not delay itself — it is the lack of a shared operational view of that delay.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Observed pain points</div>
-            <ul class="bullets">
-              <li>Repeated revision loops difficult to observe as patterns</li>
-              <li>Feedback burden uneven across reviewers but hard to see</li>
-              <li>Small wording comments generated multi-day back-and-forth</li>
-              <li>Review process felt slow but source of friction remained unclear</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">HCI reframing</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Review delay is an observability problem as much as a coordination problem. A missing visibility layer meant that friction accumulated without ever becoming legible enough to act on early.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- METHOD -->
-      <section class="sec reveal" id="method">
-        <div class="sec-eyebrow">02</div>
-        <h2 class="sec-title">Method</h2>
-        <hr class="sec-divider">
-        <div class="steps">
-          <div class="step">
-            <div class="step-n">01</div>
-            <div>
-              <div class="step-label">Dataset construction</div>
-              <p>Constructed a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">02</div>
-            <div>
-              <div class="step-label">UI prototype — 6-tab dashboard</div>
-              <p>Built an interactive dashboard in Python/Streamlit: workflow summaries, revision heatmaps, checklist assistant, rule-based comment classifier, document journey tracing, and reviewer simulation.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">03</div>
-            <div>
-              <div class="step-label">Visibility layer — TF-IDF clustering</div>
-              <p>Added TF-IDF similarity clustering for recurring issue detection, multi-factor revision burden scoring, and pattern summaries — as observability tools, not decision-automation systems.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">04</div>
-            <div>
-              <div class="step-label">Usability study · N=20</div>
-              <p>Prototype feedback session with QA/QC-experienced participants to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROTOTYPE -->
-      <section class="sec reveal" id="prototype">
-        <div class="sec-eyebrow">03</div>
-        <h2 class="sec-title">UI Prototype</h2>
-        <hr class="sec-divider">
-        <p class="body-text">A 6-tab dashboard surfacing review burden, revision density, and feedback patterns through heatmaps, comment classification, document journey tracing, and reviewer simulation — all as an external layer that does not modify validated documentation systems.</p>
-        <div class="btn-row" style="margin-bottom:16px">
-          <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-        </div>
-
-        <!-- CAROUSEL -->
-        <div class="carousel-wrap" id="carousel">
-          <div class="carousel-header">
-            <div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 6 tabs</div>
-            <div class="carousel-nav">
-              <button class="carousel-btn" id="prevBtn">←</button>
-              <span class="carousel-counter" id="counter">1 / 6</span>
-              <button class="carousel-btn" id="nextBtn">→</button>
-            </div>
-          </div>
-          <div class="carousel-track">
-            <div class="carousel-slide active">
-              <img src="assets/review-dashboard-1.png" alt="Overview tab" loading="lazy">
-              <div class="carousel-caption">tab 01 · overview — comment category distribution · severity breakdown · avg turnaround by role</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/review-dashboard-2.png" alt="Heatmap tab" loading="lazy">
-              <div class="carousel-caption">tab 02 · heatmap — revision bottleneck · reviewer × doc type · loop frequency</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/review-dashboard-3.png" alt="Checklist tab" loading="lazy">
-              <div class="carousel-caption">tab 03 · checklist — pre-review scaffold · rule-based comment classifier</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/review-dashboard-4.png" alt="Document Journey tab" loading="lazy">
-              <div class="carousel-caption">tab 04 · document journey — full review lifecycle trace · round-by-round summary</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/review-dashboard-5.png" alt="Before/After tab" loading="lazy">
-              <div class="carousel-caption">tab 05 · before / after — workflow support comparison</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/review-dashboard-6.png" alt="Reviewer Simulation tab" loading="lazy">
-              <div class="carousel-caption">tab 06 · reviewer simulation — comment framing · friction estimation</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- VISIBILITY LAYER -->
-      <section class="sec reveal" id="visibility" style="margin-top:12px">
-        <div class="sec-eyebrow">04</div>
-        <h2 class="sec-title">Visibility Layer</h2>
-        <hr class="sec-divider">
-        <p class="body-text">The visibility layer adds computational pattern-detection on top of the rule-based dashboard. TF-IDF similarity clustering detects recurring issue patterns across review rounds — surfacing structural friction invisible in individual comment threads.</p>
-        <p class="body-text note">Same design principle as the UI prototype: makes hidden patterns legible without collapsing reviewer discretion into algorithmic output.</p>
-        <div class="btn-row" style="margin-bottom:16px">
-          <a class="btn primary" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank" rel="noopener">Open Visibility Layer ↗</a>
-        </div>
-        <div class="screenshot-wrap">
-          <div class="screenshot-label"><span class="screenshot-dot"></span>Visibility layer · review friction explorer</div>
-          <img src="assets/review-dashboard-ai.png" alt="Visibility Layer — Review Friction Explorer" loading="lazy">
-        </div>
-        <p class="screenshot-caption">TF-IDF clustering auto-detects repeated issue clusters. Pattern summary describes the selected document's review state in plain language.</p>
-        <div class="grid2" style="margin-top:16px">
-          <div class="gcell">
-            <div class="gcell-label">What it does</div>
-            <ul class="bullets">
-              <li>TF-IDF clustering — auto-detects recurring patterns without manual tagging</li>
-              <li>Revision burden scoring — quantifies coordination load per document</li>
-              <li>Pattern summary — plain-language description of review state and bottleneck stage</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">What it does not do</div>
-            <ul class="bullets">
-              <li>Does not recommend actions or assign blame</li>
-              <li>Does not replace reviewer judgment</li>
-              <li>Does not modify validated documentation systems</li>
-              <li>Surfaces patterns for human interpretation only</li>
-            </ul>
-          </div>
-        </div>
-        <div class="quote">Visibility is not a neutral interface property — it helps determine what becomes discussable, interpretable, and eventually accountable within review work.</div>
-      </section>
-
-      <!-- STUDY -->
-      <section class="sec reveal" id="study">
-        <div class="sec-eyebrow">05</div>
-        <h2 class="sec-title">Usability Study</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">N=20 participants, all with QA/QC or regulated documentation experience. The prototype was evaluated outside the live system — validated systems cannot freely adopt unvalidated interface changes.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
-            <tbody>
-              <tr><td>Purpose clarity</td><td>4.83/5</td><td>Interface intent immediately legible to QA/QC participants</td></tr>
-              <tr><td>Friction visibility</td><td>4.83/5</td><td>Delay patterns and bottlenecks became easier to observe</td></tr>
-              <tr><td>Checklist clarity</td><td>5.0/5</td><td>Highest-rated feature — pre-review scaffold felt natural and usable</td></tr>
-              <tr><td>Simulation clarity</td><td>4.83/5</td><td>Reviewer simulation understood as reflection aid, not predictor</td></tr>
-              <tr><td>Adoption intent</td><td>20/20</td><td>All participants indicated real-world usefulness</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="body-text note">Results showed relatively low variance across participants, which may reflect genuine agreement but also suggests the possibility of response bias in a small, conceptually aligned sample.</p>
-        <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that review friction deserves structured visibility was unfamiliar to most participants.</div>
-      </section>
-
-      <!-- FINDINGS -->
-      <section class="sec reveal" id="findings">
-        <div class="sec-eyebrow">06</div>
-        <h2 class="sec-title">What This Revealed</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">The main contribution is not efficiency — the prototype surfaces hidden review work as interpretable workflow signals, providing initial evidence that friction visibility is achievable without automating reviewer judgment.</p>
-        <p class="body-text">More importantly, the study suggests that workflow friction is not merely a coordination inefficiency, but a structurally hidden form of labor that remains unaddressed because it is rarely made collectively visible. In that sense, the interface does more than summarize delay: it externalizes a class of review work that usually remains distributed, tacit, and difficult to discuss.</p>
-        <p class="body-text">Participants did not struggle with the interface itself. The workflow-friction concept initially felt unfamiliar — pointing toward adoption barriers being conceptual rather than interactional. The next design challenge is therefore not interface clarity alone, but making the value of friction visibility legible to users trained to absorb review load silently.</p>
-        <div class="grid2" style="margin-bottom:20px">
-          <div class="gcell">
-            <div class="gcell-label">Limitations</div>
-            <ul class="bullets">
-              <li>Synthetic dataset — findings require validation with real review records</li>
-              <li>Some participants initially struggled to interpret clustering outputs without guidance</li>
-              <li>Workflow-friction concept was conceptually unfamiliar, requiring onboarding</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Novelty</div>
-            <ul class="bullets">
-              <li>External layer — operates without modifying validated systems</li>
-              <li>Non-automation principle — surfaces patterns, preserves human discretion</li>
-              <li>Responsibility-preserving design in compliance-constrained environments</li>
-            </ul>
-          </div>
-        </div>
-        <div class="flow" style="margin-bottom:0">
-          <span class="flow-tag on">hidden friction</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">visible pattern</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">earlier sense-making</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">judgment supported</span>
-        </div>
-      </section>
-
-      <!-- PAPER -->
-      <section class="sec reveal" id="paper">
-        <div class="sec-eyebrow">07</div>
-        <h2 class="sec-title">Paper</h2>
-        <hr class="sec-divider">
-        <div class="paper-block">
-          <div class="paper-row">
-            <div class="paper-row-label">Claim</div>
-            <div class="paper-row-content">
-              <p class="paper-claim">Review friction in regulated environments is structural and largely invisible. This project provides initial evidence that a lightweight observability layer can surface it without modifying validated systems or replacing reviewer judgment.</p>
-            </div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Provides initial evidence that review friction, comment burden, and revision loops can be surfaced through a computational support prototype — and that AI can serve as a pattern-detection layer rather than a decision-automation system.</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Status</div>
-            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Links</div>
-            <div class="paper-row-content">
-              <div class="btn-row">
-                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
-                <a class="btn" href="papers.html">→ Papers page</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="page-footer reveal">
-        <span class="footer-note">navigation axis · project 04</span>
-        <div class="footer-nav">
-          <a href="projects.html" class="footer-btn">← Projects</a>
-          <a href="index.html" class="footer-btn">Home</a>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <script>
+</div>
+<nav class="side-nav">
+<a class="active" href="#overview">Overview</a>
+<a href="#problem">Problem</a>
+<a href="#method">Method</a>
+<a href="#prototype">Prototype</a>
+<a href="#visibility">Visibility Layer</a>
+<a href="#study">Study</a>
+<a href="#findings">Findings</a>
+<a href="#paper">Paper</a>
+</nav>
+</aside>
+<main class="content">
+<!-- HERO -->
+<section class="sec" id="overview" style="margin-bottom:40px">
+<div class="proj-eyebrow reveal">navigation axis · project 04</div>
+<h1 class="proj-title reveal">Smart Feedback &amp; Review Dashboard</h1>
+<div class="proj-chips reveal">
+<span class="chip">workflow friction</span>
+<span class="chip">dashboard prototype</span>
+<span class="chip">TF-IDF clustering</span>
+<span class="chip">python</span>
+<span class="chip">streamlit</span>
+<span class="chip">deployed</span>
+</div>
+<p class="proj-lead reveal">Coordination breakdown is not sudden — it builds delay by delay within review cycles. This prototype makes review delays, feedback loops, and revision burden visible before they harden into bigger workflow problems.</p>
+<p class="proj-claim reveal">This project argues that review friction can be studied as an observability problem: delay, revision, and coordination need to become visible early enough to support action without automating reviewer judgment.</p>
+<div class="reveal" style="margin-bottom:24px;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);">
+<div style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px;">Research Question</div>
+<p style="font-size:14px;font-weight:500;color:var(--text-2);line-height:1.65;">How can workflow friction be made visible in regulated systems without collapsing human judgment into automated outputs?</p>
+</div>
+<div class="flow reveal">
+<span class="flow-tag on">hidden friction</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">visible pattern</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">earlier sense-making</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">judgment supported</span>
+</div>
+<div class="btn-row reveal">
+<a class="btn primary" href="https://sora-review-workflow.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+<a class="btn" href="https://smart-feedback-dashboard-ai.streamlit.app/" rel="noopener" target="_blank">Visibility Layer ↗</a>
+<a class="btn" href="projects.html">← All projects</a>
+</div>
+</section>
+<!-- META -->
+<div class="meta-row reveal">
+<div class="meta-cell">
+<div class="meta-label">Participants</div>
+<div class="meta-num">pilot</div>
+<div class="meta-desc">QA/QC-experienced · document review background</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Checklist clarity</div>
+<div class="meta-num">high</div>
+<div class="meta-desc">Participants rated the visibility layer positively</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Adoption intent</div>
+<div class="meta-num">strong</div>
+<div class="meta-desc">Participants indicated real-world usefulness</div>
+</div>
+</div>
+<!-- PROBLEM -->
+<section class="sec reveal" id="problem">
+<div class="sec-eyebrow">01</div>
+<h2 class="sec-title">Problem</h2>
+<hr class="sec-divider"/>
+<p class="body-text">In regulated environments, document review is critical but opaque. Deviation, CAPA, and related records pass through multiple reviewers — yet visibility into feedback burden, timing, and revision-loop formation is limited.</p>
+<p class="body-text">Teams know a document is "still under review," but not what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is escalating across rounds. The core problem is not delay itself — it is the lack of a shared operational view of that delay.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Observed pain points</div>
+<ul class="bullets">
+<li>Repeated revision loops difficult to observe as patterns</li>
+<li>Feedback burden uneven across reviewers but hard to see</li>
+<li>Small wording comments generated multi-day back-and-forth</li>
+<li>Review process felt slow but source of friction remained unclear</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">HCI reframing</div>
+<p class="body-text" style="margin:0;font-size:13px;">Review delay is an observability problem as much as a coordination problem. Without a visibility layer, friction accumulates before teams can act on it early.</p>
+</div>
+</div>
+</section>
+<!-- METHOD -->
+<section class="sec reveal" id="method">
+<div class="sec-eyebrow">02</div>
+<h2 class="sec-title">Method</h2>
+<hr class="sec-divider"/>
+<div class="steps">
+<div class="step">
+<div class="step-n">01</div>
+<div>
+<div class="step-label">Dataset construction</div>
+<p>Constructed a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">02</div>
+<div>
+<div class="step-label">UI prototype — 6-tab dashboard</div>
+<p>Built an interactive dashboard in Python/Streamlit: workflow summaries, revision heatmaps, checklist assistant, rule-based comment classifier, document journey tracing, and reviewer simulation.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">03</div>
+<div>
+<div class="step-label">Visibility layer — TF-IDF clustering</div>
+<p>Added TF-IDF similarity clustering for recurring issue detection, multi-factor revision burden scoring, and pattern summaries — as observability tools, not decision-automation systems.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">04</div>
+<div>
+<div class="step-label">Usability study · pilot sample</div>
+<p>Prototype feedback session with QA/QC-experienced participants to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- PROTOTYPE -->
+<section class="sec reveal" id="prototype">
+<div class="sec-eyebrow">03</div>
+<h2 class="sec-title">UI Prototype</h2>
+<hr class="sec-divider"/>
+<p class="body-text">A 6-tab dashboard surfacing review burden, revision density, and feedback patterns through heatmaps, comment classification, document journey tracing, and reviewer simulation — all as an external layer that does not modify validated documentation systems.</p>
+<div class="btn-row" style="margin-bottom:16px">
+<a class="btn primary" href="https://sora-review-workflow.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+</div>
+<!-- CAROUSEL -->
+<div class="carousel-wrap" id="carousel">
+<div class="carousel-header">
+<div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 6 tabs</div>
+<div class="carousel-nav">
+<button class="carousel-btn" id="prevBtn">←</button>
+<span class="carousel-counter" id="counter">1 / 6</span>
+<button class="carousel-btn" id="nextBtn">→</button>
+</div>
+</div>
+<div class="carousel-track">
+<div class="carousel-slide active">
+<img alt="Overview tab" loading="lazy" src="assets/review-dashboard-1.png"/>
+<div class="carousel-caption">tab 01 · overview — comment category distribution · severity breakdown · avg turnaround by role</div>
+</div>
+<div class="carousel-slide">
+<img alt="Heatmap tab" loading="lazy" src="assets/review-dashboard-2.png"/>
+<div class="carousel-caption">tab 02 · heatmap — revision bottleneck · reviewer × doc type · loop frequency</div>
+</div>
+<div class="carousel-slide">
+<img alt="Checklist tab" loading="lazy" src="assets/review-dashboard-3.png"/>
+<div class="carousel-caption">tab 03 · checklist — pre-review scaffold · rule-based comment classifier</div>
+</div>
+<div class="carousel-slide">
+<img alt="Document Journey tab" loading="lazy" src="assets/review-dashboard-4.png"/>
+<div class="carousel-caption">tab 04 · document journey — full review lifecycle trace · round-by-round summary</div>
+</div>
+<div class="carousel-slide">
+<img alt="Before/After tab" loading="lazy" src="assets/review-dashboard-5.png"/>
+<div class="carousel-caption">tab 05 · before / after — workflow support comparison</div>
+</div>
+<div class="carousel-slide">
+<img alt="Reviewer Simulation tab" loading="lazy" src="assets/review-dashboard-6.png"/>
+<div class="carousel-caption">tab 06 · reviewer simulation — comment framing · friction estimation</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VISIBILITY LAYER -->
+<section class="sec reveal" id="visibility" style="margin-top:12px">
+<div class="sec-eyebrow">04</div>
+<h2 class="sec-title">Visibility Layer</h2>
+<hr class="sec-divider"/>
+<p class="body-text">The visibility layer adds computational pattern detection on top of the rule-based dashboard. TF-IDF similarity clustering detects recurring issue patterns across review rounds — surfacing structural friction that is easy to miss in individual comment threads.</p>
+<p class="body-text note">Same design principle as the UI prototype: makes hidden patterns legible without collapsing reviewer discretion into algorithmic output.</p>
+<div class="btn-row" style="margin-bottom:16px">
+<a class="btn primary" href="https://smart-feedback-dashboard-ai.streamlit.app/" rel="noopener" target="_blank">Open Visibility Layer ↗</a>
+</div>
+<div class="screenshot-wrap">
+<div class="screenshot-label"><span class="screenshot-dot"></span>Visibility layer · review friction explorer</div>
+<img alt="Visibility Layer — Review Friction Explorer" loading="lazy" src="assets/review-dashboard-ai.png"/>
+</div>
+<p class="screenshot-caption">TF-IDF clustering auto-detects repeated issue clusters. Pattern summary describes the selected document's review state in plain language.</p>
+<div class="grid2" style="margin-top:16px">
+<div class="gcell">
+<div class="gcell-label">What it does</div>
+<ul class="bullets">
+<li>TF-IDF clustering — auto-detects recurring patterns without manual tagging</li>
+<li>Revision burden scoring — quantifies coordination load per document</li>
+<li>Pattern summary — plain-language description of review state and bottleneck stage</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">What it does not do</div>
+<ul class="bullets">
+<li>Does not recommend actions or make accountability decisions</li>
+<li>Does not replace reviewer judgment</li>
+<li>Does not modify validated documentation systems</li>
+<li>Surfaces patterns for human interpretation only</li>
+</ul>
+</div>
+</div>
+<div class="quote">Visibility is not a neutral interface property — it helps determine what becomes discussable, interpretable, and eventually accountable within review work.</div>
+</section>
+<!-- STUDY -->
+<section class="sec reveal" id="study">
+<div class="sec-eyebrow">05</div>
+<h2 class="sec-title">Usability Study</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Participants with QA/QC or regulated documentation experience took part in a pilot evaluation. The prototype was evaluated outside the live system — validated systems cannot freely adopt unvalidated interface changes.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Purpose clarity</td><td>positive</td><td>Interface intent was immediately clear to QA/QC participants</td></tr>
+<tr><td>Friction visibility</td><td>positive</td><td>Delay patterns and bottlenecks became easier to observe</td></tr>
+<tr><td>Checklist clarity</td><td>high</td><td>Highest-rated feature — pre-review scaffold felt natural and usable</td></tr>
+<tr><td>Simulation clarity</td><td>positive</td><td>Reviewer simulation was understood as a reflection aid, not a predictor</td></tr>
+<tr><td>Adoption intent</td><td>strong reuse interest</td><td>Participants indicated real-world usefulness</td></tr>
+</tbody>
+</table>
+</div>
+<p class="body-text note">Results showed relatively low variance across participants, which may reflect genuine agreement but also suggests the possibility of response bias in a small, conceptually aligned sample.</p>
+<div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that review friction deserves structured visibility was unfamiliar to most participants.</div>
+</section>
+<!-- FINDINGS -->
+<section class="sec reveal" id="findings">
+<div class="sec-eyebrow">06</div>
+<h2 class="sec-title">What This Revealed</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">The main contribution is not efficiency alone — the prototype surfaces hidden review work as interpretable workflow signals, providing initial evidence that friction visibility is achievable without automating reviewer judgment.</p>
+<p class="body-text">More importantly, the study suggests that workflow friction is not merely a coordination inefficiency, but a structurally hidden form of labor that remains unaddressed because it is rarely made collectively visible. In that sense, the interface does more than summarize delay: it externalizes a class of review work that usually remains distributed, tacit, and difficult to discuss.</p>
+<p class="body-text">Participants did not struggle with the interface itself. The workflow-friction concept initially felt unfamiliar — pointing toward adoption barriers being conceptual rather than interactional. The next design challenge is therefore not interface clarity alone, but making the value of friction visibility legible to users trained to absorb review load silently.</p>
+<div class="grid2" style="margin-bottom:20px">
+<div class="gcell">
+<div class="gcell-label">Limitations</div>
+<ul class="bullets">
+<li>Synthetic dataset — findings require validation with real review records</li>
+<li>Some participants initially struggled to interpret clustering outputs without guidance</li>
+<li>Workflow-friction concept was conceptually unfamiliar, requiring onboarding</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Novelty</div>
+<ul class="bullets">
+<li>External layer — operates without modifying validated systems</li>
+<li>Non-automation principle — surfaces patterns, preserves human discretion</li>
+<li>Judgment-preserving design in compliance-constrained environments</li>
+</ul>
+</div>
+</div>
+<div class="flow" style="margin-bottom:0">
+<span class="flow-tag on">hidden friction</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">visible pattern</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">earlier sense-making</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">judgment supported</span>
+</div>
+</section>
+<!-- PAPER -->
+<section class="sec reveal" id="paper">
+<div class="sec-eyebrow">07</div>
+<h2 class="sec-title">Paper</h2>
+<hr class="sec-divider"/>
+<div class="paper-block">
+<div class="paper-row">
+<div class="paper-row-label">Claim</div>
+<div class="paper-row-content">
+<p class="paper-claim">Review friction in regulated environments is structural and often invisible. A lightweight observability layer can surface that burden without modifying validated systems or replacing reviewer discretion.</p>
+</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">What it does</div>
+<div class="paper-row-content">Provides initial evidence that review friction, comment burden, and revision loops can be surfaced through a computational support prototype — and that AI can serve as a pattern-detection layer rather than a decision-automation system.</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Status</div>
+<div class="paper-row-content">Preprint · 2026 · SSRN</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Links</div>
+<div class="paper-row-content">
+<div class="btn-row">
+<a class="btn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="btn" href="papers.html">→ Papers page</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">navigation axis · project 04</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="index.html">Home</a>
+</div>
+</div>
+</main>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -666,6 +646,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research — Sora Kim</title>
-  <meta name="description" content="Research program by Sora Kim on human-centered systems, regulatory UX, procedural cognition, and decision support in regulated environments." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Research — Sora Kim</title>
+<meta content="Research by Sora Kim on worker support, judgment, and accountability in regulated environments." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -38,7 +39,6 @@
     button{font:inherit;background:none;border:none;cursor:pointer}
     .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto;padding:56px 0 120px}
 
-    /* NAV */
     .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
     .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
     .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
@@ -65,19 +65,16 @@
     .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
 
-    /* PAGE HEADER */
     .page-header{margin-bottom:56px}
     .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
     .page-h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
     .page-lead{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.75;max-width:640px;border-left:3px solid var(--accent);padding-left:16px}
 
-    /* SECTION */
     .sec{margin-bottom:64px}
     .sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px}
     .sec-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:8px 14px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;white-space:nowrap}
     .sec-title{font-size:15px;font-weight:400;letter-spacing:-0.01em;padding:8px 18px;border:1px solid rgba(0,0,0,0.025);border-left:none;border-radius:0 8px 8px 0;flex:1;color:var(--text-3)}
 
-    /* GRID */
     .grid2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px}
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px}
@@ -89,7 +86,6 @@
     .gcell-text{font-size:13px;color:var(--text-3);line-height:1.7}
     .gcell-foot{font-family:var(--mono);font-size:10px;color:var(--text-4);margin-top:12px;padding-top:10px;border-top:1px solid var(--line-soft)}
 
-    /* HERO GRID */
     .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
     .hero-left{background:var(--bg2);padding:36px}
     .hero-right{background:var(--bg);display:flex;flex-direction:column}
@@ -103,14 +99,12 @@
     .pos-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px}
     .pos-text{font-size:12px;color:var(--text-3);line-height:1.6}
 
-    /* STS */
     .sts-note{border:1px solid rgba(26,58,107,0.08);border-left:3px solid var(--accent);border-radius:0;background:var(--accent-soft);padding:14px 18px;margin-bottom:20px;font-size:13px;color:var(--text-2);line-height:1.75}
     .backbone-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;flex-shrink:0}
     .dot-blue{background:#4a7fd4}.dot-pink{background:#c45c78}.dot-purple{background:#7c5cbf}.dot-green{background:#3a9668}
     .backbone-abbr{font-size:1.8rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px;display:flex;align-items:center}
     .backbone-name{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px}
 
-    /* PAPERS LIST */
     .papers-list{border:1px solid var(--line);border-radius:12px;overflow:hidden}
     .paper-row{padding:22px;border-bottom:1px solid var(--line)}
     .paper-row:last-child{border-bottom:none}
@@ -125,10 +119,8 @@
     .paper-text{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:10px}
     .paper-status{font-family:var(--mono);font-size:10px;color:var(--text-4);padding:5px 10px;border:1px solid var(--line);border-radius:4px;display:inline-block;background:var(--bg2)}
 
-    /* DIVIDER */
     .divider{border:none;border-top:1px solid var(--line);margin:0 0 56px;opacity:0.5}
 
-    /* PAGE FOOTER */
     .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
     .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
     .footer-nav{display:flex;gap:0}
@@ -137,12 +129,10 @@
     .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
     .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-    /* REVEAL */
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
-    /* RESPONSIVE */
     @media(max-width:900px){
       .hero-grid{grid-template-columns:1fr}
       .grid2,.grid3,.grid4{grid-template-columns:1fr}
@@ -163,300 +153,273 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html" class="active">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="wrap">
-
-    <!-- PAGE HEADER -->
-    <div class="page-header reveal">
-      <div class="page-eyebrow">Research Program</div>
-      <h1 class="page-h1">Systems shape what gets seen —<br>and how decisions are made.</h1>
-      <p class="page-lead">I study how documentation systems, review workflows, and decision-support environments shape human judgment in high-stakes regulated settings — where people follow procedures they do not fully understand, or make decisions under documentation they cannot easily navigate. My main orientation is HCI, grounded in STS theory that treats regulatory systems not just as compliance infrastructure, but as sociotechnical design problems.</p>
-    </div>
-
-    <!-- HERO GRID -->
-    <div class="hero-grid reveal">
-      <div class="hero-left">
-        <div class="page-eyebrow" style="margin-bottom:12px">Research identity</div>
-        <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">Designing for judgment under constraint.</h2>
-        <p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:20px">I am interested in how people navigate procedural environments where formal rules and actual reasoning diverge — and how design can reduce that gap without breaking compliance constraints.</p>
-        <div class="pos-grid">
-          <div class="pos-cell">
-            <div class="pos-label">HCI</div>
-            <p class="pos-text">Human-centered systems and design for complex procedural work in regulated environments.</p>
-          </div>
-          <div class="pos-cell">
-            <div class="pos-label">High-stakes</div>
-            <p class="pos-text">Pharmaceutical QC environments where judgment, traceability, and accountability all matter.</p>
-          </div>
-          <div class="pos-cell">
-            <div class="pos-label">STS grounding</div>
-            <p class="pos-text">STS theory explains why design problems in regulated environments are structurally produced.</p>
-          </div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-right-cell">
-          <div class="right-label">How I position the work</div>
-          <div class="right-title">HCI at the center, STS as grounding.</div>
-          <p class="right-text">My projects ask HCI questions about documents, workflows, support tools, and reasoning environments. STS conceptual work on accountability and procedural cognition explains why those systems produce the problems they do.</p>
-        </div>
-        <div class="hero-right-cell">
-          <div class="right-label">What this site shows</div>
-          <div class="right-title">Six projects · five HCI papers · four STS foundations.</div>
-          <p class="right-text">The projects page shows HCI case studies across two research axes. The papers page shows five papers in progress, grounded by four STS manuscripts. This page connects them into one research program.</p>
-        </div>
-        <div class="hero-right-cell">
-          <div class="right-label">Scope</div>
-          <div class="right-title">GMP is the empirical site — not the boundary.</div>
-          <p class="right-text">Procedural friction, premature causal convergence, invisible navigation burden — these appear wherever formal systems govern high-stakes work. Pharmaceutical QC is where these problems are most visible. Regulatory UX is a framework designed to travel.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH FOCUS -->
-    <section class="sec reveal">
-      <div class="sec-head">
-        <div class="sec-tag">Research focus</div>
-        <div class="sec-title">Main agenda and supporting lenses</div>
-      </div>
-      <div class="grid3">
-        <div class="gcell accent">
-          <div class="gcell-label">Main agenda</div>
-          <div class="gcell-title">Human-centered systems for high-stakes procedural work</div>
-          <p class="gcell-text">My research centers on how documentation, workflows, and support tools shape judgment in environments where people must work carefully, defensibly, and under strong formal constraints. I approach these as HCI problems: usability, interpretation, visibility, and reasoning support.</p>
-          <div class="gcell-foot">core orientation: designing systems that support judgment without flattening complexity</div>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Supporting lens</div>
-          <div class="gcell-title">Regulatory UX and procedural cognition</div>
-          <p class="gcell-text">I study how people interpret instructions, manage ambiguity, and navigate cognitively demanding documentation in pharmaceutical quality control and other compliance-constrained environments.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Supporting lens</div>
-          <div class="gcell-title">Accountability, responsibility, and closure</div>
-          <p class="gcell-text">I use STS conceptual work on accountability and investigative closure to understand what support systems reveal, compress, or prematurely stabilize in regulated work.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CORE QUESTIONS -->
-    <section class="sec reveal">
-      <div class="sec-head">
-        <div class="sec-tag">Core questions</div>
-        <div class="sec-title">What this research asks</div>
-      </div>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">Question 01</div>
-          <div class="gcell-title">How do procedural systems shape judgment?</div>
-          <p class="gcell-text">I ask how documentation structures, review formats, and workflow environments distribute interpretive burden across workers in regulated settings — and how that burden can be better supported.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Question 02</div>
-          <div class="gcell-title">Where does cognitive friction emerge?</div>
-          <p class="gcell-text">I study where people pause, loop back, hesitate, or reconstruct meaning when written procedure and actual reasoning diverge — making invisible navigation friction observable as behavioral data.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Question 03</div>
-          <div class="gcell-title">How can support tools help without oversimplifying?</div>
-          <p class="gcell-text">I explore compliance-safe support layers, reasoning scaffolds, and interface interventions that improve navigation and causal reasoning while preserving interpretive openness.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Question 04</div>
-          <div class="gcell-title">What changes under AI mediation?</div>
-          <p class="gcell-text">I investigate how AI systems may accelerate accountability convergence, compress interpretive space, and reshape responsibility in high-stakes procedural environments — and how design can counter that.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- METHODS -->
-    <section class="sec reveal">
-      <div class="sec-head">
-        <div class="sec-tag">Methods</div>
-        <div class="sec-title">Qualitative, computational, and design-oriented</div>
-      </div>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">Qualitative</div>
-          <div class="gcell-title">Document analysis, observation, and usability study</div>
-          <p class="gcell-text">I use document analysis, qualitative coding, usability testing, and structured observation to understand how people work through regulated documentation, review, and investigative processes. Studies range from focused pilot observations to workplace usability evaluations, all with GMP-experienced practitioners.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">Computational / design</div>
-          <div class="gcell-title">Metadata analysis, visualization, and interaction prototyping</div>
-          <p class="gcell-text">I use Python and Streamlit to build lightweight interaction prototypes, analyze workflow metadata, visualize navigation patterns, and construct behavioral tracking tools — all designed to remain compliance-safe and external to validated systems.</p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- STS FOUNDATIONS -->
-    <section class="sec reveal">
-      <div class="sec-head">
-        <div class="sec-tag">STS foundations</div>
-        <div class="sec-title">Theoretical grounding for the HCI agenda</div>
-      </div>
-      <div class="sts-note">Four STS conceptual frameworks that explain why the design problems I study are structurally produced — showing why accountability, procedural cognition, and investigative closure operate the way they do in regulated systems, and what that means for design.</div>
-      <div class="grid4">
-        <div class="gcell">
-          <div class="backbone-abbr"><span class="backbone-dot dot-blue"></span>AAC</div>
-          <div class="backbone-name">Anticipated Accountability Convergence</div>
-          <p class="gcell-text">How accountability expectations become aligned before work begins — through procedural rules, documentation regimes, and evaluative infrastructures that preconfigure what counts as defensible conduct.</p>
-          <div class="gcell-foot">before action · interpretive expectations</div>
-        </div>
-        <div class="gcell">
-          <div class="backbone-abbr"><span class="backbone-dot dot-pink"></span>CF</div>
-          <div class="backbone-name">Cognitive Friction</div>
-          <p class="gcell-text">How procedural text structure creates localized judgment demands during execution — grounding the SOP Accessibility and Cognitive Navigation projects. Empirical pilot: 500 procedurally realistic sentences.</p>
-          <div class="gcell-foot">during execution · procedural cognition</div>
-        </div>
-        <div class="gcell">
-          <div class="backbone-abbr"><span class="backbone-dot dot-purple"></span>RC</div>
-          <div class="backbone-name">Responsibility Convergence</div>
-          <p class="gcell-text">Why investigations often stabilize responsibility through administratively legible outcomes — grounding the RCA Reasoning Scaffolder and Premature Causal Convergence projects.</p>
-          <div class="gcell-foot">after events · investigative closure</div>
-        </div>
-        <div class="gcell">
-          <div class="backbone-abbr"><span class="backbone-dot dot-green"></span>PAC</div>
-          <div class="backbone-name">Premature Accountability Convergence</div>
-          <p class="gcell-text">How AI-mediated systems may accelerate convergence before ambiguity has been meaningfully examined — directly grounding the AI extension of the RCA Reasoning Scaffolder as a counter-PAC design.</p>
-          <div class="gcell-foot">AI mediation · decision closure</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAPER DIRECTIONS -->
-    <section class="sec reveal">
-      <div class="sec-head">
-        <div class="sec-tag">Paper directions</div>
-        <div class="sec-title">Five HCI papers in progress</div>
-      </div>
-      <div class="papers-list">
-
-        <div class="paper-row">
-          <div class="paper-row-top">
-            <span class="paper-num">paper 01</span>
-            <div class="paper-chips">
-              <span class="paper-chip">document usability</span>
-              <span class="paper-chip">accessibility</span>
-            </div>
-          </div>
-          <div class="paper-title">SOP Accessibility and Compliance-Constrained Design</div>
-          <div class="paper-tagline">HCI paper · project-linked · SOP Retrieval System (N=20)</div>
-          <p class="paper-text">A paper on document accessibility and compliance-constrained design in pharmaceutical quality control. Argument: access failure is a judgment failure. Design contribution: usability improvements can emerge through external support layers without modifying validated source files.</p>
-          <span class="paper-status">Preprint · 2026 · SSRN</span>
-        </div>
-
-        <div class="paper-row">
-          <div class="paper-row-top">
-            <span class="paper-num">paper 02</span>
-            <div class="paper-chips">
-              <span class="paper-chip">reasoning support</span>
-              <span class="paper-chip">investigation design</span>
-            </div>
-          </div>
-          <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
-          <div class="paper-tagline">HCI paper · two-project pair · RCA Scaffolder + Premature Causal Convergence (N=20 each)</div>
-          <p class="paper-text">Combines a pilot study of premature causal convergence (N=20) with a usability evaluation of a scaffold designed to counter it (N=20). Initial single-cause reasoning shifted toward expanded multi-factor explanations over time (20/20). 80% of scaffold participants showed increased causal breadth.</p>
-          <span class="paper-status">Preprint · 2026 · SSRN</span>
-        </div>
-
-        <div class="paper-row">
-          <div class="paper-row-top">
-            <span class="paper-num">paper 03</span>
-            <div class="paper-chips">
-              <span class="paper-chip">document navigation</span>
-              <span class="paper-chip">traceability</span>
-            </div>
-          </div>
-          <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
-          <div class="paper-tagline">HCI paper · two-project pair · Cross-Reference + Cognitive Navigation (N=20 each)</div>
-          <p class="paper-text">Combines a metadata-driven cross-reference system (N=20, 30–60% faster task completion) with a behavioral navigation tracking prototype (N=20, 20/20 loopback). Together: where a practitioner loops back is a signal the document structure failed, not the user.</p>
-          <span class="paper-status">Preprint · 2026 · SSRN</span>
-        </div>
-
-        <div class="paper-row">
-          <div class="paper-row-top">
-            <span class="paper-num">paper 04</span>
-            <div class="paper-chips">
-              <span class="paper-chip">workflow UX</span>
-              <span class="paper-chip">observability</span>
-            </div>
-          </div>
-          <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
-          <div class="paper-tagline">HCI paper · project-linked · Smart Feedback & Review Dashboard (N=20)</div>
-          <p class="paper-text">A paper on review interaction, workflow friction, and observability in validated pharmaceutical quality review systems. Argument: observability is a precondition for coordination. N=20 — all participants expressed adoption intent after reviewing the prototype.</p>
-          <span class="paper-status">Preprint · 2026 · SSRN</span>
-        </div>
-
-        <div class="paper-row featured">
-          <div class="paper-row-top">
-            <span class="paper-num">paper 05 · umbrella</span>
-            <div class="paper-chips">
-              <span class="paper-chip accent">regulatory UX</span>
-              <span class="paper-chip accent">concept paper</span>
-              <span class="paper-chip accent">writing now</span>
-            </div>
-          </div>
-          <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
-          <div class="paper-tagline">HCI concept paper · umbrella framework · connects all six projects</div>
-          <p class="paper-text">A concept paper introducing Regulatory UX as a new HCI research frame — the study of worker interaction experience inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures shape navigation, cognition, and decision-making. Positions the six-project portfolio as a coherent empirical program.</p>
-          <span class="paper-status">Currently writing · umbrella paper for the full research program</span>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="page-footer reveal">
-      <span class="footer-note">HCI · Regulatory UX · Procedural cognition · STS-grounded design</span>
-      <div class="footer-nav">
-        <a href="projects.html" class="footer-btn">← Projects</a>
-        <a href="papers.html" class="footer-btn">Papers →</a>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a class="active" href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="wrap">
+<div class="page-header reveal">
+<div class="page-eyebrow">Research Program</div>
+<h1 class="page-h1">A research agenda on worker support in regulated systems.</h1>
+<p class="page-lead">I study how documentation systems, review workflows, and reasoning environments shape judgment, coordination, and accountability in high-stakes regulated systems.</p>
+</div>
+<div class="hero-grid reveal">
+<div class="hero-left">
+<div class="page-eyebrow" style="margin-bottom:12px">Research identity</div>
+<h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">Designing better support under constraint.</h2>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:20px">My core question is not whether regulation should be relaxed. It is how demanding, rule-bound work can be made more navigable for the people inside it — without collapsing judgment into automation or breaking formal constraints.</p>
+<div class="pos-grid">
+<div class="pos-cell">
+<div class="pos-label">HCI</div>
+<p class="pos-text">Human-centered systems for high-stakes, rule-bound work.</p>
+</div>
+<div class="pos-cell">
+<div class="pos-label">High-stakes</div>
+<p class="pos-text">Pharmaceutical QC as the empirical site where judgment, traceability, and accountability are tightly coupled.</p>
+</div>
+<div class="pos-cell">
+<div class="pos-label">STS grounding</div>
+<p class="pos-text">STS and HCI together: STS explains formal accountability; HCI tests design interventions on the ground.</p>
+</div>
+</div>
+</div>
+<div class="hero-right">
+<div class="hero-right-cell">
+<div class="right-label">How I position the work</div>
+<div class="right-title">HCI at the center, STS as grounding.</div>
+<p class="right-text">The research program starts from a simple observation from QC practice: when regulated work becomes difficult, the outcome is often framed as an individual problem even when the underlying conditions are structural.</p>
+</div>
+<div class="hero-right-cell">
+<div class="right-label">What this site shows</div>
+<div class="right-title">Six projects · five HCI papers · four STS foundations.</div>
+<p class="right-text">That is why the portfolio stays focused on work conditions and accountability. The HCI projects study mechanisms — navigation burden, premature closure, review opacity, traceability gaps. The STS papers explain why those mechanisms matter inside formal systems.</p>
+</div>
+<div class="hero-right-cell">
+<div class="right-label">Scope</div>
+<div class="right-title">GMP is the empirical site — not the boundary.</div>
+<p class="right-text">The projects page shows six empirical case studies. The papers page shows how those cases scale into a broader argument about accountability, procedural cognition, and regulated worker support.</p>
+</div>
+</div>
+</div>
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">Research focus</div>
+<div class="sec-title">Main agenda and supporting lenses</div>
+</div>
+<div class="grid3">
+<div class="gcell accent">
+<div class="gcell-label">Main agenda</div>
+<div class="gcell-title">Human-centered systems for high-stakes procedural work</div>
+<p class="gcell-text">My research centers on how documentation, workflows, and support tools shape work in environments where people must act carefully under strong formal constraints. I approach these as HCI problems because interfaces and procedures help determine what becomes visible, actionable, and easy to justify.</p>
+<div class="gcell-foot">core orientation: designing systems that support judgment without flattening complexity</div>
+</div>
+<div class="gcell">
+<div class="gcell-label">Supporting lens</div>
+<div class="gcell-title">Regulatory UX and procedural cognition</div>
+<p class="gcell-text">I study how people interpret instructions, manage ambiguity, and navigate cognitively demanding documentation in pharmaceutical quality control and other compliance-constrained environments — especially where mistakes can later become audit or accountability issues.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Supporting lens</div>
+<div class="gcell-title">Accountability, responsibility, and closure</div>
+<p class="gcell-text">I use STS work on accountability, closure, and formal documentation to explain why some explanations settle quickly while others remain difficult to articulate inside formal systems.</p>
+</div>
+</div>
+</section>
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">Core questions</div>
+<div class="sec-title">What this research asks</div>
+</div>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Question 01</div>
+<div class="gcell-title">How do procedural systems shape judgment?</div>
+<p class="gcell-text">I ask how documentation structures, review formats, and workflow environments distribute interpretive burden across workers in regulated settings — and how that burden can be better supported without weakening regulatory structure.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Question 02</div>
+<div class="gcell-title">Where does cognitive friction emerge?</div>
+<p class="gcell-text">I study where people pause, loop back, hesitate, or reconstruct meaning when written procedure and actual reasoning diverge — treating those moments as evidence that system structure, not only individual skill, is shaping the work.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Question 03</div>
+<div class="gcell-title">How can support tools help without oversimplifying?</div>
+<p class="gcell-text">I explore external support layers, reasoning scaffolds, and interface interventions that improve navigation and causal reasoning while preserving interpretive openness and human judgment.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Question 04</div>
+<div class="gcell-title">What changes under AI mediation?</div>
+<p class="gcell-text">I investigate how AI systems may compress interpretive space too early — and how AI can instead be constrained to reopen comparison, prompt evidence review, and preserve human judgment.</p>
+</div>
+</div>
+</section>
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">Methods</div>
+<div class="sec-title">Qualitative, computational, and design-oriented</div>
+</div>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Qualitative</div>
+<div class="gcell-title">Document analysis, observation, and usability study</div>
+<p class="gcell-text">Methodologically, I combine document analysis, qualitative coding, usability testing, structured observation, and lightweight computational prototyping to study regulated work without altering validated systems.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Computational / design</div>
+<div class="gcell-title">Metadata analysis, visualization, and interaction prototyping</div>
+<p class="gcell-text">I use Python and Streamlit to build external prototypes, visualize navigation patterns, inspect workflow signals, and make otherwise hidden burden discussable as a design problem.</p>
+</div>
+</div>
+</section>
+<hr class="divider"/>
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">STS foundations</div>
+<div class="sec-title">Theoretical grounding for the HCI agenda</div>
+</div>
+<div class="sts-note">Four STS conceptual frameworks that explain why the design problems I study are structurally produced — showing why accountability, procedural cognition, and investigative closure operate the way they do in regulated systems, and what that means for design.</div>
+<div class="grid4">
+<div class="gcell">
+<div class="backbone-abbr"><span class="backbone-dot dot-blue"></span>AAC</div>
+<div class="backbone-name">Anticipated Accountability Convergence</div>
+<p class="gcell-text">One STS strand asks how accountability expectations are set up before action through procedural rules, documentation regimes, and evaluative infrastructures that preconfigure what counts as acceptable conduct.</p>
+<div class="gcell-foot">before action · interpretive expectations</div>
+</div>
+<div class="gcell">
+<div class="backbone-abbr"><span class="backbone-dot dot-pink"></span>CF</div>
+<div class="backbone-name">Cognitive Friction</div>
+<p class="gcell-text">A second strand examines how procedural text structure creates localized judgment demands during execution — grounding the SOP Accessibility and Cognitive Navigation projects.</p>
+<div class="gcell-foot">during execution · procedural cognition</div>
+</div>
+<div class="gcell">
+<div class="backbone-abbr"><span class="backbone-dot dot-purple"></span>RC</div>
+<div class="backbone-name">Responsibility Convergence</div>
+<p class="gcell-text">A third strand examines why investigations often settle around fast, documentable explanations and identifiable actors — grounding the Premature Causal Convergence and RCA Scaffolder projects.</p>
+<div class="gcell-foot">after events · investigative closure</div>
+</div>
+<div class="gcell">
+<div class="backbone-abbr"><span class="backbone-dot dot-green"></span>PAC</div>
+<div class="backbone-name">Premature Accountability Convergence</div>
+<p class="gcell-text">A fourth strand asks how AI-mediated systems might intensify or counter that convergence — grounding the AI extension of the RCA Scaffolder as a judgment-preserving design argument.</p>
+<div class="gcell-foot">AI mediation · decision closure</div>
+</div>
+</div>
+</section>
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">Paper directions</div>
+<div class="sec-title">Five HCI papers in progress</div>
+</div>
+<div class="papers-list">
+<div class="paper-row">
+<div class="paper-row-top">
+<span class="paper-num">paper 01</span>
+<div class="paper-chips">
+<span class="paper-chip">document usability</span>
+<span class="paper-chip">accessibility</span>
+</div>
+</div>
+<div class="paper-title">SOP Accessibility and Compliance-Constrained Design</div>
+<div class="paper-tagline">HCI paper · project-linked · SOP Retrieval System</div>
+<p class="paper-text">A paper on document accessibility and compliance-constrained design in pharmaceutical quality control. Argument: retrieval burden shapes interpretation well before later judgment. Design contribution: external support layers can reduce access friction without modifying validated documents.</p>
+<span class="paper-status">Preprint · 2026 · SSRN</span>
+</div>
+<div class="paper-row">
+<div class="paper-row-top">
+<span class="paper-num">paper 02</span>
+<div class="paper-chips">
+<span class="paper-chip">reasoning support</span>
+<span class="paper-chip">investigation design</span>
+</div>
+</div>
+<div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
+<div class="paper-tagline">HCI paper · two-project pair · RCA Scaffolder + Premature Causal Convergence</div>
+<p class="paper-text">Combines a pilot study of premature causal convergence with a usability evaluation of a scaffold designed to counter it. Argument: broader reasoning may need to be supported before investigations settle too quickly on one explanation.</p>
+<span class="paper-status">Preprint · 2026 · SSRN</span>
+</div>
+<div class="paper-row">
+<div class="paper-row-top">
+<span class="paper-num">paper 03</span>
+<div class="paper-chips">
+<span class="paper-chip">document navigation</span>
+<span class="paper-chip">traceability</span>
+</div>
+</div>
+<div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
+<div class="paper-tagline">HCI paper · two-project pair · Cross-Reference + Cognitive Navigation</div>
+<p class="paper-text">Pairs the Cross-Reference System with the Cognitive Navigation Explorer to argue that traceability gaps and loopbacks are structural signals of document-architecture burden, not merely user inefficiency.</p>
+<span class="paper-status">Preprint · 2026 · SSRN</span>
+</div>
+<div class="paper-row">
+<div class="paper-row-top">
+<span class="paper-num">paper 04</span>
+<div class="paper-chips">
+<span class="paper-chip">workflow UX</span>
+<span class="paper-chip">observability</span>
+</div>
+</div>
+<div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
+<div class="paper-tagline">HCI paper · project-linked · Smart Feedback &amp; Review Dashboard</div>
+<p class="paper-text">A paper on workflow visibility and review burden in validated pharmaceutical quality systems. Argument: coordination improves when hidden review work becomes visible earlier.</p>
+<span class="paper-status">Preprint · 2026 · SSRN</span>
+</div>
+<div class="paper-row featured">
+<div class="paper-row-top">
+<span class="paper-num">paper 05 · umbrella</span>
+<div class="paper-chips">
+<span class="paper-chip accent">regulatory UX</span>
+<span class="paper-chip accent">concept paper</span>
+<span class="paper-chip accent">writing now</span>
+</div>
+</div>
+<div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
+<div class="paper-tagline">HCI concept paper · umbrella framework · connects all six projects</div>
+<p class="paper-text">A concept paper defining Regulatory UX as the study of worker interaction inside compliance-constrained systems, where usability, accountability, and practical justification are inseparable design concerns.</p>
+<span class="paper-status">Currently writing · umbrella paper for the full research program</span>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">HCI · Regulatory UX · Procedural cognition · STS-grounded design</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="papers.html">Papers →</a>
+</div>
+</div>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -503,6 +466,5 @@
       }, 100);
     })();
   </script>
-
 </body>
 </html>

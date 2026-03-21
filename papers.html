@@ -1,688 +1,475 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Papers · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sora Kim — HCI papers and STS manuscripts examining how procedural systems shape navigation, reasoning, and accountability in regulated environments." />
-
-<link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
-<link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Papers — Sora Kim</title>
+<meta content="Papers and manuscripts by Sora Kim on worker support, judgment, and accountability in regulated systems." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <style>
-/* ── TOKENS ───────────────────────────────────────────── */
-:root {
-  --bg:        #f7f7f5;
-  --bg2:       #eceae4;
-  --bg3:       #e2e0d9;
-  --text:      #0f0f0e;
-  --muted:     #5a5a54;
-  --faint:     #999890;
-  --hr:        rgba(15,15,14,.13);
-  --hrh:       rgba(15,15,14,.80);
-  --amber:     #8B7355;
-  --mono:      'DM Mono', monospace;
-  --sans:      'DM Sans', sans-serif;
-  --nav-h:     52px;
-  --wrap:      1080px;
-}
-html[data-theme="dark"] {
-  --bg:        #0d0d0b;
-  --bg2:       #141412;
-  --bg3:       #1c1c19;
-  --text:      #efede5;
-  --muted:     #96948c;
-  --faint:     #57574f;
-  --hr:        rgba(239,237,229,.10);
-  --hrh:       rgba(239,237,229,.72);
-  --amber:     #b09870;
-}
-
-/* ── RESET ────────────────────────────────────────────── */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth }
-body {
-  background:var(--bg); color:var(--text);
-  font-family:var(--sans); font-size:15px;
-  min-height:100vh; line-height:1.68;
-  -webkit-font-smoothing:antialiased;
-  transition:background .25s, color .25s;
-}
-a { color:inherit; text-decoration:none }
-img { display:block; max-width:100% }
-::selection { background:var(--text); color:var(--bg) }
-
-/* ── NAV ──────────────────────────────────────────────── */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:200;
-  height:var(--nav-h); background:var(--bg);
-  border-bottom:1px solid var(--hrh);
-  display:flex; align-items:stretch;
-  transition:background .25s;
-}
-.nav-brand {
-  display:flex; align-items:center; gap:9px;
-  padding:0 20px;
-  font-family:var(--mono); font-size:12px; font-weight:500;
-  letter-spacing:.05em;
-  border-right:1px solid var(--hrh); flex-shrink:0;
-}
-.pulse {
-  width:6px; height:6px; border-radius:50%;
-  background:var(--amber);
-  animation:pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1) }
-  50%      { opacity:.35; transform:scale(.65) }
-}
-.nav-links { display:flex; flex:1; overflow:hidden }
-.nav-links a {
-  font-family:var(--mono); font-size:11px;
-  color:var(--muted); letter-spacing:.05em;
-  padding:0 16px; display:flex; align-items:center;
-  border-right:1px solid var(--hr);
-  transition:background .12s, color .12s; white-space:nowrap;
-}
-.nav-links a:hover,
-.nav-links a.active { background:var(--text); color:var(--bg) }
-.nav-end { display:flex; margin-left:auto }
-.theme-btn {
-  width:var(--nav-h); border:none; border-left:1px solid var(--hrh);
-  background:transparent; cursor:pointer;
-  font-family:var(--mono); font-size:14px; color:var(--text);
-  display:flex; align-items:center; justify-content:center;
-  transition:background .12s, color .12s;
-}
-.theme-btn:hover { background:var(--text); color:var(--bg) }
-
-/* ── WRAP ─────────────────────────────────────────────── */
-.wrap {
-  max-width:var(--wrap); margin:0 auto;
-  padding:calc(var(--nav-h) + 44px) 24px 100px;
-}
-
-/* ── PAGE HERO ────────────────────────────────────────── */
-.page-hero {
-  display:grid; grid-template-columns:1fr 1fr;
-  border:1px solid var(--hrh); margin-bottom:56px;
-}
-.hero-left {
-  padding:36px; border-right:1px solid var(--hrh);
-  background:var(--bg2);
-}
-.hero-right { display:flex; flex-direction:column }
-.eyebrow {
-  font-family:var(--mono); font-size:9.5px;
-  color:var(--amber); text-transform:uppercase;
-  letter-spacing:.12em; font-weight:500;
-  display:flex; align-items:center; gap:6px;
-  margin-bottom:16px;
-}
-.eyebrow::before { content:'▸'; font-size:9px }
-.hero-title {
-  font-size:34px; font-weight:600;
-  letter-spacing:-.03em; line-height:1.1; margin-bottom:20px;
-}
-.hero-desc {
-  font-size:13.5px; color:var(--muted);
-  line-height:1.82; max-width:480px;
-  border-left:2px solid var(--amber); padding-left:14px;
-}
-.hero-note {
-  padding:24px 28px; border-bottom:1px solid var(--hrh); flex:1;
-}
-.hero-note:last-child { border-bottom:none }
-.hero-note-label {
-  font-family:var(--mono); font-size:9px; color:var(--amber);
-  font-weight:500; text-transform:uppercase; letter-spacing:.1em;
-  margin-bottom:8px;
-}
-.hero-note-title {
-  font-size:15px; font-weight:600;
-  letter-spacing:-.02em; margin-bottom:7px;
-}
-.hero-note p { font-size:13px; color:var(--muted); line-height:1.75 }
-
-/* ── SECTION ──────────────────────────────────────────── */
-.sec-block { margin-bottom:56px }
-.sec-head { display:flex; align-items:stretch; margin-bottom:24px }
-.sec-tag {
-  font-family:var(--mono); font-size:9px; font-weight:500;
-  text-transform:uppercase; letter-spacing:.12em; color:var(--amber);
-  padding:8px 14px; border:1px solid var(--hrh); background:var(--bg2);
-  display:flex; align-items:center;
-}
-.sec-title-block {
-  font-size:19px; font-weight:600; letter-spacing:-.02em;
-  padding:8px 18px; border:1px solid var(--hrh); border-left:none;
-  display:flex; align-items:center; flex:1;
-}
-
-/* ── PAPER GRID ───────────────────────────────────────── */
-.papers-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  border:1px solid var(--hrh);
-}
-.paper-card {
-  padding:26px;
-  border-right:1px solid var(--hrh);
-  border-bottom:1px solid var(--hrh);
-  display:flex; flex-direction:column;
-}
-.papers-grid .paper-card:nth-child(2n) { border-right:none }
-.papers-grid .paper-card:nth-last-child(-n+2) { border-bottom:none }
-.paper-card.full {
-  grid-column:1/-1; border-right:none; border-bottom:none;
-  border-top:1px solid var(--hrh); background:var(--bg2);
-}
-
-/* card internals */
-.paper-top {
-  display:flex; align-items:flex-start;
-  justify-content:space-between; gap:12px; margin-bottom:10px;
-}
-.paper-num {
-  font-family:var(--mono); font-size:9px; font-weight:500;
-  color:var(--faint); text-transform:uppercase;
-  letter-spacing:.1em; flex-shrink:0; padding-top:2px;
-}
-.chips { display:flex; gap:5px; flex-wrap:wrap; justify-content:flex-end }
-.chip {
-  font-family:var(--mono); font-size:9px;
-  padding:3px 7px; border:1px solid var(--hr);
-  color:var(--faint); text-transform:uppercase; letter-spacing:.04em;
-}
-.chip.hi { border-color:var(--amber); color:var(--amber) }
-
-.paper-title {
-  font-size:15.5px; font-weight:600;
-  letter-spacing:-.02em; line-height:1.3; margin-bottom:4px;
-}
-.paper-tagline {
-  font-family:var(--mono); font-size:9px; color:var(--faint);
-  text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px;
-}
-
-/* claim — always visible, the key line */
-.paper-claim {
-  font-size:13.5px; font-weight:500; color:var(--text);
-  line-height:1.55; margin-bottom:14px;
-  border-left:2px solid var(--amber); padding-left:12px;
-}
-.paper-support {
-  font-size:12.5px; color:var(--muted);
-  line-height:1.7; margin-bottom:14px;
-}
-
-/* status row */
-.paper-meta {
-  font-family:var(--mono); font-size:9.5px; color:var(--amber);
-  padding:6px 10px; border:1px solid var(--hrh);
-  background:rgba(139,115,85,.06);
-  margin-bottom:12px; display:inline-block; letter-spacing:.03em;
-}
-html[data-theme="dark"] .paper-meta { background:rgba(176,152,112,.08) }
-
-/* links */
-.paper-links { display:flex; flex-wrap:wrap; margin-top:auto }
-.paper-link {
-  font-family:var(--mono); font-size:10px;
-  padding:6px 12px; border:1px solid var(--hrh);
-  margin-right:-1px; background:var(--bg);
-  transition:background .12s, color .12s;
-  display:inline-flex; align-items:center; gap:4px;
-}
-.paper-link:hover { background:var(--text); color:var(--bg) }
-.paper-link.ssrn {
-  border-color:var(--amber); color:var(--amber);
-  background:rgba(139,115,85,.05);
-}
-.paper-link.ssrn:hover { background:var(--amber); color:var(--bg) }
-.abstract-btn {
-  font-family:var(--mono); font-size:10px;
-  padding:6px 12px; border:1px solid var(--hrh);
-  margin-right:-1px; background:var(--bg); color:var(--text);
-  cursor:pointer; transition:background .12s, color .12s, border-color .12s;
-}
-.abstract-btn:hover { background:var(--text); color:var(--bg) }
-.abstract-btn.open {
-  background:var(--bg2);
-  border-color:var(--amber);
-  color:var(--amber);
-}
-.abstract-btn.open:hover {
-  background:var(--bg2);
-  color:var(--amber);
-}
-
-/* abstract body (toggle) */
-.abstract-body {
-  display:none; margin-top:16px; padding-top:16px;
-  border-top:1px solid var(--hr);
-}
-.abstract-body.open { display:block }
-.abstract-body p {
-  font-size:12.5px; color:var(--muted); line-height:1.75; margin-bottom:10px;
-}
-.abstract-body ul { padding-left:15px }
-.abstract-body li {
-  font-size:12px; color:var(--muted); line-height:1.7; margin-bottom:4px;
-}
-
-/* ── STS NOTE ─────────────────────────────────────────── */
-.sts-note {
-  border:1px solid var(--hrh); border-left:2px solid var(--amber);
-  padding:14px 18px; margin-bottom:24px; background:var(--bg2);
-  font-size:13px; color:var(--muted); line-height:1.75;
-}
-.sts-intro {
-  font-size:13.5px; color:var(--text); font-weight:500;
-  margin-bottom:10px;
-}
-
-/* ── DIVIDER ──────────────────────────────────────────── */
-.divider { border:none; border-top:1px solid var(--hr); margin:0 0 56px; opacity:.5 }
-
-/* ── FOOTER ───────────────────────────────────────────── */
-.footer {
-  border-top:1px solid var(--hrh); padding-top:18px;
-  display:flex; justify-content:space-between; align-items:center;
-  font-family:var(--mono); font-size:9.5px; color:var(--faint);
-  text-transform:uppercase; letter-spacing:.06em;
-  flex-wrap:wrap; gap:8px; margin-top:40px;
-}
-.footer a { color:var(--faint) }
-.footer a:hover { color:var(--text) }
-.btn-row { display:flex }
-.nav-btn {
-  font-family:var(--mono); font-size:9.5px;
-  padding:7px 14px; border:1px solid var(--hrh); margin-right:-1px;
-  background:var(--bg); color:var(--muted); letter-spacing:.04em;
-  transition:background .12s, color .12s; display:inline-block;
-}
-.nav-btn:hover { background:var(--text); color:var(--bg) }
-
-/* ── RESPONSIVE ───────────────────────────────────────── */
-@media(max-width:900px) {
-  .page-hero { grid-template-columns:1fr }
-  .hero-left { border-right:none; border-bottom:1px solid var(--hrh) }
-  .papers-grid { grid-template-columns:1fr }
-  .paper-card { border-right:none !important }
-  .papers-grid .paper-card:nth-last-child(-n+2) { border-bottom:1px solid var(--hrh) }
-  .papers-grid .paper-card:last-child { border-bottom:none }
-  .paper-card.full { grid-column:auto }
-  .sec-head { flex-direction:column; align-items:flex-start }
-  .sec-title-block { border-left:1px solid var(--hrh); margin-top:-1px }
-  .wrap { padding:calc(var(--nav-h) + 24px) 16px 80px }
-}
-@media(max-width:600px) {
-  .nav-links { overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none }
-  .nav-links::-webkit-scrollbar { display:none }
-  .nav-links a { padding:0 11px; font-size:10px }
-  .hero-title { font-size:26px }
-  .paper-top { flex-direction:column; gap:8px }
-  .chips { justify-content:flex-start }
-}
-</style>
+    :root {
+      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
+      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
+    }
+    html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
+    @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;background:none;border:none;cursor:pointer}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto;padding:56px 0 120px}
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
+    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
+    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-links a.active{font-weight:600}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
+    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
+    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
+    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px}
+    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
+    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
+    .mobile-menu a:hover{color:var(--accent)}
+    .page-header{margin-bottom:48px}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
+    .page-h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
+    .page-lead{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.75;max-width:640px;border-left:3px solid var(--accent);padding-left:16px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
+    .hero-left{background:var(--bg2);padding:36px}
+    .hero-right{background:var(--bg);display:flex;flex-direction:column}
+    .hero-right-cell{padding:22px;border-bottom:1px solid var(--line)}
+    .hero-right-cell:last-child{border-bottom:none}
+    .right-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px}
+    .right-title{font-size:15px;font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px}
+    .right-text{font-size:13px;color:var(--text-3);line-height:1.7}
+    .sec{margin-bottom:56px}
+    .sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px}
+    .sec-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:8px 14px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;white-space:nowrap}
+    .sec-title{font-size:15px;font-weight:400;letter-spacing:-0.01em;padding:8px 18px;border:1px solid rgba(0,0,0,0.025);border-left:none;border-radius:0 8px 8px 0;flex:1;color:var(--text-3)}
+    .papers-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
+    .paper-card{background:var(--bg);padding:26px;display:flex;flex-direction:column}
+    .paper-card.full{grid-column:1/-1;background:var(--accent-soft)}
+    .paper-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .paper-num{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;flex-shrink:0;padding-top:2px}
+    .chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+    .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+    .chip.hi{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+    .paper-title{font-size:15px;font-weight:700;letter-spacing:-0.02em;color:var(--text);line-height:1.3;margin-bottom:4px}
+    .paper-tagline{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;margin-bottom:14px}
+    .paper-claim{font-size:13.5px;font-weight:500;color:var(--text-2);line-height:1.6;margin-bottom:12px;border-left:3px solid var(--accent);padding-left:12px}
+    .paper-support{font-size:12.5px;color:var(--text-3);line-height:1.7;margin-bottom:14px}
+    .paper-meta{font-family:var(--mono);font-size:10px;color:var(--accent);padding:5px 10px;border:1px solid rgba(26,58,107,0.18);border-radius:4px;background:var(--accent-soft);margin-bottom:12px;display:inline-block;letter-spacing:0.03em}
+    .paper-links{display:flex;flex-wrap:wrap;gap:0;margin-top:auto}
+    .paper-link{font-family:var(--mono);font-size:10px;padding:6px 12px;border:1px solid var(--line);margin-right:-1px;background:var(--bg);color:var(--text-3);transition:background 150ms,color 150ms,border-color 150ms;display:inline-flex;align-items:center;gap:4px}
+    .paper-link:first-child{border-radius:8px 0 0 8px}
+    .paper-link:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .paper-link.ssrn{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+    .paper-link.ssrn:hover{background:var(--accent);color:var(--bg)}
+    .abstract-btn{font-family:var(--mono);font-size:10px;padding:6px 12px;border:1px solid var(--line);margin-right:-1px;background:var(--bg);color:var(--text-3);cursor:pointer;transition:background 150ms,color 150ms,border-color 150ms}
+    .abstract-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .abstract-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .abstract-btn.open{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+    .abstract-body{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft)}
+    .abstract-body.open{display:block}
+    .abstract-body p{font-size:12.5px;color:var(--text-3);line-height:1.75;margin-bottom:10px}
+    .abstract-body ul{padding-left:16px}
+    .abstract-body li{font-size:12px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
+    .sts-note{border:1px solid rgba(26,58,107,0.08);border-left:3px solid var(--accent);background:var(--accent-soft);padding:14px 18px;margin-bottom:20px;font-size:13px;color:var(--text-2);line-height:1.75}
+    .sts-intro{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+    .divider{border:none;border-top:1px solid var(--line);margin:0 0 56px;opacity:0.5}
+    .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
+    .footer-nav{display:flex;gap:0}
+    .footer-btn{height:32px;padding:0 14px;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms}
+    .footer-btn:first-child{border-radius:8px 0 0 8px}
+    .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .reveal{opacity:1;transform:none}
+    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+    .js-ready .reveal.on{opacity:1;transform:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.papers-grid{grid-template-columns:1fr}.paper-card.full{grid-column:auto}.sec-head{flex-direction:column;align-items:flex-start}.sec-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}}
+    @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}.wrap{padding:32px 0 80px}.paper-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-
-<nav>
-  <a class="nav-brand" href="index.html">
-    <span class="pulse"></span>sora kim
-  </a>
-  <div class="nav-links">
-    <a href="index.html">home</a>
-    <a href="projects.html">projects</a>
-    <a href="research.html">research</a>
-    <a class="active" href="papers.html">papers</a>
-    <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv ↗</a>
-  </div>
-  <div class="nav-end">
-    <button class="theme-btn" id="themeToggle" aria-label="toggle theme">◐</button>
-  </div>
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a class="active" href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
 </nav>
-
-<div class="wrap">
-
-  <!-- ── PAGE HERO ── -->
-  <div class="page-hero">
-    <div class="hero-left">
-      <div class="eyebrow">papers &amp; manuscripts</div>
-      <h1 class="hero-title">Papers &amp; Manuscripts</h1>
-      <p class="hero-desc">Five HCI papers and four STS manuscripts examining how procedural systems shape navigation, reasoning, and accountability in regulated environments. The HCI work develops empirical and design-oriented arguments; the STS manuscripts provide theoretical grounding for responsibility and judgment.</p>
-    </div>
-    <div class="hero-right">
-      <div class="hero-note">
-        <div class="hero-note-label">// HCI papers</div>
-        <div class="hero-note-title">Five empirical &amp; design papers</div>
-        <p>Each paper develops a prototype or observational study into a design argument about how regulated systems shape reasoning, navigation, and judgment — and how compliance-safe interventions can make those structures more workable.</p>
-      </div>
-      <div class="hero-note">
-        <div class="hero-note-label">// STS foundations</div>
-        <div class="hero-note-title">Four theoretical foundations</div>
-        <p>Conceptual work on accountability, procedural cognition, investigative closure, and AI-mediated convergence — the theoretical infrastructure that grounds the HCI empirical program.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── HCI PAPERS ── -->
-  <section class="sec-block">
-    <div class="sec-head">
-      <div class="sec-tag">HCI papers · 5 preprints</div>
-      <div class="sec-title-block">Project-linked HCI paper set</div>
-    </div>
-    <div class="papers-grid">
-
-      <!-- 01 -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// paper_01</span>
-          <div class="chips">
-            <span class="chip">document usability</span>
-            <span class="chip">accessibility</span>
-          </div>
-        </div>
-        <div class="paper-title">SOP Accessibility and Compliance-Constrained Design</div>
-        <div class="paper-tagline">HCI paper · project-linked · SOP Accessibility</div>
-        <p class="paper-claim">This paper argues that document inaccessibility in regulated environments produces systematic judgment errors, not merely compliance gaps.</p>
-        <p class="paper-support">Evaluated in task-based retrieval experiments (N=12), showing measurable retrieval delays and navigation behavior changes.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="project-sop-accessibility.html">→ project</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Examines document accessibility, information retrievability, and compliance-constrained design in pharmaceutical QC environments — developed from the SOP Accessibility project (N=12, 4.83/5, 100% adoption intent).</p>
-          <ul>
-            <li>Argument: access failure is a judgment failure — workers who cannot retrieve the right SOP cannot apply it correctly.</li>
-            <li>Design contribution: usability improvements can emerge through external support layers without modifying validated source files.</li>
-            <li>Positions document accessibility as a substantive HCI problem in regulated environments.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 02 -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// paper_02</span>
-          <div class="chips">
-            <span class="chip">reasoning support</span>
-            <span class="chip">investigation design</span>
-          </div>
-        </div>
-        <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
-        <div class="paper-tagline">HCI paper · two-study paper · RCA + PCC</div>
-        <p class="paper-claim">This paper shows that premature causal convergence is a structural condition — and that scaffold design can counter it.</p>
-        <p class="paper-support">Pilot observation (N=5) + scaffold usability evaluation (N=15) in pharmaceutical investigation workflows.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="project-rca-reasoning-scaffolder.html">→ RCA</a>
-          <a class="paper-link" href="project-premature-causal-convergence.html">→ PCC</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Combines two studies: a pilot observation of premature causal convergence in unassisted investigation reasoning (N=5), and a usability evaluation of a scaffold designed to counter it (N=15).</p>
-          <ul>
-            <li>Pilot: 5/5 began with a single cause — revised toward systemic explanations only when given unstructured time.</li>
-            <li>Scaffold: 80% of participants increased causal breadth; all initially individual-blame hypotheses revised toward systemic explanations.</li>
-            <li>Argument: investigation quality is a cognitive systems design problem, not a training problem.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 03 -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// paper_03</span>
-          <div class="chips">
-            <span class="chip">document navigation</span>
-            <span class="chip">traceability</span>
-          </div>
-        </div>
-        <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
-        <div class="paper-tagline">HCI paper · two-study paper · Cross-Ref + Navigation</div>
-        <p class="paper-claim">This paper argues that practitioner loopbacks signal document-structure failure, not individual error.</p>
-        <p class="paper-support">Cross-reference system (N=17) + behavioral navigation tracking prototype (N=5) in GMP documentation environments.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="project-cross-reference.html">→ cross-ref</a>
-          <a class="paper-link" href="project-cognitive-navigation-explorer.html">→ navigation</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Combines two studies: a metadata-driven cross-reference system addressing structural traceability gaps (N=17), and a behavioral navigation tracking prototype making invisible navigation friction observable (N=5).</p>
-          <ul>
-            <li>Cross-ref: 30–60% faster task completion · 2× document discovery · path completion 30–50% → 70–90%.</li>
-            <li>Navigation: 5/5 loopback observed · less experienced users identified SOP structure — not the interface — as friction source.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 04 -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// paper_04</span>
-          <div class="chips">
-            <span class="chip">workflow UX</span>
-            <span class="chip">observability</span>
-          </div>
-        </div>
-        <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
-        <div class="paper-tagline">HCI paper · project-linked · Review Dashboard</div>
-        <p class="paper-claim">This paper argues that observability is a precondition for coordination in validated review environments.</p>
-        <p class="paper-support">Prototype evaluation (N=6) examining workload visibility and delay accumulation in pharmaceutical quality review cycles.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="project-feedback-dashboard.html">→ project</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Examines review interaction, workflow friction, and observability in validated pharmaceutical quality review systems — developed from the Smart Feedback and Review Dashboard prototype (N=6).</p>
-          <ul>
-            <li>Problem: quality review cycles are opaque — workload imbalance and delay accumulation are invisible until they have already become a problem.</li>
-            <li>N=6 — all participants expressed adoption intent after reviewing the prototype interface.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 05 — full width umbrella -->
-      <div class="paper-card full">
-        <div class="paper-top">
-          <span class="paper-num">// paper_05</span>
-          <div class="chips">
-            <span class="chip hi">regulatory UX</span>
-            <span class="chip hi">concept paper</span>
-          </div>
-        </div>
-        <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
-        <div class="paper-tagline">HCI concept paper · umbrella framework · connects all six projects</div>
-        <p class="paper-claim">This paper proposes Regulatory UX as a framework for analyzing and redesigning how compliance-constrained systems shape navigation, reasoning, and accountability.</p>
-        <p class="paper-support">Conceptual synthesis connecting all six projects into a unified design argument about regulated documentation as interaction environments.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Introduces Regulatory UX as a new HCI research frame — the study of worker interaction experience inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures actively shape navigation, cognition, and decision-making.</p>
-          <ul>
-            <li>Core argument: regulated documentation systems are not neutral containers — they are active interaction environments that shape how workers search, reason, assign blame, and close investigations.</li>
-            <li>Framework contribution: Regulatory UX names and structures a design space where usability, compliance, and accountability intersect.</li>
-            <li>Connects all six projects as a coherent empirical program instantiating the Regulatory UX argument across multiple failure modes.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- ── STS FOUNDATIONS ── -->
-  <section class="sec-block">
-    <div class="sec-head">
-      <div class="sec-tag">STS foundations · 4 preprints</div>
-      <div class="sec-title-block">Theoretical grounding</div>
-    </div>
-    <div class="sts-note">
-      <p class="sts-intro">The following papers develop the theoretical foundations of the program, focusing on how accountability and judgment are structured in complex systems.</p>
-      These manuscripts provide the theoretical infrastructure behind the HCI papers — drawing on science and technology studies (STS) to explain how accountability, procedural cognition, and investigative closure operate in regulated sociotechnical systems. They explain why the design problems the projects address are structurally produced, not accidental.
-    </div>
-    <div class="papers-grid">
-
-      <!-- AAC -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// AAC</span>
-          <div class="chips">
-            <span class="chip">anticipatory alignment</span>
-            <span class="chip">STS</span>
-          </div>
-        </div>
-        <div class="paper-title">Anticipated Accountability Convergence</div>
-        <div class="paper-tagline">STS conceptual manuscript</div>
-        <p class="paper-claim">This paper argues that accountability expectations are prospectively aligned before action, shaping what counts as defensible conduct.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="assets/kim-2026-aac.pdf" target="_blank">PDF ↗</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.</p>
-          <ul>
-            <li>Focus: how organizations preconfigure what counts as accountable conduct before execution begins.</li>
-            <li>HCI relevance: explains why design interventions must account for prospective accountability structures — not just usability at the moment of use.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CF -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// CF</span>
-          <div class="chips">
-            <span class="chip">procedural texts</span>
-            <span class="chip">document architecture</span>
-          </div>
-        </div>
-        <div class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</div>
-        <div class="paper-tagline">STS conceptual + empirical manuscript</div>
-        <p class="paper-claim">This paper shows that procedural sentence structure distributes interpretive burden and shapes downstream judgment demands.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN · empirical pilot N=500 sentences</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="assets/kim-2026-cf.pdf" target="_blank">PDF ↗</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.</p>
-          <ul>
-            <li>Empirical pilot: 500 procedurally realistic sentences from public regulatory and safety documentation.</li>
-            <li>HCI relevance: grounds the SOP Accessibility and Cognitive Navigation projects — explains why document structure produces friction that interface redesign alone cannot solve.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- RC -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// RC</span>
-          <div class="chips">
-            <span class="chip">investigations</span>
-            <span class="chip">closure pressure</span>
-          </div>
-        </div>
-        <div class="paper-title">Responsibility Convergence in Organizational Investigations</div>
-        <div class="paper-tagline">STS conceptual manuscript</div>
-        <p class="paper-claim">This paper explains why organizational investigations recurrently stabilize blame at individuals despite distributed system failures.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="assets/kim-2026-rc.pdf" target="_blank">PDF ↗</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Explains why organizational investigations like root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.</p>
-          <ul>
-            <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
-            <li>HCI relevance: grounds the RCA Reasoning Scaffolder — explains the structural conditions the scaffold is designed to counter.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- PAC -->
-      <div class="paper-card">
-        <div class="paper-top">
-          <span class="paper-num">// PAC</span>
-          <div class="chips">
-            <span class="chip">AI mediation</span>
-            <span class="chip">temporal accountability</span>
-          </div>
-        </div>
-        <div class="paper-title">Premature Accountability Convergence</div>
-        <div class="paper-tagline">STS conceptual manuscript</div>
-        <p class="paper-claim">This paper argues that AI mediation accelerates responsibility convergence before ambiguity has been meaningfully examined.</p>
-        <div class="paper-meta">Preprint · 2026 · SSRN</div>
-        <div class="paper-links">
-          <a class="paper-link ssrn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
-          <a class="paper-link" href="assets/kim-2026-pac.pdf" target="_blank">PDF ↗</a>
-          <button class="abstract-btn" type="button">Abstract</button>
-        </div>
-        <div class="abstract-body">
-          <p>Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.</p>
-          <ul>
-            <li>Mechanisms: representational compression, epistemic authority amplification, temporal contraction of sensemaking.</li>
-            <li>HCI relevance: directly grounds the AI extension of the RCA Reasoning Scaffolder — the scaffold is explicitly designed as a counter-PAC intervention.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="footer">
-    <span>5 HCI preprints · 4 STS preprints · one research program</span>
-    <div class="btn-row">
-      <a class="nav-btn" href="projects.html">← projects</a>
-      <a class="nav-btn" href="research.html">research →</a>
-    </div>
-  </div>
-
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
 </div>
-
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="wrap">
+<div class="page-header reveal">
+<div class="page-eyebrow">Papers &amp; Manuscripts</div>
+<h1 class="page-h1">Papers &amp; Manuscripts</h1>
+<p class="page-lead">Five HCI preprints and four STS manuscripts on worker support, judgment, and accountability in regulated systems.</p>
+</div>
+<div class="hero-grid reveal">
+<div class="hero-left">
+<div class="page-eyebrow" style="margin-bottom:12px">What's here</div>
+<h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">One research program in two layers.</h2>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75">The STS manuscripts develop the conceptual account of accountability, closure, and formal systems. The HCI papers test related questions empirically through prototypes and observations in pharmaceutical quality environments. Together they ask how work can be better supported inside regulation rather than outside it.</p>
+</div>
+<div class="hero-right">
+<div class="hero-right-cell">
+<div class="right-label">HCI papers</div>
+<div class="right-title">Five empirical &amp; design papers</div>
+<p class="right-text">Each HCI paper starts from a concrete friction in QC practice: retrieval burden, navigation burden, review opacity, or premature investigative closure. The empirical question is not only whether a tool is usable, but what kind of work problem it helps make visible.</p>
+</div>
+<div class="hero-right-cell">
+<div class="right-label">STS foundations</div>
+<div class="right-title">Four theoretical foundations</div>
+<p class="right-text">The STS layer asks why those frictions matter in the first place: how accountability is organized, narrowed, and increasingly mediated by AI within formal systems.</p>
+</div>
+</div>
+</div>
+<!-- HCI PAPERS -->
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">HCI papers · 5 preprints</div>
+<div class="sec-title">Project-linked HCI paper set</div>
+</div>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">paper 01</span>
+<div class="chips"><span class="chip">document usability</span><span class="chip">accessibility</span></div>
+</div>
+<div class="paper-title">SOP Accessibility and Compliance-Constrained Design</div>
+<div class="paper-tagline">HCI paper · project-linked · SOP Retrieval System</div>
+<p class="paper-claim">Document inaccessibility in regulated environments creates interpretive burden well before formal error becomes visible.</p>
+<p class="paper-support">Task-based retrieval evaluation showing retrieval delays and navigation behavior changes in GMP SOP archives under exploratory conditions.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="project-sop-accessibility.html">→ Project</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Examines document accessibility, information retrievability, and compliance-constrained design in pharmaceutical QC environments — developed from the SOP Retrieval System project and its pilot evaluation.</p>
+<ul>
+<li>Argument: access failure can translate into judgment difficulty — when workers cannot retrieve the right SOP, application becomes more error-prone.</li>
+<li>Design contribution: usability improvements can emerge through external support layers without modifying validated source files.</li>
+<li>Positions document accessibility as a substantive HCI problem in regulated environments.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">paper 02</span>
+<div class="chips"><span class="chip">reasoning support</span><span class="chip">investigation design</span></div>
+</div>
+<div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
+<div class="paper-tagline">HCI paper · two-study paper · RCA Scaffolder + Premature Causal Convergence</div>
+<p class="paper-claim">Premature causal convergence can arise from investigation conditions, and scaffold design may help keep reasoning open longer.</p>
+<p class="paper-support">Pilot observation of unassisted reasoning plus scaffold usability evaluation in pharmaceutical investigation workflows.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="project-rca-reasoning-scaffolder.html">→ RCA</a>
+<a class="paper-link" href="project-premature-causal-convergence.html">→ PCC</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Combines two studies: a pilot observation of premature causal convergence in unassisted investigation reasoning, and a usability evaluation of a scaffold designed to counter it.</p>
+<ul>
+<li>Pilot: initial single-cause reasoning often shifted toward broader multi-factor explanations over time.</li>
+<li>Scaffold: many participants showed increased causal breadth, and several moved from person-centered explanations toward broader systemic ones.</li>
+<li>Argument: investigation quality is partly a cognitive systems design problem, not only a training problem.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">paper 03</span>
+<div class="chips"><span class="chip">document navigation</span><span class="chip">traceability</span></div>
+</div>
+<div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
+<div class="paper-tagline">HCI paper · two-study paper · Cross-Reference + Cognitive Navigation</div>
+<p class="paper-claim">Practitioner loopbacks and broken trace paths can indicate document-structure burden, not just inefficient searching.</p>
+<p class="paper-support">Cross-reference system plus behavioral navigation tracking prototype in GMP documentation environments.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="project-cross-reference.html">→ Cross-ref</a>
+<a class="paper-link" href="project-cognitive-navigation-explorer.html">→ Navigation</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Combines two studies: a metadata-driven cross-reference system addressing structural traceability gaps, and a behavioral navigation tracking prototype making invisible navigation friction observable.</p>
+<ul>
+<li>Cross-reference: task completion improved, document discovery increased, and path completion became more reliable during pilot evaluation.</li>
+<li>Navigation: consistent loopback patterns observed across participants · less experienced users identified SOP structure — not the interface — as the friction source.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">paper 04</span>
+<div class="chips"><span class="chip">workflow UX</span><span class="chip">observability</span></div>
+</div>
+<div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
+<div class="paper-tagline">HCI paper · project-linked · Review Dashboard</div>
+<p class="paper-claim">Coordination improves when review burden becomes visible earlier in validated review environments.</p>
+<p class="paper-support">Prototype evaluation examining workload visibility and delay accumulation in pharmaceutical quality review cycles.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="project-feedback-dashboard.html">→ Project</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Examines review interaction, workflow friction, and observability in validated pharmaceutical quality review systems — developed from the Smart Feedback &amp; Review Dashboard prototype.</p>
+<ul>
+<li>Problem: quality review cycles are opaque — workload imbalance and delay accumulation are invisible until they have already become a problem.</li>
+<li>Participants consistently expressed adoption interest after reviewing the prototype interface.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card full">
+<div class="paper-top">
+<span class="paper-num">paper 05 · umbrella</span>
+<div class="chips"><span class="chip hi">regulatory UX</span><span class="chip hi">concept paper</span></div>
+</div>
+<div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
+<div class="paper-tagline">HCI concept paper · umbrella framework · connects all six projects</div>
+<p class="paper-claim">Regulatory UX names a design space where usability, compliance, and accountability have to be considered together.</p>
+<p class="paper-support">Conceptual synthesis connecting all six projects into a unified design argument about regulated documentation as active interaction environments.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Introduces Regulatory UX as an HCI research frame for worker interaction inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures shape navigation, cognition, and decision-making.</p>
+<ul>
+<li>Core argument: regulated documentation systems are not neutral containers — they are active interaction environments that shape how workers search, reason, and close investigations.</li>
+<li>Framework contribution: Regulatory UX names and structures a design space where usability, compliance, and accountability intersect.</li>
+<li>Connects all six projects as a coherent empirical program instantiating the Regulatory UX argument across multiple failure modes.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<hr class="divider"/>
+<!-- STS FOUNDATIONS -->
+<section class="sec reveal">
+<div class="sec-head">
+<div class="sec-tag">STS foundations · 4 preprints</div>
+<div class="sec-title">Theoretical grounding</div>
+</div>
+<div class="sts-note">
+<div class="sts-intro">Theoretical infrastructure behind the HCI papers.</div>
+        These manuscripts draw on science and technology studies (STS) to explain how accountability, procedural cognition, and investigative closure operate in regulated sociotechnical systems — showing why the design problems the projects address are structurally produced, not accidental.
+      </div>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">AAC</span>
+<div class="chips"><span class="chip">anticipatory alignment</span><span class="chip">STS</span></div>
+</div>
+<div class="paper-title">Anticipated Accountability Convergence</div>
+<div class="paper-tagline">STS conceptual manuscript</div>
+<p class="paper-claim">Accountability expectations are often set up before action through procedures, documentation, and evaluation rules.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="assets/kim-2026-aac.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.</p>
+<ul>
+<li>Focus: how organizations preconfigure what counts as acceptable and accountable conduct before execution begins.</li>
+<li>HCI relevance: explains why design interventions must account for prospective accountability structures — not just usability at the moment of use.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">CF</span>
+<div class="chips"><span class="chip">procedural texts</span><span class="chip">document architecture</span></div>
+</div>
+<div class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</div>
+<div class="paper-tagline">STS conceptual + empirical manuscript · pilot N=500 sentences</div>
+<p class="paper-claim">Procedural sentence structure can distribute interpretive burden and shape later judgment demands.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="assets/kim-2026-cf.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.</p>
+<ul>
+<li>Empirical pilot: 500 procedurally realistic sentences from public regulatory and safety documentation.</li>
+<li>HCI relevance: grounds the SOP Accessibility and Cognitive Navigation projects — explains why document structure produces friction that interface redesign alone cannot solve.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">RC</span>
+<div class="chips"><span class="chip">investigations</span><span class="chip">closure pressure</span></div>
+</div>
+<div class="paper-title">Responsibility Convergence in Organizational Investigations</div>
+<div class="paper-tagline">STS conceptual manuscript</div>
+<p class="paper-claim">Organizational investigations often settle on individual responsibility even when failures are more distributed.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="assets/kim-2026-rc.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Explains why organizational investigations like root cause analysis often settle on identifiable actors even when failures are distributed across sociotechnical systems.</p>
+<ul>
+<li>Core mechanisms: procedural ambiguity, closure pressure, and a bias toward easily documentable accountability.</li>
+<li>HCI relevance: grounds the RCA Reasoning Scaffolder — explains the structural conditions the scaffold is designed to counter.</li>
+</ul>
+</div>
+</div>
+<div class="paper-card">
+<div class="paper-top">
+<span class="paper-num">PAC</span>
+<div class="chips"><span class="chip">AI mediation</span><span class="chip">temporal accountability</span></div>
+</div>
+<div class="paper-title">Premature Accountability Convergence</div>
+<div class="paper-tagline">STS conceptual manuscript</div>
+<p class="paper-claim">AI mediation can compress interpretive space too early, affecting how quickly responsibility settles.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-links">
+<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="paper-link" href="assets/kim-2026-pac.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<button class="abstract-btn" type="button">Abstract</button>
+</div>
+<div class="abstract-body">
+<p>Analyzes how AI-mediated representations reshape the timing and scope of accountability by compressing interpretive space and accelerating convergence within formal decision systems.</p>
+<ul>
+<li>Mechanisms: representational compression, epistemic authority amplification, temporal contraction of sensemaking.</li>
+<li>HCI relevance: directly grounds the AI extension of the RCA Reasoning Scaffolder — the scaffold is explicitly designed as a counter-PAC intervention.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">5 HCI preprints · 4 STS preprints · one research program</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="research.html">Research →</a>
+</div>
+</div>
+</div>
 <script>
-document.querySelectorAll('.abstract-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var body = btn.closest('.paper-card').querySelector('.abstract-body');
-    var open = body.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.textContent = open ? 'Hide abstract' : 'Abstract';
-  });
-});
-(function() {
-  var btn = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (saved === 'dark' || (saved === null && sysDark)) html.setAttribute('data-theme', 'dark');
-  btn.addEventListener('click', function() {
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-})();
-</script>
+    (function(){
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored ? stored === 'dark' : prefersDark;
+      root.classList.toggle('dark', isDark);
+      root.classList.add('js-ready');
+
+      var btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', function(){
+        isDark = !isDark;
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      var hamburger = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if(hamburger && mobileMenu){
+        hamburger.addEventListener('click', function(){
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
+
+      document.querySelectorAll('.abstract-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var body = btn.closest('.paper-card').querySelector('.abstract-body');
+          var open = body.classList.toggle('open');
+          btn.classList.toggle('open', open);
+          btn.textContent = open ? 'Hide abstract' : 'Abstract';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

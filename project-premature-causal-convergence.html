@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premature Causal Convergence — Sora Kim</title>
-  <meta name="description" content="Premature Causal Convergence in RCA — a pilot study of early-stage reasoning under closure pressure in regulated environments." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premature Causal Convergence — Sora Kim</title>
+<meta content="Premature Causal Convergence in RCA — a pilot study of early closure in regulated investigations." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -203,270 +204,250 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="layout">
-
-    <aside class="sidebar">
-      <div class="breadcrumb">
-        <a href="index.html">home</a> /
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="layout">
+<aside class="sidebar">
+<div class="breadcrumb">
+<a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
         <span style="color:var(--text-2)">causal convergence</span>
-      </div>
-      <nav class="side-nav">
-        <a href="#overview" class="active">Overview</a>
-        <a href="#background">Background</a>
-        <a href="#method">Method</a>
-        <a href="#findings">Findings</a>
-        <a href="#results">Results</a>
-        <a href="#connection">Connection</a>
-        <a href="#paper">Paper</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-
-      <!-- HERO -->
-      <section class="sec" id="overview" style="margin-bottom:40px">
-        <div class="proj-eyebrow reveal">reasoning axis · project 02</div>
-        <h1 class="proj-title reveal">Premature Causal Convergence in RCA</h1>
-        <div class="proj-subtitle reveal">A pilot study of early-stage reasoning under closure pressure</div>
-        <div class="proj-chips reveal">
-          <span class="chip">closure pressure</span>
-          <span class="chip">time-based observation</span>
-          <span class="chip">pilot study</span>
-          <span class="chip">N=20</span>
-        </div>
-        <p class="proj-lead reveal">
-          Across 20 participants, the initial response at the first timepoint was a single-cause explanation. With additional time, broader contributors began to appear. Closure may operate less like a fully deliberate decision than like a system tendency under pressure to explain early.
-        </p>
-        <p class="proj-claim reveal">
-          This pilot establishes the empirical basis for later intervention work by showing how single-cause reasoning appears before broader contributors are explored.
-        </p>
-        <div class="flow reveal">
-          <span class="flow-tag on">closure pressure</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">single-cause onset</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">broader reasoning emerges</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">design need identified</span>
-        </div>
-        <div class="btn-row reveal">
-          <a class="btn" href="projects.html">← All projects</a>
-        </div>
-      </section>
-
-      <!-- META -->
-      <div class="meta-row reveal">
-        <div class="meta-cell">
-          <div class="meta-label">Participants</div>
-          <div class="meta-num">N=20</div>
-          <div class="meta-desc">Pilot reasoning study with timed reflection intervals</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Timepoints</div>
-          <div class="meta-num">3</div>
-          <div class="meta-desc">Initial · +5 min · +10 min</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Key signal</div>
-          <div class="meta-num">20/20</div>
-          <div class="meta-desc">Single-cause explanations at the initial timepoint</div>
-        </div>
-      </div>
-
-      <!-- BACKGROUND -->
-      <section class="sec reveal" id="background">
-        <div class="sec-eyebrow">01</div>
-        <h2 class="sec-title">Background</h2>
-        <hr class="sec-divider">
-        <p class="body-text">Root Cause Analysis (RCA) is the formal process used to explain why a deviation occurred in regulated environments. It is often treated as a neutral reasoning task. In practice, however, deviation investigations unfold under expectations of speed, closure, and documentation readiness — conditions that shape how reasoning develops before broader contributing factors have been examined.</p>
-        <p class="body-text">Investigators may document a root cause before fully examining procedural, contextual, or organizational contributors. This pilot observes this early-stage reasoning process directly, before any interface intervention.</p>
-        <div class="quote">Reasoning continues to develop — but documentation demands a commitment before it has time to.</div>
-      </section>
-
-      <!-- METHOD -->
-      <section class="sec reveal" id="method">
-        <div class="sec-eyebrow">02</div>
-        <h2 class="sec-title">Method</h2>
-        <hr class="sec-divider">
-        <p class="body-text">Participants received the same investigation-style case and explained the cause at three timepoints: immediately, after five minutes, and after ten minutes. The goal was to observe whether additional time changed the breadth, direction, or confidence of reasoning.</p>
-        <p class="body-text" style="font-family:var(--mono);font-size:11px;color:var(--text-4);border-left:2px solid var(--line-soft);padding-left:12px;">Designed and conducted a timed reasoning study (N=20), including task construction, response comparison across timepoints, and pattern coding of causal breadth and revision.</p>
-        <div class="timeline">
-          <div class="tcell">
-            <div class="t-label">Timepoint 01</div>
-            <div class="t-title">0 minutes</div>
-            <div class="t-text">Immediate explanation based on first interpretation of the case.</div>
-          </div>
-          <div class="tcell">
-            <div class="t-label">Timepoint 02</div>
-            <div class="t-title">+5 minutes</div>
-            <div class="t-text">Participants continued reflecting without additional prompts, allowing alternative contributors to emerge.</div>
-          </div>
-          <div class="tcell">
-            <div class="t-label">Timepoint 03</div>
-            <div class="t-title">+10 minutes</div>
-            <div class="t-text">Final reasoning state recorded to assess whether causal breadth changed further over time.</div>
-          </div>
-        </div>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Rationale</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Intentionally conducted without a prototype interface — establishing an empirical baseline for whether reasoning broadens over short intervals before any design intervention attempts to support it.</p>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Implication</div>
-            <p class="body-text" style="margin:0;font-size:13px;">If reasoning naturally broadens with time, premature closure in investigation settings may reflect environmental pressure rather than fixed cognitive limitation.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINDINGS -->
-      <section class="sec reveal" id="findings">
-        <div class="sec-eyebrow">03</div>
-        <h2 class="sec-title">Findings</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">All 20 participants produced a single-cause explanation at the initial timepoint. With additional time, broader contributors began to appear — including procedural, contextual, or organizational explanations that were absent from the first response, often alongside hesitation, self-correction, or explicit uncertainty.</p>
-        <p class="body-text">By ten minutes, participants often broadened their explanation or became more explicit about uncertainty. The pattern suggests that early closure is shaped by constrained reasoning time rather than reflecting a fully developed explanation.</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Timepoint</th><th>Observed pattern</th><th>Interpretation</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>0 min</td><td>Single-cause explanations (20/20)</td><td>Initial reasoning favored the most salient explanation</td></tr>
-              <tr><td>+5 min</td><td>Alternative contributors emerged (20/20)</td><td>Reasoning expanded when participants had additional time</td></tr>
-              <tr><td>+10 min</td><td>Broader explanations or greater uncertainty</td><td>Closure pressure truncates reasoning before it naturally develops</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- RESULTS -->
-      <section class="sec reveal" id="results">
-        <div class="sec-eyebrow">04</div>
-        <h2 class="sec-title">Results & Implications</h2>
-        <hr class="sec-divider">
-        <p class="body-text">This pilot does not claim statistical generalizability. Its contribution is observational: investigation reasoning changed meaningfully over short intervals, even without new information. That pattern matters because regulated documentation systems often demand closure during precisely that unstable period.</p>
-        <p class="body-text strong">In regulated environments, early explanations are not just cognitive — they become documented, audited, and tied to responsibility.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Empirical implication</div>
-            <ul class="bullets">
-              <li>Reasoning breadth is time-sensitive</li>
-              <li>Early explanations can underrepresent systemic contributors</li>
-              <li>Closure pressure can distort causal interpretation</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Design implication</div>
-            <ul class="bullets">
-              <li>Investigation environments need structured support before closure</li>
-              <li>Reasoning scaffolds receive preliminary empirical support, not only conceptual motivation</li>
-              <li>Time-sensitive convergence is a UX problem</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONNECTION -->
-      <section class="sec reveal" id="connection">
-        <div class="sec-eyebrow">05</div>
-        <h2 class="sec-title">Connection to the Companion Project</h2>
-        <hr class="sec-divider">
-        <p class="body-text">This pilot is the empirical observation layer for the RCA Investigation Scaffolder. If premature convergence appears before broader contributors are considered, the design challenge becomes keeping investigation reasoning open longer without violating closure expectations.</p>
-        <div class="companion">
-          <div class="companion-label">Companion project</div>
-          <div class="companion-title">RCA Investigation Scaffolder</div>
-          <div class="companion-text">The companion project translates this observation into a structured interface intervention. In the scaffold study, 80% of participants considered new causes after using the tool — suggesting that the convergence observed here may be actively resisted through design.</div>
-          <div class="btn-row">
-            <a class="btn primary" href="project-rca-scaffolder.html">View RCA Scaffolder →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- PAPER -->
-      <section class="sec reveal" id="paper">
-        <div class="sec-eyebrow">06</div>
-        <h2 class="sec-title">Paper</h2>
-        <hr class="sec-divider">
-        <div class="paper-block">
-          <div class="paper-row">
-            <div class="paper-row-label">Claim</div>
-            <div class="paper-row-content">
-              <p class="paper-claim">Premature causal convergence in GMP investigations appears to be shaped by closure pressure rather than by individual error alone. Time-constrained reasoning can be understood as a design problem, not only a cognitive one.</p>
-            </div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Establishes an empirical baseline for convergence behavior in unassisted RCA reasoning — providing the observational foundation for the companion scaffold study.</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Status</div>
-            <div class="paper-row-content">Pilot study · 2026 · SSRN</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Links</div>
-            <div class="paper-row-content">
-              <div class="btn-row">
-                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
-                <a class="btn" href="papers.html">→ Papers page</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="page-footer reveal">
-        <span class="footer-note">reasoning axis · project 02</span>
-        <div class="footer-nav">
-          <a href="projects.html" class="footer-btn">← Projects</a>
-          <a href="index.html" class="footer-btn">Home</a>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <script>
+</div>
+<nav class="side-nav">
+<a class="active" href="#overview">Overview</a>
+<a href="#background">Background</a>
+<a href="#method">Method</a>
+<a href="#findings">Findings</a>
+<a href="#results">Results</a>
+<a href="#connection">Connection</a>
+<a href="#paper">Paper</a>
+</nav>
+</aside>
+<main class="content">
+<!-- HERO -->
+<section class="sec" id="overview" style="margin-bottom:40px">
+<div class="proj-eyebrow reveal">reasoning axis · project 02</div>
+<h1 class="proj-title reveal">Premature Causal Convergence in RCA</h1>
+<div class="proj-subtitle reveal">A pilot study of early-stage reasoning under closure pressure</div>
+<div class="proj-chips reveal">
+<span class="chip">closure pressure</span>
+<span class="chip">time-based observation</span>
+<span class="chip">pilot study</span>
+<span class="chip">timed reflection</span>
+</div>
+<p class="proj-lead reveal">In this pilot, first responses at the earliest timepoint were typically single-cause explanations. With additional time, broader contributors began to appear. Closure may operate less like a fully deliberate choice than like the early default of a pressured investigation environment.</p>
+<p class="proj-claim reveal">This pilot provides the empirical basis for later intervention work by showing how single-cause reasoning can appear before broader contributors are explored — and why premature closure should be treated as a design problem as well as a cognitive one.</p>
+<div class="flow reveal">
+<span class="flow-tag on">closure pressure</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">single-cause onset</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">broader reasoning emerges</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">design need identified</span>
+</div>
+<div class="btn-row reveal">
+<a class="btn" href="projects.html">← All projects</a>
+</div>
+</section>
+<!-- META -->
+<div class="meta-row reveal">
+<div class="meta-cell">
+<div class="meta-label">Participants</div>
+<div class="meta-num">pilot</div>
+<div class="meta-desc">Pilot reasoning study with timed reflection intervals</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Timepoints</div>
+<div class="meta-num">3</div>
+<div class="meta-desc">Initial · +5 min · +10 min</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Key signal</div>
+<div class="meta-num">common</div>
+<div class="meta-desc">Single-cause explanations were common at the initial timepoint</div>
+</div>
+</div>
+<!-- BACKGROUND -->
+<section class="sec reveal" id="background">
+<div class="sec-eyebrow">01</div>
+<h2 class="sec-title">Background</h2>
+<hr class="sec-divider"/>
+<p class="body-text">Root Cause Analysis (RCA) is the formal process used to explain why a deviation occurred in regulated environments. It is often treated as a neutral reasoning task. In practice, however, deviation investigations unfold under expectations of speed, closure, and documentation readiness — conditions that shape how reasoning develops before broader contributing factors have been examined.</p>
+<p class="body-text">Investigators may document a root cause before fully examining procedural, contextual, or organizational contributors. This pilot observes this early-stage reasoning process directly, before any interface intervention.</p>
+<div class="quote">Reasoning continues to develop — but documentation demands a commitment before it has time to.</div>
+</section>
+<!-- METHOD -->
+<section class="sec reveal" id="method">
+<div class="sec-eyebrow">02</div>
+<h2 class="sec-title">Method</h2>
+<hr class="sec-divider"/>
+<p class="body-text">Participants received the same investigation-style case and explained the cause at three timepoints: immediately, after five minutes, and after ten minutes. The goal was to observe whether additional time changed the breadth, direction, or confidence of reasoning.</p>
+<p class="body-text" style="font-family:var(--mono);font-size:11px;color:var(--text-4);border-left:2px solid var(--line-soft);padding-left:12px;">Designed and conducted a timed pilot reasoning study, including task construction, response comparison across timepoints, and pattern coding of causal breadth and revision.</p>
+<div class="timeline">
+<div class="tcell">
+<div class="t-label">Timepoint 01</div>
+<div class="t-title">0 minutes</div>
+<div class="t-text">Immediate explanation based on first interpretation of the case.</div>
+</div>
+<div class="tcell">
+<div class="t-label">Timepoint 02</div>
+<div class="t-title">+5 minutes</div>
+<div class="t-text">Participants continued reflecting without additional prompts, allowing alternative contributors to emerge.</div>
+</div>
+<div class="tcell">
+<div class="t-label">Timepoint 03</div>
+<div class="t-title">+10 minutes</div>
+<div class="t-text">Final reasoning state recorded to assess whether causal breadth changed further over time.</div>
+</div>
+</div>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Rationale</div>
+<p class="body-text" style="margin:0;font-size:13px;">Intentionally conducted without a prototype interface — establishing an empirical baseline for whether reasoning broadens over short intervals before any design intervention attempts to support it.</p>
+</div>
+<div class="gcell">
+<div class="gcell-label">Implication</div>
+<p class="body-text" style="margin:0;font-size:13px;">If reasoning naturally broadens with time, premature closure in investigation settings may reflect environmental pressure rather than fixed cognitive limitation.</p>
+</div>
+</div>
+</section>
+<!-- FINDINGS -->
+<section class="sec reveal" id="findings">
+<div class="sec-eyebrow">03</div>
+<h2 class="sec-title">Findings</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Across participants, initial explanations were typically single-cause at the first timepoint. With additional time, broader contributors began to appear — including procedural, contextual, or organizational explanations that were absent from the first response, often alongside hesitation, self-correction, or explicit uncertainty.</p>
+<p class="body-text">By ten minutes, participants often broadened their explanation or became more explicit about uncertainty. The pattern suggests that early closure is shaped by constrained reasoning time rather than reflecting a fully developed explanation.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Timepoint</th><th>Observed pattern</th><th>Interpretation</th></tr>
+</thead>
+<tbody>
+<tr><td>0 min</td><td>Single-cause explanations were common</td><td>Initial reasoning favored the most salient explanation</td></tr>
+<tr><td>+5 min</td><td>Alternative contributors often emerged</td><td>Reasoning expanded when participants had additional time</td></tr>
+<tr><td>+10 min</td><td>Broader explanations or greater uncertainty</td><td>Closure pressure truncates reasoning before it naturally develops</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- RESULTS -->
+<section class="sec reveal" id="results">
+<div class="sec-eyebrow">04</div>
+<h2 class="sec-title">Results &amp; Implications</h2>
+<hr class="sec-divider"/>
+<p class="body-text">This pilot does not claim statistical generalizability. Its contribution is observational: investigation reasoning changed meaningfully over short intervals, even without new information. That pattern matters because regulated documentation systems often demand closure during precisely that unstable period.</p>
+<p class="body-text strong">In regulated environments, early explanations are not just cognitive — they quickly become documented, audited, and consequential.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Empirical implication</div>
+<ul class="bullets">
+<li>Reasoning breadth is time-sensitive</li>
+<li>Early explanations can underrepresent systemic contributors</li>
+<li>Closure pressure can distort causal interpretation</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Design implication</div>
+<ul class="bullets">
+<li>Investigation environments need structured support before closure</li>
+<li>Reasoning scaffolds receive preliminary empirical support, not only conceptual motivation</li>
+<li>Time-sensitive convergence is a UX problem</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CONNECTION -->
+<section class="sec reveal" id="connection">
+<div class="sec-eyebrow">05</div>
+<h2 class="sec-title">Connection to the Companion Project</h2>
+<hr class="sec-divider"/>
+<p class="body-text">This pilot is the empirical observation layer for the RCA Investigation Scaffolder. If premature convergence appears before broader contributors are considered, the design challenge becomes keeping investigation reasoning open longer without violating closure expectations.</p>
+<div class="companion">
+<div class="companion-label">Companion project</div>
+<div class="companion-title">RCA Investigation Scaffolder</div>
+<div class="companion-text">The companion project translates this observation into a structured interface intervention. In the scaffold study, many participants considered new causes after using the tool — suggesting that the convergence observed here may be at least partly addressable through design.</div>
+<div class="btn-row">
+<a class="btn primary" href="project-rca-reasoning-scaffolder.html">View RCA Scaffolder →</a>
+</div>
+</div>
+</section>
+<!-- PAPER -->
+<section class="sec reveal" id="paper">
+<div class="sec-eyebrow">06</div>
+<h2 class="sec-title">Paper</h2>
+<hr class="sec-divider"/>
+<div class="paper-block">
+<div class="paper-row">
+<div class="paper-row-label">Claim</div>
+<div class="paper-row-content">
+<p class="paper-claim">Premature causal convergence in GMP investigations appears to be shaped by closure pressure rather than individual error alone. Time-constrained reasoning can therefore be understood as a design problem, not only a cognitive one.</p>
+</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">What it does</div>
+<div class="paper-row-content">Provides an empirical baseline for convergence behavior in unassisted RCA reasoning — offering the observational foundation for the companion scaffold study.</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Status</div>
+<div class="paper-row-content">Pilot study · 2026 · SSRN</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Links</div>
+<div class="paper-row-content">
+<div class="btn-row">
+<a class="btn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="btn" href="papers.html">→ Papers page</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">reasoning axis · project 02</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="index.html">Home</a>
+</div>
+</div>
+</main>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -527,6 +508,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

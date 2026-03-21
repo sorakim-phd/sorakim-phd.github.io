@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RCA Investigation Scaffolder — Sora Kim</title>
-  <meta name="description" content="RCA Investigation Scaffolder — a design intervention against premature causal closure in GMP deviation investigation workflows." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RCA Investigation Scaffolder — Sora Kim</title>
+<meta content="RCA Investigation Scaffolder — a design intervention against premature convergence in regulated investigations." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -199,338 +200,317 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="layout">
-
-    <aside class="sidebar">
-      <div class="breadcrumb">
-        <a href="index.html">home</a> /
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="layout">
+<aside class="sidebar">
+<div class="breadcrumb">
+<a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
         <span style="color:var(--text-2)">rca scaffolder</span>
-      </div>
-      <nav class="side-nav">
-        <a href="#overview" class="active">Overview</a>
-        <a href="#problem">Problem</a>
-        <a href="#method">Method</a>
-        <a href="#prototype">Prototype</a>
-        <a href="#reasoning">Reasoning Expansion</a>
-        <a href="#study">Study</a>
-        <a href="#findings">Findings</a>
-        <a href="#paper">Paper</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-
-      <section class="sec" id="overview" style="margin-bottom:40px">
-        <div class="proj-eyebrow reveal">reasoning axis · project 01</div>
-        <h1 class="proj-title reveal">RCA Investigation Scaffolder</h1>
-        <div class="proj-chips reveal">
-          <span class="chip">reasoning support</span>
-          <span class="chip">investigation UX</span>
-          <span class="chip">streamlit</span>
-          <span class="chip">PAC counter-design</span>
-          <span class="chip">deployed</span>
-        </div>
-        <p class="proj-lead reveal">
-          Initial unsupported RCA reasoning often narrowed quickly under closure pressure. This scaffold was designed to keep multiple hypotheses visible longer before attribution stabilized.
-        </p>
-        <p class="proj-claim reveal">
-          This project tests whether interface scaffolding can keep causal reasoning open longer under closure pressure without automating the conclusion.
-        </p>
-        <div class="flow reveal">
-          <span class="flow-tag on">closure pressure</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">reasoning narrowing</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">premature convergence</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">scaffolded resistance</span>
-        </div>
-        <div class="btn-row reveal">
-          <a class="btn primary" href="https://rca-reasoning-scaffolder.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-          <a class="btn" href="projects.html">← All projects</a>
-        </div>
-      </section>
-
-      <div class="meta-row reveal">
-        <div class="meta-cell">
-          <div class="meta-label">Participants</div>
-          <div class="meta-num">N=20</div>
-          <div class="meta-desc">Think-aloud sessions · GMP investigation familiarity</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Causal breadth</div>
-          <div class="meta-num">80%</div>
-          <div class="meta-desc">Showed broader causal consideration after scaffolded use</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Convergence</div>
-          <div class="meta-num">20/20</div>
-          <div class="meta-desc">Delayed closure observed during scaffolded sessions</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Perceived usefulness</div>
-          <div class="meta-num">4.8/5</div>
-          <div class="meta-desc">Mean post-task usefulness rating</div>
-        </div>
-      </div>
-
-      <section class="sec reveal" id="problem">
-        <div class="sec-eyebrow">01</div>
-        <h2 class="sec-title">Problem</h2>
-        <hr class="sec-divider">
-        <p class="body-text">Root Cause Analysis (RCA) in GMP investigations is intended to explain why a deviation occurred, but closure pressure often narrows reasoning before alternatives are explored.</p>
-        <p class="body-text">This project examines a pattern consistent with Premature Accountability Convergence (PAC): investigation reasoning narrowing toward an individual actor before procedural, contextual, and organizational contributors have been examined. The claim here is not only about cognitive bias, but also about interface and workflow design.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Investigation pressure points</div>
-            <ul class="bullets">
-              <li>Closure pressure favors fast accountability over broad exploration</li>
-              <li>Standard forms underrepresent alternative causal pathways</li>
-              <li>Reasoning is documented late, after convergence has already occurred</li>
-              <li>Interface structure reinforces single-path explanation habits</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Design implication</div>
-            <p class="body-text" style="margin:0;font-size:13px;">If investigation environments structure reasoning, responsibility attribution may partly reflect interaction conditions. The question is not only who is blamed, but how the system made one attribution path easier to follow than others.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="method">
-        <div class="sec-eyebrow">02</div>
-        <h2 class="sec-title">Method</h2>
-        <hr class="sec-divider">
-        <div class="steps">
-          <div class="step">
-            <div class="step-n">01</div>
-            <div>
-              <div class="step-label">Investigation structure analysis</div>
-              <p>Analyzed recurring RCA patterns in GMP deviation workflows, focusing on early blame convergence, missing alternative contributors, and reasoning compression under closure pressure.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">02</div>
-            <div>
-              <div class="step-label">Scaffold design</div>
-              <p>Designed a five-step reasoning flow separating intake, hypothesis generation, PAC analysis, structured reasoning, and pre-closure checks to slow premature convergence.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">03</div>
-            <div>
-              <div class="step-label">PAC detection + AI reasoning expansion</div>
-              <p>Built rule-based PAC detection to flag individual-blame language and surface alternative pathways. Integrated AI as a reasoning expansion layer within Step 3 — not to generate answers, but to reopen consideration when convergence risk appears.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">04</div>
-            <div>
-              <div class="step-label">Comparative think-aloud study + post-task ratings · N=20</div>
-              <p>Compared participants' initial causal interpretations with post-scaffold reasoning, observing whether structured support changed breadth of explanation, confidence, and closure timing.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="prototype">
-        <div class="sec-eyebrow">03</div>
-        <h2 class="sec-title">UI Prototype</h2>
-        <hr class="sec-divider">
-        <p class="body-text">A compliance-safe RCA interface that preserves causal breadth during deviation investigations. The goal is not to automate conclusions — it is to scaffold reasoning before closure.</p>
-        <div class="btn-row" style="margin-bottom:16px">
-          <a class="btn primary" href="https://rca-reasoning-scaffolder.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-        </div>
-        <div class="proto-steps">
-          <div class="pstep">
-            <div class="pstep-n">step 01</div>
-            <h4>Case Intake</h4>
-            <p>Capture deviation context without committing to a causal conclusion.</p>
-          </div>
-          <div class="pstep">
-            <div class="pstep-n">step 02</div>
-            <h4>Hypothesis Expansion</h4>
-            <p>Generate multiple causal candidates across human, procedural, equipment, environmental, and organizational categories.</p>
-          </div>
-          <div class="pstep">
-            <div class="pstep-n">step 03</div>
-            <h4>PAC Analysis</h4>
-            <p>Flag convergence language, surface underexplored contributors, and open alternative pathways before reasoning collapses into a single explanation.</p>
-          </div>
-          <div class="pstep">
-            <div class="pstep-n">step 04</div>
-            <h4>Structured Reasoning</h4>
-            <p>Require explicit comparison across hypotheses rather than single-path causal justification.</p>
-          </div>
-          <div class="pstep">
-            <div class="pstep-n">step 05</div>
-            <h4>Pre-Closure Check</h4>
-            <p>Prompt investigators to review whether alternatives were considered before final attribution.</p>
-          </div>
-        </div>
-        <div class="screenshot-wrap" style="margin-top:16px">
-          <div class="screenshot-label"><span class="screenshot-dot"></span>Reasoning scaffold · demo</div>
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="assets/rc-1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <p class="screenshot-caption">The scaffold slows the move from observed issue to attributed cause by distributing reasoning across explicit stages.</p>
-      </section>
-
-      <section class="sec reveal" id="reasoning" style="margin-top:12px">
-        <div class="sec-eyebrow">04</div>
-        <h2 class="sec-title">Reasoning Expansion</h2>
-        <hr class="sec-divider">
-        <p class="body-text">AI in investigation contexts is often imagined as a way to accelerate decision-making and compress ambiguity. This system takes the opposite premise. The AI layer expands interpretive space when convergence risk appears in Step 3, acting as a resistance mechanism rather than a decision engine.</p>
-        <p class="body-text">That distinction matters because the design goal here is not better answer production. It is better reasoning conditions. Instead of proposing a final cause, the model is constrained to reopen comparison, surface missing contributors, and keep evidentiary questions alive before closure.</p>
-        <p class="body-text note">Integrated into Step 3 (PAC Analysis) of the scaffold — not a separate tool. Activates when individual-blame language is detected and does not produce a final-answer output.</p>
-        <div class="grid2" style="margin-top:16px">
-          <div class="gcell">
-            <div class="gcell-label">What it does</div>
-            <ul class="bullets">
-              <li>Detects early convergence toward individual-blame language</li>
-              <li>Surfaces alternative contributors not yet considered</li>
-              <li>Generates reopening questions and comparison prompts</li>
-              <li>Highlights evidence to examine before closure</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Design principle</div>
-            <p class="body-text" style="margin:0;font-size:13px;">AI is introduced not to suggest causes but to reopen possibility. The model's role is to expand, not compress — preserving human interpretive authority while countering PAC rather than intensifying it.</p>
-          </div>
-        </div>
-        <div class="quote">This design uses AI to resist premature closure, not to accelerate it. The point is to widen reasoning space long enough for alternatives, evidence, and comparison to stay visible.</div>
-      </section>
-
-      <section class="sec reveal" id="study">
-        <div class="sec-eyebrow">05</div>
-        <h2 class="sec-title">Comparative Study</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">Participants first converged on a single cause without support, then revisited the same case using the scaffold. Structured support was associated with broader reasoning and later closure.</p>
-        <p class="body-text note">These results are exploratory and session-based. They indicate design promise, but they do not by themselves establish long-term investigation quality or downstream accountability outcomes.</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Participants</td><td>N=20</td><td>All had GMP investigation experience or close familiarity</td></tr>
-              <tr><td>Ease of use</td><td>5.0/5</td><td>Mean post-task usability rating; the interface was perceived as clear and usable</td></tr>
-              <tr><td>Perceived usefulness</td><td>4.8/5</td><td>Mean post-task usefulness rating; participants generally found the scaffold helpful for keeping alternatives visible longer</td></tr>
-              <tr><td>Reasoning broadening</td><td>80%</td><td>Participants expanded beyond their initial single-cause explanation</td></tr>
-              <tr><td>Changed causal view</td><td>80%</td><td>Structured support led many participants to reconsider the case more broadly</td></tr>
-              <tr><td>Delayed closure</td><td>20/20</td><td>All participants maintained more than one hypothesis during scaffold use</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that investigation reasoning deserves structured support was unfamiliar.</div>
-      </section>
-
-      <section class="sec reveal" id="findings">
-        <div class="sec-eyebrow">06</div>
-        <h2 class="sec-title">What This Revealed</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">Investigation environments do not simply record reasoning — they also help shape it. Under closure pressure, participants often moved quickly toward an accountable actor even when broader contributors remained plausible.</p>
-        <p class="body-text">Participants with the most GMP experience showed little reasoning change, suggesting the scaffold may be most useful when investigation habits are still forming or when users are more open to structured comparison.</p>
-        <div class="finding-row">
-          <div class="finding">
-            <div class="finding-n">80%</div>
-            <div class="finding-d">broadened causal reasoning after scaffolded use</div>
-          </div>
-          <div class="finding">
-            <div class="finding-n">80%</div>
-            <div class="finding-d">reconsidered the case more broadly after scaffolded comparison</div>
-          </div>
-          <div class="finding">
-            <div class="finding-n">20/20</div>
-            <div class="finding-d">showed delayed closure compared to unsupported reasoning</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="paper">
-        <div class="sec-eyebrow">07</div>
-        <h2 class="sec-title">Paper</h2>
-        <hr class="sec-divider">
-        <div class="paper-block">
-          <div class="paper-row">
-            <div class="paper-row-label">Claim</div>
-            <div class="paper-row-content">
-              <p class="paper-claim">Investigation environments can be redesigned to keep reasoning space open longer without undermining compliance expectations. Interface structure may influence how causal reasoning takes shape in regulated investigations.</p>
-            </div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Uses PAC as a conceptual frame to examine how interface structure influences causal reasoning in regulated investigations. Argues that a lightweight scaffold — and an AI layer constrained to expand rather than resolve reasoning — can resist closure pressure without modifying validated systems.</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Status</div>
-            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Links</div>
-            <div class="paper-row-content">
-              <div class="btn-row">
-                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
-                <a class="btn" href="papers.html">→ Papers page</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="page-footer reveal">
-        <span class="footer-note">reasoning axis · project 01</span>
-        <div class="footer-nav">
-          <a href="projects.html" class="footer-btn">← Projects</a>
-          <a href="index.html" class="footer-btn">Home</a>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <script>
+</div>
+<nav class="side-nav">
+<a class="active" href="#overview">Overview</a>
+<a href="#problem">Problem</a>
+<a href="#method">Method</a>
+<a href="#prototype">Prototype</a>
+<a href="#reasoning">Reasoning Expansion</a>
+<a href="#study">Study</a>
+<a href="#findings">Findings</a>
+<a href="#paper">Paper</a>
+</nav>
+</aside>
+<main class="content">
+<section class="sec" id="overview" style="margin-bottom:40px">
+<div class="proj-eyebrow reveal">reasoning axis · project 01</div>
+<h1 class="proj-title reveal">RCA Investigation Scaffolder</h1>
+<div class="proj-chips reveal">
+<span class="chip">reasoning support</span>
+<span class="chip">investigation UX</span>
+<span class="chip">streamlit</span>
+<span class="chip">PAC counter-design</span>
+<span class="chip">deployed</span>
+</div>
+<p class="proj-lead reveal">Initial unsupported RCA reasoning often narrowed quickly under closure pressure. This scaffold was designed to keep multiple hypotheses visible longer so investigations do not settle too early on one explanation.</p>
+<p class="proj-claim reveal">This project tests whether interface scaffolding can keep causal reasoning open longer under closure pressure without automating the conclusion or displacing human judgment.</p>
+<div class="flow reveal">
+<span class="flow-tag on">closure pressure</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">reasoning narrowing</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">premature convergence</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">scaffolded resistance</span>
+</div>
+<div class="btn-row reveal">
+<a class="btn primary" href="https://rca-reasoning-scaffolder.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+<a class="btn" href="projects.html">← All projects</a>
+</div>
+</section>
+<div class="meta-row reveal">
+<div class="meta-cell">
+<div class="meta-label">Participants</div>
+<div class="meta-num">pilot</div>
+<div class="meta-desc">Think-aloud sessions · GMP investigation familiarity</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Causal breadth</div>
+<div class="meta-num">broader</div>
+<div class="meta-desc">Showed broader causal consideration after scaffolded use</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Convergence</div>
+<div class="meta-num">delayed</div>
+<div class="meta-desc">Delayed closure observed during scaffolded sessions</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Perceived usefulness</div>
+<div class="meta-num">positive</div>
+<div class="meta-desc">Participants generally found the scaffold useful</div>
+</div>
+</div>
+<section class="sec reveal" id="problem">
+<div class="sec-eyebrow">01</div>
+<h2 class="sec-title">Problem</h2>
+<hr class="sec-divider"/>
+<p class="body-text">Root Cause Analysis (RCA) in GMP investigations is intended to explain why a deviation occurred, but closure pressure often narrows reasoning before alternatives are explored.</p>
+<p class="body-text">This project examines a pattern consistent with Premature Accountability Convergence (PAC): investigation reasoning narrowing toward an individual actor before procedural, contextual, and organizational contributors have been examined. The point is not only cognitive bias, but also how interface and workflow design shape the reasoning process.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Investigation pressure points</div>
+<ul class="bullets">
+<li>Closure pressure favors fast accountability over broad exploration</li>
+<li>Standard forms underrepresent alternative causal pathways</li>
+<li>Reasoning is documented late, after convergence has already occurred</li>
+<li>Interface structure reinforces single-path explanation habits</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Design implication</div>
+<p class="body-text" style="margin:0;font-size:13px;">If investigation environments structure reasoning, later accountability judgments may partly reflect interaction conditions. The question is not only who is blamed, but how the system made one explanatory path easier to follow than others.</p>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="method">
+<div class="sec-eyebrow">02</div>
+<h2 class="sec-title">Method</h2>
+<hr class="sec-divider"/>
+<div class="steps">
+<div class="step">
+<div class="step-n">01</div>
+<div>
+<div class="step-label">Investigation structure analysis</div>
+<p>Analyzed recurring RCA patterns in GMP deviation workflows, focusing on early blame convergence, missing alternative contributors, and reasoning compression under closure pressure.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">02</div>
+<div>
+<div class="step-label">Scaffold design</div>
+<p>Designed a five-step reasoning flow separating intake, hypothesis generation, PAC analysis, structured reasoning, and pre-closure checks to slow premature convergence.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">03</div>
+<div>
+<div class="step-label">PAC detection + AI reasoning expansion</div>
+<p>Built rule-based PAC detection to flag individual-blame language and surface alternative pathways. Integrated AI as a reasoning expansion layer within Step 3 — not to generate answers, but to reopen consideration when convergence risk appears.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">04</div>
+<div>
+<div class="step-label">Comparative think-aloud study + post-task ratings · pilot sample</div>
+<p>Compared participants' initial causal interpretations with post-scaffold reasoning, observing whether structured support changed breadth of explanation, confidence, and closure timing.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="prototype">
+<div class="sec-eyebrow">03</div>
+<h2 class="sec-title">UI Prototype</h2>
+<hr class="sec-divider"/>
+<p class="body-text">An external RCA interface that preserves causal breadth during deviation investigations. The goal is not to automate conclusions — it is to scaffold reasoning before closure.</p>
+<div class="btn-row" style="margin-bottom:16px">
+<a class="btn primary" href="https://rca-reasoning-scaffolder.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+</div>
+<div class="proto-steps">
+<div class="pstep">
+<div class="pstep-n">step 01</div>
+<h4>Case Intake</h4>
+<p>Capture deviation context without committing to a causal conclusion.</p>
+</div>
+<div class="pstep">
+<div class="pstep-n">step 02</div>
+<h4>Hypothesis Expansion</h4>
+<p>Generate multiple causal candidates across human, procedural, equipment, environmental, and organizational categories.</p>
+</div>
+<div class="pstep">
+<div class="pstep-n">step 03</div>
+<h4>PAC Analysis</h4>
+<p>Flag convergence language, surface underexplored contributors, and open alternative pathways before reasoning collapses into a single explanation.</p>
+</div>
+<div class="pstep">
+<div class="pstep-n">step 04</div>
+<h4>Structured Reasoning</h4>
+<p>Require explicit comparison across hypotheses rather than single-path causal justification.</p>
+</div>
+<div class="pstep">
+<div class="pstep-n">step 05</div>
+<h4>Pre-Closure Check</h4>
+<p>Prompt investigators to review whether alternatives were considered before final attribution.</p>
+</div>
+</div>
+<div class="screenshot-wrap" style="margin-top:16px">
+<div class="screenshot-label"><span class="screenshot-dot"></span>Reasoning scaffold · demo</div>
+<video autoplay="" loop="" muted="" playsinline="" preload="metadata">
+<source src="assets/rc-1.mp4" type="video/mp4"/>
+</video>
+</div>
+<p class="screenshot-caption">The scaffold slows the move from observed issue to attributed cause by distributing reasoning across explicit stages.</p>
+</section>
+<section class="sec reveal" id="reasoning" style="margin-top:12px">
+<div class="sec-eyebrow">04</div>
+<h2 class="sec-title">Reasoning Expansion</h2>
+<hr class="sec-divider"/>
+<p class="body-text">AI in investigation contexts is often imagined as a way to accelerate decision-making and compress ambiguity. This system takes the opposite premise. The AI layer expands interpretive space when convergence risk appears in Step 3, acting as a counterweight rather than a decision engine.</p>
+<p class="body-text">That distinction matters because the design goal here is not better answer production. It is better reasoning conditions. Instead of proposing a final cause, the model is constrained to reopen comparison, surface missing contributors, and keep evidentiary questions alive before closure.</p>
+<p class="body-text note">Integrated into Step 3 (PAC Analysis) of the scaffold — not a separate tool. Activates when individual-blame language is detected and does not produce a final-answer output.</p>
+<div class="grid2" style="margin-top:16px">
+<div class="gcell">
+<div class="gcell-label">What it does</div>
+<ul class="bullets">
+<li>Detects early convergence toward individual-blame language</li>
+<li>Surfaces alternative contributors not yet considered</li>
+<li>Generates reopening questions and comparison prompts</li>
+<li>Highlights evidence to examine before closure</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Design principle</div>
+<p class="body-text" style="margin:0;font-size:13px;">AI is introduced not to suggest causes but to reopen possibility. The model's role is to expand, not compress — preserving human interpretive authority while countering PAC rather than intensifying it.</p>
+</div>
+</div>
+<div class="quote">This design uses AI to resist premature closure, not to accelerate it. The point is to widen reasoning space long enough for alternatives, evidence, and comparison to stay visible.</div>
+</section>
+<section class="sec reveal" id="study">
+<div class="sec-eyebrow">05</div>
+<h2 class="sec-title">Comparative Study</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Participants first converged on a single cause without support, then revisited the same case using the scaffold. Structured support was associated with broader reasoning and later closure.</p>
+<p class="body-text note">These results are exploratory and session-based. They indicate design promise, but they do not by themselves establish long-term investigation quality or downstream accountability outcomes.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
+</thead>
+<tbody>
+<tr><td>Participants</td><td>pilot sample</td><td>All had GMP investigation experience or close familiarity</td></tr>
+<tr><td>Ease of use</td><td>high</td><td>Post-task usability ratings indicated that the interface was generally perceived as clear and usable</td></tr>
+<tr><td>Perceived usefulness</td><td>positive</td><td>Participants generally found the scaffold helpful for keeping alternatives visible longer</td></tr>
+<tr><td>Reasoning broadening</td><td>most participants</td><td>Participants expanded beyond their initial single-cause explanation</td></tr>
+<tr><td>Changed causal view</td><td>many participants</td><td>Structured support led many participants to reconsider the case more broadly</td></tr>
+<tr><td>Delayed closure</td><td>observed across sessions</td><td>Participants maintained more than one hypothesis during scaffold use</td></tr>
+</tbody>
+</table>
+</div>
+<div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that investigation reasoning deserves structured support was unfamiliar.</div>
+</section>
+<section class="sec reveal" id="findings">
+<div class="sec-eyebrow">06</div>
+<h2 class="sec-title">What This Revealed</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Investigation environments do not simply record reasoning — they also help shape it. Under closure pressure, participants often moved quickly toward one accountable explanation even when broader contributors remained plausible.</p>
+<p class="body-text">Participants with the most GMP experience showed little reasoning change, suggesting the scaffold may be most useful when investigation habits are still forming or when users are more open to structured comparison.</p>
+<div class="finding-row">
+<div class="finding">
+<div class="finding-n">most</div>
+<div class="finding-d">broadened causal reasoning after scaffolded use</div>
+</div>
+<div class="finding">
+<div class="finding-n">many</div>
+<div class="finding-d">reconsidered the case more broadly after scaffolded comparison</div>
+</div>
+<div class="finding">
+<div class="finding-n">later</div>
+<div class="finding-d">closure was delayed compared to unsupported reasoning</div>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="paper">
+<div class="sec-eyebrow">07</div>
+<h2 class="sec-title">Paper</h2>
+<hr class="sec-divider"/>
+<div class="paper-block">
+<div class="paper-row">
+<div class="paper-row-label">Claim</div>
+<div class="paper-row-content">
+<p class="paper-claim">Investigation environments can be redesigned to keep reasoning space open longer without undermining compliance expectations. Interface structure influences how causal reasoning — and later accountability judgments — take shape in regulated investigations.</p>
+</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">What it does</div>
+<div class="paper-row-content">Uses PAC as a conceptual frame to examine how interface structure influences causal reasoning in regulated investigations. Argues that a lightweight scaffold — and an AI layer constrained to expand rather than resolve reasoning — can resist closure pressure without modifying validated systems.</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Status</div>
+<div class="paper-row-content">Preprint · 2026 · SSRN</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Links</div>
+<div class="paper-row-content">
+<div class="btn-row">
+<a class="btn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="btn" href="papers.html">→ Papers page</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">reasoning axis · project 01</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="index.html">Home</a>
+</div>
+</div>
+</main>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -591,6 +571,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

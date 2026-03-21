@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cross-Reference Burden Mapper — Sora Kim</title>
-  <meta name="description" content="Cross-Reference Burden Mapper — a traceability visibility prototype for interdependent regulated documents." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cross-Reference System — Sora Kim</title>
+<meta content="Cross-Reference System — a visibility prototype exposing hidden traceability burden in interdependent regulated documents." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -198,340 +199,318 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="breadcrumb">
-        <a href="index.html">home</a> /
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+</nav>
+<div class="layout">
+<aside class="sidebar">
+<div class="breadcrumb">
+<a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
         <span style="color:var(--text-2)">cross-reference burden</span>
-      </div>
-      <nav class="side-nav">
-        <a href="#overview" class="active">Overview</a>
-        <a href="#problem">Problem</a>
-        <a href="#method">Method</a>
-        <a href="#analysis">Data Analysis</a>
-        <a href="#prototype">Prototype</a>
-        <a href="#study">Study</a>
-        <a href="#findings">Findings</a>
-        <a href="#paper">Paper</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-
-      <section class="sec" id="overview" style="margin-bottom:40px">
-        <div class="proj-eyebrow reveal">navigation axis · project 02</div>
-        <h1 class="proj-title reveal">Cross-Reference Burden Mapper</h1>
-        <div class="proj-chips reveal">
-          <span class="chip">traceability burden</span>
-          <span class="chip">document linkage</span>
-          <span class="chip">networkx</span>
-          <span class="chip">python</span>
-          <span class="chip">streamlit</span>
-          <span class="chip">deployed</span>
-        </div>
-        <p class="proj-lead reveal">
-          In interdependent document systems, traceability rarely fails because users are careless. It fails because the linkage architecture is partially invisible — and people end up acting as the missing infrastructure between documents.
-        </p>
-        <p class="proj-claim reveal">
-          This project treats traceability as an HCI problem: when linkage architecture is partially invisible, users become the missing connective tissue between documents.
-        </p>
-        <div class="flow reveal">
-          <span class="flow-tag on">hidden linkage</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag on">human bridging</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">traceability burden</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-tag">visibility support</span>
-        </div>
-        <div class="btn-row reveal">
-          <a class="btn primary" href="https://cross-reference-burden.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
-          <a class="btn" href="projects.html">← All projects</a>
-        </div>
-      </section>
-
-      <div class="meta-row reveal">
-        <div class="meta-cell">
-          <div class="meta-label">Participants</div>
-          <div class="meta-num">N=20</div>
-          <div class="meta-desc">QA/QC-experienced workplace evaluation</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Task time</div>
-          <div class="meta-num">30–60%</div>
-          <div class="meta-desc">Observed reduction in traceability task completion time during task-based evaluation</div>
-        </div>
-        <div class="meta-cell">
-          <div class="meta-label">Adoption intent</div>
-          <div class="meta-num">20/20</div>
-          <div class="meta-desc">All participants indicated willingness to use the tool in similar work contexts</div>
-        </div>
-      </div>
-
-      <section class="sec reveal" id="problem">
-        <div class="sec-eyebrow">01</div>
-        <h2 class="sec-title">Problem</h2>
-        <hr class="sec-divider">
-        <p class="body-text">In regulated environments, traceability often depends on navigating documents that reference one another across SOPs, CAPAs, work instructions, validation files, and change records. When these links are outdated, missing, or difficult to follow, users do not simply lose time — they lose confidence in whether the path they are reconstructing is complete.</p>
-        <p class="body-text">These are not just individual user mistakes. They are often symptoms of partially visible documentation networks, where the burden of stitching paths together falls back onto human memory and manual search.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">Observed friction points</div>
-            <ul class="bullets">
-              <li>References pointed to outdated or superseded documents</li>
-              <li>Downstream links were missing from otherwise valid pathways</li>
-              <li>Lifecycle state mismatches obscured whether a path was current</li>
-              <li>Users relied on memory to bridge missing traceability edges</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">HCI reframing</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Traceability burden is not just a compliance upkeep issue. It is a navigation burden created when documentation architecture withholds structural visibility from the people expected to work through it.</p>
-          </div>
-        </div>
-        <div class="quote">When document systems fail to show their own paths, people become the missing infrastructure between files.</div>
-      </section>
-
-      <section class="sec reveal" id="method">
-        <div class="sec-eyebrow">02</div>
-        <h2 class="sec-title">Method</h2>
-        <hr class="sec-divider">
-        <div class="steps">
-          <div class="step">
-            <div class="step-n">01</div>
-            <div>
-              <div class="step-label">Synthetic corpus construction</div>
-              <p>Built a synthetic document corpus representing SOPs, CAPAs, work instructions, validation artifacts, lifecycle states, and explicit cross-references across multiple document types.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">02</div>
-            <div>
-              <div class="step-label">Metadata mapping</div>
-              <p>Structured document IDs, version status, upstream/downstream references, and document categories into a navigable traceability dataset.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">03</div>
-            <div>
-              <div class="step-label">Computational linkage analysis</div>
-              <p>Used Python and networkx to model the corpus as a directed document graph, surfacing missing links, outdated references, and lifecycle mismatches.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-n">04</div>
-            <div>
-              <div class="step-label">Prototype + workplace evaluation</div>
-              <p>Built a visibility prototype and evaluated task-based traceability work with 20 participants to assess path completion, discovery, timing, and perceived usefulness.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="analysis">
-        <div class="sec-eyebrow">03</div>
-        <h2 class="sec-title">Data Analysis</h2>
-        <hr class="sec-divider">
-        <p class="body-text">The synthetic network analysis was used to make linkage problems visible before interface design. Rather than treating missing references as isolated defects, the graph model made it possible to inspect how traceability risks propagate through document chains.</p>
-        <div class="data-row">
-          <div class="data-cell">
-            <div class="data-num">31</div>
-            <div class="data-desc">missing CAPA links identified in the synthetic network</div>
-          </div>
-          <div class="data-cell">
-            <div class="data-num">103</div>
-            <div class="data-desc">broken downstream links surfaced across document pathways</div>
-          </div>
-          <div class="data-cell">
-            <div class="data-num">21</div>
-            <div class="data-desc">traceability risks flagged through lifecycle-state mismatch detection</div>
-          </div>
-        </div>
-        <p class="body-text note">These counts come from synthetic network analysis used for prototype construction and pattern inspection — not from a live production archive.</p>
-      </section>
-
-      <section class="sec reveal" id="prototype">
-        <div class="sec-eyebrow">04</div>
-        <h2 class="sec-title">UI Prototype</h2>
-        <hr class="sec-divider">
-        <p class="body-text">The prototype acts as an external visibility layer over cross-referenced document systems. It does not modify validated files. Instead, it makes document relationships, missing paths, and lifecycle inconsistencies more legible during traceability work.</p>
-
-        <div class="carousel-wrap" id="carousel">
-          <div class="carousel-header">
-            <div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 3 views</div>
-            <div class="carousel-nav">
-              <button class="carousel-btn" id="prevBtn">←</button>
-              <span class="carousel-counter" id="counter">1 / 3</span>
-              <button class="carousel-btn" id="nextBtn">→</button>
-            </div>
-          </div>
-          <div class="carousel-track">
-            <div class="carousel-slide active">
-              <img src="assets/cross-ref-1.png" alt="Cross-reference network view" loading="lazy">
-              <div class="carousel-caption">view 01 · network overview — directed linkage map across SOPs, CAPAs, and connected records</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/cross-ref-2.png" alt="Trace path inspection view" loading="lazy">
-              <div class="carousel-caption">view 02 · path inspection — upstream/downstream traversal with missing-link visibility</div>
-            </div>
-            <div class="carousel-slide">
-              <img src="assets/cross-ref-3.png" alt="Risk panel view" loading="lazy">
-              <div class="carousel-caption">view 03 · risk panel — outdated references, lifecycle mismatches, and incomplete traceability chains</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid2" style="margin-top:16px">
-          <div class="gcell">
-            <div class="gcell-label">What it surfaces</div>
-            <ul class="bullets">
-              <li>Broken or incomplete reference chains</li>
-              <li>Outdated references within otherwise active pathways</li>
-              <li>Lifecycle mismatches that complicate current-state judgment</li>
-              <li>Trace paths that depend on undocumented human inference</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Design principle</div>
-            <p class="body-text" style="margin:0;font-size:13px;">The tool does not automate compliance decisions. It externalizes document relationships so users can inspect and reconstruct traceability paths with less reliance on memory alone.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="study">
-        <div class="sec-eyebrow">05</div>
-        <h2 class="sec-title">Workplace Evaluation</h2>
-        <hr class="sec-divider">
-        <p class="body-text">Participants completed three traceability tasks using the prototype: locating the next relevant downstream document, identifying whether a path was complete, and detecting where a reference chain had broken or become outdated.</p>
-        <p class="body-text strong">In task-based evaluation, the system was associated with faster path completion, higher discovery accuracy, and more complete path formation.</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Task completion time</td><td>30–60% reduction</td><td>Observed reduction in traceability task time during workplace evaluation</td></tr>
-              <tr><td>Path completion</td><td>Higher with prototype</td><td>Participants more often completed full reference chains without stopping at the first visible node</td></tr>
-              <tr><td>Discovery accuracy</td><td>Improved</td><td>Broken links and outdated references were identified more reliably</td></tr>
-              <tr><td>Ease of use</td><td>20/20 positive</td><td>All participants rated the tool as easy to use in task-based evaluation</td></tr>
-              <tr><td>Adoption intent</td><td>20/20</td><td>All participants indicated willingness to use it in similar workplace traceability tasks</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="body-text note">Evaluation combined workplace-style tasks with prototype inspection. Reported timing ranges should be read as task-based observed ranges rather than controlled benchmark performance.</p>
-      </section>
-
-      <section class="sec reveal" id="findings">
-        <div class="sec-eyebrow">06</div>
-        <h2 class="sec-title">What This Revealed</h2>
-        <hr class="sec-divider">
-        <p class="body-text strong">Traceability work depends not only on reference accuracy, but on whether document systems make their own structure legible enough to follow.</p>
-        <p class="body-text">The prototype suggests that when document relationships become visible, users spend less time reconstructing paths from memory and more time evaluating whether those paths are valid, current, and complete.</p>
-        <div class="grid2">
-          <div class="gcell">
-            <div class="gcell-label">What became visible</div>
-            <ul class="bullets">
-              <li>Reference chains that looked complete but were structurally broken</li>
-              <li>Outdated links embedded inside active workflows</li>
-              <li>Points where human inference was doing hidden infrastructure work</li>
-              <li>How lifecycle mismatches complicate “current document” judgment</li>
-            </ul>
-          </div>
-          <div class="gcell">
-            <div class="gcell-label">Why it matters</div>
-            <ul class="bullets">
-              <li>Traceability burden can be reduced without modifying validated files</li>
-              <li>Path visibility supports cognition rather than replacing judgment</li>
-              <li>Documentation architecture influences whether users can reconstruct compliance pathways confidently</li>
-              <li>Linkage visibility turns hidden burden into discussable design work</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec reveal" id="paper">
-        <div class="sec-eyebrow">07</div>
-        <h2 class="sec-title">Paper</h2>
-        <hr class="sec-divider">
-        <div class="paper-block">
-          <div class="paper-row">
-            <div class="paper-row-label">Claim</div>
-            <div class="paper-row-content">
-              <p class="paper-claim">Traceability is not only a technical requirement. It is also an interaction and cognition problem shaped by documentation architecture. Making linkage structure more visible can reduce traceability burden without replacing human judgment.</p>
-            </div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Uses synthetic graph analysis and workplace prototype evaluation to argue that cross-reference burden is structurally produced, and that a lightweight visibility layer can help users reconstruct document pathways more effectively.</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Status</div>
-            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
-          </div>
-          <div class="paper-row">
-            <div class="paper-row-label">Links</div>
-            <div class="paper-row-content">
-              <div class="btn-row">
-                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
-                <a class="btn" href="papers.html">→ Papers page</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="page-footer reveal">
-        <span class="footer-note">navigation axis · project 02</span>
-        <div class="footer-nav">
-          <a href="projects.html" class="footer-btn">← Projects</a>
-          <a href="index.html" class="footer-btn">Home</a>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <script>
+</div>
+<nav class="side-nav">
+<a class="active" href="#overview">Overview</a>
+<a href="#problem">Problem</a>
+<a href="#method">Method</a>
+<a href="#analysis">Data Analysis</a>
+<a href="#prototype">Prototype</a>
+<a href="#study">Study</a>
+<a href="#findings">Findings</a>
+<a href="#paper">Paper</a>
+</nav>
+</aside>
+<main class="content">
+<section class="sec" id="overview" style="margin-bottom:40px">
+<div class="proj-eyebrow reveal">navigation axis · project 02</div>
+<h1 class="proj-title reveal">Cross-Reference System</h1>
+<div class="proj-chips reveal">
+<span class="chip">traceability burden</span>
+<span class="chip">document linkage</span>
+<span class="chip">networkx</span>
+<span class="chip">python</span>
+<span class="chip">streamlit</span>
+<span class="chip">deployed</span>
+</div>
+<p class="proj-lead reveal">In interdependent document systems, traceability rarely fails because users are careless. It fails because the linkage architecture is only partly visible — and practitioners end up bridging gaps between documents by hand.</p>
+<p class="proj-claim reveal">This project treats traceability as an HCI problem: when linkage architecture is only partly visible, the work of reconstructing the path gets pushed back onto the worker.</p>
+<div class="flow reveal">
+<span class="flow-tag on">hidden linkage</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag on">human bridging</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">traceability burden</span>
+<span class="flow-arrow">→</span>
+<span class="flow-tag">visibility support</span>
+</div>
+<div class="btn-row reveal">
+<a class="btn primary" href="https://cross-reference-burden.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
+<a class="btn" href="projects.html">← All projects</a>
+</div>
+</section>
+<div class="meta-row reveal">
+<div class="meta-cell">
+<div class="meta-label">Participants</div>
+<div class="meta-num">pilot</div>
+<div class="meta-desc">QA/QC-experienced workplace evaluation</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Task time</div>
+<div class="meta-num">30–60%</div>
+<div class="meta-desc">Observed reduction in traceability task time during task-based evaluation</div>
+</div>
+<div class="meta-cell">
+<div class="meta-label">Adoption intent</div>
+<div class="meta-num">strong</div>
+<div class="meta-desc">Participants indicated willingness to use the tool in similar work contexts</div>
+</div>
+</div>
+<section class="sec reveal" id="problem">
+<div class="sec-eyebrow">01</div>
+<h2 class="sec-title">Problem</h2>
+<hr class="sec-divider"/>
+<p class="body-text">In regulated environments, traceability often depends on navigating documents that reference one another across SOPs, CAPAs, work instructions, validation files, and change records. When these links are outdated, missing, or difficult to follow, users do not simply lose time — they lose confidence in whether the path they are reconstructing is complete.</p>
+<p class="body-text">These are not just individual user mistakes. They are often symptoms of partially visible documentation networks, where the burden of stitching paths together falls back onto human memory and manual search.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">Observed friction points</div>
+<ul class="bullets">
+<li>References pointed to outdated or superseded documents</li>
+<li>Downstream links were missing from otherwise valid pathways</li>
+<li>Lifecycle state mismatches obscured whether a path was current</li>
+<li>Users relied on memory to bridge missing traceability edges</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">HCI reframing</div>
+<p class="body-text" style="margin:0;font-size:13px;">Traceability burden is not just a maintenance issue. It is a navigation burden created when documentation architecture does not make relationships visible to the people expected to work through it.</p>
+</div>
+</div>
+<div class="quote">When document systems fail to show their own paths, people become the missing infrastructure between files.</div>
+</section>
+<section class="sec reveal" id="method">
+<div class="sec-eyebrow">02</div>
+<h2 class="sec-title">Method</h2>
+<hr class="sec-divider"/>
+<div class="steps">
+<div class="step">
+<div class="step-n">01</div>
+<div>
+<div class="step-label">Synthetic corpus construction</div>
+<p>Built a synthetic document corpus representing SOPs, CAPAs, work instructions, validation artifacts, lifecycle states, and explicit cross-references across multiple document types.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">02</div>
+<div>
+<div class="step-label">Metadata mapping</div>
+<p>Structured document IDs, version status, upstream/downstream references, and document categories into a navigable traceability dataset.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">03</div>
+<div>
+<div class="step-label">Computational linkage analysis</div>
+<p>Used Python and networkx to model the corpus as a directed document graph, surfacing missing links, outdated references, and lifecycle mismatches.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-n">04</div>
+<div>
+<div class="step-label">Prototype + workplace evaluation</div>
+<p>Built a visibility prototype and evaluated task-based traceability work with 20 participants to assess path completion, discovery, timing, and perceived usefulness.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="analysis">
+<div class="sec-eyebrow">03</div>
+<h2 class="sec-title">Data Analysis</h2>
+<hr class="sec-divider"/>
+<p class="body-text">The synthetic network analysis was used to make linkage problems visible before interface design. Rather than treating missing references as isolated defects, the graph model made it possible to inspect how traceability risks propagate through document chains.</p>
+<div class="data-row">
+<div class="data-cell">
+<div class="data-num">31</div>
+<div class="data-desc">missing CAPA links identified in the synthetic network</div>
+</div>
+<div class="data-cell">
+<div class="data-num">103</div>
+<div class="data-desc">broken downstream links surfaced across document pathways</div>
+</div>
+<div class="data-cell">
+<div class="data-num">21</div>
+<div class="data-desc">traceability risks flagged through lifecycle-state mismatch detection</div>
+</div>
+</div>
+<p class="body-text note">These counts come from synthetic network analysis used for prototype construction and pattern inspection — not from a live production archive.</p>
+</section>
+<section class="sec reveal" id="prototype">
+<div class="sec-eyebrow">04</div>
+<h2 class="sec-title">UI Prototype</h2>
+<hr class="sec-divider"/>
+<p class="body-text">The prototype acts as an external visibility layer over cross-referenced document systems. It does not modify validated files. Instead, it makes document relationships, missing paths, and lifecycle inconsistencies more legible during traceability work.</p>
+<div class="carousel-wrap" id="carousel">
+<div class="carousel-header">
+<div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 3 views</div>
+<div class="carousel-nav">
+<button class="carousel-btn" id="prevBtn">←</button>
+<span class="carousel-counter" id="counter">1 / 3</span>
+<button class="carousel-btn" id="nextBtn">→</button>
+</div>
+</div>
+<div class="carousel-track">
+<div class="carousel-slide active">
+<img alt="Cross-reference network view" loading="lazy" src="assets/cross-ref-1.png"/>
+<div class="carousel-caption">view 01 · network overview — directed linkage map across SOPs, CAPAs, and connected records</div>
+</div>
+<div class="carousel-slide">
+<img alt="Trace path inspection view" loading="lazy" src="assets/cross-ref-2.png"/>
+<div class="carousel-caption">view 02 · path inspection — upstream/downstream traversal with missing-link visibility</div>
+</div>
+<div class="carousel-slide">
+<img alt="Risk panel view" loading="lazy" src="assets/cross-ref-3.png"/>
+<div class="carousel-caption">view 03 · risk panel — outdated references, lifecycle mismatches, and incomplete traceability chains</div>
+</div>
+</div>
+</div>
+<div class="grid2" style="margin-top:16px">
+<div class="gcell">
+<div class="gcell-label">What it surfaces</div>
+<ul class="bullets">
+<li>Broken or incomplete reference chains</li>
+<li>Outdated references within otherwise active pathways</li>
+<li>Lifecycle mismatches that complicate current-state judgment</li>
+<li>Trace paths that depend on undocumented human inference</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Design principle</div>
+<p class="body-text" style="margin:0;font-size:13px;">The tool does not automate compliance decisions. It externalizes document relationships so users can inspect and reconstruct traceability paths with less reliance on memory alone.</p>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="study">
+<div class="sec-eyebrow">05</div>
+<h2 class="sec-title">Workplace Evaluation</h2>
+<hr class="sec-divider"/>
+<p class="body-text">Participants completed three traceability tasks using the prototype: locating the next relevant downstream document, identifying whether a path was complete, and detecting where a reference chain had broken or become outdated.</p>
+<p class="body-text strong">In task-based evaluation, the system was associated with faster path completion, better document discovery, and more complete path reconstruction.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
+</thead>
+<tbody>
+<tr><td>Task completion time</td><td>30–60% reduction</td><td>Observed reduction in traceability task time during workplace evaluation</td></tr>
+<tr><td>Path completion</td><td>Higher with prototype</td><td>Participants more often completed full reference chains without stopping at the first visible node</td></tr>
+<tr><td>Discovery accuracy</td><td>Improved</td><td>Broken links and outdated references were identified more reliably</td></tr>
+<tr><td>Ease of use</td><td>consistently positive</td><td>Participants generally rated the tool as easy to use in task-based evaluation</td></tr>
+<tr><td>Adoption intent</td><td>strong reuse interest</td><td>Participants indicated willingness to use it in similar workplace traceability tasks</td></tr>
+</tbody>
+</table>
+</div>
+<p class="body-text note">Evaluation combined workplace-style tasks with prototype inspection. Reported timing ranges should be read as task-based observed ranges rather than controlled benchmark performance.</p>
+</section>
+<section class="sec reveal" id="findings">
+<div class="sec-eyebrow">06</div>
+<h2 class="sec-title">What This Revealed</h2>
+<hr class="sec-divider"/>
+<p class="body-text strong">Traceability work depends not only on reference accuracy, but on whether document systems make their own structure visible enough to follow.</p>
+<p class="body-text">The prototype suggests that when document relationships become visible, users spend less time reconstructing paths from memory and more time evaluating whether those paths are valid, current, and complete.</p>
+<div class="grid2">
+<div class="gcell">
+<div class="gcell-label">What became visible</div>
+<ul class="bullets">
+<li>Reference chains that looked complete but were structurally broken</li>
+<li>Outdated links embedded inside active workflows</li>
+<li>Points where human inference was doing hidden infrastructure work</li>
+<li>How lifecycle mismatches complicate “current document” judgment</li>
+</ul>
+</div>
+<div class="gcell">
+<div class="gcell-label">Why it matters</div>
+<ul class="bullets">
+<li>Traceability burden can be reduced without modifying validated files</li>
+<li>Path visibility supports cognition rather than replacing judgment</li>
+<li>Documentation architecture influences whether users can reconstruct compliance pathways confidently</li>
+<li>Linkage visibility turns hidden burden into discussable design work</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="sec reveal" id="paper">
+<div class="sec-eyebrow">07</div>
+<h2 class="sec-title">Paper</h2>
+<hr class="sec-divider"/>
+<div class="paper-block">
+<div class="paper-row">
+<div class="paper-row-label">Claim</div>
+<div class="paper-row-content">
+<p class="paper-claim">Traceability is not only a technical requirement. It is also an interaction and cognition problem shaped by documentation architecture. Making linkage structure more visible can reduce hidden connective labor without replacing human judgment.</p>
+</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">What it does</div>
+<div class="paper-row-content">Uses synthetic graph analysis and workplace prototype evaluation to argue that cross-reference burden is structurally produced, and that a lightweight visibility layer can help users reconstruct document pathways more effectively.</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Status</div>
+<div class="paper-row-content">Preprint · 2026 · SSRN</div>
+</div>
+<div class="paper-row">
+<div class="paper-row-label">Links</div>
+<div class="paper-row-content">
+<div class="btn-row">
+<a class="btn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<a class="btn" href="papers.html">→ Papers page</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="page-footer reveal">
+<span class="footer-note">navigation axis · project 02</span>
+<div class="footer-nav">
+<a class="footer-btn" href="projects.html">← Projects</a>
+<a class="footer-btn" href="index.html">Home</a>
+</div>
+</div>
+</main>
+</div>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -617,6 +596,5 @@
       }
     })();
   </script>
-
 </body>
 </html>

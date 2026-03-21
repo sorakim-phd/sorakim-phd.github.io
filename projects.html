@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Sora Kim</title>
-  <meta name="description" content="Six empirical projects on how GMP systems shape reasoning and navigation under constraint." />
-  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects — Sora Kim</title>
+<meta content="Six empirical HCI projects by Sora Kim on navigation, reasoning, and worker support in regulated systems." name="description"/>
+<link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
+<link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
       --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
@@ -109,230 +110,213 @@
   </style>
 </head>
 <body>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
-        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
-        <span class="brand-name">Sora Kim</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="papers.html">Papers</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-        </button>
-        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="papers.html">Papers</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About</a>
-    <div class="mobile-menu-cv"><a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV.pdf ↗</a></div>
-  </nav>
-
-  <main>
-
-    <section class="page-header">
-      <div class="wrap">
-        <div class="page-eyebrow reveal">Research Projects</div>
-        <h1 class="page-h1 reveal">Six empirical projects on how<br>GMP systems shape reasoning and navigation.</h1>
-        <p class="page-sub reveal">All interventions remain compliance-safe and non-invasive.</p>
-        <div class="hero-stats reveal">
-          <div class="stat">
-            <div class="stat-label">Projects</div>
-            <div class="stat-num">6</div>
-            <div class="stat-desc">Across two research axes</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Typical study size</div>
-            <div class="stat-num">20</div>
-            <div class="stat-desc">Across current pilot and usability evaluations</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Adoption signal</div>
-            <div class="stat-num">6/6</div>
-            <div class="stat-desc">Observed across all six project evaluations</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Preprints on SSRN</div>
-            <div class="stat-num">9</div>
-            <div class="stat-desc">5 HCI · 4 STS</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="axis-sec">
-      <div class="wrap">
-        <div class="axis-head reveal">
-          <div class="axis-tag">axis 01 · reasoning</div>
-          <div class="axis-title">How GMP systems shape causal reasoning</div>
-        </div>
-        <div class="proj-grid reveal">
-
-          <a href="project-rca-reasoning-scaffolder.html" class="proj-card">
-            <div class="proj-top">
-              <span class="proj-num">reasoning · 01</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip chip-preprint">preprint</span>
-                <span class="chip">Deployed</span>
-              </div>
-            </div>
-            <div class="proj-h">RCA Investigation Scaffolder</div>
-            <p class="proj-insight">Premature causal convergence in GMP investigations is structural — produced by closure pressure, not individual error.</p>
-            <p class="proj-intervention">A scaffold that keeps causal hypotheses open, countering premature convergence in deviation investigations.</p>
-            <div class="proj-result">80% increase in causal breadth · 20/20 no premature convergence · Helpfulness 5.0/5</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">reasoning design · PAC counter-design · streamlit · python</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="project-premature-causal-convergence.html" class="proj-card">
-            <div class="proj-top">
-              <span class="proj-num">reasoning · 02</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip">pilot study</span>
-              </div>
-            </div>
-            <div class="proj-h">Premature Causal Convergence in RCA</div>
-            <p class="proj-insight">Closure is not a decision — it is the system's default under pressure to explain early.</p>
-            <p class="proj-intervention">A time-based study that reveals the structural onset of single-cause reasoning.</p>
-            <div class="proj-result">Single-cause onset (20/20) · Revision within 10 min (20/20) · Structural convergence confirmed</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">closure pressure · time-based observation · pilot</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="axis-sec" style="border-bottom:none">
-      <div class="wrap">
-        <div class="axis-head reveal">
-          <div class="axis-tag">axis 02 · navigation</div>
-          <div class="axis-title">How GMP systems shape document navigation</div>
-        </div>
-        <div class="proj-grid reveal">
-
-          <a href="project-sop-accessibility.html" class="proj-card" style="border-color:rgba(26,58,107,0.28);">
-            <div class="proj-top">
-              <span class="proj-num">navigation · 01</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip chip-preprint">preprint</span>
-                <span class="chip">Deployed</span>
-              </div>
-            </div>
-            <div class="proj-h">SOP Retrieval System</div>
-            <p class="proj-insight">Document inaccessibility in GMP environments constrains interpretive work before it begins — turning retrieval failure into downstream judgment failure.</p>
-            <p class="proj-intervention">A compliance-safe retrieval layer that makes scanned SOP archives searchable without altering validated systems.</p>
-            <div class="proj-result">Retrieval time: 6–7 min → 1–2 min · 20/20 adoption intent · Usability 4.8/5</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">document UX · retrieval · streamlit · python</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="project-cross-reference.html" class="proj-card" style="border-color:rgba(26,58,107,0.20);">
-            <div class="proj-top">
-              <span class="proj-num">navigation · 02</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip chip-preprint">preprint</span>
-                <span class="chip">Deployed</span>
-              </div>
-            </div>
-            <div class="proj-h">Cross-Reference System</div>
-            <p class="proj-insight">GMP document networks are structurally fragmented — redistributing traceability work onto practitioners while leaving that burden largely invisible.</p>
-            <p class="proj-intervention">A metadata-driven cross-reference system that exposes document linkage across deviation, CAPA, and change control records.</p>
-            <div class="proj-result">Task time: 30–60% reduction · Document discovery: ≈2× · Path completion: 30–50% → 70–90%</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="project-cognitive-navigation-explorer.html" class="proj-card">
-            <div class="proj-top">
-              <span class="proj-num">navigation · 03</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip chip-preprint">preprint</span>
-                <span class="chip">Deployed</span>
-              </div>
-            </div>
-            <div class="proj-h">Cognitive Navigation Explorer</div>
-            <p class="proj-insight">Loopbacks are not user error — they are the system's failure to resolve a judgment demand.</p>
-            <p class="proj-intervention">A system that captures navigation paths, loopbacks, and cross-reference jumps — turning navigation behavior into evidence about where document structure fails judgment.</p>
-            <div class="proj-result">Loopback behavior (20/20) · SOP structural friction confirmed · Usability 5.0/5</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="project-feedback-dashboard.html" class="proj-card">
-            <div class="proj-top">
-              <span class="proj-num">navigation · 04</span>
-              <div class="chips">
-                <span class="chip">N=20</span>
-                <span class="chip chip-preprint">preprint</span>
-                <span class="chip">Deployed</span>
-              </div>
-            </div>
-            <div class="proj-h">Smart Feedback &amp; Review Dashboard</div>
-            <p class="proj-insight">Coordination breakdown is not sudden — it is produced, delay by delay, within review cycles.</p>
-            <p class="proj-intervention">A system that makes review delays and feedback patterns visible — treating review friction as an observable workflow condition without modifying validated systems.</p>
-            <div class="proj-result">Checklist clarity 5.0/5 · Friction visibility 4.83/5 · Adoption intent 20/20</div>
-            <div class="proj-bottom">
-              <span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
-              <span class="proj-arrow">→</span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="page-footer">
-    <div class="wrap">
-      <div class="page-footer-inner">
-        <span class="footer-note">6 projects · 2 research axes · one program</span>
-        <div class="footer-nav">
-          <a href="index.html" class="footer-btn">← Home</a>
-          <a href="papers.html" class="footer-btn">Papers →</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
+<header class="nav">
+<div class="nav-inner">
+<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+<span class="brand-name">Sora Kim</span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a href="papers.html">Papers</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<div class="nav-right">
+<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</button>
+<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="papers.html">Papers</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+<div class="mobile-menu-cv"><a href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
+</nav>
+<main>
+<section class="page-header">
+<div class="wrap">
+<div class="page-eyebrow reveal">Research Projects</div>
+<h1 class="page-h1 reveal">Six empirical HCI projects on reasoning, navigation, and worker support in regulated systems.</h1>
+<p class="page-sub reveal">Built from pharmaceutical QC practice. All interventions are external, non-invasive, and designed around real constraints in regulated work.</p>
+<div class="hero-stats reveal">
+<div class="stat">
+<div class="stat-label">Projects</div>
+<div class="stat-num">6</div>
+<div class="stat-desc">Across two research axes</div>
+</div>
+<div class="stat">
+<div class="stat-label">Evaluation mode</div>
+<div class="stat-num">pilot</div>
+<div class="stat-desc">Small-scale, session-based evaluations across current projects</div>
+</div>
+<div class="stat">
+<div class="stat-label">Reuse signal</div>
+<div class="stat-num">positive</div>
+<div class="stat-desc">Consistent positive reuse signal across current evaluations</div>
+</div>
+<div class="stat">
+<div class="stat-label">Current preprints</div>
+<div class="stat-num">9</div>
+<div class="stat-desc">5 HCI · 4 STS</div>
+</div>
+</div>
+</div>
+</section>
+<section class="axis-sec">
+<div class="wrap">
+<div class="axis-head reveal">
+<div class="axis-tag">axis 01 · reasoning</div>
+<div class="axis-title">How GMP systems shape causal reasoning</div>
+</div>
+<div class="proj-grid reveal">
+<a class="proj-card" href="project-rca-reasoning-scaffolder.html">
+<div class="proj-top">
+<span class="proj-num">reasoning · 01</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">Deployed</span>
+</div>
+</div>
+<div class="proj-h">RCA Investigation Scaffolder</div>
+<p class="proj-insight">Premature causal convergence in GMP investigations can be shaped by closure pressure: reasoning may narrow before alternative contributors are fully explored.</p>
+<p class="proj-intervention">A scaffolded investigation interface that keeps multiple hypotheses visible longer and supports broader reasoning without automating the conclusion.</p>
+<div class="proj-result">Broader causal reasoning observed · delayed closure during scaffolded use · strong support ratings</div>
+<div class="proj-bottom">
+<span class="proj-meta">reasoning design · PAC counter-design · streamlit · python</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+<a class="proj-card" href="project-premature-causal-convergence.html">
+<div class="proj-top">
+<span class="proj-num">reasoning · 02</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip">timed reflection</span>
+</div>
+</div>
+<div class="proj-h">Premature Causal Convergence in RCA</div>
+<p class="proj-insight">Early closure is not always deliberate; time pressure and the need for a quickly documentable explanation can push reasoning toward a single cause.</p>
+<p class="proj-intervention">A timed pilot study showing how single-cause reasoning broadens when investigators are given time and space before closure.</p>
+<div class="proj-result">Single-cause onset was common · broader explanations often emerged with time · structural convergence observed</div>
+<div class="proj-bottom">
+<span class="proj-meta">closure pressure · time-based observation · pilot</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="axis-sec" style="border-bottom:none">
+<div class="wrap">
+<div class="axis-head reveal">
+<div class="axis-tag">axis 02 · navigation</div>
+<div class="axis-title">How GMP systems shape document navigation</div>
+</div>
+<div class="proj-grid reveal">
+<a class="proj-card" href="project-sop-accessibility.html" style="border-color:rgba(26,58,107,0.28);">
+<div class="proj-top">
+<span class="proj-num">navigation · 01</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">Deployed</span>
+</div>
+</div>
+<div class="proj-h">SOP Retrieval System</div>
+<p class="proj-insight">Document inaccessibility creates interpretive burden upstream of formal error, turning retrieval difficulty into later judgment difficulty.</p>
+<p class="proj-intervention">An external retrieval layer that makes scanned SOP archives searchable without altering validated systems.</p>
+<div class="proj-result">Retrieval time dropped sharply in pilot sessions · strong reuse interest · positive usability signal</div>
+<div class="proj-bottom">
+<span class="proj-meta">document UX · retrieval · streamlit · python</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+<a class="proj-card" href="project-cross-reference.html" style="border-color:rgba(26,58,107,0.20);">
+<div class="proj-top">
+<span class="proj-num">navigation · 02</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">Deployed</span>
+</div>
+</div>
+<div class="proj-h">Cross-Reference System</div>
+<p class="proj-insight">Traceability gaps are not merely maintenance defects; they redistribute hidden connective labor onto practitioners.</p>
+<p class="proj-intervention">A metadata-driven cross-reference system that makes document linkage, broken paths, and lifecycle mismatches visible.</p>
+<div class="proj-result">Task completion improved in pilot use · document discovery increased · path completion became more reliable</div>
+<div class="proj-bottom">
+<span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+<a class="proj-card" href="project-cognitive-navigation-explorer.html">
+<div class="proj-top">
+<span class="proj-num">navigation · 03</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">Deployed</span>
+</div>
+</div>
+<div class="proj-h">Cognitive Navigation Explorer</div>
+<p class="proj-insight">Loopbacks are not simply user error; they can mark moments where document structure failed to resolve a judgment demand on the first pass.</p>
+<p class="proj-intervention">A behavioral tracking system that captures navigation paths, hesitation, and cross-reference jumps to make otherwise hidden document friction observable.</p>
+<div class="proj-result">Loopbacks observed across sessions · SOP structural friction surfaced · strong usability ratings</div>
+<div class="proj-bottom">
+<span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+<a class="proj-card" href="project-feedback-dashboard.html">
+<div class="proj-top">
+<span class="proj-num">navigation · 04</span>
+<div class="chips">
+<span class="chip">pilot study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">Deployed</span>
+</div>
+</div>
+<div class="proj-h">Smart Feedback &amp; Review Dashboard</div>
+<p class="proj-insight">Coordination breakdown is produced gradually when review burden stays invisible until delay has already accumulated.</p>
+<p class="proj-intervention">A workflow observability layer that makes review delays, revision loops, and feedback burden legible without modifying validated systems.</p>
+<div class="proj-result">Checklist and visibility features were rated positively · strong reuse interest</div>
+<div class="proj-bottom">
+<span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="page-footer">
+<div class="wrap">
+<div class="page-footer-inner">
+<span class="footer-note">6 projects · 2 research axes · one program</span>
+<div class="footer-nav">
+<a class="footer-btn" href="index.html">← Home</a>
+<a class="footer-btn" href="papers.html">Papers →</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -376,6 +360,5 @@
       }, 100);
     })();
   </script>
-
 </body>
 </html>
