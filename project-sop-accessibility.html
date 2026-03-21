@@ -405,7 +405,7 @@
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
       .content{padding:40px 32px 80px;max-width:100%}
-      .meta-row{grid-template-columns:1fr 1fr}
+      .meta-row{grid-template-columns:repeat(3,1fr)}
       .rationale-row{grid-template-columns:1fr}
       .rationale-head{border-bottom:1px solid var(--line)}
       .grid2{grid-template-columns:1fr}
@@ -503,10 +503,10 @@
           <span class="chip">deployed</span>
         </div>
         <p class="proj-lead reveal">
-          Across 20 users, retrieval time dropped from ~6 minutes to ~1 minute — shifting effort from navigation to interpretation. A compliance-safe retrieval layer makes scanned SOP archives searchable without touching validated source files.
+          Across 20 users, retrieval time was observed to drop from ~6 minutes to ~1 minute under exploratory task conditions — shifting effort away from navigation burden and toward document reading. A compliance-safe retrieval layer makes scanned SOP archives searchable without touching validated source files.
         </p>
         <p class="proj-claim reveal">
-          Designed and implemented a metadata-driven retrieval system (~500 SOPs), including keyword indexing, interface development (Streamlit), and usability evaluation (N=20).
+          Designed and implemented a metadata-driven retrieval system (~500 SOPs), including keyword indexing, interface development (Streamlit), and an exploratory usability evaluation (N=20).
         </p>
         <div class="flow reveal" style="margin-bottom:24px">
           <span class="flow-tag on">retrieval difficulty</span>
@@ -533,12 +533,12 @@
         <div class="meta-cell">
           <div class="meta-label">Retrieval time</div>
           <div class="meta-num">6→1 min</div>
-          <div class="meta-desc">Observed reduction under exploratory conditions · not a controlled measurement</div>
+          <div class="meta-desc">Observed reduction under exploratory conditions · informal timing · not a controlled measurement</div>
         </div>
         <div class="meta-cell">
-          <div class="meta-label">Adoption intent</div>
+          <div class="meta-label">Reuse intention</div>
           <div class="meta-num">20/20</div>
-          <div class="meta-desc">Across all participants</div>
+          <div class="meta-desc">Post-task willingness to reuse the system in similar work contexts</div>
         </div>
       </div>
 
@@ -560,7 +560,7 @@
           </div>
           <div class="gcell">
             <div class="gcell-label">Structural implication</div>
-            <p class="body-text" style="margin:0;font-size:13px;">Accessibility problems introduce hesitation and interpretive variance before any formal task error occurs. What looks like individual failure downstream often begins as structural difficulty upstream.</p>
+            <p class="body-text" style="margin:0;font-size:13px;">Accessibility problems introduce hesitation and interpretive variance before any formal task error occurs. What can later look like individual difficulty may begin as structural difficulty upstream.</p>
           </div>
         </div>
       </section>
@@ -642,7 +642,7 @@
         <p class="body-text">A conceptual extension: expanding retrieval cues to make ambiguity visible without replacing interpretation.</p>
         <p class="body-text note">Conceptual extension — no separate usability study conducted. Included as a design direction, not an empirical claim.</p>
         <div class="btn-row" style="margin-bottom:16px">
-          <a class="btn primary" href="https://sop-accessibility-ai.streamlit.app/" target="_blank" rel="noopener">Open AI Layer ↗</a>
+          <a class="btn primary" href="https://sora-sop-accessibility-ai.streamlit.app/" target="_blank" rel="noopener">Open AI Layer ↗</a>
         </div>
         <div class="screenshot-wrap">
           <div class="screenshot-label"><span class="screenshot-dot"></span>AI support layer · demo video</div>
@@ -651,14 +651,15 @@
           </video>
         </div>
         <p class="screenshot-caption">Three design principles made explicit: explains why a result appeared, surfaces related procedures, keeps interpretive options open.</p>
-        <div class="quote">Retrieval is only one component of procedural usability. Interpretive support is necessary to maintain reasoning openness in regulated environments.</div>
+        <div class="quote">Retrieval is only one component of procedural usability. Interpretive support may be necessary when the goal is to preserve reasoning openness in regulated environments.</div>
       </section>
 
       <section class="sec reveal" id="study">
         <div class="sec-eyebrow">05</div>
         <h2 class="sec-title">Usability Study</h2>
         <hr class="sec-divider">
-        <p class="body-text strong">Participants initially relied on folder memory and trial-and-error file opening. The prototype enabled direct keyword-based retrieval — with an observed reduction in retrieval time (~6 → ~1 min) under exploratory conditions. As retrieval effort decreased, participants allocated more attention to interpretation rather than navigation.</p>
+        <p class="body-text strong">Participants initially relied on folder memory and trial-and-error file opening. The prototype enabled more direct keyword-based retrieval — with an observed reduction in retrieval time (~6 → ~1 min) under exploratory conditions. As retrieval effort decreased, participants appeared to allocate more attention to document reading rather than navigation.</p>
+        <p class="body-text note">These results are exploratory and session-based. They indicate usability promise, but do not by themselves establish long-term adoption, productivity effects, or downstream decision quality.</p>
         <div class="table-wrap">
           <table>
             <colgroup><col style="width:38%"><col style="width:16%"><col style="width:46%"></colgroup>
@@ -668,10 +669,10 @@
             <tbody>
               <tr><td>Participants</td><td>N=20</td><td>Think-aloud · frequent procedural document users · daily search behavior</td></tr>
               <tr><td>Retrieval time</td><td>~6 → ~1 min</td><td>Observed reduction · informal timing · exploratory measure · not controlled measurement</td></tr>
-              <tr><td>Ease of finding relevant sections</td><td>4.8/5</td><td>Interface rated highly accessible</td></tr>
-              <tr><td>Usefulness of titles / snippets</td><td>4.5/5</td><td>Result cues observed to reduce early-stage uncertainty</td></tr>
-              <tr><td>Overall intuitiveness</td><td>4.8/5</td><td>Interaction model felt natural across participants</td></tr>
-              <tr><td>Adoption intent</td><td>20/20</td><td>All participants indicated willingness to adopt the system</td></tr>
+              <tr><td>Ease of finding relevant sections</td><td>4.8/5</td><td>Participants generally found the interface easy to use during the session</td></tr>
+              <tr><td>Usefulness of titles / snippets</td><td>4.5/5</td><td>Result cues appeared to reduce early-stage uncertainty, though ambiguity was not eliminated</td></tr>
+              <tr><td>Overall intuitiveness</td><td>4.8/5</td><td>Interaction model was readily understood in short task-based use</td></tr>
+              <tr><td>Reuse intention</td><td>20/20</td><td>All participants said they would be willing to reuse the system in similar tasks</td></tr>
             </tbody>
           </table>
         </div>
@@ -680,7 +681,7 @@
             <div class="gcell-label">What worked</div>
             <ul class="bullets">
               <li>Task-relevant keyword entry (not filename memory)</li>
-              <li>Snippets observed to reduce early-stage uncertainty</li>
+              <li>Snippets helped narrow the search space earlier</li>
               <li>Document IDs improved search confidence</li>
             </ul>
           </div>
@@ -688,12 +689,12 @@
             <div class="gcell-label">Remaining friction</div>
             <ul class="bullets">
               <li>No-result states still ambiguous (wording vs. coverage?)</li>
-              <li>Similar titles persisted as differentiation problem</li>
-              <li>Points to gaps in metadata design, not just interface</li>
+              <li>Similar titles persisted as a differentiation problem</li>
+              <li>Points to gaps in metadata design, not just interface polish</li>
             </ul>
           </div>
         </div>
-        <div class="quote">The strongest signal: ambiguity became more visible. The prototype helped separate user difficulty from structural difficulty in the archive itself.</div>
+        <div class="quote">The strongest signal was not that all friction disappeared, but that ambiguity became more visible and more tractable. The prototype helped separate user difficulty from structural difficulty in the archive itself.</div>
       </section>
 
       <section class="sec reveal" id="findings">
@@ -701,8 +702,8 @@
         <h2 class="sec-title">What This Revealed</h2>
         <hr class="sec-divider">
         <p class="body-text strong">Accessibility constraints shape how practitioners navigate and interpret under time pressure.</p>
-        <p class="body-text">In regulated environments, retrieval is not just access — it determines which procedures are seen, which are missed, and ultimately how decisions are justified.</p>
-        <p class="body-text">Accessibility may function as an upstream condition — potentially influencing how responsibility is interpreted when retrieval fails or is delayed.</p>
+        <p class="body-text">In regulated environments, retrieval is not just access — it affects which procedures are encountered, which are overlooked, and how confidently users can proceed.</p>
+        <p class="body-text">This project does not directly measure responsibility. It suggests, more narrowly, that access constraints can function as an upstream condition shaping interpretive variation before later judgment occurs.</p>
         <div class="flow-annotated">
           <div class="flow-item">
             <div class="flow-tag on">retrieval difficulty</div>
@@ -721,10 +722,10 @@
           <div class="flow-arrow">→</div>
           <div class="flow-item">
             <div class="flow-tag on">perceived responsibility</div>
-            <div class="flow-note">structural difficulty misread as individual failure</div>
+            <div class="flow-note">possible downstream interpretation, not directly measured here</div>
           </div>
         </div>
-        <p class="body-text" style="margin-top:14px;">Access constraints propagate into interpretive variation rather than directly determining outcomes. Responsibility is not measured — it emerges downstream as an interpretive construct shaped by judgment.</p>
+        <p class="body-text" style="margin-top:14px;">Access constraints propagate into interpretive variation rather than directly determining outcomes. Responsibility is not measured in this study; it remains a downstream interpretive question motivated by the observed access burden.</p>
       </section>
 
       <section class="sec reveal" id="paper">
@@ -735,12 +736,12 @@
           <div class="paper-row">
             <div class="paper-row-label">Claim</div>
             <div class="paper-row-content">
-              <p class="paper-claim">Document inaccessibility in regulated environments creates conditions for recurring judgment errors — extending beyond compliance gaps into interpretive structure.</p>
+              <p class="paper-claim">Document inaccessibility in regulated environments creates recurring interpretive burden before formal task errors occur, and some of that burden can be reduced through compliance-safe external support layers.</p>
             </div>
           </div>
           <div class="paper-row">
             <div class="paper-row-label">What it does</div>
-            <div class="paper-row-content">Develops a prototype-based study isolating accessibility as an upstream condition that shapes interpretive variability in SOP systems — arguing that compliance-safe usability improvements are achievable through external support layers.</div>
+            <div class="paper-row-content">Develops a prototype-based study isolating accessibility as an upstream condition shaping interpretive variability in SOP systems, while arguing that usability improvements are possible without modifying validated source files.</div>
           </div>
           <div class="paper-row">
             <div class="paper-row-label">Status</div>
