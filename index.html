@@ -65,6 +65,15 @@
       justify-content:space-between;gap:20px;
       width:min(var(--max),calc(100% - 48px));margin:0 auto;
     }
+    .nav-icon{
+      width:18px;height:18px;object-fit:contain;
+      content:url(assets/favicon-light.png);
+      flex-shrink:0;
+    }
+    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+    @media(prefers-color-scheme:dark){
+      .nav-icon{content:url(assets/favicon-dark.png)}
+    }
     .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
     .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
     .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
@@ -149,27 +158,21 @@
     .metrics{padding:48px 0;border-bottom:1px solid var(--line)}
     .metrics-grid{
       display:grid;
-      grid-template-columns:1.15fr 0.85fr 1fr;
+      grid-template-columns:repeat(3,1fr);
       border:1px solid var(--line);border-radius:16px;
       overflow:hidden;background:var(--line);gap:1px;
     }
     .metric{background:var(--bg);padding:28px 28px 22px}
-    .metric:nth-child(2){
-      background:var(--accent-soft);
-      padding:36px 28px 28px;
-    }
     .metric-num{
       font-size:3rem;font-weight:800;
       letter-spacing:-0.05em;color:var(--text);
       line-height:1;margin-bottom:6px;
     }
-    .metric:nth-child(2) .metric-num{font-size:3.6rem;color:var(--accent)}
     .metric-label{
       font-family:var(--mono);font-size:10px;
       letter-spacing:0.07em;text-transform:uppercase;
       color:var(--text-4);line-height:1.5;
     }
-    .metric:nth-child(2) .metric-label{color:var(--accent);opacity:0.7}
 
     /* ── PROJECTS ── */
     .projects{padding:56px 0;border-bottom:1px solid var(--line)}
@@ -357,11 +360,9 @@
     @media(max-width:900px){
       .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
       .portrait-frame{display:none}
-      .mobile-avatar{display:block}
       .project-hero{grid-template-columns:1fr}
       .project-hero-left{border-right:none;border-bottom:1px solid var(--line)}
       .metrics-grid{grid-template-columns:repeat(3,1fr)}
-      .metric:nth-child(2){padding:28px}
       .hero{padding:72px 0 56px}
     }
     @media(max-width:600px){
@@ -391,10 +392,8 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a href="index.html" style="display:flex;align-items:center;gap:10px;" aria-label="Sora Kim home">
-        <div class="mobile-avatar">
-          <img src="assets/sora-kim.jpg" alt="Sora Kim" />
-        </div>
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
+        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
         <span class="brand-name">Sora Kim</span>
       </a>
       <nav aria-label="Primary">
