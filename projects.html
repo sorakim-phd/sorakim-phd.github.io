@@ -11,199 +11,67 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:#ffffff;
-      --bg2:#f5f5f7;
-      --panel:#ffffff;
-      --line:rgba(0,0,0,0.08);
-      --line-soft:rgba(0,0,0,0.05);
-      --text:#0a0a0a;
-      --text-2:#1c1c1e;
-      --text-3:#6e6e73;
-      --text-4:#aeaeb2;
-      --accent:#1a3a6b;
-      --accent-soft:rgba(26,58,107,0.07);
-      --accent-strong:rgba(26,58,107,0.12);
+      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
-      --mono:'DM Mono',monospace;
-      --max:1120px;
-      --nav-h:64px;
+      --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
     }
-    html.dark {
-      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
-      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
-      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
-      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
-    }
-    @media(prefers-color-scheme:dark){:root{
-      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
-      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
-      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
-      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
-    }}
+    html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
+    @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      background:var(--bg);color:var(--text-2);
-      font-family:var(--sans);font-weight:400;line-height:1.6;
-      -webkit-font-smoothing:antialiased;overflow-x:hidden;
-    }
+    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
     button{font:inherit;background:none;border:none;cursor:pointer}
     .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
-
-    /* ── NAV ── */
-    .nav{
-      position:sticky;top:0;z-index:100;height:var(--nav-h);
-      border-bottom:1px solid var(--line);
-      background:color-mix(in srgb,var(--bg) 85%,transparent);
-      backdrop-filter:blur(20px) saturate(180%);
-      -webkit-backdrop-filter:blur(20px) saturate(180%);
-    }
-    .nav-inner{
-      height:100%;display:flex;align-items:center;
-      justify-content:space-between;gap:20px;
-      width:min(var(--max),calc(100% - 48px));margin:0 auto;
-    }
-    .nav-icon{
-      width:18px;height:18px;object-fit:contain;
-      content:url(assets/favicon-light.png);
-      flex-shrink:0;
-    }
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
     html.dark .nav-icon{content:url(assets/favicon-dark.png)}
-    @media(prefers-color-scheme:dark){
-      .nav-icon{content:url(assets/favicon-dark.png)}
-    }
+    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
     .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
     .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
     .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
     .nav-links a:hover,.nav-links a.active{color:var(--text)}
     .nav-links a.active{font-weight:600}
     .nav-right{display:flex;align-items:center;gap:8px}
-    .theme-btn{
-      width:36px;height:36px;border:1px solid var(--line);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      color:var(--text-3);transition:border-color 150ms,color 150ms;
-    }
+    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
     .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
     .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .cv-btn{
-      height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;
-      font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);
-      letter-spacing:0.02em;transition:border-color 150ms,background 150ms;
-      display:inline-flex;align-items:center;justify-content:center;
-    }
+    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
     .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
-
-    /* ── HAMBURGER ── */
-    .hamburger{
-      display:none;width:36px;height:36px;
-      border:1px solid var(--line);border-radius:50%;
-      align-items:center;justify-content:center;
-      color:var(--text-3);cursor:pointer;
-      flex-direction:column;gap:4px;
-      transition:border-color 150ms;
-    }
+    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px;transition:border-color 150ms}
     .hamburger:hover{border-color:var(--text-3)}
-    .hamburger span{
-      display:block;width:14px;height:1.5px;
-      background:currentColor;border-radius:2px;
-      transition:transform 250ms ease,opacity 250ms ease;
-    }
+    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
     .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-    .mobile-menu{
-      display:none;position:fixed;inset:0;top:var(--nav-h);
-      background:color-mix(in srgb,var(--bg) 97%,transparent);
-      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-      z-index:99;padding:32px 24px;
-      flex-direction:column;gap:8px;border-top:1px solid var(--line);
-    }
+    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
     .mobile-menu.open{display:flex}
-    .mobile-menu a{
-      font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;
-      color:var(--text);padding:12px 0;
-      border-bottom:1px solid var(--line-soft);transition:color 150ms;
-    }
+    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
     .mobile-menu-cv{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--text-4)}
-
-    /* ── PAGE HEADER ── */
-    .page-header{
-      padding:64px 0 56px;
-      border-bottom:1px solid var(--line);
-    }
-    .page-eyebrow{
-      font-family:var(--mono);font-size:11px;
-      letter-spacing:0.08em;color:var(--text-4);
-      text-transform:uppercase;margin-bottom:16px;
-    }
-    .page-h1{
-      font-size:clamp(2.2rem,5vw,4rem);font-weight:800;
-      letter-spacing:-0.04em;color:var(--text);
-      line-height:1.05;margin-bottom:16px;
-    }
-    .page-sub{
-      font-size:15px;font-weight:300;color:var(--text-3);
-      line-height:1.7;max-width:560px;margin-bottom:40px;
-    }
-
-    /* PAGE HERO STATS */
-    .hero-stats{
-      display:grid;grid-template-columns:repeat(4,1fr);
-      border:1px solid var(--line);border-radius:16px;
-      overflow:hidden;background:var(--line);gap:1px;
-    }
+    .page-header{padding:64px 0 56px;border-bottom:1px solid var(--line)}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
+    .page-h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
+    .page-sub{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.7;max-width:560px;margin-bottom:40px}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
     .stat{background:var(--bg);padding:22px 24px}
     .stat:nth-child(2){background:var(--accent-soft)}
-    .stat-label{
-      font-family:var(--mono);font-size:10px;
-      letter-spacing:0.07em;text-transform:uppercase;
-      color:var(--text-4);margin-bottom:8px;
-    }
+    .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
     .stat:nth-child(2) .stat-label{color:var(--accent);opacity:0.7}
-    .stat-num{
-      font-size:2.4rem;font-weight:800;
-      letter-spacing:-0.05em;color:var(--text);
-      line-height:1;margin-bottom:4px;
-    }
+    .stat-num{font-size:2.4rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
     .stat:nth-child(2) .stat-num{color:var(--accent)}
     .stat-desc{font-size:12px;color:var(--text-4);line-height:1.5}
-
-    /* ── AXIS SECTION ── */
     .axis-sec{padding:64px 0 56px;border-bottom:1px solid var(--line)}
-    .axis-head{
-      display:flex;align-items:center;gap:0;
-      margin-bottom:28px;
-    }
-    .axis-tag{
-      font-family:var(--mono);font-size:10px;font-weight:500;
-      text-transform:uppercase;letter-spacing:0.1em;
-      color:var(--accent);padding:8px 14px;
-      border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);
-      border-radius:8px 0 0 8px;
-      display:flex;align-items:center;white-space:nowrap;
-    }
-    .axis-title{
-      font-size:15px;font-weight:400;letter-spacing:-0.01em;
-      padding:8px 18px;border:1px solid rgba(0,0,0,0.025);border-left:none;
-      border-radius:0 8px 8px 0;
-      display:flex;align-items:center;flex:1;
-      background:transparent;color:var(--text-3);
-    }
-
-    /* ── PROJECT GRID ── */
-    .proj-grid{
-      display:grid;grid-template-columns:1fr 1fr;
-      border:1px solid var(--line);border-radius:16px;
-      overflow:hidden;background:var(--line);gap:1px;
-    }
-    .proj-card{
-      background:var(--panel);padding:26px;
-      display:flex;flex-direction:column;
-      transition:background 150ms,color 150ms;
-    }
+    .axis-head{display:flex;align-items:center;gap:0;margin-bottom:28px}
+    .axis-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:8px 14px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;display:flex;align-items:center;white-space:nowrap}
+    .axis-title{font-size:15px;font-weight:400;letter-spacing:-0.01em;padding:8px 18px;border:1px solid rgba(0,0,0,0.025);border-left:none;border-radius:0 8px 8px 0;display:flex;align-items:center;flex:1;background:transparent;color:var(--text-3)}
+    .proj-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
+    .proj-card{background:var(--panel);padding:26px;display:flex;flex-direction:column;transition:background 150ms,color 150ms}
     .proj-card:hover{background:rgba(10,10,10,0.78);color:#f0f0f0}
     .proj-card:hover .proj-num{color:rgba(255,255,255,0.38)}
     .proj-card:hover .proj-insight{color:rgba(255,255,255,0.92)}
@@ -213,108 +81,31 @@
     .proj-card:hover .chip-preprint{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4)}
     .proj-card:hover .proj-meta{color:rgba(255,255,255,0.4)}
     .proj-card:hover .proj-arrow{color:rgba(255,255,255,0.9)}
-
-    .proj-top{
-      display:flex;align-items:flex-start;
-      justify-content:space-between;gap:12px;margin-bottom:12px;
-    }
-    .proj-num{
-      font-family:var(--mono);font-size:10px;
-      color:var(--text-4);letter-spacing:0.08em;
-      text-transform:uppercase;padding-top:2px;flex-shrink:0;
-    }
+    .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .proj-num{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.08em;text-transform:uppercase;padding-top:2px;flex-shrink:0}
     .chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-    .chip{
-      font-family:var(--mono);font-size:10px;
-      padding:3px 7px;border:1px solid var(--line);
-      border-radius:4px;color:var(--text-4);
-      letter-spacing:0.03em;
-    }
-    .chip-preprint{
-      border-color:var(--accent);color:var(--accent);
-      background:var(--accent-soft);font-weight:500;
-    }
-    .proj-h{
-      font-size:1.15rem;font-weight:700;
-      letter-spacing:-0.03em;line-height:1.2;
-      margin-bottom:16px;
-    }
-    .proj-insight{
-      font-size:13px;font-weight:500;
-      color:var(--text-2);line-height:1.7;margin-bottom:0;
-    }
-    .proj-intervention{
-      font-size:13px;color:var(--text-3);
-      line-height:1.7;margin-top:10px;margin-bottom:14px;
-      padding-top:10px;border-top:1px solid var(--line-soft);
-      flex:1;
-    }
-    .proj-result{
-      font-family:var(--mono);font-size:10px;color:var(--text-3);
-      line-height:1.65;padding:8px 0 8px 14px;
-      border-left:3px solid var(--accent);
-      margin-bottom:14px;margin-top:4px;
-    }
-    .proj-bottom{
-      display:flex;align-items:center;justify-content:space-between;
-      margin-top:auto;
-    }
+    .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+    .chip-preprint{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:500}
+    .proj-h{font-size:1.15rem;font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:16px}
+    .proj-insight{font-size:13px;font-weight:500;color:var(--text-2);line-height:1.7;margin-bottom:0}
+    .proj-intervention{font-size:13px;color:var(--text-3);line-height:1.7;margin-top:10px;margin-bottom:14px;padding-top:10px;border-top:1px solid var(--line-soft);flex:1}
+    .proj-result{font-family:var(--mono);font-size:10px;color:var(--text-3);line-height:1.65;padding:8px 0 8px 14px;border-left:3px solid var(--accent);margin-bottom:14px;margin-top:4px}
+    .proj-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
     .proj-meta{font-family:var(--mono);font-size:10px;color:var(--text-4)}
     .proj-arrow{font-size:14px;color:var(--text-4);transition:transform 150ms}
     .proj-card:hover .proj-arrow{transform:translateX(3px)}
-
-    /* ── FOOTER ── */
-    .page-footer{
-      padding:40px 0 60px;
-    }
-    .page-footer-inner{
-      border-top:1px solid var(--line);padding-top:20px;
-      display:flex;justify-content:space-between;align-items:center;
-      flex-wrap:wrap;gap:12px;
-    }
-    .footer-note{
-      font-family:var(--mono);font-size:10px;
-      color:var(--text-4);letter-spacing:0.04em;
-    }
+    .page-footer{padding:40px 0 60px}
+    .page-footer-inner{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
     .footer-nav{display:flex;gap:8px}
-    .footer-btn{
-      height:34px;padding:0 16px;
-      border:1px solid var(--line);border-radius:8px;
-      font-family:var(--mono);font-size:11px;
-      color:var(--text-3);letter-spacing:0.04em;
-      display:inline-flex;align-items:center;justify-content:center;
-      transition:border-color 150ms,background 150ms,color 150ms;
-    }
+    .footer-btn{height:34px;padding:0 16px;border:1px solid var(--line);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;transition:border-color 150ms,background 150ms,color 150ms}
     .footer-btn:hover{border-color:var(--text-3);background:var(--bg2);color:var(--text)}
-
-    /* ── REVEAL ── */
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:900px){
-      .hero-stats{grid-template-columns:repeat(2,1fr)}
-      .stat:nth-child(2){padding:22px 24px}
-      .proj-grid{grid-template-columns:1fr}
-      .page-h1{font-size:2.2rem}
-    }
-    @media(max-width:600px){
-      .wrap{width:calc(100% - 32px)}
-      .nav-links{display:none}
-      .hamburger{display:flex}
-      .hero-stats{grid-template-columns:1fr}
-      .axis-head{flex-direction:column;align-items:flex-start}
-      .axis-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}
-      .proj-top{flex-direction:column;gap:8px}
-      .chips{justify-content:flex-start}
-      .page-footer-inner{flex-direction:column;align-items:flex-start}
-    }
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation:none !important;transition:none !important}
-      .reveal{opacity:1;transform:none}
-    }
+    @media(max-width:900px){.hero-stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){padding:22px 24px}.proj-grid{grid-template-columns:1fr}.page-h1{font-size:2.2rem}}
+    @media(max-width:600px){.wrap{width:calc(100% - 32px)}.nav-links{display:none}.hamburger{display:flex}.hero-stats{grid-template-columns:1fr}.axis-head{flex-direction:column;align-items:flex-start}.axis-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}.proj-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}.page-footer-inner{flex-direction:column;align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -360,7 +151,6 @@
 
   <main>
 
-    <!-- PAGE HEADER -->
     <section class="page-header">
       <div class="wrap">
         <div class="page-eyebrow reveal">Research Projects</div>
@@ -379,7 +169,7 @@
           </div>
           <div class="stat">
             <div class="stat-label">Adoption intent</div>
-            <div class="stat-num" style="font-size:1.6rem;letter-spacing:-0.03em">6 / 6</div>
+            <div class="stat-num">6/6</div>
             <div class="stat-desc">Observed across all six studies</div>
           </div>
           <div class="stat">
@@ -391,7 +181,6 @@
       </div>
     </section>
 
-    <!-- AXIS 01: REASONING -->
     <section class="axis-sec">
       <div class="wrap">
         <div class="axis-head reveal">
@@ -410,9 +199,9 @@
               </div>
             </div>
             <div class="proj-h">RCA Investigation Scaffolder</div>
-            <p class="proj-insight">Premature causal convergence in GMP investigations appears to be shaped by closure pressure rather than by individual error alone.</p>
-            <p class="proj-intervention">A scaffold that keeps causal hypotheses open longer, countering premature convergence in deviation investigations.</p>
-            <div class="proj-result">Broader causal reasoning 80% · Delayed closure 20/20 · Perceived usefulness 4.8/5</div>
+            <p class="proj-insight">Premature causal convergence in GMP investigations is structural — produced by closure pressure, not individual error.</p>
+            <p class="proj-intervention">A scaffold that keeps causal hypotheses open, countering premature convergence in deviation investigations.</p>
+            <div class="proj-result">80% increase in causal breadth · 20/20 no premature convergence · Helpfulness 5.0/5</div>
             <div class="proj-bottom">
               <span class="proj-meta">reasoning design · PAC counter-design · streamlit · python</span>
               <span class="proj-arrow">→</span>
@@ -428,9 +217,9 @@
               </div>
             </div>
             <div class="proj-h">Premature Causal Convergence in RCA</div>
-            <p class="proj-insight">Closure may operate less like a deliberate decision than like a system tendency under pressure to explain early.</p>
-            <p class="proj-intervention">A time-based pilot study examining how single-cause reasoning emerges before broader contributors are considered.</p>
-            <div class="proj-result">Single-cause onset 20/20 · Alternative contributors by +5 min · Broader reasoning by +10 min</div>
+            <p class="proj-insight">Closure is not a decision — it is the system's default under pressure to explain early.</p>
+            <p class="proj-intervention">A time-based study that reveals the structural onset of single-cause reasoning.</p>
+            <div class="proj-result">Single-cause onset (20/20) · Revision within 10 min (20/20) · Structural convergence confirmed</div>
             <div class="proj-bottom">
               <span class="proj-meta">closure pressure · time-based observation · pilot</span>
               <span class="proj-arrow">→</span>
@@ -441,7 +230,6 @@
       </div>
     </section>
 
-    <!-- AXIS 02: NAVIGATION -->
     <section class="axis-sec" style="border-bottom:none">
       <div class="wrap">
         <div class="axis-head reveal">
@@ -460,9 +248,9 @@
               </div>
             </div>
             <div class="proj-h">SOP Retrieval System</div>
-            <p class="proj-insight">Document inaccessibility in GMP environments constrains interpretive work before it begins, shaping how users reach and read the procedures they need.</p>
+            <p class="proj-insight">Document inaccessibility in GMP environments constrains interpretive work before it begins — turning retrieval failure into downstream judgment failure.</p>
             <p class="proj-intervention">A compliance-safe retrieval layer that makes scanned SOP archives searchable without altering validated systems.</p>
-            <div class="proj-result">Observed retrieval time reduction ~6 → ~1 min · Reuse intention 20/20 · Ease of use 4.8/5</div>
+            <div class="proj-result">Retrieval time: 6–7 min → 1–2 min · 20/20 adoption intent · Usability 4.8/5</div>
             <div class="proj-bottom">
               <span class="proj-meta">document UX · retrieval · streamlit · python</span>
               <span class="proj-arrow">→</span>
@@ -478,10 +266,10 @@
                 <span class="chip">Deployed</span>
               </div>
             </div>
-            <div class="proj-h">Cross-Reference Burden Mapper</div>
-            <p class="proj-insight">Traceability burden becomes structural when document networks remain partially invisible and practitioners have to bridge missing paths themselves.</p>
-            <p class="proj-intervention">A metadata-driven cross-reference mapper that exposes document linkage across deviation, CAPA, and change-control records.</p>
-            <div class="proj-result">Observed task-time reduction 30–60% · Document discovery ≈2× · Path completion 30–50% → 70–90%</div>
+            <div class="proj-h">Cross-Reference System</div>
+            <p class="proj-insight">GMP document networks are structurally fragmented — redistributing accountability onto practitioners while leaving it largely invisible.</p>
+            <p class="proj-intervention">A metadata-driven cross-reference system that exposes document linkage across deviation, CAPA, and change control records.</p>
+            <div class="proj-result">Task time: 30–60% reduction · Document discovery: ≈2× · Path completion: 30–50% → 70–90%</div>
             <div class="proj-bottom">
               <span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
               <span class="proj-arrow">→</span>
@@ -498,9 +286,9 @@
               </div>
             </div>
             <div class="proj-h">Cognitive Navigation Explorer</div>
-            <p class="proj-insight">Loopbacks are not simply user error — they may indicate that the document structure did not resolve a judgment demand clearly enough on the first pass.</p>
-            <p class="proj-intervention">A system that captures navigation paths, loopbacks, and cross-reference jumps to surface where document structure creates friction.</p>
-            <div class="proj-result">Loopback signal 20/20 · Structure identified as primary friction source · Ease of use 5.0/5</div>
+            <p class="proj-insight">Loopbacks are not user error — they are the system's failure to resolve a judgment demand.</p>
+            <p class="proj-intervention">A system that captures navigation paths, loopbacks, and cross-reference jumps — exposing where document structure fails judgment.</p>
+            <div class="proj-result">Loopback behavior (20/20) · SOP structural friction confirmed · Usability 5.0/5</div>
             <div class="proj-bottom">
               <span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
               <span class="proj-arrow">→</span>
@@ -519,7 +307,7 @@
             <div class="proj-h">Smart Feedback &amp; Review Dashboard</div>
             <p class="proj-insight">Coordination breakdown is not sudden — it is produced, delay by delay, within review cycles.</p>
             <p class="proj-intervention">A system that makes review delays and feedback patterns visible without modifying validated systems.</p>
-            <div class="proj-result">Friction visibility 4.83/5 · Purpose clarity 4.83/5 · Adoption intent 20/20</div>
+            <div class="proj-result">Checklist clarity 5.0/5 · Friction visibility 4.83/5 · Adoption intent 20/20</div>
             <div class="proj-bottom">
               <span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
               <span class="proj-arrow">→</span>
@@ -552,14 +340,12 @@
       var isDark = stored ? stored === 'dark' : prefersDark;
       root.classList.toggle('dark', isDark);
       root.classList.add('js-ready');
-
       var btn = document.getElementById('themeBtn');
       if(btn) btn.addEventListener('click', function(){
         isDark = !isDark;
         root.classList.toggle('dark', isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
-
       var hamburger = document.getElementById('hamburgerBtn');
       var mobileMenu = document.getElementById('mobileMenu');
       if(hamburger && mobileMenu){
@@ -576,7 +362,6 @@
           });
         });
       }
-
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
