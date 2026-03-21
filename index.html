@@ -1,514 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sora Kim — HCI researcher studying judgment, accountability, and human-centered design in regulated environments." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sora Kim — HCI Researcher</title>
+  <meta name="description" content="Sora Kim studies how documentation and workflow design produce accountability in regulated systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#ffffff;
+      --bg2:#f5f5f7;
+      --panel:#ffffff;
+      --line:rgba(0,0,0,0.08);
+      --line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;
+      --text-2:#1c1c1e;
+      --text-3:#6e6e73;
+      --text-4:#aeaeb2;
+      --accent:#1a3a6b;
+      --accent-soft:rgba(26,58,107,0.07);
+      --accent-strong:rgba(26,58,107,0.12);
+      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --mono:'DM Mono',monospace;
+      --max:1120px;
+      --nav-h:64px;
+    }
+    html.dark {
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
+    }
+    @media(prefers-color-scheme:dark){:root{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
+    }}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);color:var(--text-2);
+      font-family:var(--sans);font-weight:400;line-height:1.6;
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;background:none;border:none;cursor:pointer}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
 
-<link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
-<link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    /* ── NAV ── */
+    .nav{
+      position:sticky;top:0;z-index:100;height:var(--nav-h);
+      border-bottom:1px solid var(--line);
+      background:color-mix(in srgb,var(--bg) 85%,transparent);
+      backdrop-filter:blur(20px) saturate(180%);
+      -webkit-backdrop-filter:blur(20px) saturate(180%);
+    }
+    .nav-inner{
+      height:100%;display:flex;align-items:center;
+      justify-content:space-between;gap:20px;
+      width:min(var(--max),calc(100% - 48px));margin:0 auto;
+    }
+    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+    .nav-links a:hover{color:var(--text)}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .theme-btn{
+      width:36px;height:36px;border:1px solid var(--line);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--text-3);transition:border-color 150ms,color 150ms;
+    }
+    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cv-btn{
+      height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;
+      font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);
+      letter-spacing:0.02em;transition:border-color 150ms,background 150ms;
+    }
+    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    /* ── HERO ── */
+    .hero{padding:100px 0 80px;border-bottom:1px solid var(--line)}
+    .hero-inner{display:grid;grid-template-columns:1fr 220px;gap:64px;align-items:end}
+    .hero-eyebrow{
+      font-family:var(--mono);font-size:11px;
+      letter-spacing:0.08em;color:var(--text-4);
+      text-transform:uppercase;margin-bottom:22px;
+    }
+    .hero-h1{
+      font-size:clamp(2.8rem,6.5vw,5.2rem);font-weight:800;
+      line-height:1.02;letter-spacing:-0.04em;
+      color:var(--text);margin-bottom:16px;
+    }
+    .hero-subline{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--text-4);
+      letter-spacing:0.04em;
+      margin-bottom:28px;
+      line-height:1.6;
+    }
+    .hero-subline span{
+      color:var(--text-3);
+    }
+    .hero-rq{
+      border-left:2px solid var(--accent);padding-left:16px;
+      font-size:14px;color:var(--text-3);line-height:1.75;
+      max-width:520px;margin-bottom:18px;
+    }
+    .hero-sub{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.7;max-width:560px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+    .btn-fill{
+      height:42px;padding:0 22px;background:var(--text);color:var(--bg);
+      border-radius:10px;font-size:13px;font-weight:600;
+      letter-spacing:-0.01em;transition:opacity 150ms;
+    }
+    .btn-fill:hover{opacity:0.82}
+    .btn-ghost{
+      height:42px;padding:0 22px;border:1px solid var(--line);
+      border-radius:10px;font-size:13px;font-weight:500;color:var(--text-2);
+      transition:border-color 150ms,background 150ms;
+    }
+    .btn-ghost:hover{border-color:var(--text-4);background:var(--bg2)}
+    .portrait-frame{
+      aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+      background:var(--bg2);border:1px solid var(--line);
+    }
+    .portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
 
-<style>
-/* ── TOKENS ───────────────────────────────────────────── */
-:root {
-  --bg:        #f7f7f5;
-  --bg2:       #eceae4;
-  --bg3:       #e2e0d9;
-  --text:      #0f0f0e;
-  --muted:     #5a5a54;
-  --faint:     #999890;
-  --hr:        rgba(15,15,14,.13);
-  --hrh:       rgba(15,15,14,.80);
-  --amber:     #8B7355;
-  --mono:      'DM Mono', monospace;
-  --sans:      'DM Sans', sans-serif;
-  --nav-h:     52px;
-  --wrap:      1080px;
-}
-html[data-theme="dark"] {
-  --bg:        #0d0d0b;
-  --bg2:       #141412;
-  --bg3:       #1c1c19;
-  --text:      #efede5;
-  --muted:     #96948c;
-  --faint:     #57574f;
-  --hr:        rgba(239,237,229,.10);
-  --hrh:       rgba(239,237,229,.72);
-  --amber:     #b09870;
-}
+    /* ── METRICS — 가운데 어긋남 ── */
+    .metrics{padding:48px 0;border-bottom:1px solid var(--line)}
+    .metrics-grid{
+      display:grid;
+      grid-template-columns:1.15fr 0.85fr 1fr;
+      border:1px solid var(--line);border-radius:16px;
+      overflow:hidden;background:var(--line);gap:1px;
+    }
+    .metric{background:var(--bg);padding:28px 28px 22px}
+    .metric:nth-child(2){
+      background:var(--accent-soft);
+      padding:36px 28px 28px;
+    }
+    .metric-num{
+      font-size:3rem;font-weight:800;
+      letter-spacing:-0.05em;color:var(--text);
+      line-height:1;margin-bottom:6px;
+    }
+    .metric:nth-child(2) .metric-num{font-size:3.6rem;color:var(--accent)}
+    .metric-label{
+      font-family:var(--mono);font-size:10px;
+      letter-spacing:0.07em;text-transform:uppercase;
+      color:var(--text-4);line-height:1.5;
+    }
+    .metric:nth-child(2) .metric-label{color:var(--accent);opacity:0.7}
 
-/* ── RESET ────────────────────────────────────────────── */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth }
-body {
-  background:var(--bg); color:var(--text);
-  font-family:var(--sans); font-size:15px;
-  min-height:100vh; line-height:1.68;
-  -webkit-font-smoothing:antialiased;
-  transition:background .25s, color .25s;
-}
-a { color:inherit; text-decoration:none }
-img { display:block; max-width:100% }
-::selection { background:var(--text); color:var(--bg) }
+    /* ── PROJECTS ── */
+    .projects{padding:56px 0;border-bottom:1px solid var(--line)}
+    .projects-head{
+      display:flex;justify-content:space-between;align-items:baseline;
+      margin-bottom:4px;
+    }
+    .section-label{
+      font-family:var(--mono);font-size:10px;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);
+    }
+    .section-title{
+      font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;
+      letter-spacing:-0.04em;color:var(--text);
+      line-height:1.1;margin-top:8px;margin-bottom:40px;
+    }
+    .section-all{
+      font-family:var(--mono);font-size:11px;color:var(--text-4);
+      letter-spacing:0.04em;transition:color 150ms;
+    }
+    .section-all:hover{color:var(--accent)}
 
-/* ── NAV ──────────────────────────────────────────────── */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:200;
-  height:var(--nav-h); background:var(--bg);
-  border-bottom:1px solid var(--hrh);
-  display:flex; align-items:stretch;
-  transition:background .25s;
-}
-.nav-brand {
-  display:flex; align-items:center; gap:9px;
-  padding:0 20px;
-  font-family:var(--mono); font-size:12px; font-weight:500;
-  letter-spacing:.05em;
-  border-right:1px solid var(--hrh);
-  flex-shrink:0;
-}
-.pulse {
-  width:6px; height:6px; border-radius:50%;
-  background:var(--amber);
-  animation:pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1) }
-  50%      { opacity:.35; transform:scale(.65) }
-}
-.nav-links { display:flex; flex:1; overflow:hidden }
-.nav-links a {
-  font-family:var(--mono); font-size:11px;
-  color:var(--muted); letter-spacing:.05em;
-  padding:0 16px; display:flex; align-items:center;
-  border-right:1px solid var(--hr);
-  transition:background .12s, color .12s;
-  white-space:nowrap;
-}
-.nav-links a:hover,
-.nav-links a.active { background:var(--text); color:var(--bg) }
-.nav-end { display:flex; margin-left:auto }
-.theme-btn {
-  width:var(--nav-h); border:none; border-left:1px solid var(--hrh);
-  background:transparent; cursor:pointer;
-  font-family:var(--mono); font-size:14px; color:var(--text);
-  display:flex; align-items:center; justify-content:center;
-  transition:background .12s, color .12s;
-}
-.theme-btn:hover { background:var(--text); color:var(--bg) }
+    /* 주인공 프로젝트 */
+    .project-hero{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:0;border:1px solid var(--line);border-radius:16px;
+      overflow:hidden;margin-bottom:2px;
+      transition:border-color 200ms;
+    }
+    .project-hero:hover{border-color:rgba(26,58,107,0.3)}
+    html.dark .project-hero:hover{border-color:rgba(74,127,212,0.3)}
+    .project-hero-left{padding:36px 40px;border-right:1px solid var(--line)}
+    .project-hero-right{
+      padding:36px 40px;background:var(--accent-soft);
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .project-num{
+      font-family:var(--mono);font-size:10px;
+      color:var(--text-4);letter-spacing:0.08em;margin-bottom:14px;
+    }
+    .project-hero .project-title{
+      font-size:1.7rem;font-weight:800;
+      letter-spacing:-0.04em;color:var(--text);
+      line-height:1.1;margin-bottom:12px;
+    }
+    .project-hero .project-desc{font-size:14px;color:var(--text-3);line-height:1.7}
+    .project-hero-stat{
+      font-family:var(--mono);font-size:11px;
+      color:var(--accent);letter-spacing:0.04em;line-height:1.9;
+    }
+    .project-hero-claim{
+      font-size:1.05rem;font-weight:600;
+      color:var(--text);line-height:1.5;
+      letter-spacing:-0.02em;margin-top:20px;
+    }
 
-/* ── WRAP ─────────────────────────────────────────────── */
-.wrap {
-  max-width:var(--wrap); margin:0 auto;
-  padding:calc(var(--nav-h) + 44px) 24px 100px;
-}
+    /* 서브 프로젝트 */
+    .project-sub-list{display:grid;gap:1px;background:var(--line);border-radius:16px;overflow:hidden}
+    .project-sub{
+      display:grid;grid-template-columns:48px 1fr auto;
+      gap:20px;align-items:center;
+      padding:20px 24px;background:var(--bg);
+      transition:background 150ms;
+    }
+    .project-sub:nth-child(2){padding-left:72px}
+    .project-sub:hover{background:var(--bg2)}
+    .project-sub .project-num{margin-bottom:0}
+    .project-sub .project-title{
+      font-size:1rem;font-weight:600;letter-spacing:-0.02em;
+      color:var(--text);line-height:1.2;margin-bottom:3px;
+    }
+    .project-sub .project-desc{font-size:12px;color:var(--text-4);line-height:1.5}
+    .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+    .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.02em;padding:2px 7px;border-radius:4px}
+    .tag-a{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(26,58,107,0.15)}
+    html.dark .tag-a{border-color:rgba(74,127,212,0.2)}
+    .tag-n{background:var(--bg2);color:var(--text-4);border:1px solid var(--line)}
+    .project-arrow{font-size:13px;color:var(--text-4);transition:color 150ms,transform 150ms}
+    .project-sub:hover .project-arrow{color:var(--accent);transform:translateX(3px)}
 
-/* ── HERO ─────────────────────────────────────────────── */
-.hero {
-  display:grid; grid-template-columns:256px 1fr;
-  border:1px solid var(--hrh);
-  margin-bottom:64px;
-}
-.hero-side {
-  border-right:1px solid var(--hrh);
-  background:var(--bg2);
-  padding:26px 22px;
-  display:flex; flex-direction:column; gap:18px;
-}
-.avatar {
-  width:144px; height:144px;
-  border:1px solid var(--hrh);
-  overflow:hidden; background:var(--bg3); flex-shrink:0;
-}
-.avatar img {
-  width:100%; height:100%;
-  object-fit:cover; object-position:center 15%;
-  filter:grayscale(100%) contrast(1.06) brightness(.99);
-}
-.id-name {
-  font-size:18px; font-weight:600;
-  letter-spacing:-.03em; margin-bottom:4px;
-}
-.id-role {
-  font-family:var(--mono); font-size:9.5px;
-  color:var(--muted); line-height:1.9;
-  text-transform:uppercase; letter-spacing:.07em;
-}
-.code-block {
-  background:var(--bg); border:1px solid var(--hrh);
-  padding:10px 13px; overflow-x:auto;
-}
-.code-block pre {
-  font-family:var(--mono); font-size:11px;
-  line-height:2; color:var(--muted);
-  white-space:pre-wrap; word-break:break-word;
-}
-.ck { color:var(--amber); font-weight:500 }
-.cv { color:var(--text) }
-.cc { opacity:.42 }
-.side-nav { display:flex; flex-direction:column }
-.side-link {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:9px 11px;
-  border:1px solid var(--hrh); margin-top:-1px;
-  font-family:var(--mono); font-size:11px; letter-spacing:.04em;
-  transition:background .12s, color .12s;
-}
-.side-link:hover { background:var(--text); color:var(--bg) }
-.arr { opacity:.32 }
-.contact-line {
-  font-family:var(--mono); font-size:9.5px; color:var(--faint);
-  border-top:1px dashed var(--faint); padding-top:13px;
-}
-.contact-line a { color:var(--faint) }
-.contact-line a:hover { color:var(--text) }
+    /* ── PAPERS / RESEARCH — 비대칭 ── */
+    .section{padding:56px 0;border-bottom:1px solid var(--line)}
+    .pr-grid{display:grid;grid-template-columns:0.75fr 1.25fr;gap:12px;align-items:start}
+    .pr-papers{
+      border:1px solid var(--line);border-radius:16px;
+      padding:26px;background:var(--panel);transition:border-color 180ms;
+    }
+    .pr-papers:hover{border-color:var(--text-4)}
+    .pr-research{
+      border:1px solid var(--accent);border-radius:16px;
+      padding:32px;background:var(--accent-soft);
+      transition:border-color 180ms,transform 180ms;
+    }
+    .pr-research:hover{transform:translateY(-2px)}
+    .teaser-kicker{
+      font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--text-4);margin-bottom:10px;
+    }
+    .pr-research .teaser-kicker{color:var(--accent);opacity:0.8}
+    .teaser-h{
+      font-size:1.4rem;font-weight:700;letter-spacing:-0.04em;
+      color:var(--text);line-height:1.1;margin-bottom:10px;
+    }
+    .pr-research .teaser-h{font-size:1.8rem}
+    .teaser-p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
+    .pr-research .teaser-p{font-size:14px;color:var(--text-2)}
+    .teaser-link{font-family:var(--mono);font-size:11px;color:var(--text-4);letter-spacing:0.02em}
+    .pr-research .teaser-link{color:var(--accent);font-size:12px}
 
-/* ── HERO MAIN ────────────────────────────────────────── */
-.hero-main {
-  padding:36px 40px;
-  display:flex; flex-direction:column; gap:28px;
-}
-.eyebrow {
-  font-family:var(--mono); font-size:9.5px;
-  color:var(--faint); text-transform:uppercase;
-  letter-spacing:.13em;
-  display:flex; align-items:center; gap:7px;
-}
-.eyebrow::before { content:'▸'; font-size:9px; color:var(--amber) }
-.hero-h {
-  font-size:44px; font-weight:600;
-  letter-spacing:-.04em; line-height:1.12;
-}
-.hero-h .dim { color:var(--muted) }
-.lede {
-  font-size:13.5px; color:var(--muted);
-  line-height:1.84; max-width:560px;
-  border-left:2px solid var(--amber);
-  padding-left:16px;
-}
-.lede p { margin:0 }
-.lede p + p { margin-top:1em }
+    /* ── ABOUT + CONTACT ── */
+    .bottom-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:12px}
+    .about-card,.contact-card{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel)}
+    .about-title{
+      font-size:1.3rem;font-weight:700;letter-spacing:-0.03em;
+      color:var(--text);line-height:1.2;margin-top:8px;
+    }
+    .about-body{font-size:13px;color:var(--text-3);line-height:1.8;margin-top:10px}
+    .contact-stack{display:grid;gap:8px;margin-top:12px}
+    .contact-row{
+      display:flex;justify-content:space-between;align-items:center;
+      border:1px solid var(--line);border-radius:10px;padding:10px 14px;
+      transition:border-color 150ms,background 150ms;
+    }
+    .contact-row:hover{border-color:var(--text-4);background:var(--bg2)}
+    .contact-kind{font-size:13px;font-weight:600;color:var(--text)}
+    .contact-val{font-family:var(--mono);font-size:11px;color:var(--text-3)}
 
-/* ── STATS ────────────────────────────────────────────── */
-.stats {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--hrh);
-}
-.stat {
-  padding:16px 12px; text-align:center;
-  border-right:1px solid var(--hrh);
-}
-.stat:last-child { border-right:none }
-.stat-n {
-  display:block; font-size:30px; font-weight:600;
-  letter-spacing:-.05em; line-height:1; margin-bottom:5px;
-}
-.stat-l {
-  font-family:var(--mono); font-size:9px;
-  color:var(--muted); text-transform:uppercase; letter-spacing:.09em;
-}
+    /* ── FOOTER ── */
+    footer{padding:20px 0 36px}
+    .footer-inner{
+      border-top:1px solid var(--line);padding-top:16px;
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;
+    }
+    .footer-inner a:hover{color:var(--accent)}
 
-/* ── SECTIONS ─────────────────────────────────────────── */
-.sec { margin-bottom:60px }
-.sec-head {
-  display:flex; align-items:center; justify-content:space-between;
-  border-bottom:1px solid var(--hrh);
-  padding-bottom:10px; margin-bottom:22px;
-}
-.sec-label {
-  font-family:var(--mono); font-size:10.5px; font-weight:500;
-  text-transform:uppercase; letter-spacing:.1em;
-  display:flex; align-items:center; gap:6px;
-}
-.sec-label::before { content:'#'; color:var(--amber) }
-.see-all {
-  font-family:var(--mono); font-size:9.5px;
-  color:var(--muted); text-transform:uppercase; letter-spacing:.08em;
-  padding:5px 11px; border:1px solid var(--hrh);
-  transition:background .12s, color .12s;
-}
-.see-all:hover { background:var(--text); color:var(--bg) }
+    /* ── REVEAL ── */
+    .reveal{opacity:1;transform:none}
+    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+    .js-ready .reveal.on{opacity:1;transform:none}
 
-/* ── PROJECT GRID ─────────────────────────────────────── */
-.proj-grid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--hrh);
-}
-.proj-card {
-  padding:22px 20px;
-  border-right:1px solid var(--hrh);
-  display:flex; flex-direction:column;
-  transition:background .18s, color .18s, transform .18s;
-  cursor:pointer;
-}
-.proj-card:last-child { border-right:none }
-.proj-card:hover {
-  background:var(--text); color:var(--bg);
-  transform:translateY(-2px);
-}
-.proj-card:hover .proj-num,
-.proj-card:hover .proj-desc { color:rgba(255,255,255,.52) }
-.proj-card:hover .tag {
-  color:rgba(255,255,255,.5);
-  border-color:rgba(255,255,255,.18);
-}
-.proj-num {
-  font-family:var(--mono); font-size:9px;
-  color:var(--faint); text-transform:uppercase;
-  letter-spacing:.1em; margin-bottom:12px;
-}
-.proj-title {
-  font-size:14.5px; font-weight:600;
-  letter-spacing:-.02em; line-height:1.3; margin-bottom:9px;
-}
-.proj-desc {
-  font-size:12px; color:var(--muted);
-  line-height:1.75; margin-bottom:16px; flex:1;
-}
-.tags { display:flex; gap:5px; flex-wrap:wrap }
-.tag {
-  font-family:var(--mono); font-size:9px;
-  padding:3px 7px; border:1px solid var(--hr);
-  color:var(--faint); text-transform:uppercase; letter-spacing:.04em;
-}
-
-/* ── PAPERS STRIP ─────────────────────────────────────── */
-.papers-strip {
-  border:1px solid var(--hrh);
-  display:grid; grid-template-columns:1fr auto;
-  align-items:center;
-}
-.papers-strip-body {
-  padding:20px 24px;
-  border-right:1px solid var(--hrh);
-  font-size:13.5px; color:var(--muted); line-height:1.8;
-}
-.papers-strip-body strong {
-  color:var(--text); font-weight:500;
-}
-.papers-strip-cta { padding:0 24px; flex-shrink:0 }
-.papers-btn {
-  font-family:var(--mono); font-size:10px;
-  text-transform:uppercase; letter-spacing:.09em;
-  padding:9px 16px; border:1px solid var(--hrh);
-  white-space:nowrap; display:inline-block;
-  transition:background .12s, color .12s;
-}
-.papers-btn:hover { background:var(--text); color:var(--bg) }
-
-/* ── FOOTER ───────────────────────────────────────────── */
-.footer {
-  border-top:1px solid var(--hrh); padding-top:18px;
-  display:flex; justify-content:space-between;
-  font-family:var(--mono); font-size:9.5px;
-  color:var(--faint); text-transform:uppercase; letter-spacing:.06em;
-  flex-wrap:wrap; gap:8px;
-}
-.footer a { color:var(--faint) }
-.footer a:hover { color:var(--text) }
-
-/* ── RESPONSIVE ───────────────────────────────────────── */
-@media(max-width:860px) {
-  .hero { grid-template-columns:1fr }
-  .hero-side { border-right:none; border-bottom:1px solid var(--hrh) }
-  .hero-h { font-size:34px }
-  .proj-grid { grid-template-columns:1fr }
-  .proj-card { border-right:none; border-bottom:1px solid var(--hrh) }
-  .proj-card:last-child { border-bottom:none }
-  .stats { grid-template-columns:1fr 1fr }
-  .stat:nth-child(2) { border-right:none }
-  .stat:nth-child(3) { grid-column:1/-1; border-top:1px solid var(--hrh); border-right:none }
-  .papers-strip { grid-template-columns:1fr }
-  .papers-strip-body { border-right:none; border-bottom:1px solid var(--hrh) }
-  .papers-strip-cta { padding:16px 24px }
-}
-@media(max-width:600px) {
-  .wrap { padding:calc(var(--nav-h) + 24px) 14px 80px }
-  .hero-main { padding:22px 18px }
-  .hero-h { font-size:27px }
-  .avatar { width:120px; height:120px }
-  .nav-links { overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none }
-  .nav-links::-webkit-scrollbar { display:none }
-  .nav-links a { padding:0 11px; font-size:10px }
-  .footer { flex-direction:column; gap:4px }
-}
-</style>
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
+      .portrait-frame{display:none}
+      .project-hero{grid-template-columns:1fr}
+      .project-hero-left{border-right:none;border-bottom:1px solid var(--line)}
+      .metrics-grid{grid-template-columns:1fr}
+      .metric:nth-child(2){padding:28px}
+    }
+    @media(max-width:600px){
+      .wrap{width:calc(100% - 32px)}
+      .nav-links{display:none}
+      .project-sub:nth-child(2){padding-left:24px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="index.html">
-    <span class="pulse"></span>sora kim
-  </a>
-  <div class="nav-links">
-    <a class="active" href="index.html">home</a>
-    <a href="projects.html">projects</a>
-    <a href="research.html">research</a>
-    <a href="papers.html">papers</a>
-    <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv ↗</a>
-  </div>
-  <div class="nav-end">
-    <button class="theme-btn" id="themeToggle" aria-label="toggle theme">◐</button>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="hero-side">
-      <div class="avatar">
-        <img src="./assets/sora-kim.jpg" alt="Sora Kim">
-      </div>
-      <div>
-        <div class="id-name">Sora Kim</div>
-        <div class="id-role">Independent Researcher<br>HCI · Regulatory UX<br>Seoul, Korea</div>
-      </div>
-      <div class="code-block">
-<pre><span class="cc"># research_index</span>
-<span class="ck">focus  </span> = <span class="cv">"judgment &amp; accountability"</span>
-<span class="ck">method </span> = <span class="cv">"usability · trace · prototype"</span>
-<span class="ck">site   </span> = <span class="cv">"regulated environments"</span>
-</pre>
-      </div>
-      <div class="side-nav">
-        <a class="side-link" href="projects.html"><span>projects</span><span class="arr">→</span></a>
-        <a class="side-link" href="research.html"><span>research</span><span class="arr">→</span></a>
-        <a class="side-link" href="papers.html"><span>papers</span><span class="arr">→</span></a>
-        <a class="side-link" href="about.html"><span>about</span><span class="arr">→</span></a>
-        <a class="side-link" href="assets/sora-kim-cv.pdf" target="_blank"><span>cv (pdf)</span><span class="arr">↗</span></a>
-      </div>
-      <div class="contact-line">
-        <a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-name" aria-label="Sora Kim home">Sora Kim</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="papers.html">Papers</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </button>
+        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
       </div>
     </div>
+  </header>
 
-    <div class="hero-main">
-      <div class="eyebrow">human-centered systems · regulated environments</div>
-      <h1 class="hero-h">
-        I study how regulated systems<br>
-        <span class="dim">shape human judgment.</span>
-      </h1>
-      <div class="lede">
-        <p>In pilot and task-based studies (N=52) across pharmaceutical QC and
-        regulated work settings, I examine how procedural systems constrain
-        causal reasoning under time and interface pressure — combining usability
-        testing, behavioral trace analysis, and prototype interventions.</p>
-        <p>In one pilot study, all five investigators initially converged on a single cause,
-        revising toward systemic explanations only when given structured time and
-        support, highlighting how design can expand reasoning pathways and make
-        alternative explanations visible.</p>
-      </div>
-      <div class="stats">
-        <div class="stat">
-          <span class="stat-n">6</span>
-          <span class="stat-l">Research Projects</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">5</span>
-          <span class="stat-l">Usability-Tested Prototypes</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">52</span>
-          <span class="stat-l">Study Participants</span>
+  <main>
+
+    <!-- HERO: 정돈, 신뢰 -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-inner">
+          <div class="reveal">
+            <div class="hero-eyebrow">HCI Research · Pharmaceutical QC · Regulated Systems</div>
+            <h1 class="hero-h1">Systems decide what gets seen.<br>I study how.</h1>
+            <div class="hero-subline">
+              <span>who is held responsible</span>
+              &nbsp;·&nbsp;
+              <span>what gets investigated</span>
+              &nbsp;·&nbsp;
+              <span>what stays invisible</span>
+            </div>
+            <p class="hero-rq">
+              "How do systems make some actions, explanations, and responsibilities easier to see than others?"
+            </p>
+            <p class="hero-sub">
+              Through prototypes and empirical studies grounded in pharmaceutical quality environments — where documentation failures have real consequences.
+            </p>
+            <div class="hero-actions">
+              <a href="projects.html" class="btn-fill">View projects</a>
+              <a href="papers.html" class="btn-ghost">Read papers</a>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="portrait-frame">
+              <img src="assets/sora-kim.jpg" alt="Portrait of Sora Kim" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── FEATURED PROJECTS ── -->
-  <section class="sec">
-    <div class="sec-head">
-      <span class="sec-label">featured_projects</span>
-      <a class="see-all" href="projects.html">view all 6 →</a>
-    </div>
-    <div class="proj-grid">
-      <a href="project-sop-accessibility.html" style="display:contents">
-        <article class="proj-card">
-          <div class="proj-num">// featured_01</div>
-          <div class="proj-title">SOP Accessibility System</div>
-          <p class="proj-desc">A retrieval-focused interface for navigating procedural documents. Evaluated in task-based experiments (N=12), showing reduced retrieval time (6–7 min → 1–2 min) and changes in navigation behavior under constrained search conditions.</p>
-          <div class="tags">
-            <span class="tag">document UX</span>
-            <span class="tag">retrieval</span>
-            <span class="tag">N=12</span>
-            <span class="tag">live demo</span>
+    <!-- METRICS: 미세하게 어긋난 시스템 -->
+    <section class="metrics">
+      <div class="wrap">
+        <div class="metrics-grid reveal">
+          <div class="metric">
+            <div class="metric-num">6</div>
+            <div class="metric-label">Empirical studies</div>
           </div>
-        </article>
-      </a>
-      <a href="project-rca-reasoning-scaffolder.html" style="display:contents">
-        <article class="proj-card">
-          <div class="proj-num">// featured_02</div>
-          <div class="proj-title">RCA Reasoning Scaffolder</div>
-          <p class="proj-desc">A reasoning scaffold designed to counter premature causal convergence in investigation workflows. In pilot usability testing (N=15), 80% of participants expanded causal breadth, with all initially individual-blame hypotheses revised toward systemic explanations.</p>
-          <div class="tags">
-            <span class="tag">reasoning</span>
-            <span class="tag">investigation</span>
-            <span class="tag">N=15</span>
-            <span class="tag">live demo</span>
+          <div class="metric">
+            <div class="metric-num">20</div>
+            <div class="metric-label">GMP practitioners<br>per study</div>
           </div>
-        </article>
-      </a>
-      <a href="project-cognitive-navigation-explorer.html" style="display:contents">
-        <article class="proj-card">
-          <div class="proj-num">// featured_03</div>
-          <div class="proj-title">Cognitive Navigation Explorer</div>
-          <p class="proj-desc">A behavioral tracking prototype examining how users traverse document networks under constrained visibility. In a task-based study (N=5), all participants revisited at least one document, suggesting that navigation structure directly shapes attention allocation and judgment pathways.</p>
-          <div class="tags">
-            <span class="tag">behavioral traces</span>
-            <span class="tag">navigation</span>
-            <span class="tag">N=5</span>
-            <span class="tag">live demo</span>
+          <div class="metric">
+            <div class="metric-num">5</div>
+            <div class="metric-label">Deployed prototypes</div>
           </div>
-        </article>
-      </a>
-    </div>
-  </section>
-
-  <!-- ── PAPERS ── -->
-  <section class="sec">
-    <div class="sec-head">
-      <span class="sec-label">papers</span>
-      <a class="see-all" href="papers.html">see all 9 →</a>
-    </div>
-    <div class="papers-strip">
-      <div class="papers-strip-body">
-        <strong>Five HCI papers and four STS manuscripts</strong> examining how procedural systems shape navigation, reasoning, and accountability in regulated environments. The HCI work develops empirical and design-oriented arguments, while the STS manuscripts provide theoretical grounding for responsibility and judgment.
+        </div>
       </div>
-      <div class="papers-strip-cta">
-        <a class="papers-btn" href="papers.html">view papers →</a>
+    </section>
+
+    <!-- PROJECTS: 주인공 하나, 나머지 서브 -->
+    <section class="projects">
+      <div class="wrap">
+        <div class="projects-head reveal">
+          <div>
+            <div class="section-label">Selected Projects</div>
+            <h2 class="section-title">The work.</h2>
+          </div>
+          <a href="projects.html" class="section-all">All projects →</a>
+        </div>
+
+        <a href="projects.html" class="project-hero reveal">
+          <div class="project-hero-left">
+            <div class="project-num">01 — Featured</div>
+            <div class="project-title">RCA Reasoning Scaffolder</div>
+            <p class="project-desc">
+              Deviation investigations in GMP environments tend to close prematurely — not because investigators are careless, but because the system makes early explanation feel like completion. This prototype intervenes at the moment of closure.
+            </p>
+          </div>
+          <div class="project-hero-right">
+            <div class="project-hero-stat">
+              N=20 · Think-aloud protocol<br>
+              80% increase in causal breadth<br>
+              20/20 · No premature convergence<br>
+              Helpfulness 5.0 / 5
+            </div>
+            <div class="project-hero-claim">
+              "The system was making investigators stop thinking. We made that moment visible."
+            </div>
+          </div>
+        </a>
+
+        <div class="project-sub-list reveal" style="margin-top:2px">
+          <a href="projects.html" class="project-sub">
+            <div class="project-num">02</div>
+            <div>
+              <div class="project-title">SOP Accessibility System</div>
+              <div class="project-desc">Retrieval prototype reducing procedural search burden in documentation archives.</div>
+              <div class="tags">
+                <span class="tag tag-a">N=20 · SUS 82 · Deployed</span>
+                <span class="tag tag-n">Streamlit</span>
+              </div>
+            </div>
+            <div class="project-arrow">→</div>
+          </a>
+          <a href="projects.html" class="project-sub">
+            <div class="project-num">03</div>
+            <div>
+              <div class="project-title">Cross-Reference System</div>
+              <div class="project-desc">Traceability interface exposing hidden dependencies across GMP document networks.</div>
+              <div class="tags">
+                <span class="tag tag-n">N=20 · 2× document discovery</span>
+              </div>
+            </div>
+            <div class="project-arrow">→</div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAPERS / RESEARCH: Research가 주인공 -->
+    <section class="section">
+      <div class="wrap">
+        <div class="pr-grid">
+          <a href="papers.html" class="pr-papers reveal">
+            <div class="teaser-kicker">Papers</div>
+            <div class="teaser-h">5 HCI papers<br>4 STS manuscripts</div>
+            <p class="teaser-p">All available on SSRN. One research program across design arguments and theoretical infrastructure.</p>
+            <div class="teaser-link">Go to papers →</div>
+          </a>
+          <a href="research.html" class="pr-research reveal">
+            <div class="teaser-kicker">Research</div>
+            <div class="teaser-h">Responsibility-first HCI</div>
+            <p class="teaser-p">Systems do not merely support judgment. They condition what becomes legible, actionable, and accountable. The design of a form is an argument about what counts as evidence.</p>
+            <div class="teaser-link">Go to research →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + CONTACT: 다시 안정화 -->
+    <section class="section" style="border-bottom:none">
+      <div class="wrap">
+        <div class="bottom-grid">
+          <a href="about.html" class="about-card reveal">
+            <div class="section-label">About</div>
+            <div class="about-title">Practice-grounded.<br>Research-driven.</div>
+            <p class="about-body">Independent work built from recurring frictions in pharmaceutical quality environments, then extended into broader questions about systems, reasoning, and responsibility.</p>
+          </a>
+          <div class="contact-card reveal">
+            <div class="section-label">Contact</div>
+            <div class="contact-stack">
+              <a href="/cdn-cgi/l/email-protection#f7849885969c9e9ab7859284929685949fd99c85" class="contact-row">
+                <span class="contact-kind">Email</span>
+                <span class="contact-val"><span class="__cf_email__" data-cfemail="e6958994878d8f8ba6948395838794858ec88d94">[email&#160;protected]</span></span>
+              </a>
+              <a href="https://github.com/sorakim-lab" target="_blank" rel="noopener" class="contact-row">
+                <span class="contact-kind">GitHub</span>
+                <span class="contact-val">sorakim-lab ↗</span>
+              </a>
+              <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="contact-row">
+                <span class="contact-kind">CV</span>
+                <span class="contact-val">Open PDF ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>Sora Kim · sorakim-lab.github.io</span>
+        <a href="/cdn-cgi/l/email-protection#24574b56454f4d4964564157414556474c0a4f56"><span class="__cf_email__" data-cfemail="98ebf7eaf9f3f1f5d8eafdebfdf9eafbf0b6f3ea">[email&#160;protected]</span></a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <div class="footer">
-    <span>Design, concept &amp; code — Sora Kim</span>
-    <a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a>
-  </div>
-
-</div>
-
-<script>
-(function(){
-  var btn = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (saved === 'dark' || (saved === null && sysDark)) {
-    html.setAttribute('data-theme', 'dark');
-  }
-  btn.addEventListener('click', function() {
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-})();
-</script>
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(){
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored ? stored === 'dark' : prefersDark;
+      root.classList.toggle('dark', isDark);
+      root.classList.add('js-ready');
+      var btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', function(){
+        isDark = !isDark;
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark
