@@ -38,7 +38,6 @@
     img{display:block;max-width:100%}
     button{font:inherit;background:none;border:none;cursor:pointer}
 
-    /* NAV */
     .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
     .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
     .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
@@ -56,7 +55,6 @@
     .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
     .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
 
-    /* HAMBURGER */
     .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px}
     .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
     .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
@@ -67,10 +65,8 @@
     .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
 
-    /* LAYOUT */
     .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:calc(100vh - var(--nav-h))}
 
-    /* SIDEBAR */
     .sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));border-right:1px solid var(--line);padding:32px 20px;overflow-y:auto;background:var(--bg)}
     .breadcrumb{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.06em;margin-bottom:28px;line-height:1.9}
     .breadcrumb a{color:var(--text-4);transition:color 150ms}
@@ -80,10 +76,8 @@
     .side-nav a:hover{color:var(--text-2);border-left-color:var(--text-4);opacity:1}
     .side-nav a.active{color:var(--text);border-left-color:var(--accent);font-weight:500;opacity:1}
 
-    /* CONTENT */
     .content{padding:56px 64px 120px;max-width:800px}
 
-    /* HERO */
     .proj-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:14px}
     .proj-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
     .proj-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
@@ -91,13 +85,11 @@
     .proj-lead{font-size:15px;font-weight:400;color:var(--text-2);line-height:1.75;max-width:600px;margin-bottom:14px;border-left:3px solid var(--accent);padding-left:16px}
     .proj-claim{font-size:13px;color:var(--text-3);line-height:1.75;max-width:580px;margin-bottom:24px;border-left:2px solid var(--line);padding-left:16px;font-style:italic}
 
-    /* FLOW */
     .flow{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:28px}
     .flow-tag{font-family:var(--mono);font-size:10px;padding:5px 10px;border:1px solid var(--line);color:var(--text-4);letter-spacing:0.04em;text-transform:uppercase}
     .flow-tag.on{background:var(--text);color:var(--bg);border-color:var(--text)}
     .flow-arrow{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:0 6px}
 
-    /* BUTTONS */
     .btn-row{display:flex;flex-wrap:wrap;gap:0;margin-bottom:24px}
     .btn{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:0;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms,border-color 150ms}
     .btn:first-child{border-radius:8px 0 0 8px}
@@ -107,14 +99,12 @@
     .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
     .btn.primary:hover{opacity:0.85}
 
-    /* META ROW */
     .meta-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
     .meta-cell{background:var(--bg);padding:20px 22px}
     .meta-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
     .meta-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
     .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
 
-    /* SECTIONS */
     .sec{margin-bottom:64px;scroll-margin-top:80px}
     .sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
     .sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-bottom:14px}
@@ -123,35 +113,30 @@
     .body-text.strong{color:var(--text-2);font-weight:500}
     .body-text.note{font-family:var(--mono);font-size:11px;border-left:2px solid var(--line-soft);padding-left:12px;color:var(--text-4);opacity:0.7}
 
-    /* GRID 2 */
     .grid2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
     .gcell{background:var(--bg);padding:18px 20px}
     .gcell-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
     .bullets{padding-left:16px}
     .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
 
-    /* STEPS */
     .steps{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
     .step{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
     .step-n{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:-0.04em;padding-top:1px}
     .step-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
     .step p{font-size:13px;color:var(--text-3);line-height:1.7}
 
-    /* PROTOTYPE STEPS */
     .proto-steps{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
     .pstep{background:var(--bg);padding:16px 14px}
     .pstep-n{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px}
     .pstep h4{font-size:13px;font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:6px}
     .pstep p{font-size:12px;color:var(--text-3);line-height:1.6}
 
-    /* SCREENSHOT */
     .screenshot-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;background:var(--bg2)}
     .screenshot-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2);display:flex;align-items:center;gap:6px}
     .screenshot-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
     .screenshot-wrap video{width:100%;display:block;background:#000}
     .screenshot-caption{font-family:var(--mono);font-size:10px;color:var(--text-4);margin-top:8px;font-style:italic}
 
-    /* TABLE */
     .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;overflow-x:auto}
     table{width:100%;border-collapse:collapse;min-width:480px}
     th{background:var(--bg2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-weight:500}
@@ -159,23 +144,19 @@
     tr:last-child td{border-bottom:none}
     td:first-child{color:var(--text-2);font-weight:500}
 
-    /* FINDING ROW */
     .finding-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
     .finding{background:var(--bg);padding:20px}
     .finding-n{font-size:2.2rem;font-weight:800;letter-spacing:-0.05em;color:var(--accent);line-height:1;margin-bottom:6px}
     .finding-d{font-size:12px;color:var(--text-3);line-height:1.55}
 
-    /* QUOTE */
     .quote{margin-top:16px;padding:14px 18px;border:1px solid rgba(26,58,107,0.08);border-radius:0;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:13.5px;color:var(--text-2);line-height:1.75;font-style:italic;max-width:600px}
 
-    /* PAPER BLOCK */
     .paper-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
     .paper-row{background:var(--bg);padding:16px 20px;display:grid;grid-template-columns:110px 1fr;gap:16px}
     .paper-row-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;padding-top:2px}
     .paper-row-content{font-size:13px;color:var(--text-3);line-height:1.7}
     .paper-claim{font-size:14px;font-weight:600;color:var(--text);line-height:1.55;border-left:3px solid var(--accent);padding-left:12px}
 
-    /* PAGE FOOTER */
     .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
     .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
     .footer-nav{display:flex;gap:0}
@@ -184,12 +165,10 @@
     .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
     .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-    /* REVEAL */
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
-    /* RESPONSIVE */
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -281,7 +260,6 @@
 
     <main class="content">
 
-      <!-- HERO -->
       <section class="sec" id="overview" style="margin-bottom:40px">
         <div class="proj-eyebrow reveal">reasoning axis · project 01</div>
         <h1 class="proj-title reveal">RCA Investigation Scaffolder</h1>
@@ -293,10 +271,10 @@
           <span class="chip">deployed</span>
         </div>
         <p class="proj-lead reveal">
-          Premature causal convergence in GMP investigations appears to be structured by closure pressure, not just by individual error. This scaffold intervenes at the moment of convergence, keeping multiple hypotheses visible before attribution locks in.
+          Initial unsupported RCA reasoning often narrowed quickly under closure pressure. This scaffold was designed to keep multiple hypotheses visible longer before attribution stabilized.
         </p>
         <p class="proj-claim reveal">
-          Under pressure to explain early, closure often functions less like a deliberate decision than like the system's default.
+          In these sessions, closure appeared less as a fully deliberate decision than as a tendency encouraged by the structure of investigation work.
         </p>
         <div class="flow reveal">
           <span class="flow-tag on">closure pressure</span>
@@ -313,7 +291,6 @@
         </div>
       </section>
 
-      <!-- META -->
       <div class="meta-row reveal">
         <div class="meta-cell">
           <div class="meta-label">Participants</div>
@@ -331,19 +308,18 @@
           <div class="meta-desc">Delayed closure observed during scaffolded sessions</div>
         </div>
         <div class="meta-cell">
-          <div class="meta-label">Helpfulness</div>
-          <div class="meta-num">5.0/5</div>
-          <div class="meta-desc">Mean post-task helpfulness rating</div>
+          <div class="meta-label">Perceived usefulness</div>
+          <div class="meta-num">4.8/5</div>
+          <div class="meta-desc">Mean post-task usefulness rating</div>
         </div>
       </div>
 
-      <!-- PROBLEM -->
       <section class="sec reveal" id="problem">
         <div class="sec-eyebrow">01</div>
         <h2 class="sec-title">Problem</h2>
         <hr class="sec-divider">
         <p class="body-text">Root Cause Analysis (RCA) in GMP investigations is intended to explain why a deviation occurred, but closure pressure often narrows reasoning before alternatives are explored.</p>
-        <p class="body-text">The result is Premature Accountability Convergence (PAC): investigation reasoning narrows toward an individual actor before procedural, contextual, and organizational contributors have been examined. This is not only a cognitive bias — it is also a design problem.</p>
+        <p class="body-text">This project examines a pattern consistent with Premature Accountability Convergence (PAC): investigation reasoning narrowing toward an individual actor before procedural, contextual, and organizational contributors have been examined. The claim here is not only about cognitive bias, but also about interface and workflow design.</p>
         <div class="grid2">
           <div class="gcell">
             <div class="gcell-label">Investigation pressure points</div>
@@ -356,12 +332,11 @@
           </div>
           <div class="gcell">
             <div class="gcell-label">Design implication</div>
-            <p class="body-text" style="margin:0;font-size:13px;">If investigation environments structure reasoning, responsibility attribution is partly an interaction outcome. The question is not only who is blamed, but how the system made that attribution path easier than others.</p>
+            <p class="body-text" style="margin:0;font-size:13px;">If investigation environments structure reasoning, responsibility attribution may partly reflect interaction conditions. The question is not only who is blamed, but how the system made one attribution path easier to follow than others.</p>
           </div>
         </div>
       </section>
 
-      <!-- METHOD -->
       <section class="sec reveal" id="method">
         <div class="sec-eyebrow">02</div>
         <h2 class="sec-title">Method</h2>
@@ -398,7 +373,6 @@
         </div>
       </section>
 
-      <!-- PROTOTYPE -->
       <section class="sec reveal" id="prototype">
         <div class="sec-eyebrow">03</div>
         <h2 class="sec-title">UI Prototype</h2>
@@ -443,7 +417,6 @@
         <p class="screenshot-caption">The scaffold slows the move from observed issue to attributed cause by distributing reasoning across explicit stages.</p>
       </section>
 
-      <!-- REASONING EXPANSION -->
       <section class="sec reveal" id="reasoning" style="margin-top:12px">
         <div class="sec-eyebrow">04</div>
         <h2 class="sec-title">Reasoning Expansion</h2>
@@ -469,12 +442,12 @@
         <div class="quote">This design uses AI to resist premature closure, not to accelerate it. The point is to widen reasoning space long enough for alternatives, evidence, and comparison to stay visible.</div>
       </section>
 
-      <!-- STUDY -->
       <section class="sec reveal" id="study">
         <div class="sec-eyebrow">05</div>
         <h2 class="sec-title">Comparative Study</h2>
         <hr class="sec-divider">
         <p class="body-text strong">Participants first converged on a single cause without support, then revisited the same case using the scaffold. Structured support was associated with broader reasoning and later closure.</p>
+        <p class="body-text note">These results are exploratory and session-based. They indicate design promise, but they do not by themselves establish long-term investigation quality or downstream accountability outcomes.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -482,10 +455,10 @@
             </thead>
             <tbody>
               <tr><td>Participants</td><td>N=20</td><td>All had GMP investigation experience or close familiarity</td></tr>
-              <tr><td>Ease of use</td><td>5.0/5</td><td>Mean post-task usability rating; interface was perceived as clear and usable</td></tr>
-              <tr><td>Perceived usefulness</td><td>4.6/5</td><td>Mean post-task usefulness rating; users valued support but varied in how necessary they felt it was</td></tr>
+              <tr><td>Ease of use</td><td>5.0/5</td><td>Mean post-task usability rating; the interface was perceived as clear and usable</td></tr>
+              <tr><td>Perceived usefulness</td><td>4.8/5</td><td>Mean post-task usefulness rating; participants generally found the scaffold helpful for keeping alternatives visible longer</td></tr>
               <tr><td>Reasoning broadening</td><td>80%</td><td>Participants expanded beyond their initial single-cause explanation</td></tr>
-              <tr><td>Changed causal view</td><td>80%</td><td>Structured support changed how responsibility in the case was interpreted</td></tr>
+              <tr><td>Changed causal view</td><td>80%</td><td>Structured support led many participants to reconsider the case more broadly</td></tr>
               <tr><td>Delayed closure</td><td>20/20</td><td>All participants maintained more than one hypothesis during scaffold use</td></tr>
             </tbody>
           </table>
@@ -493,12 +466,11 @@
         <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that investigation reasoning deserves structured support was unfamiliar.</div>
       </section>
 
-      <!-- FINDINGS -->
       <section class="sec reveal" id="findings">
         <div class="sec-eyebrow">06</div>
         <h2 class="sec-title">What This Revealed</h2>
         <hr class="sec-divider">
-        <p class="body-text strong">Investigation environments do not simply record reasoning — they help shape it. Under closure pressure, users moved quickly toward an accountable actor even when broader contributors remained plausible.</p>
+        <p class="body-text strong">Investigation environments do not simply record reasoning — they also help shape it. Under closure pressure, participants often moved quickly toward an accountable actor even when broader contributors remained plausible.</p>
         <p class="body-text">Participants with the most GMP experience showed little reasoning change, suggesting the scaffold may be most useful when investigation habits are still forming or when users are more open to structured comparison.</p>
         <div class="finding-row">
           <div class="finding">
@@ -507,7 +479,7 @@
           </div>
           <div class="finding">
             <div class="finding-n">80%</div>
-            <div class="finding-d">reported the scaffold changed how they interpreted the case</div>
+            <div class="finding-d">reconsidered the case more broadly after scaffolded comparison</div>
           </div>
           <div class="finding">
             <div class="finding-n">20/20</div>
@@ -516,7 +488,6 @@
         </div>
       </section>
 
-      <!-- PAPER -->
       <section class="sec reveal" id="paper">
         <div class="sec-eyebrow">07</div>
         <h2 class="sec-title">Paper</h2>
@@ -525,7 +496,7 @@
           <div class="paper-row">
             <div class="paper-row-label">Claim</div>
             <div class="paper-row-content">
-              <p class="paper-claim">Investigation environments can be redesigned to keep reasoning space open longer without undermining compliance expectations. Interface structure can influence how causal reasoning and responsibility attribution take shape.</p>
+              <p class="paper-claim">Investigation environments can be redesigned to keep reasoning space open longer without undermining compliance expectations. Interface structure may influence how causal reasoning takes shape in regulated investigations.</p>
             </div>
           </div>
           <div class="paper-row">
