@@ -1,729 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Smart Feedback & Review Dashboard · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Smart Feedback & Review Dashboard — an interactive workflow-support prototype visualizing review friction, feedback loops, and revision burden in regulated documentation systems." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Feedback & Review Dashboard — Sora Kim</title>
+  <meta name="description" content="Smart Feedback & Review Dashboard — a workflow observability prototype making review delays and feedback patterns visible in regulated documentation systems." />
+  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
+      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --mono:'DM Mono',monospace;
+      --max:1120px;--nav-h:64px;--sidebar-w:200px;
+    }
+    html.dark{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }
+    @media(prefers-color-scheme:dark){:root{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;background:none;border:none;cursor:pointer}
 
-<link rel="icon" href="./assets/favicon-light.png">
-<link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
-<link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
+    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
+    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-links a.active{font-weight:600}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
+    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
+    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    /* HAMBURGER */
+    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px}
+    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
+    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
+    .mobile-menu a:hover{color:var(--accent)}
 
-<style>
-:root {
-  --bg: #f8f8f6;
-  --bg2: #f0f0ee;
-  --bg3: #e8e8e6;
-  --text: #111214;
-  --muted: #626872;
-  --muted2: #8a9099;
-  --accent: #1a1a1a;
-  --pixel-border: 2px solid #111214;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Inter', sans-serif;
-}
-html[data-theme="dark"] {
-  --bg: #111317;
-  --bg2: #1a1e25;
-  --bg3: #232833;
-  --text: #f2f4f7;
-  --muted: #98a1ad;
-  --muted2: #7d8794;
-  --accent: #e0e0e0;
-  --pixel-border: 2px solid #f2f4f7;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg); color: var(--text);
-  font-family: var(--sans); min-height: 100vh;
-  transition: background 0.3s, color 0.3s; line-height: 1.7;
-}
-a { color: inherit; }
-::selection { background: var(--text); color: var(--bg); }
+    /* LAYOUT */
+    .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:calc(100vh - var(--nav-h))}
 
-#progress-bar {
-  position: fixed; top: 0; left: 0;
-  height: 3px; background: #8B7355;
-  width: 0%; z-index: 200; transition: width 0.1s linear;
-}
+    /* SIDEBAR */
+    .sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));border-right:1px solid var(--line);padding:32px 20px;overflow-y:auto;background:var(--bg)}
+    .breadcrumb{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.06em;margin-bottom:28px;line-height:1.9}
+    .breadcrumb a{color:var(--text-4);transition:color 150ms}
+    .breadcrumb a:hover{color:var(--accent)}
+    .side-nav{display:flex;flex-direction:column;gap:1px}
+    .side-nav a{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:6px 10px;border-left:2px solid transparent;letter-spacing:0.03em;transition:color 150ms,border-color 150ms,opacity 150ms;opacity:0.6}
+    .side-nav a:hover{color:var(--text-2);border-left-color:var(--text-4);opacity:1}
+    .side-nav a.active{color:var(--text);border-left-color:var(--accent);font-weight:500;opacity:1}
 
-.top-nav {
-  position: fixed; top: 3px; left: 0; right: 0;
-  z-index: 100; border-bottom: var(--pixel-border);
-  background: var(--bg); display: flex;
-  align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 48px; transition: background 0.3s;
-}
-.nav-logo {
-  font-family: var(--mono); font-size: 13px; font-weight: 700;
-  color: var(--text); text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
-}
-.blink {
-  width: 8px; height: 8px; background: #8B7355;
-  display: inline-block; animation: blink 1.2s step-end infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.nav-links { display: flex; }
-.nav-links a {
-  font-family: var(--mono); font-size: 12px; color: var(--muted);
-  text-decoration: none; padding: 0 14px; height: 48px;
-  display: flex; align-items: center; border-left: var(--pixel-border);
-  transition: all 0.1s; letter-spacing: 0.04em;
-}
-.nav-links a:hover, .nav-links a.active { background: var(--text); color: var(--bg); }
-.theme-btn {
-  width: 48px; height: 48px; border: none; border-left: var(--pixel-border);
-  background: transparent; cursor: pointer; font-size: 16px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text); transition: all 0.1s; font-family: var(--mono);
-}
-.theme-btn:hover { background: var(--text); color: var(--bg); }
+    /* CONTENT */
+    .content{padding:56px 64px 120px;max-width:800px}
 
-.page-wrap { margin-left: 220px; max-width: 860px; padding: 80px 48px 120px; }
+    /* HERO */
+    .proj-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:14px}
+    .proj-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
+    .proj-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+    .chip{font-family:var(--mono);font-size:10px;padding:3px 8px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+    .proj-lead{font-size:15px;font-weight:400;color:var(--text-2);line-height:1.75;max-width:600px;margin-bottom:14px;border-left:3px solid var(--accent);padding-left:16px}
+    .proj-claim{font-size:13px;color:var(--text-3);line-height:1.75;max-width:580px;margin-bottom:24px;border-left:2px solid var(--line);padding-left:16px;font-style:italic}
 
-.sidebar {
-  position: fixed; top: 51px; left: 0; width: 220px;
-  height: calc(100vh - 51px); padding: 32px 28px;
-  border-right: 1px solid var(--bg3); overflow-y: auto;
-  background: var(--bg); z-index: 30;
-}
-.breadcrumb {
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  margin-bottom: 36px; display: flex; flex-direction: column;
-  gap: 4px; line-height: 1.8;
-}
-.breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.1s; }
-.breadcrumb a:hover { color: var(--text); }
-.side-nav { display: flex; flex-direction: column; gap: 1px; }
-.side-nav a {
-  font-size: 12px; color: var(--muted2); text-decoration: none;
-  padding: 7px 12px; border-left: 2px solid transparent; transition: all 0.15s;
-}
-.side-nav a:hover { color: var(--text); border-left-color: var(--muted2); }
-.side-nav a.active { color: var(--text); border-left-color: #8B7355; font-weight: 600; }
+    /* FLOW */
+    .flow{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:28px}
+    .flow-tag{font-family:var(--mono);font-size:10px;padding:5px 10px;border:1px solid var(--line);color:var(--text-4);letter-spacing:0.04em;text-transform:uppercase}
+    .flow-tag.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .flow-arrow{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:0 6px}
 
-.content { width: 100%; position: relative; z-index: 1; }
+    /* BUTTONS */
+    .btn-row{display:flex;flex-wrap:wrap;gap:0;margin-bottom:24px}
+    .btn{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:0;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms,border-color 150ms}
+    .btn:first-child{border-radius:8px 0 0 8px}
+    .btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .btn:only-child{border-radius:8px}
+    .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary:hover{opacity:0.85}
 
-.hero-section { margin-bottom: 72px; padding-top: 16px; }
-.hero-eyebrow {
-  font-family: var(--mono); font-size: 10px; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
-  display: flex; align-items: center; gap: 6px; margin-bottom: 16px;
-}
-.hero-eyebrow::before { content: '▶'; font-size: 8px; }
-.project-title {
-  font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
-  line-height: 1.05; margin-bottom: 20px;
-}
-.project-lead {
-  font-size: 15px; color: var(--muted); line-height: 1.8;
-  margin-bottom: 28px; max-width: 580px;
-  border-left: 3px solid var(--accent); padding-left: 16px;
-}
-.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
-.chip {
-  font-family: var(--mono); font-size: 9px; padding: 3px 8px;
-  border: 1px solid var(--muted2); color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.04em;
-}
-.btn-row { display: flex; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; padding: 9px 16px;
-  border: var(--pixel-border); margin-right: -2px; text-decoration: none;
-  color: var(--text); font-size: 12px; font-family: var(--mono);
-  letter-spacing: 0.04em; font-weight: 500; transition: all 0.1s;
-  background: var(--bg); white-space: nowrap;
-}
-.btn:hover { background: var(--text); color: var(--bg); }
-.btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-.btn.primary:hover { opacity: 0.88; }
+    /* META ROW */
+    .meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
+    .meta-cell{background:var(--bg);padding:20px 22px}
+    .meta-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
+    .meta-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
+    .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
 
-.meta-row {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border: var(--pixel-border); margin-bottom: 80px;
-}
-.meta-cell { padding: 22px; border-right: var(--pixel-border); }
-.meta-cell:last-child { border-right: none; }
-.meta-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;
-}
-.meta-num {
-  font-size: 38px; font-weight: 700; letter-spacing: -0.04em;
-  line-height: 1; margin-bottom: 6px;
-}
-.meta-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    /* SECTIONS */
+    .sec{margin-bottom:64px;scroll-margin-top:80px}
+    .sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
+    .sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-bottom:14px}
+    .sec-divider{border:none;border-top:1px solid var(--line);margin-bottom:20px}
+    .body-text{font-size:14px;color:var(--text-3);line-height:1.85;margin-bottom:14px;max-width:600px}
+    .body-text.strong{color:var(--text-2);font-weight:500}
+    .body-text.note{font-family:var(--mono);font-size:11px;border-left:2px solid var(--line-soft);padding-left:12px;color:var(--text-4);opacity:0.7}
 
-.section { margin-bottom: 80px; scroll-margin-top: 72px; }
-.sec-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px;
-}
-.sec-title {
-  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
-  margin-bottom: 20px; line-height: 1.2;
-}
-.sec-divider { border: none; border-top: var(--pixel-border); margin-bottom: 28px; }
-.body-text { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; max-width: 600px; }
+    /* GRID 2 */
+    .grid2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
+    .gcell{background:var(--bg);padding:18px 20px}
+    .gcell-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
+    .bullets{padding-left:16px}
+    .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
 
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; border: var(--pixel-border); margin-top: 20px; }
-.gcell { padding: 18px 20px; border-right: var(--pixel-border); }
-.gcell:last-child { border-right: none; }
-.gcell-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;
-}
-.bullets { padding-left: 16px; }
-.bullets li { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
+    /* STEPS */
+    .steps{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .step{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+    .step-n{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:-0.04em;padding-top:1px}
+    .step-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
+    .step p{font-size:13px;color:var(--text-3);line-height:1.7}
 
-.steps { margin-top: 20px; border: var(--pixel-border); }
-.step {
-  padding: 18px 20px; border-bottom: var(--pixel-border);
-  display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
-}
-.step:last-child { border-bottom: none; }
-.step-n { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; padding-top: 1px; }
-.step-label {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px;
-}
-.step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    /* CAROUSEL */
+    .carousel-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px}
+    .carousel-header{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+    .carousel-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;display:flex;align-items:center;gap:6px}
+    .carousel-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .carousel-nav{display:flex;align-items:center;gap:0}
+    .carousel-btn{width:30px;height:30px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--text-3);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-right:-1px;transition:background 150ms,color 150ms}
+    .carousel-btn:first-child{border-radius:6px 0 0 6px}
+    .carousel-btn:last-child{border-radius:0 6px 6px 0;margin-right:0}
+    .carousel-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .carousel-counter{font-family:var(--mono);font-size:10px;color:var(--text-4);padding:0 12px}
+    .carousel-track{background:var(--bg2)}
+    .carousel-slide{display:none}
+    .carousel-slide.active{display:block}
+    .carousel-slide img{width:100%;display:block}
+    .carousel-caption{padding:8px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;background:var(--bg2)}
 
-/* CAROUSEL */
-.carousel-wrap { border: var(--pixel-border); margin-top: 20px; }
-.carousel-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 12px; border-bottom: var(--pixel-border); background: var(--bg2);
-}
-.carousel-label {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  display: flex; align-items: center; gap: 6px;
-}
-.carousel-label::before {
-  content: ''; display: inline-block;
-  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
-}
-.carousel-nav { display: flex; align-items: center; gap: 0; }
-.carousel-btn {
-  width: 32px; height: 32px; border: var(--pixel-border); background: var(--bg);
-  cursor: pointer; font-family: var(--mono); font-size: 14px;
-  color: var(--text); transition: all 0.1s;
-  display: flex; align-items: center; justify-content: center;
-}
-.carousel-btn:hover { background: var(--text); color: var(--bg); }
-.carousel-btn:last-child { margin-left: -2px; }
-.carousel-counter {
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  padding: 0 12px;
-}
-.carousel-track { overflow: hidden; }
-.carousel-slide { display: none; }
-.carousel-slide.active { display: block; }
-.carousel-slide img { width: 100%; display: block; }
-.carousel-caption {
-  padding: 8px 12px; border-top: var(--pixel-border);
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.06em; background: var(--bg2);
-}
+    /* SCREENSHOT */
+    .screenshot-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;background:var(--bg2)}
+    .screenshot-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2);display:flex;align-items:center;gap:6px}
+    .screenshot-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .screenshot-wrap img{width:100%;display:block}
+    .screenshot-caption{font-family:var(--mono);font-size:10px;color:var(--text-4);margin-top:8px;font-style:italic}
 
-.screenshot-wrap { border: var(--pixel-border); margin-top: 20px; background: var(--bg2); }
-.screenshot-label {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 8px 12px; border-bottom: var(--pixel-border); background: var(--bg2);
-  display: flex; align-items: center; gap: 6px;
-}
-.screenshot-label::before {
-  content: ''; display: inline-block;
-  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
-}
-.screenshot-wrap img { width: 100%; display: block; }
+    /* TABLE */
+    .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;min-width:480px}
+    th{background:var(--bg2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-weight:500}
+    td{padding:11px 14px;font-size:13px;color:var(--text-3);border-bottom:1px solid var(--line-soft);line-height:1.5}
+    tr:last-child td{border-bottom:none}
+    td:first-child{color:var(--text-2);font-weight:500}
 
-.features {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border: var(--pixel-border); margin-top: 20px;
-}
-.feat {
-  padding: 14px 16px; border-right: var(--pixel-border); border-bottom: var(--pixel-border);
-  display: flex; gap: 10px; align-items: flex-start;
-}
-.feat:nth-child(2n) { border-right: none; }
-.feat:nth-last-child(-n+2) { border-bottom: none; }
-.feat-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-.feat-text { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    /* QUOTE */
+    .quote{margin-top:16px;padding:14px 18px;border:1px solid rgba(26,58,107,0.08);border-radius:0;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:13.5px;color:var(--text-2);line-height:1.75;font-style:italic;max-width:600px}
 
-.table-wrap { border: var(--pixel-border); margin-top: 20px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-th {
-  background: var(--bg2); font-family: var(--mono); font-size: 9px;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
-  padding: 10px 14px; text-align: left; border-bottom: var(--pixel-border); font-weight: 700;
-}
-td { padding: 11px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.5; }
-html[data-theme="dark"] td { border-bottom-color: rgba(255,255,255,0.05); }
-tr:last-child td { border-bottom: none; }
-td:first-child { color: var(--text); font-weight: 500; }
+    /* PAPER BLOCK */
+    .paper-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .paper-row{background:var(--bg);padding:16px 20px;display:grid;grid-template-columns:110px 1fr;gap:16px}
+    .paper-row-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;padding-top:2px}
+    .paper-row-content{font-size:13px;color:var(--text-3);line-height:1.7}
+    .paper-claim{font-size:14px;font-weight:600;color:var(--text);line-height:1.55;border-left:3px solid var(--accent);padding-left:12px}
 
-.quote {
-  margin-top: 20px; padding: 16px 18px;
-  border: var(--pixel-border); border-left: 4px solid var(--accent);
-  background: var(--bg2); font-size: 13px; color: var(--muted);
-  line-height: 1.75; font-style: italic; max-width: 600px;
-}
+    /* PAGE FOOTER */
+    .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
+    .footer-nav{display:flex;gap:0}
+    .footer-btn{height:32px;padding:0 14px;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms}
+    .footer-btn:first-child{border-radius:8px 0 0 8px}
+    .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-.flow { display: flex; flex-wrap: wrap; align-items: center; margin-top: 16px; }
-.flow-tag {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  padding: 5px 10px; border: 1px solid var(--muted2);
-  text-transform: uppercase; letter-spacing: 0.04em;
-}
-.flow-tag.on { background: #111214; color: #fff; border-color: #111214; }
-html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; border-color: #f2f4f7; }
-.flow-arrow { font-size: 12px; color: var(--muted2); padding: 0 6px; }
+    /* REVEAL */
+    .reveal{opacity:1;transform:none}
+    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+    .js-ready .reveal.on{opacity:1;transform:none}
 
-.footer {
-  border-top: var(--pixel-border); padding-top: 20px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.06em;
-  flex-wrap: wrap; gap: 8px; margin-top: 40px;
-}
-.footer a { color: var(--muted); text-decoration: none; }
-.footer a:hover { color: var(--text); }
-
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-@media(max-width:900px){
-  .page-wrap { margin-left: 0; padding: 80px 24px 120px; }
-  .sidebar { display: none; }
-  .meta-row { grid-template-columns: 1fr; }
-  .meta-cell { border-right: none; border-bottom: var(--pixel-border); }
-  .meta-cell:last-child { border-bottom: none; }
-  .grid2 { grid-template-columns: 1fr; }
-  .gcell { border-right: none; border-bottom: var(--pixel-border); }
-  .gcell:last-child { border-bottom: none; }
-  .features { grid-template-columns: 1fr; }
-  .feat { border-right: none; }
-  .feat:nth-last-child(-n+2) { border-bottom: var(--pixel-border); }
-  .feat:last-child { border-bottom: none; }
-  .project-title { font-size: 30px; }
-}
-@media(max-width:600px){
-  .top-nav { padding: 0 12px; }
-  .nav-links { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { padding: 0 9px; font-size: 11px; white-space: nowrap; }
-  .page-wrap { padding: 72px 16px 80px; }
-  .project-title { font-size: 24px; }
-  .btn-row { flex-direction: column; }
-  .btn { margin-right: 0; margin-bottom: -2px; }
-}
-</style>
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{display:none}
+      .content{padding:40px 32px 80px;max-width:100%}
+      .meta-row{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .paper-row{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .content{padding:32px 20px 60px}
+      .flow{flex-direction:column;align-items:flex-start}
+      .btn-row{flex-direction:column}
+      .btn{margin-right:0;margin-bottom:-1px;border-radius:0 !important}
+      .btn:first-child{border-radius:8px 8px 0 0 !important}
+      .btn:last-child{border-radius:0 0 8px 8px !important;margin-bottom:0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
+        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
+        <span class="brand-name">Sora Kim</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="papers.html">Papers</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </button>
+        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<nav class="top-nav">
-  <a class="nav-logo" href="index.html"><span class="blink"></span>sora kim</a>
-  <div class="nav-links">
-    <a href="index.html">home</a>
-    <a class="active" href="projects.html">projects</a>
-    <a href="research.html">research</a>
-    <a href="papers.html">papers</a>
-    <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="papers.html">Papers</a>
+    <a href="research.html">Research</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="breadcrumb">
+        <a href="index.html">home</a> /
+        <a href="projects.html">projects</a> /
+        <span style="color:var(--text-2)">feedback dashboard</span>
+      </div>
+      <nav class="side-nav">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#problem">Problem</a>
+        <a href="#method">Method</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#visibility">Visibility Layer</a>
+        <a href="#study">Study</a>
+        <a href="#findings">Findings</a>
+        <a href="#paper">Paper</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <!-- HERO -->
+      <section class="sec" id="overview" style="margin-bottom:40px">
+        <div class="proj-eyebrow reveal">navigation axis · project 04</div>
+        <h1 class="proj-title reveal">Smart Feedback &amp; Review Dashboard</h1>
+        <div class="proj-chips reveal">
+          <span class="chip">workflow friction</span>
+          <span class="chip">dashboard prototype</span>
+          <span class="chip">TF-IDF clustering</span>
+          <span class="chip">python</span>
+          <span class="chip">streamlit</span>
+          <span class="chip">deployed</span>
+        </div>
+        <p class="proj-lead reveal">
+          Coordination breakdown is not sudden — it is produced, delay by delay, within review cycles. This prototype makes review delays, feedback loops, and revision burden visible without modifying validated documentation systems.
+        </p>
+        <p class="proj-claim reveal">
+          Review delay is not only a timing problem — it is a visibility problem.
+        </p>
+        <div class="reveal" style="margin-bottom:24px;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px;">Research Question</div>
+          <p style="font-size:14px;font-weight:500;color:var(--text-2);line-height:1.65;">How can workflow friction be made visible in regulated systems without collapsing human judgment into automated outputs?</p>
+        </div>
+        <div class="flow reveal">
+          <span class="flow-tag on">hidden friction</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">visible pattern</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">earlier sense-making</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">judgment supported</span>
+        </div>
+        <div class="btn-row reveal">
+          <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
+          <a class="btn" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank" rel="noopener">Visibility Layer ↗</a>
+          <a class="btn" href="projects.html">← All projects</a>
+        </div>
+      </section>
+
+      <!-- META -->
+      <div class="meta-row reveal">
+        <div class="meta-cell">
+          <div class="meta-label">Participants</div>
+          <div class="meta-num">N=20</div>
+          <div class="meta-desc">QA/QC-experienced · document review background</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Checklist clarity</div>
+          <div class="meta-num">5.0/5</div>
+          <div class="meta-desc">Highest-rated feature · friction visibility 4.83/5</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Adoption intent</div>
+          <div class="meta-num">20/20</div>
+          <div class="meta-desc">All participants indicated real-world usefulness</div>
+        </div>
+      </div>
+
+      <!-- PROBLEM -->
+      <section class="sec reveal" id="problem">
+        <div class="sec-eyebrow">01</div>
+        <h2 class="sec-title">Problem</h2>
+        <hr class="sec-divider">
+        <p class="body-text">In regulated environments, document review is critical but opaque. Deviation, CAPA, and related records pass through multiple reviewers — yet visibility into feedback burden, timing, and revision-loop formation is limited.</p>
+        <p class="body-text">Teams know a document is "still under review," but not what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is escalating across rounds. The core problem is not delay itself — it is the lack of a shared operational view of that delay.</p>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">Observed pain points</div>
+            <ul class="bullets">
+              <li>Repeated revision loops difficult to observe as patterns</li>
+              <li>Feedback burden uneven across reviewers but hard to see</li>
+              <li>Small wording comments generated multi-day back-and-forth</li>
+              <li>Review process felt slow but source of friction remained unclear</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">HCI reframing</div>
+            <p class="body-text" style="margin:0;font-size:13px;">Review delay is an observability problem as much as a coordination problem. A missing visibility layer meant that friction accumulated without ever becoming legible enough to act on early.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- METHOD -->
+      <section class="sec reveal" id="method">
+        <div class="sec-eyebrow">02</div>
+        <h2 class="sec-title">Method</h2>
+        <hr class="sec-divider">
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">01</div>
+            <div>
+              <div class="step-label">Dataset construction</div>
+              <p>Constructed a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <div>
+              <div class="step-label">UI prototype — 6-tab dashboard</div>
+              <p>Built an interactive dashboard in Python/Streamlit: workflow summaries, revision heatmaps, checklist assistant, rule-based comment classifier, document journey tracing, and reviewer simulation.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <div>
+              <div class="step-label">Visibility layer — TF-IDF clustering</div>
+              <p>Added TF-IDF similarity clustering for recurring issue detection, multi-factor revision burden scoring, and pattern summaries — as observability tools, not decision-automation systems.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">04</div>
+            <div>
+              <div class="step-label">Usability study · N=20</div>
+              <p>Prototype feedback session with QA/QC-experienced participants to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROTOTYPE -->
+      <section class="sec reveal" id="prototype">
+        <div class="sec-eyebrow">03</div>
+        <h2 class="sec-title">UI Prototype</h2>
+        <hr class="sec-divider">
+        <p class="body-text">A 6-tab dashboard surfacing review burden, revision density, and feedback patterns through heatmaps, comment classification, document journey tracing, and reviewer simulation — all as an external layer that does not modify validated documentation systems.</p>
+        <div class="btn-row" style="margin-bottom:16px">
+          <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
+        </div>
+
+        <!-- CAROUSEL -->
+        <div class="carousel-wrap" id="carousel">
+          <div class="carousel-header">
+            <div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 6 tabs</div>
+            <div class="carousel-nav">
+              <button class="carousel-btn" id="prevBtn">←</button>
+              <span class="carousel-counter" id="counter">1 / 6</span>
+              <button class="carousel-btn" id="nextBtn">→</button>
+            </div>
+          </div>
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <img src="assets/review-dashboard-1.png" alt="Overview tab" loading="lazy">
+              <div class="carousel-caption">tab 01 · overview — comment category distribution · severity breakdown · avg turnaround by role</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/review-dashboard-2.png" alt="Heatmap tab" loading="lazy">
+              <div class="carousel-caption">tab 02 · heatmap — revision bottleneck · reviewer × doc type · loop frequency</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/review-dashboard-3.png" alt="Checklist tab" loading="lazy">
+              <div class="carousel-caption">tab 03 · checklist — pre-review scaffold · rule-based comment classifier</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/review-dashboard-4.png" alt="Document Journey tab" loading="lazy">
+              <div class="carousel-caption">tab 04 · document journey — full review lifecycle trace · round-by-round summary</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/review-dashboard-5.png" alt="Before/After tab" loading="lazy">
+              <div class="carousel-caption">tab 05 · before / after — workflow support comparison</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/review-dashboard-6.png" alt="Reviewer Simulation tab" loading="lazy">
+              <div class="carousel-caption">tab 06 · reviewer simulation — comment framing · friction estimation</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISIBILITY LAYER -->
+      <section class="sec reveal" id="visibility" style="margin-top:12px">
+        <div class="sec-eyebrow">04</div>
+        <h2 class="sec-title">Visibility Layer</h2>
+        <hr class="sec-divider">
+        <p class="body-text">The visibility layer adds computational pattern-detection on top of the rule-based dashboard. TF-IDF similarity clustering detects recurring issue patterns across review rounds — surfacing structural friction invisible in individual comment threads.</p>
+        <p class="body-text note">Same design principle as the UI prototype: makes hidden patterns legible without collapsing reviewer discretion into algorithmic output.</p>
+        <div class="btn-row" style="margin-bottom:16px">
+          <a class="btn primary" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank" rel="noopener">Open Visibility Layer ↗</a>
+        </div>
+        <div class="screenshot-wrap">
+          <div class="screenshot-label"><span class="screenshot-dot"></span>Visibility layer · review friction explorer</div>
+          <img src="assets/review-dashboard-ai.png" alt="Visibility Layer — Review Friction Explorer" loading="lazy">
+        </div>
+        <p class="screenshot-caption">TF-IDF clustering auto-detects repeated issue clusters. Pattern summary describes the selected document's review state in plain language.</p>
+        <div class="grid2" style="margin-top:16px">
+          <div class="gcell">
+            <div class="gcell-label">What it does</div>
+            <ul class="bullets">
+              <li>TF-IDF clustering — auto-detects recurring patterns without manual tagging</li>
+              <li>Revision burden scoring — quantifies coordination load per document</li>
+              <li>Pattern summary — plain-language description of review state and bottleneck stage</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">What it does not do</div>
+            <ul class="bullets">
+              <li>Does not recommend actions or assign blame</li>
+              <li>Does not replace reviewer judgment</li>
+              <li>Does not modify validated documentation systems</li>
+              <li>Surfaces patterns for human interpretation only</li>
+            </ul>
+          </div>
+        </div>
+        <div class="quote">Visibility is not a neutral interface property — it helps determine what becomes discussable, interpretable, and eventually accountable within review work.</div>
+      </section>
+
+      <!-- STUDY -->
+      <section class="sec reveal" id="study">
+        <div class="sec-eyebrow">05</div>
+        <h2 class="sec-title">Usability Study</h2>
+        <hr class="sec-divider">
+        <p class="body-text strong">N=20 participants, all with QA/QC or regulated documentation experience. The prototype was evaluated outside the live system — validated systems cannot freely adopt unvalidated interface changes.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+            <tbody>
+              <tr><td>Purpose clarity</td><td>4.83/5</td><td>Interface intent immediately legible to QA/QC participants</td></tr>
+              <tr><td>Friction visibility</td><td>4.83/5</td><td>Delay patterns and bottlenecks became easier to observe</td></tr>
+              <tr><td>Checklist clarity</td><td>5.0/5</td><td>Highest-rated feature — pre-review scaffold felt natural and usable</td></tr>
+              <tr><td>Simulation clarity</td><td>4.83/5</td><td>Reviewer simulation understood as reflection aid, not predictor</td></tr>
+              <tr><td>Adoption intent</td><td>20/20</td><td>All participants indicated real-world usefulness</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="body-text note">Results showed relatively low variance across participants, which may reflect genuine agreement but also suggests the possibility of response bias in a small, conceptually aligned sample.</p>
+        <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that review friction deserves structured visibility was unfamiliar to most participants.</div>
+      </section>
+
+      <!-- FINDINGS -->
+      <section class="sec reveal" id="findings">
+        <div class="sec-eyebrow">06</div>
+        <h2 class="sec-title">What This Revealed</h2>
+        <hr class="sec-divider">
+        <p class="body-text strong">The main contribution is not efficiency — the prototype surfaces hidden review work as interpretable workflow signals, providing initial evidence that friction visibility is achievable without automating reviewer judgment.</p>
+        <p class="body-text">More importantly, the study suggests that workflow friction is not merely a coordination inefficiency, but a structurally hidden form of labor that remains unaddressed because it is rarely made collectively visible. In that sense, the interface does more than summarize delay: it externalizes a class of review work that usually remains distributed, tacit, and difficult to discuss.</p>
+        <p class="body-text">Participants did not struggle with the interface itself. The workflow-friction concept initially felt unfamiliar — pointing toward adoption barriers being conceptual rather than interactional. The next design challenge is therefore not interface clarity alone, but making the value of friction visibility legible to users trained to absorb review load silently.</p>
+        <div class="grid2" style="margin-bottom:20px">
+          <div class="gcell">
+            <div class="gcell-label">Limitations</div>
+            <ul class="bullets">
+              <li>Synthetic dataset — findings require validation with real review records</li>
+              <li>Some participants initially struggled to interpret clustering outputs without guidance</li>
+              <li>Workflow-friction concept was conceptually unfamiliar, requiring onboarding</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Novelty</div>
+            <ul class="bullets">
+              <li>External layer — operates without modifying validated systems</li>
+              <li>Non-automation principle — surfaces patterns, preserves human discretion</li>
+              <li>Responsibility-preserving design in compliance-constrained environments</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow" style="margin-bottom:0">
+          <span class="flow-tag on">hidden friction</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">visible pattern</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">earlier sense-making</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">judgment supported</span>
+        </div>
+      </section>
+
+      <!-- PAPER -->
+      <section class="sec reveal" id="paper">
+        <div class="sec-eyebrow">07</div>
+        <h2 class="sec-title">Paper</h2>
+        <hr class="sec-divider">
+        <div class="paper-block">
+          <div class="paper-row">
+            <div class="paper-row-label">Claim</div>
+            <div class="paper-row-content">
+              <p class="paper-claim">Review friction in regulated environments is structural and largely invisible. This project provides initial evidence that a lightweight observability layer can surface it without modifying validated systems or replacing reviewer judgment.</p>
+            </div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">What it does</div>
+            <div class="paper-row-content">Provides initial evidence that review friction, comment burden, and revision loops can be surfaced through a computational support prototype — and that AI can serve as a pattern-detection layer rather than a decision-automation system.</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Status</div>
+            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Links</div>
+            <div class="paper-row-content">
+              <div class="btn-row">
+                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
+                <a class="btn" href="papers.html">→ Papers page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer reveal">
+        <span class="footer-note">navigation axis · project 04</span>
+        <div class="footer-nav">
+          <a href="projects.html" class="footer-btn">← Projects</a>
+          <a href="index.html" class="footer-btn">Home</a>
+        </div>
+      </div>
+
+    </main>
   </div>
-  <button class="theme-btn" id="themeToggle">◐</button>
-</nav>
 
-<div class="page-wrap">
+  <script>
+    (function(){
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored ? stored === 'dark' : prefersDark;
+      root.classList.toggle('dark', isDark);
+      root.classList.add('js-ready');
 
-  <aside class="sidebar">
-    <div class="breadcrumb">
-      <a href="index.html">home</a>
-      <span style="opacity:.3">/</span>
-      <a href="projects.html">projects</a>
-      <span style="opacity:.3">/</span>
-      <span style="color:var(--text)">feedback dashboard</span>
-    </div>
-    <nav class="side-nav">
-      <a href="#overview" class="active">Overview</a>
-      <a href="#problem">Problem</a>
-      <a href="#method">Method</a>
-      <a href="#prototype">UI Prototype</a>
-      <a href="#ai">AI Extension</a>
-      <a href="#study">Study</a>
-      <a href="#findings">Findings</a>
-      <a href="#paper">Paper</a>
-    </nav>
-  </aside>
-
-  <main class="content">
-
-    <!-- HERO -->
-    <section class="hero-section fade-up" id="overview">
-      <div class="hero-eyebrow">navigation axis · project 03</div>
-      <h1 class="project-title">Smart Feedback &amp; Review Dashboard</h1>
-      <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:20px;border-left:3px solid #8B7355;padding-left:14px;max-width:580px;line-height:1.7;">Review delay is not only a timing problem — it is also a visibility problem.</p>
-      <div class="chips">
-        <span class="chip">workflow friction</span>
-        <span class="chip">dashboard prototype</span>
-        <span class="chip">rule-based classifier</span>
-        <span class="chip">TF-IDF clustering</span>
-        <span class="chip">python</span>
-        <span class="chip">streamlit</span>
-        <span class="chip">usability study</span>
-      </div>
-      <p class="project-lead">An interactive workflow-support prototype that makes review delays, feedback loops, and revision burden visible in structured document environments — without modifying validated documentation systems.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank">UI Demo ↗</a>
-        <a class="btn" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank">AI Extension ↗</a>
-        <a class="btn" href="projects.html">← all projects</a>
-      </div>
-    </section>
-
-    <!-- META -->
-    <div class="meta-row fade-up">
-      <div class="meta-cell">
-        <div class="meta-label">// participants</div>
-        <div class="meta-num">6</div>
-        <div class="meta-desc">QA/QC-experienced · document review background</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// checklist clarity</div>
-        <div class="meta-num">5.0/5</div>
-        <div class="meta-desc">Highest-rated feature · purpose clarity 4.83/5</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// real-world usefulness</div>
-        <div class="meta-num">100%</div>
-        <div class="meta-desc">All participants said prototype would be useful in actual work</div>
-      </div>
-    </div>
-
-    <!-- PROBLEM -->
-    <section class="section fade-up" id="problem">
-      <div class="sec-label">// 01</div>
-      <h2 class="sec-title">Problem</h2>
-      <hr class="sec-divider">
-      <p class="body-text">In regulated environments, document review is critical but often opaque. Deviation, CAPA, and related records may pass through multiple reviewers — yet visibility into feedback burden, timing, and revision-loop formation is limited.</p>
-      <p class="body-text">As review cycles lengthen, teams often know a document is "still under review," but not what type of comments are driving the delay, where bottlenecks are forming, or whether a loop is escalating across rounds. The core problem is not delay itself, but the lack of a shared operational view of that delay.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// observed pain points</div>
-          <ul class="bullets">
-            <li>Repeated revision loops difficult to observe as patterns</li>
-            <li>Feedback burden uneven across reviewers but hard to see</li>
-            <li>Small wording comments could generate multi-day back-and-forth</li>
-            <li>Review process felt slow but source of friction remained unclear</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// HCI reframing</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">Review delay is an observability problem as much as a coordination problem. A missing visibility layer in the workflow meant that friction accumulated without ever becoming legible enough to act on early.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- METHOD -->
-    <section class="section fade-up" id="method">
-      <div class="sec-label">// 02</div>
-      <h2 class="sec-title">Method</h2>
-      <hr class="sec-divider">
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">01</div>
-          <div>
-            <div class="step-label">dataset construction</div>
-            <p>Created a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">02</div>
-          <div>
-            <div class="step-label">UI prototype — 6-tab dashboard</div>
-            <p>Built an interactive dashboard in Python/Streamlit: workflow summaries, revision heatmaps, checklist assistant, rule-based comment classifier, document journey tracing, and reviewer simulation.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">03</div>
-          <div>
-            <div class="step-label">AI extension — TF-IDF clustering</div>
-            <p>Added TF-IDF similarity clustering for recurring issue detection, multi-factor revision burden scoring, and pattern summaries — all as observability tools rather than decision-automation systems.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">04</div>
-          <div>
-            <div class="step-label">usability feedback · N=6</div>
-            <p>Informal prototype feedback session with six QA/QC-experienced users to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROTOTYPE -->
-    <section class="section fade-up" id="prototype">
-      <div class="sec-label">// 03</div>
-      <h2 class="sec-title">UI Prototype</h2>
-      <hr class="sec-divider">
-      <p class="body-text">A 6-tab dashboard surfacing review burden, revision density, and feedback patterns through heatmaps, comment classification, document journey tracing, and reviewer simulation — all as an external layer that does not modify validated documentation systems.</p>
-      <div class="btn-row" style="margin-bottom:20px;">
-        <a class="btn primary" href="https://sora-review-workflow.streamlit.app/" target="_blank">Open UI Demo ↗</a>
-      </div>
-
-      <!-- CAROUSEL -->
-      <div class="carousel-wrap" id="carousel">
-        <div class="carousel-header">
-          <div class="carousel-label">UI prototype · 6 tabs</div>
-          <div class="carousel-nav">
-            <button class="carousel-btn" id="prevBtn">←</button>
-            <span class="carousel-counter" id="counter">1 / 6</span>
-            <button class="carousel-btn" id="nextBtn">→</button>
-          </div>
-        </div>
-        <div class="carousel-track">
-          <div class="carousel-slide active">
-            <img src="./assets/review-dashboard-1.png" alt="Overview tab — comment distribution and severity breakdown" loading="lazy">
-            <div class="carousel-caption">tab 01 · overview — comment category distribution · severity breakdown · avg turnaround by role</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/review-dashboard-2.png" alt="Heatmap tab — revision bottleneck heatmap" loading="lazy">
-            <div class="carousel-caption">tab 02 · heatmap — revision bottleneck · reviewer × doc type · loop frequency</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/review-dashboard-3.png" alt="Checklist tab — pre-review checklist and comment classifier" loading="lazy">
-            <div class="carousel-caption">tab 03 · checklist — pre-review scaffold · rule-based comment classifier · comment category × turnaround</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/review-dashboard-4.png" alt="Document Journey tab — single document review trace" loading="lazy">
-            <div class="carousel-caption">tab 04 · document journey — full review lifecycle trace · round-by-round summary</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/review-dashboard-5.png" alt="Before/After tab — workflow support comparison" loading="lazy">
-            <div class="carousel-caption">tab 05 · before / after — workflow support comparison · observed pain points from fieldwork</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/review-dashboard-6.png" alt="Reviewer Simulation tab" loading="lazy">
-            <div class="carousel-caption">tab 06 · reviewer simulation — comment framing · friction estimation · reviewer profile adjustment</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="features">
-        <div class="feat"><span class="feat-icon">🔥</span><span class="feat-text">Friction heatmap — where delays and loop-heavy patterns accumulate across roles and doc types</span></div>
-        <div class="feat"><span class="feat-icon">✅</span><span class="feat-text">Checklist assistant + rule-based classifier — distinguishes critical, moderate, and optional feedback</span></div>
-        <div class="feat"><span class="feat-icon">📂</span><span class="feat-text">Document journey view — traces review rounds, reopen events, and turnaround over time</span></div>
-        <div class="feat"><span class="feat-icon">🧪</span><span class="feat-text">Reviewer simulation — explores how role, comment framing, and round number may affect friction</span></div>
-      </div>
-    </section>
-
-    <!-- AI EXTENSION -->
-    <section class="section fade-up" id="ai">
-      <div class="sec-label">// 04</div>
-      <h2 class="sec-title">AI Extension</h2>
-      <hr class="sec-divider">
-      <p class="body-text">The AI extension adds a computational pattern-detection layer on top of the rule-based dashboard. Rather than automating reviewer judgment, it uses TF-IDF similarity clustering to detect recurring issue patterns across review rounds — surfacing structural friction that is invisible in individual comment threads.</p>
-      <p class="body-text">Grounded in the same design principle as the UI prototype: AI as a visibility tool, not a decision-replacement. It makes hidden patterns legible without collapsing reviewer discretion into algorithmic output.</p>
-      <div class="btn-row" style="margin-bottom:20px;">
-        <a class="btn primary" href="https://smart-feedback-dashboard-ai.streamlit.app/" target="_blank">Open AI Extension ↗</a>
-      </div>
-
-      <div class="screenshot-wrap">
-        <div class="screenshot-label">AI extension · review friction explorer</div>
-        <img src="./assets/review-dashboard-ai.png" alt="AI Extension — Review Friction Explorer" loading="lazy">
-      </div>
-      <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">TF-IDF clustering auto-detects repeated issue clusters. AI-like pattern summary describes the selected document's review state in plain language.</p>
-
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// what AI does</div>
-          <ul class="bullets">
-            <li>TF-IDF similarity clustering — auto-detects recurring patterns without manual tagging</li>
-            <li>Revision burden scoring — quantifies cognitive and coordination load per document</li>
-            <li>AI-like pattern summary — plain-language description of review state and bottleneck stage</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// what AI does not do</div>
-          <ul class="bullets">
-            <li>Does not recommend actions or assign blame</li>
-            <li>Does not replace reviewer judgment</li>
-            <li>Does not modify validated documentation systems</li>
-            <li>Surfaces patterns for human interpretation only</li>
-          </ul>
-        </div>
-      </div>
-      <div class="quote">AI surfaces patterns for human interpretation — it does not determine what should be done about them.</div>
-    </section>
-
-    <!-- STUDY -->
-    <section class="section fade-up" id="study">
-      <div class="sec-label">// 05</div>
-      <h2 class="sec-title">Usability Study</h2>
-      <hr class="sec-divider">
-      <p class="body-text">Informal prototype feedback session, N=6, all participants with QA/QC or regulated documentation experience. Because validated systems cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live system.</p>
-      <div class="flow" style="margin-bottom:20px;">
-        <span class="flow-tag on">purpose clarity: 4.83/5</span>
-        <span class="flow-arrow">·</span>
-        <span class="flow-tag on">friction visibility: 4.83/5</span>
-        <span class="flow-arrow">·</span>
-        <span class="flow-tag on">checklist clarity: 5.0/5</span>
-        <span class="flow-arrow">·</span>
-        <span class="flow-tag on">usefulness: 100%</span>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Purpose clarity</td><td>4.83 / 5</td><td>Interface intent was immediately legible to QA/QC participants.</td></tr>
-            <tr><td>Friction visibility</td><td>4.83 / 5</td><td>Delay patterns and bottlenecks became easier to observe.</td></tr>
-            <tr><td>Checklist clarity</td><td>5.0 / 5</td><td>Highest-rated feature — pre-review scaffold felt natural and usable.</td></tr>
-            <tr><td>Simulation clarity</td><td>4.83 / 5</td><td>Reviewer simulation understood as a reflection aid, not a predictor.</td></tr>
-            <tr><td>Most useful feature (friction heatmap)</td><td>33.3%</td><td>Visual bottleneck surfacing was the most frequently cited value.</td></tr>
-            <tr><td>Most useful feature (reviewer simulation)</td><td>33.3%</td><td>Tied with heatmap — comment framing reflection resonated strongly.</td></tr>
-            <tr><td>Real-world usefulness</td><td>6/6 (100%)</td><td>All participants said they would use this in their actual work context.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that review friction deserves structured visibility was unfamiliar to most participants.</div>
-    </section>
-
-    <!-- FINDINGS -->
-    <section class="section fade-up" id="findings">
-      <div class="sec-label">// 06</div>
-      <h2 class="sec-title">What This Revealed</h2>
-      <hr class="sec-divider">
-      <p class="body-text">The main contribution is not efficiency. It is the transformation of hidden review work into interpretable workflow signals. The prototype supports procedural visibility and coordination without automating reviewer judgment.</p>
-      <p class="body-text">The key insight from the feedback session: participants didn't struggle with the interface itself. The workflow-friction concept initially felt unfamiliar — pointing toward adoption barriers being conceptual rather than interactional. The next design challenge is not interface clarity, but how to make the value of friction visibility legible to users trained to absorb review load silently.</p>
-      <div class="flow">
-        <span class="flow-tag on">hidden friction</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">visible pattern</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">earlier sense-making</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">judgment supported</span>
-      </div>
-    </section>
-
-    <!-- PAPER -->
-    <section class="section fade-up" id="paper">
-      <div class="sec-label">// 07</div>
-      <h2 class="sec-title">Paper in Progress</h2>
-      <hr class="sec-divider">
-      <p class="body-text">This project currently functions as a portfolio-facing HCI case study. Its main contribution is to show how review friction, comment burden, and revision loops can be made visible through a lightweight computational support prototype — and how AI can be applied as a pattern-detection layer rather than a decision-automation system.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// tools & methods</div>
-          <ul class="bullets">
-            <li>Python / Streamlit — prototype development</li>
-            <li>Pandas — synthetic dataset handling</li>
-            <li>Plotly — interactive visual analytics</li>
-            <li>scikit-learn TF-IDF — similarity clustering</li>
-            <li>Rule-based comment classification logic</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// research framing</div>
-          <ul class="bullets">
-            <li>Workflow friction as observability problem</li>
-            <li>AI as visibility layer, not decision replacement</li>
-            <li>Compliance-constrained design</li>
-            <li>Human-centered support for regulated review work</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <span>© 2026 Sora Kim</span>
-      <div style="display:flex;">
-        <a class="btn" href="projects.html" style="font-size:10px;padding:6px 12px;">← projects</a>
-        <a class="btn" href="index.html" style="font-size:10px;padding:6px 12px;border-left:none;">home</a>
-      </div>
-    </div>
-
-  </main>
-</div>
-
-<script>
-// Theme
-(function(){
-  var btn = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
-  btn.addEventListener('click', function(){
-    var dark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', dark ? 'light' : 'dark');
-    localStorage.setItem('theme', dark ? 'light' : 'dark');
-  });
-})();
-
-// Progress bar
-window.addEventListener('scroll', function() {
-  var scrollTop = window.scrollY;
-  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById('progress-bar').style.width = pct + '%';
-});
-
-// Fade up
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
-
-// Sidebar active
-var sections = document.querySelectorAll('[id]');
-var navLinks = document.querySelectorAll('.side-nav a');
-window.addEventListener('scroll', function() {
-  var scrollY = window.scrollY + 120;
-  sections.forEach(function(sec) {
-    if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
-      navLinks.forEach(function(link) {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + sec.id) link.classList.add('active');
+      var btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', function(){
+        isDark = !isDark;
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
-    }
-  });
-});
 
-// Carousel
-(function(){
-  var slides = document.querySelectorAll('.carousel-slide');
-  var counter = document.getElementById('counter');
-  var current = 0;
+      var hamburger = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if(hamburger && mobileMenu){
+        hamburger.addEventListener('click', function(){
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
-  function show(n) {
-    slides[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    counter.textContent = (current + 1) + ' / ' + slides.length;
-  }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
 
-  document.getElementById('prevBtn').addEventListener('click', function() { show(current - 1); });
-  document.getElementById('nextBtn').addEventListener('click', function() { show(current + 1); });
+      var sections = document.querySelectorAll('[id]');
+      var navLinks = document.querySelectorAll('.side-nav a');
+      window.addEventListener('scroll', function(){
+        var scrollY = window.scrollY + 100;
+        sections.forEach(function(sec){
+          if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight){
+            navLinks.forEach(function(link){
+              link.classList.remove('active');
+              if(link.getAttribute('href') === '#' + sec.id) link.classList.add('active');
+            });
+          }
+        });
+      });
 
-  // Keyboard
-  document.addEventListener('keydown', function(e) {
-    if(e.key === 'ArrowLeft') show(current - 1);
-    if(e.key === 'ArrowRight') show(current + 1);
-  });
-})();
-</script>
+      // Carousel
+      var slides = document.querySelectorAll('.carousel-slide');
+      var counter = document.getElementById('counter');
+      var current = 0;
+      function showSlide(n){
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if(counter) counter.textContent = (current + 1) + ' / ' + slides.length;
+      }
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      if(prevBtn) prevBtn.addEventListener('click', function(){ showSlide(current - 1); });
+      if(nextBtn) nextBtn.addEventListener('click', function(){ showSlide(current + 1); });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowLeft') showSlide(current - 1);
+        if(e.key === 'ArrowRight') showSlide(current + 1);
+      });
+    })();
+  </script>
+
 </body>
 </html>
