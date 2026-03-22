@@ -1,643 +1,842 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sora Kim — Judgment, Responsibility, and System Design</title>
-<meta content="Sora Kim studies how system design shapes judgment, responsibility, and accountability in regulated work." name="description"/>
+<title>Sora Kim — Judgment, Responsibility, and AI-Mediated System Design</title>
+<meta content="Sora Kim studies how responsibility converges in GMP-regulated investigations, and how AI-supported scaffolds can preserve comparison, delay premature closure, and widen accountable reasoning." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-    :root {
-      --bg:#ffffff;
-      --bg2:#f5f5f7;
-      --panel:#ffffff;
-      --line:rgba(0,0,0,0.08);
-      --line-soft:rgba(0,0,0,0.05);
-      --text:#0a0a0a;
-      --text-2:#1c1c1e;
-      --text-3:#6e6e73;
-      --text-4:#aeaeb2;
-      --accent:#1a3a6b;
-      --accent-soft:rgba(26,58,107,0.07);
-      --accent-strong:rgba(26,58,107,0.12);
-      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
-      --serif:var(--sans);
-      --mono:'DM Mono',monospace;
-      --max:1120px;
-      --nav-h:64px;
-    }
-    html.dark {
-      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
-      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
-      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
-      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
-    }
-    @media(prefers-color-scheme:dark){:root{
-      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
-      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
-      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
-      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16);
-    }}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      background:var(--bg);color:var(--text-2);
-      font-family:var(--sans);font-weight:400;line-height:1.6;
-      -webkit-font-smoothing:antialiased;overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-    button{font:inherit;background:none;border:none;cursor:pointer}
-    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
-
-    /* ── NAV ── */
-    .nav{
-      position:sticky;top:0;z-index:100;height:var(--nav-h);
-      border-bottom:1px solid var(--line);
-      background:color-mix(in srgb,var(--bg) 85%,transparent);
-      backdrop-filter:blur(20px) saturate(180%);
-      -webkit-backdrop-filter:blur(20px) saturate(180%);
-    }
-    .nav-inner{
-      height:100%;display:flex;align-items:center;
-      justify-content:space-between;gap:20px;
-      width:min(var(--max),calc(100% - 48px));margin:0 auto;
-    }
-    .nav-icon{
-      width:18px;height:18px;object-fit:contain;
-      content:url(assets/favicon-light.png);
-      flex-shrink:0;
-    }
-    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
-    @media(prefers-color-scheme:dark){
-      .nav-icon{content:url(assets/favicon-dark.png)}
-    }
-    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
-    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
-    .nav-links a:hover{color:var(--text)}
-    .nav-right{display:flex;align-items:center;gap:8px}
-    .theme-btn{
-      width:36px;height:36px;border:1px solid var(--line);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      color:var(--text-3);transition:border-color 150ms,color 150ms;
-    }
-    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
-    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .cv-btn{
-      height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;
-      font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);
-      letter-spacing:0.02em;transition:border-color 150ms,background 150ms;
-      display:inline-flex;align-items:center;justify-content:center;
-    }
-    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
-
-    /* ── HERO ── */
-    .hero{padding:100px 0 80px;border-bottom:1px solid var(--line)}
-    .hero-inner{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:end;}
-    .hero-eyebrow{
-      font-family:var(--mono);font-size:11px;
-      letter-spacing:0.08em;color:var(--text-4);
-      text-transform:uppercase;margin-bottom:22px;
-    }
-    .hero-h1{
-      font-size:clamp(2.8rem,6.5vw,5.2rem);font-weight:800;
-      line-height:1.02;letter-spacing:-0.04em;
-      color:var(--text);margin-bottom:16px;
-    }
-    .hero-subline{
-      font-family:var(--mono);
-      font-size:12px;
-      color:var(--text-4);
-      letter-spacing:0.04em;
-      margin-bottom:28px;
-      line-height:1.6;
-    }
-    .hero-subline span{
-      color:var(--text-3);
-    }
-    .hero-rq{
-      border-left:2px solid var(--accent);padding-left:16px;
-      font-size:14px;color:var(--text-3);line-height:1.75;
-      max-width:520px;margin-bottom:18px;
-    }
-    .hero-sub{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.7;max-width:560px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
-    .btn-fill{
-      height:42px;padding:0 22px;background:var(--text);color:var(--bg);
-      border-radius:10px;font-size:13px;font-weight:600;
-      letter-spacing:-0.01em;transition:opacity 150ms;
-      display:inline-flex;align-items:center;justify-content:center;
-    }
-    .btn-fill:hover{opacity:0.82}
-    .btn-ghost{
-      height:42px;padding:0 22px;border:1px solid var(--line);
-      border-radius:10px;font-size:13px;font-weight:500;color:var(--text-2);
-      transition:border-color 150ms,background 150ms;
-      display:inline-flex;align-items:center;justify-content:center;
-    }
-    .btn-ghost:hover{border-color:var(--text-4);background:var(--bg2)}
-    .portrait-frame{
-      aspect-ratio:4/5;border-radius:18px;overflow:hidden;
-      background:var(--bg2);border:1px solid var(--line);
-      width:100%;
-    }
-    .portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(100%);transition:filter 300ms ease;}
-    .portrait-frame img:hover{filter:grayscale(0%)}
-    .mobile-avatar{
-      display:none;
-      width:40px;height:40px;border-radius:50%;
-      overflow:hidden;border:1px solid var(--line);
-      flex-shrink:0;
-    }
-    .mobile-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(100%)}
-
-    /* ── METRICS — 가운데 어긋남 ── */
-    .metrics{padding:48px 0;border-bottom:1px solid var(--line)}
-    .metrics-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      border:1px solid var(--line);border-radius:16px;
-      overflow:hidden;background:var(--line);gap:1px;
-    }
-    .metric{background:var(--bg);padding:28px 28px 22px}
-    .metric-num{
-      font-size:3rem;font-weight:800;
-      letter-spacing:-0.05em;color:var(--text);
-      line-height:1;margin-bottom:6px;
-    }
-    .metric-label{
-      font-family:var(--mono);font-size:10px;
-      letter-spacing:0.07em;text-transform:uppercase;
-      color:var(--text-4);line-height:1.5;
-    }
-
-    /* ── PROJECTS ── */
-    .projects{padding:64px 0 56px;border-bottom:1px solid var(--line)}
-    .projects-head{
-      display:flex;justify-content:space-between;align-items:baseline;
-      margin-bottom:4px;
-    }
-    .section-label{
-      font-family:var(--mono);font-size:10px;
-      letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);
-    }
-    .section-title{
-      font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;
-      letter-spacing:-0.04em;color:var(--text);
-      line-height:1.1;margin-top:8px;margin-bottom:40px;
-    }
-    .section-all{
-      font-family:var(--mono);font-size:11px;color:var(--text-4);
-      letter-spacing:0.04em;transition:color 150ms;
-    }
-    .section-all:hover{color:var(--accent)}
-
-    /* 주인공 프로젝트 */
-    .project-hero{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:0;border:1px solid var(--line);border-radius:16px;
-      overflow:hidden;margin-bottom:2px;
-      transition:border-color 200ms;
-    }
-    .project-hero:hover{border-color:rgba(26,58,107,0.34);box-shadow:0 16px 48px rgba(10,10,10,0.08)}
-    html.dark .project-hero:hover{border-color:rgba(74,127,212,0.3)}
-    .project-hero-left{padding:36px 40px;border-right:1px solid var(--line)}
-    .project-hero-right{
-      padding:36px 40px;background:var(--accent-soft);
-      display:flex;flex-direction:column;justify-content:space-between;
-    }
-    .project-num{
-      font-family:var(--mono);font-size:10px;
-      color:var(--text-4);letter-spacing:0.08em;margin-bottom:14px;
-    }
-    .project-hero .project-title{
-      font-size:1.7rem;font-weight:800;
-      letter-spacing:-0.04em;color:var(--text);
-      line-height:1.1;margin-bottom:12px;
-    }
-    .project-hero .project-desc{font-size:14px;color:var(--text-3);line-height:1.7}
-    .project-hero-stat{
-      font-family:var(--mono);font-size:11px;
-      color:var(--accent);letter-spacing:0.04em;line-height:1.9;
-    }
-    .project-hero-claim{
-      font-size:1.05rem;font-weight:600;
-      color:var(--text);line-height:1.5;
-      letter-spacing:-0.02em;margin-top:32px;
-    }
-
-    /* 서브 프로젝트 */
-    .project-sub-list{display:grid;gap:1px;background:var(--line);border-radius:16px;overflow:hidden}
-    .project-sub{
-      display:grid;grid-template-columns:48px 1fr auto;
-      gap:20px;align-items:center;
-      padding:20px 24px;background:var(--bg);
-      transition:background 150ms;
-    }
-    .project-sub:nth-child(2){padding-left:36px}
-    .project-sub:hover{background:var(--bg2)}
-    .project-sub .project-num{margin-bottom:0}
-    .project-sub .project-title{
-      font-size:1rem;font-weight:600;letter-spacing:-0.02em;
-      color:var(--text);line-height:1.2;margin-bottom:3px;
-    }
-    .project-sub .project-desc{font-size:12px;color:var(--text-4);line-height:1.5}
-    .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-    .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.02em;padding:2px 7px;border-radius:4px}
-    .tag-a{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(26,58,107,0.15)}
-    html.dark .tag-a{border-color:rgba(74,127,212,0.2)}
-    .tag-n{background:var(--bg2);color:var(--text-4);border:1px solid var(--line)}
-    .project-arrow{font-size:13px;color:var(--text-4);transition:color 150ms,transform 150ms}
-    .project-sub:hover .project-arrow{color:var(--accent);transform:translateX(3px)}
-
-    /* ── PAPERS / RESEARCH — 비대칭 ── */
-    .section{padding:56px 0;border-bottom:1px solid var(--line)}
-    .pr-grid{display:grid;grid-template-columns:0.75fr 1.25fr;gap:12px;align-items:start}
-    .pr-papers{
-      border:1px solid var(--line);border-radius:16px;
-      padding:26px;background:var(--panel);transition:border-color 180ms;
-    }
-    .pr-papers:hover{border-color:var(--text-4)}
-    .pr-research{
-      border:1px solid var(--accent);border-radius:16px;
-      padding:32px;background:var(--accent-soft);
-      transition:border-color 180ms,transform 180ms;
-    }
-    .pr-research:hover{transform:translateY(-2px)}
-    .teaser-kicker{
-      font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
-      text-transform:uppercase;color:var(--text-4);margin-bottom:10px;
-    }
-    .pr-research .teaser-kicker{color:var(--accent);opacity:0.8}
-    .teaser-h{
-      font-size:1.4rem;font-weight:700;letter-spacing:-0.04em;
-      color:var(--text);line-height:1.1;margin-bottom:10px;
-    }
-    .pr-research .teaser-h{font-size:1.8rem}
-    .teaser-p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
-    .pr-research .teaser-p{font-size:14px;color:var(--text-2)}
-    .teaser-link{font-family:var(--mono);font-size:11px;color:var(--text-4);letter-spacing:0.02em}
-    .pr-research .teaser-link{color:var(--accent);font-size:12px}
-
-    /* ── ABOUT + CONTACT ── */
-    .bottom-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:12px}
-    .about-card,.contact-card{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel)}
-    .about-title{
-      font-size:1.3rem;font-weight:700;letter-spacing:-0.03em;
-      color:var(--text);line-height:1.2;margin-top:8px;
-    }
-    .about-body{font-size:13px;color:var(--text-3);line-height:1.8;margin-top:10px}
-    .contact-stack{display:grid;gap:8px;margin-top:12px}
-    .contact-row{
-      display:flex;justify-content:space-between;align-items:center;
-      border:1px solid var(--line);border-radius:10px;padding:10px 14px;
-      transition:border-color 150ms,background 150ms;
-    }
-    .contact-row:hover{border-color:var(--text-4);background:var(--bg2)}
-    .contact-kind{font-size:13px;font-weight:600;color:var(--text)}
-    .contact-val{font-family:var(--mono);font-size:11px;color:var(--text-3)}
-
-    /* ── FOOTER ── */
-    footer{padding:20px 0 36px}
-    .footer-inner{
-      border-top:1px solid var(--line);padding-top:16px;
-      display:flex;justify-content:space-between;align-items:center;gap:12px;
-      font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;
-    }
-    .footer-inner a:hover{color:var(--accent)}
-
-    /* ── REVEAL ── */
-    .reveal{opacity:1;transform:none}
-    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
-    .js-ready .reveal.on{opacity:1;transform:none}
-
-    /* ── HAMBURGER ── */
-    .hamburger{
-      display:none;width:36px;height:36px;
-      border:1px solid var(--line);border-radius:50%;
-      align-items:center;justify-content:center;
-      color:var(--text-3);cursor:pointer;
-      flex-direction:column;gap:4px;
-      transition:border-color 150ms;
-    }
-    .hamburger:hover{border-color:var(--text-3)}
-    .hamburger span{
-      display:block;width:14px;height:1.5px;
-      background:currentColor;border-radius:2px;
-      transition:transform 250ms ease,opacity 250ms ease;
-    }
-    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-
-    .mobile-menu{
-      display:none;
-      position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
-      background:color-mix(in srgb,var(--bg) 97%,transparent);
-      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-      z-index:200;padding:32px 24px;
-      flex-direction:column;gap:8px;
-      border-top:1px solid var(--line);
-    }
-    .mobile-menu.open{display:flex}
-    .mobile-menu a{
-      font-size:1.5rem;font-weight:700;
-      letter-spacing:-0.03em;color:var(--text);
-      padding:12px 0;border-bottom:1px solid var(--line-soft);
-      transition:color 150ms;
-    }
-    .mobile-menu a:hover{color:var(--accent)}
-    .mobile-menu-cv{
-      margin-top:16px;
-      font-family:var(--mono);font-size:12px;
-      color:var(--text-4);letter-spacing:0.04em;
-    }
-
-    /* ── RESPONSIVE ── */
+  :root{
+    --bg:#ffffff;
+    --bg2:#f5f5f7;
     
-    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
-    @media(max-width:900px){
-      .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
-      .portrait-frame{display:none}
-      .project-hero{grid-template-columns:1fr}
-      .project-hero-left{border-right:none;border-bottom:1px solid var(--line)}
-      .metrics-grid{grid-template-columns:repeat(3,1fr)}
-      .hero{padding:72px 0 56px}
+    --panel:#ffffff;
+    --line:rgba(0,0,0,0.08);
+    --line-soft:rgba(0,0,0,0.05);
+    --text:#0a0a0a;
+    --text-2:#1c1c1e;
+    --text-3:#636369;
+    --text-4:#9a9aa1;
+    --accent:#1a3a6b;
+    --accent-soft:rgba(26,58,107,0.07);
+    --accent-strong:rgba(26,58,107,0.12);
+    
+    --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+    --mono:'DM Mono',monospace;
+    --max:1120px;
+    --nav-h:64px;
+  }
+  html.dark{
+    --bg:#000000;
+    --bg2:#111111;
+    
+    --panel:#1c1c1e;
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.05);
+    --text:#f5f5f7;
+    --text-2:#e5e5ea;
+    --text-3:#8e8e93;
+    --text-4:#48484a;
+    --accent:#4a7fd4;
+    --accent-soft:rgba(74,127,212,0.10);
+    --accent-strong:rgba(74,127,212,0.16);
+    
+  }
+  @media(prefers-color-scheme:dark){
+    :root{
+      --bg:#000000;
+      --bg2:#111111;
+      
+      --panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);
+      --line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;
+      --text-2:#e5e5ea;
+      --text-3:#8e8e93;
+      --text-4:#48484a;
+      --accent:#4a7fd4;
+      --accent-soft:rgba(74,127,212,0.10);
+      --accent-strong:rgba(74,127,212,0.16);
+      
     }
-    @media(max-width:600px){
-      .wrap{width:calc(100% - 32px)}
-      .nav-links{display:none}
-      .hamburger{display:flex}
-      .project-sub:nth-child(2){padding-left:24px}
-      .project-hero-left{padding:24px}
-      .project-hero-right{padding:24px}
-      .hero-h1{font-size:2.4rem}
-      .hero-subline{font-size:11px}
-      .metrics-grid{grid-template-columns:1fr}
-      .metric:nth-child(2){padding:28px 28px 22px}
-      .section-title{font-size:1.5rem}
-      .teaser-h{font-size:1.2rem}
-      .pr-research .teaser-h{font-size:1.4rem}
-      .footer-inner{flex-direction:column;align-items:flex-start;gap:6px}
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text-2);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font:inherit;background:none;border:none;cursor:pointer}
+  .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
+
+  .nav{
+    position:sticky;top:0;z-index:100;height:var(--nav-h);
+    border-bottom:1px solid var(--line);
+    background:color-mix(in srgb,var(--bg) 84%,transparent);
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+  }
+  .nav-inner{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    width:min(var(--max),calc(100% - 48px));
+    margin:0 auto;
+  }
+  .nav-icon{
+    width:18px;height:18px;object-fit:contain;
+    content:url(assets/favicon-light.png);
+    flex-shrink:0;
+  }
+  html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+  @media(prefers-color-scheme:dark){ .nav-icon{content:url(assets/favicon-dark.png)} }
+  .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+  .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+  .nav-links a:hover{color:var(--text)}
+  .nav-right{display:flex;align-items:center;gap:8px}
+  .theme-btn{
+    width:36px;height:36px;border:1px solid var(--line);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-3);transition:border-color 150ms,color 150ms;
+  }
+  .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+  .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cv-btn{
+    height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;
+    font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);
+    letter-spacing:0.02em;transition:border-color 150ms,background 150ms;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
+
+  .hero{
+    padding:88px 0 70px;
+    border-bottom:1px solid var(--line);
+    background:none;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 318px;
+    gap:42px;
+    align-items:stretch;
+  }
+  .hero-copy{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:34px 34px 30px;
+    box-shadow:0 8px 32px rgba(10,10,10,0.06);
+    background:var(--panel);
+  }
+  html.dark .hero-copy{box-shadow:0 8px 32px rgba(0,0,0,0.22);}
+  .hero-aside{
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--panel);
+    display:flex;flex-direction:column;
+  }
+  .hero-name{
+    font-size:clamp(1rem,1.8vw,1.16rem);
+    font-weight:700;
+    color:var(--text);
+    letter-spacing:-0.03em;
+    margin-bottom:12px;
+  }
+  .hero-eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--text-4);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hero-h1{
+    font-size:clamp(2.9rem,6.4vw,5.1rem);
+    font-weight:800;
+    line-height:1.01;
+    letter-spacing:-0.05em;
+    color:var(--text);
+    margin-bottom:16px;
+    max-width:10.4ch;
+  }
+  .hero-sub{
+    font-size:16px;
+    font-weight:400;
+    color:var(--text-3);
+    line-height:1.75;
+    max-width:63ch;
+  }
+  .hero-sub strong{color:var(--text-2);font-weight:600}
+  .hero-rq{
+    margin-top:20px;
+    border-left:2px solid var(--accent);
+    padding-left:16px;
+    font-size:14px;
+    color:var(--text-3);
+    line-height:1.8;
+    max-width:640px;
+  }
+  .hero-subline{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:22px;
+  }
+  .hero-chip{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.03em;
+    color:var(--text-3);
+    padding:7px 10px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--bg2);
+  }
+  .hero-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .btn-fill{
+    height:44px;padding:0 22px;background:var(--text);color:var(--bg);
+    border-radius:10px;font-size:13px;font-weight:600;
+    letter-spacing:-0.01em;transition:opacity 150ms;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .btn-fill:hover{opacity:0.84}
+  .btn-ghost{
+    height:44px;padding:0 22px;border:1px solid var(--line);
+    border-radius:10px;font-size:13px;font-weight:500;color:var(--text-2);
+    transition:border-color 150ms,background 150ms;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .btn-ghost:hover{border-color:var(--text-4);background:var(--bg2)}
+
+  .portrait-frame{
+    aspect-ratio:4/4.9;
+    background:var(--bg2);
+    border-bottom:1px solid var(--line);
+  }
+  .portrait-frame img{
+    width:100%;height:100%;object-fit:cover;object-position:center top;
+    filter:grayscale(100%);transition:filter 300ms ease;
+  }
+  .portrait-frame img:hover{filter:grayscale(0%)}
+  .aside-body{padding:18px 18px 20px}
+  .aside-kicker{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--text-4);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .aside-claim{
+    font-size:13px;
+    line-height:1.75;
+    color:var(--text-3);
+    margin-bottom:14px;
+  }
+  .aside-stack{display:grid;gap:10px}
+  .aside-row{
+    border-top:1px solid var(--line-soft);
+    padding-top:10px;
+  }
+  .aside-row strong{
+    display:block;
+    font-size:12px;
+    color:var(--text);
+    margin-bottom:3px;
+    letter-spacing:-0.01em;
+  }
+  .aside-row span{
+    display:block;
+    font-size:12px;
+    color:var(--text-3);
+    line-height:1.65;
+  }
+
+  .metrics{
+    padding:38px 0 54px;
+    border-bottom:1px solid var(--line);
+  }
+  .metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--line);
+    gap:1px;
     }
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation:none !important;transition:none !important}
-      .reveal{opacity:1;transform:none}
+  .metric{
+    background:var(--panel);
+    padding:24px 24px 22px;
+  }
+  .metric-num{
+    font-size:13px;
+    font-family:var(--mono);
+    color:var(--accent);
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .metric-label{
+    font-size:16px;
+    font-weight:600;
+    line-height:1.45;
+    color:var(--text);
+    letter-spacing:-0.02em;
+    margin-bottom:8px;
+  }
+  .metric-note{
+    font-size:12px;
+    color:var(--text-3);
+    line-height:1.7;
+  }
+
+  .projects{padding:64px 0 58px;border-bottom:1px solid var(--line)}
+  .projects-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:4px;
+  }
+  .section-label{
+    font-family:var(--mono);font-size:10px;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);
+  }
+  .section-title{
+    font-size:clamp(1.6rem,2.8vw,2.25rem);
+    font-weight:700;letter-spacing:-0.04em;color:var(--text);
+    line-height:1.1;margin-top:8px;margin-bottom:40px;
+  }
+  .section-all{
+    font-family:var(--mono);font-size:11px;color:var(--text-4);
+    letter-spacing:0.04em;transition:color 150ms;
+  }
+  .section-all:hover{color:var(--accent)}
+
+  .project-hero{
+    display:grid;grid-template-columns:1.02fr 0.98fr;
+    gap:0;border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;margin-bottom:3px;
+    transition:border-color 200ms,box-shadow 200ms,transform 200ms;
+    background:var(--panel);
+    box-shadow:0 10px 40px rgba(10,10,10,0.07);
+  }
+  html.dark .project-hero{box-shadow:0 10px 40px rgba(0,0,0,0.26);}
+  .project-hero:hover{border-color:rgba(26,58,107,0.34);box-shadow:0 16px 52px rgba(10,10,10,0.10);transform:translateY(-2px)}
+  html.dark .project-hero:hover{border-color:rgba(74,127,212,0.3);box-shadow:0 16px 52px rgba(0,0,0,0.32)}
+  .project-hero-left{padding:36px 38px;border-right:1px solid var(--line)}
+  .project-hero-right{
+    padding:36px 38px;
+    background:linear-gradient(160deg, var(--accent-soft) 0%, transparent 60%), var(--panel);
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .project-num{
+    font-family:var(--mono);font-size:10px;
+    color:var(--text-4);letter-spacing:0.08em;margin-bottom:14px;
+  }
+  .project-hero .project-title{
+    font-size:1.8rem;font-weight:800;
+    letter-spacing:-0.045em;color:var(--text);
+    line-height:1.06;margin-bottom:14px;
+    max-width:14ch;
+  }
+  .project-hero .project-desc{font-size:14px;color:var(--text-3);line-height:1.75}
+  .project-hero-stat{
+    font-family:var(--mono);font-size:11px;
+    color:var(--accent);letter-spacing:0.04em;line-height:1.95;
+  }
+  .project-hero-claim{
+    font-size:1.08rem;font-weight:700;
+    color:var(--text);line-height:1.55;
+    letter-spacing:-0.025em;margin-top:30px;
+  }
+  .project-sub-list{
+    display:grid;gap:1px;background:var(--line);
+    border-radius:16px;overflow:hidden;
     }
-  </style>
+  .project-sub{
+    display:grid;grid-template-columns:48px 1fr auto;
+    gap:20px;align-items:center;
+    padding:20px 24px;background:var(--panel);
+    transition:background 150ms;
+  }
+  .project-sub:nth-child(2){padding-left:34px}
+  .project-sub:hover{background:var(--bg2)}
+  .project-sub .project-num{margin-bottom:0}
+  .project-sub .project-title{
+    font-size:1rem;font-weight:700;letter-spacing:-0.02em;
+    color:var(--text);line-height:1.2;margin-bottom:4px;
+  }
+  .project-sub .project-desc{font-size:12px;color:var(--text-3);line-height:1.6}
+  .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.02em;padding:3px 7px;border-radius:5px}
+  .tag-a{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-strong)}
+  .tag-n{background:var(--bg2);color:var(--text-4);border:1px solid var(--line)}
+  .project-arrow{font-size:13px;color:var(--text-4);transition:color 150ms,transform 150ms}
+  .project-sub:hover .project-arrow{color:var(--accent);transform:translateX(3px)}
+
+  .section{padding:58px 0;border-bottom:1px solid var(--line)}
+  .pr-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:12px;align-items:start}
+  .pr-papers,.pr-research{
+    border-radius:16px;
+    }
+  .pr-papers{
+    border:1px solid var(--line);
+    padding:28px;background:var(--panel);transition:border-color 180ms,transform 180ms;
+  }
+  .pr-papers:hover{border-color:var(--text-4)}
+  .pr-research{
+    border:1px solid var(--accent);
+    padding:32px;
+    background:linear-gradient(160deg, var(--accent-strong) 0%, var(--accent-soft) 40%, transparent 75%), var(--panel);
+    transition:border-color 180ms,transform 180ms,box-shadow 180ms;
+    box-shadow:0 6px 28px rgba(26,58,107,0.08);
+  }
+  html.dark .pr-research{box-shadow:0 6px 28px rgba(74,127,212,0.10);}
+  .pr-research:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(26,58,107,0.13);}
+  html.dark .pr-research:hover{box-shadow:0 12px 40px rgba(74,127,212,0.16);}
+  .teaser-kicker{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--text-4);margin-bottom:10px;
+  }
+  .pr-research .teaser-kicker{color:var(--accent);opacity:0.9}
+  .teaser-h{
+    font-size:1.4rem;font-weight:700;letter-spacing:-0.04em;
+    color:var(--text);line-height:1.1;margin-bottom:10px;
+  }
+  .pr-research .teaser-h{font-size:1.92rem}
+  .teaser-p{font-size:13px;color:var(--text-3);line-height:1.75;margin-bottom:16px}
+  .pr-research .teaser-p{font-size:14px;color:var(--text-2)}
+  .teaser-link{font-family:var(--mono);font-size:11px;color:var(--text-4);letter-spacing:0.02em}
+  .pr-research .teaser-link{color:var(--accent);font-size:12px}
+
+  .bottom-grid{display:grid;grid-template-columns:1.18fr 0.82fr;gap:12px}
+  .about-card,.contact-card{
+    border:1px solid var(--line);
+    border-radius:16px;padding:28px;background:var(--panel);
+    }
+  .about-title{
+    font-size:1.34rem;font-weight:700;letter-spacing:-0.03em;
+    color:var(--text);line-height:1.2;margin-top:8px;
+  }
+  .about-body{font-size:13px;color:var(--text-3);line-height:1.84;margin-top:10px}
+  .contact-stack{display:grid;gap:8px;margin-top:12px}
+  .contact-row{
+    display:flex;justify-content:space-between;align-items:center;
+    border:1px solid var(--line);border-radius:10px;padding:11px 14px;
+    transition:border-color 150ms,background 150ms;
+  }
+  .contact-row:hover{border-color:var(--text-4);background:var(--bg2)}
+  .contact-kind{font-size:13px;font-weight:700;color:var(--text)}
+  .contact-val{font-family:var(--mono);font-size:11px;color:var(--text-3);line-height:1.6;max-width:62%;text-align:right;white-space:normal;overflow-wrap:anywhere}
+
+  footer{padding:20px 0 36px}
+  .footer-inner{
+    border-top:1px solid var(--line);padding-top:16px;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;
+  }
+  .footer-inner a:hover{color:var(--accent)}
+
+  .reveal{opacity:1;transform:none}
+  .js-ready .reveal{
+    opacity:0;transform:translateY(12px);
+    transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)
+  }
+  .js-ready .reveal.on{opacity:1;transform:none}
+
+  .hamburger{
+    display:none;width:36px;height:36px;
+    border:1px solid var(--line);border-radius:50%;
+    align-items:center;justify-content:center;
+    color:var(--text-3);cursor:pointer;
+    flex-direction:column;gap:4px;
+    transition:border-color 150ms;
+  }
+  .hamburger:hover{border-color:var(--text-3)}
+  .hamburger span{
+    display:block;width:14px;height:1.5px;
+    background:currentColor;border-radius:2px;
+    transition:transform 250ms ease,opacity 250ms ease;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  .mobile-menu{
+    display:none;
+    position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
+    background:color-mix(in srgb,var(--bg) 97%,transparent);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    z-index:200;padding:32px 24px;
+    flex-direction:column;gap:8px;
+    border-top:1px solid var(--line);
+  }
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{
+    font-size:1.5rem;font-weight:700;
+    letter-spacing:-0.03em;color:var(--text);
+    padding:12px 0;border-bottom:1px solid var(--line-soft);
+    transition:color 150ms;
+  }
+  .mobile-menu a:hover{color:var(--accent)}
+  .mobile-menu-cv{
+    margin-top:16px;
+    font-family:var(--mono);font-size:12px;
+    color:var(--text-4);letter-spacing:0.04em;
+  }
+
+  @media(max-width:900px){
+    .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
+    .project-hero{grid-template-columns:1fr}
+    .project-hero-left{border-right:none;border-bottom:1px solid var(--line)}
+    .metrics-grid{grid-template-columns:repeat(3,1fr)}
+    .hero{padding:72px 0 56px}
+    .hero-h1{max-width:12ch}
+  }
+  @media(max-width:600px){
+    .contact-row{align-items:flex-start;gap:14px}
+    .contact-val{max-width:58%;text-align:right}
+    .wrap{width:calc(100% - 32px)}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .hero-copy,.hero-aside{border-radius:16px}
+    .project-sub:nth-child(2){padding-left:24px}
+    .project-hero-left,.project-hero-right,.pr-papers,.pr-research,.about-card,.contact-card{padding:24px}
+    .hero-copy{padding:24px}
+    .aside-body{padding:16px}
+    .hero-h1{font-size:2.45rem}
+    .hero-sub{font-size:15px}
+    .metrics-grid{grid-template-columns:1fr}
+    .section-title{font-size:1.5rem}
+    .teaser-h{font-size:1.2rem}
+    .pr-research .teaser-h{font-size:1.46rem}
+    .footer-inner{flex-direction:column;align-items:flex-start;gap:6px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
 </head>
 <body>
 <header class="nav">
-<div class="nav-inner">
-<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
-<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
-<span class="brand-name">Sora Kim</span>
-</a>
-<nav aria-label="Primary">
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="papers.html">Papers</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="about.html">About</a></li>
-</ul>
-</nav>
-<div class="nav-right">
-<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
-<svg aria-hidden="true" viewBox="0 0 24 24" style="pointer-events:none">
-<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-<circle cx="12" cy="12" r="4"></circle>
-</svg>
-</button>
-<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
-<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
-<span></span><span></span><span></span>
-</button>
-</div>
-</div>
+  <div class="nav-inner">
+    <a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+      <img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+      <span class="brand-name">Sora Kim</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="papers.html">Papers</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+        <svg aria-hidden="true" viewBox="0 0 24 24" style="pointer-events:none">
+          <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          <circle cx="12" cy="12" r="4"></circle>
+        </svg>
+      </button>
+      <a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+      <button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
 </header>
+
 <nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
-<a class="mobile-link" href="index.html">Home</a>
-<a class="mobile-link" href="projects.html">Projects</a>
-<a class="mobile-link" href="papers.html">Papers</a>
-<a class="mobile-link" href="research.html">Research</a>
-<a class="mobile-link" href="about.html">About</a>
-<div class="mobile-menu-cv"><a href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
+  <a class="mobile-link" href="index.html">Home</a>
+  <a class="mobile-link" href="projects.html">Projects</a>
+  <a class="mobile-link" href="papers.html">Papers</a>
+  <a class="mobile-link" href="research.html">Research</a>
+  <a class="mobile-link" href="about.html">About</a>
+  <div class="mobile-menu-cv"><a href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
 </nav>
+
 <main>
-<!-- HERO: 정돈, 신뢰 -->
-<section class="hero">
-<div class="wrap">
-<div class="hero-inner">
-<div class="reveal">
-<div style="font-size:clamp(1rem,1.8vw,1.15rem);font-weight:700;color:var(--text);letter-spacing:-0.03em;margin-bottom:14px;">Sora Kim</div>
-<div class="hero-eyebrow">HCI Research · Pharmaceutical QC · Regulated Systems</div>
-<h1 class="hero-h1">Responsibility is produced through system design.</h1>
-<div class="hero-subline">
-<span>who is held responsible</span>
-               · 
-              <span>what gets investigated</span>
-               · 
-              <span>what stays invisible</span>
-</div>
-<p class="hero-rq">"How do regulated systems channel what people can see, justify, and be held responsible for?"</p>
-<p class="hero-sub">I study how documentation systems, workflows, and reasoning environments shape three recurring problems in regulated work: navigation burden, premature closure, and accountability visibility.</p>
-<div class="hero-actions">
-<a class="btn-fill" href="projects.html">View projects</a>
-<a class="btn-ghost" href="papers.html">Read papers</a>
-</div>
-</div>
-<div class="reveal">
-<div class="portrait-frame">
-<img alt="Portrait of Sora Kim" src="assets/sora-kim.jpg"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- METRICS: 미세하게 어긋난 시스템 -->
-<section class="metrics">
-<div class="wrap">
-<div class="metrics-grid reveal">
-<div class="metric">
-<div class="metric-num">6</div>
-<div class="metric-label">Empirical studies<br/>across six projects</div>
-</div>
-<div class="metric">
-<div class="metric-num">20</div>
-<div class="metric-label">Pilot studies<br/>N=20 per study</div>
-</div>
-<div class="metric">
-<div class="metric-num">5</div>
-<div class="metric-label">Prototype systems<br/>evaluated in context</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PROJECTS: 주인공 하나, 나머지 서브 -->
-<section class="projects">
-<div class="wrap">
-<div class="projects-head reveal">
-<div>
-<div class="section-label">Selected Projects</div>
-<h2 class="section-title">Research Program</h2>
-</div>
-<a class="section-all" href="projects.html">All projects →</a>
-</div>
-<a class="project-hero reveal" href="project-rca-reasoning-scaffolder.html">
-<div class="project-hero-left">
-<div class="project-num">01 — Featured</div>
-<div class="project-title">RCA Investigation Scaffolder</div>
-<p class="project-desc">Deviation investigations in GMP environments can converge too early on a single explanation — not simply because investigators are careless, but because the workflow rewards fast closure.</p>
-</div>
-<div class="project-hero-right">
-<div class="project-hero-stat">
-              Pilot think-aloud study<br/>
-              Broader causal reasoning observed with scaffolding<br/>
-              Delayed closure during supported sessions<br/>
-              Strong clarity and usefulness ratings
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <div class="hero-name">Sora Kim</div>
+          <div class="hero-eyebrow">HCI · STS · AI in regulated investigations</div>
+          <h1 class="hero-h1">Responsibility converges under system pressure.</h1>
+          <p class="hero-sub">
+            In regulated investigations, responsibility often converges too early. I study how <strong>documentation, workflow, and AI-supported scaffolds shape which explanations stay visible long enough to be compared</strong> before closure sets in.
+          </p>
+          <p class="hero-rq">I treat AI not as a documentation shortcut, but as a reasoning intervention: preserving alternatives, delaying premature convergence, and making accountability formation more legible in high-stakes quality work.</p>
+          <div class="hero-subline">
+            <span class="hero-chip">responsibility convergence</span>
+            <span class="hero-chip">premature closure</span>
+            <span class="hero-chip">AI reasoning support</span>
+            <span class="hero-chip">regulated systems</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-fill" href="projects.html">View projects</a>
+            <a class="btn-ghost" href="papers.html">Read papers</a>
+          </div>
+        </div>
+
+        <div class="hero-aside reveal">
+          <div class="portrait-frame">
+            <img alt="Portrait of Sora Kim" src="assets/sora-kim.jpg"/>
+          </div>
+          <div class="aside-body">
+            <div class="aside-kicker">Research framing</div>
+            <p class="aside-claim">
+              Documentation, workflow, interface design, and AI-mediated scaffolds shape how responsibility is narrowed, compared, and assigned in regulated environments.
+            </p>
+            <div class="aside-stack">
+              <div class="aside-row">
+                <strong>Empirical anchor</strong>
+                <span>Root cause investigations in GMP-regulated work</span>
+              </div>
+              <div class="aside-row">
+                <strong>Primary mechanism</strong>
+                <span>Closure pressure that narrows causal reasoning and concentrates accountability</span>
+              </div>
+              <div class="aside-row">
+                <strong>AI direction</strong>
+                <span>Scaffolds that preserve comparison and uncertainty instead of merely accelerating paperwork</span>
+              </div>
             </div>
-<div class="project-hero-claim">
-              "The system was making investigators stop narrowing too early. The intervention was designed to keep comparison alive."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="wrap">
+      <div class="metrics-grid reveal">
+        <div class="metric">
+          <div class="metric-num">Conceptual core</div>
+          <div class="metric-label">A linked research program on how responsibility is produced through documentation, investigation, interface structure, and AI-mediated support.</div>
+          <div class="metric-note">These projects function as one inquiry into accountable reasoning, not as separate tools.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">Empirical approach</div>
+          <div class="metric-label">Practitioner-based pilot studies examining when explanations broaden or narrow under closure pressure, structured prompting, and AI-supported comparison.</div>
+          <div class="metric-note">The key outcome is not only usability, but whether responsibility settles too quickly onto a single account.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">Design contribution</div>
+          <div class="metric-label">Intervention prototypes that preserve comparison, surface uncertainty, and keep constrained reasoning revisable before responsibility prematurely converges.</div>
+          <div class="metric-note">Here, AI functions as a mechanism for widening accountable reasoning rather than accelerating paperwork.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <div class="wrap">
+      <div class="projects-head reveal">
+        <div>
+          <div class="section-label">Selected Projects</div>
+          <h2 class="section-title">Research Program</h2>
+        </div>
+        <a class="section-all" href="projects.html">All projects →</a>
+      </div>
+
+      <a class="project-hero reveal" href="project-rca-reasoning-scaffolder.html">
+        <div class="project-hero-left">
+          <div class="project-num">01 — Featured</div>
+          <div class="project-title">Responsibility Convergence in RCA</div>
+          <p class="project-desc">
+            Deviation investigations in GMP environments often converge prematurely on a single explanation — not simply because investigators reason poorly, but because investigatory structures reward early closure and compress the space of accountable interpretations.
+          </p>
+        </div>
+        <div class="project-hero-right">
+          <div class="project-hero-stat">
+            Pilot think-aloud study<br/>
+            Broader causal exploration under scaffolded conditions<br/>
+            Delayed premature closure during supported sessions<br/>
+            More legible comparison and reasoning traces
+          </div>
+          <div class="project-hero-claim">
+            AI-supported scaffolds can reshape responsibility convergence by preserving alternative explanations before investigations collapse onto a single accountable endpoint.
+          </div>
+        </div>
+      </a>
+
+      <div class="project-sub-list reveal" style="margin-top:2px">
+        <a class="project-sub" href="project-sop-accessibility.html">
+          <div class="project-num">02</div>
+          <div>
+            <div class="project-title">SOP Accessibility and Procedural Visibility</div>
+            <div class="project-desc">A documentation interface showing how search friction shapes what becomes actionable, interpretable, and responsibility-relevant in procedural work.</div>
+            <div class="tags">
+              <span class="tag tag-a">Pilot study · session-based evaluation · Deployed</span>
+              <span class="tag tag-n">Streamlit</span>
+              <span class="tag tag-n">Prototype</span>
             </div>
-</div>
-</a>
-<div class="project-sub-list reveal" style="margin-top:2px">
-<a class="project-sub" href="project-sop-accessibility.html">
-<div class="project-num">02</div>
-<div>
-<div class="project-title">SOP Retrieval System</div>
-<div class="project-desc">Retrieval prototype showing how upstream search friction can affect downstream interpretation and procedural judgment in documentation archives.</div>
-<div class="tags">
-<span class="tag tag-a">Pilot study · session-based evaluation · Deployed</span>
-<span class="tag tag-n">Streamlit</span>
-<span class="tag tag-n">Prototype</span>
-</div>
-</div>
-<div class="project-arrow">→</div>
-</a>
-<a class="project-sub" href="project-cross-reference.html">
-<div class="project-num">03</div>
-<div>
-<div class="project-title">Cross-Reference System</div>
-<div class="project-desc">Traceability interface showing how cross-reference visibility changes what practitioners can find, follow, and verify across GMP document networks.</div>
-<div class="tags">
-<span class="tag tag-a">Pilot study · task-based evaluation · Deployed</span>
-<span class="tag tag-n">Streamlit</span>
-<span class="tag tag-n">Prototype</span>
-</div>
-</div>
-<div class="project-arrow">→</div>
-</a>
-</div>
-</div>
-</section>
-<!-- PAPERS / RESEARCH: Research가 주인공 -->
-<section class="section">
-<div class="wrap">
-<div class="pr-grid">
-<a class="pr-papers reveal" href="papers.html">
-<div class="teaser-kicker">Papers</div>
-<div class="teaser-h">5 HCI papers<br/>4 STS foundations</div>
-<p class="teaser-p">Six HCI projects and linked papers examining navigation burden, premature closure, review opacity, and responsibility formation in GMP-regulated environments.</p>
-<div class="teaser-link">Go to papers →</div>
-</a>
-<a class="pr-research reveal" href="research.html">
-<div class="teaser-kicker">Research</div>
-<div class="teaser-h">HCI grounded in STS</div>
-<p class="teaser-p">The STS papers explain how accountability is organized in formal systems. The HCI projects test concrete interventions that reshape navigation, reasoning, and visibility inside those constraints.</p>
-<div class="teaser-link">Go to research →</div>
-</a>
-</div>
-</div>
-</section>
-<!-- ABOUT + CONTACT: 다시 안정화 -->
-<section class="section" style="border-bottom:none">
-<div class="wrap">
-<div class="bottom-grid">
-<a class="about-card reveal" href="about.html">
-<div class="section-label">About</div>
-<div class="about-title">From regulated practice<br/>to research questions.</div>
-<p class="about-body">This research began in pharmaceutical QC after more than four years of working through GMP systems where the demands were explicit, but the sources of difficulty were often hidden in documents, workflows, and review structures.</p>
-</a>
-<div class="contact-card reveal">
-<div class="section-label">Contact</div>
-<div class="contact-stack">
-<a class="contact-row" href="mailto:sorakim.lab@gmail.com">
-<span class="contact-kind">Email</span>
-<span class="contact-val">sorakim.lab@gmail.com</span>
-</a>
-<a class="contact-row" href="https://github.com/sorakim-lab" rel="noopener" target="_blank">
-<span class="contact-kind">GitHub</span>
-<span class="contact-val">sorakim-lab ↗</span>
-</a>
-<a class="contact-row" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">
-<span class="contact-kind">CV</span>
-<span class="contact-val">Open PDF ↗</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
+          </div>
+          <div class="project-arrow">→</div>
+        </a>
+
+        <a class="project-sub" href="project-cross-reference.html">
+          <div class="project-num">03</div>
+          <div>
+            <div class="project-title">Cross-Reference Visibility and Traceability</div>
+            <div class="project-desc">A traceability interface showing how cross-reference visibility changes what practitioners can follow, verify, and justify across document networks.</div>
+            <div class="tags">
+              <span class="tag tag-a">Pilot study · task-based evaluation · Deployed</span>
+              <span class="tag tag-n">Streamlit</span>
+              <span class="tag tag-n">Prototype</span>
+            </div>
+          </div>
+          <div class="project-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="pr-grid">
+        <a class="pr-papers reveal" href="papers.html">
+          <div class="teaser-kicker">Papers</div>
+          <div class="teaser-h">HCI papers and STS foundations</div>
+          <p class="teaser-p">Empirical and conceptual work on responsibility convergence, procedural visibility, premature closure, and AI-mediated reasoning support in regulated environments.</p>
+          <div class="teaser-link">Go to papers →</div>
+        </a>
+
+        <a class="pr-research reveal" href="research.html">
+          <div class="teaser-kicker">Research</div>
+          <div class="teaser-h">A program on how sociotechnical systems organize responsibility — and how AI can intervene in that process</div>
+          <p class="teaser-p">The STS papers explain how accountability is organized in formal systems. The HCI projects test concrete interventions — especially AI-supported scaffolds — that reopen constrained reasoning without flattening uncertainty or replacing human judgment.</p>
+          <div class="teaser-link">Go to research →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="bottom-grid">
+        <div class="about-card reveal">
+          <div class="section-label">About</div>
+          <div class="about-title">Why responsibility narrows too quickly in regulated work.</div>
+          <div class="about-body">
+            I have spent over four years working in pharmaceutical quality control within GMP-regulated environments. That experience shaped the core question behind my research: not whether regulation should be weakened, but why responsibility narrows so quickly in regulated work — and how systems can remain rigorous while giving practitioners more room to compare, question, and justify competing explanations before closure hardens into blame.
+          </div>
+        </div>
+
+        <div class="contact-card reveal">
+          <div class="section-label">Contact</div>
+          <div class="about-title">Current direction and research materials</div>
+          <div class="contact-stack">
+            <a class="contact-row" href="mailto:sorakim.lab@gmail.com">
+              <span class="contact-kind">Email</span>
+              <span class="contact-val">sorakim.lab@gmail.com</span>
+            </a>
+            <a class="contact-row" href="research.html">
+              <span class="contact-kind">Focus</span>
+              <span class="contact-val">responsibility · GMP investigations · AI scaffolds</span>
+            </a>
+            <a class="contact-row" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">
+              <span class="contact-kind">CV</span>
+              <span class="contact-val">open pdf ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
 <footer>
-<div class="wrap">
-<div class="footer-inner">
-<a href="https://sorakim-lab.github.io" style="color:var(--accent);letter-spacing:0.02em;">sorakim-lab.github.io</a>
-<a href="mailto:sorakim.lab@gmail.com" style="color:var(--text-4);">sorakim.lab@gmail.com</a>
-</div>
-</div>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>Sora Kim — How regulated systems narrow responsibility, and how AI can reopen accountable reasoning</span>
+      <span><a href="papers.html">Papers</a> · <a href="projects.html">Projects</a> · <a href="research.html">Research</a></span>
+    </div>
+  </div>
 </footer>
+
 <script>
-    (function(){
-      var root = document.documentElement;
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var isDark = stored ? stored === 'dark' : prefersDark;
-      root.classList.toggle('dark', isDark);
-      root.classList.add('js-ready');
-      var btn = document.getElementById('themeBtn');
-      if(btn) btn.addEventListener('click', function(){
-        isDark = !isDark;
-        root.classList.toggle('dark', isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+(function(){
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeBtn');
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  try {
+    var savedTheme = localStorage.getItem('theme');
+    if(savedTheme === 'dark') root.classList.add('dark');
+    else if(savedTheme === 'light') root.classList.remove('dark');
+    else if(window.matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark');
+  } catch(e){}
+
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      root.classList.toggle('dark');
+      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch(e){}
+    });
+  }
+
+  if(hamburgerBtn && mobileMenu){
+    hamburgerBtn.addEventListener('click', function(){
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
       });
-      var hamburger = document.getElementById('hamburgerBtn');
-      var mobileMenu = document.getElementById('mobileMenu');
-      if(hamburger && mobileMenu){
-        hamburger.addEventListener('click', function(){
-          hamburger.classList.toggle('open');
-          mobileMenu.classList.toggle('open');
-          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
-        mobileMenu.querySelectorAll('a').forEach(function(a){
-          a.addEventListener('click', function(){
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-        });
-      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-      setTimeout(function(){
-        document.querySelectorAll('.reveal').forEach(function(el){
-          var r = el.getBoundingClientRect();
-          if(r.top < window.innerHeight){ el.classList.add('on'); }
-        });
-      }, 100);
-    })();
-  </script>
+    });
+  }
+
+  document.body.classList.add('js-ready');
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('on');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0, rootMargin:'0px 0px -20px 0px'});
+    reveals.forEach(function(el){ observer.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('on'); });
+  }
+  setTimeout(function(){
+    reveals.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight){ el.classList.add('on'); }
+    });
+  }, 100);
+})();
+</script>
 </body>
 </html>
