@@ -89,13 +89,21 @@
     .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
     .chip-preprint{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:500}
     .proj-h{font-size:1.15rem;font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:16px}
-    .proj-insight{font-size:13px;font-weight:500;color:var(--text-2);line-height:1.7;margin-bottom:0}
-    .proj-intervention{font-size:13px;color:var(--text-3);line-height:1.7;margin-top:10px;margin-bottom:14px;padding-top:10px;border-top:1px solid var(--line-soft);flex:1}
+    .proj-insight{font-size:14px;font-weight:500;color:var(--text-2);line-height:1.7;margin-bottom:0}
+    .proj-intervention{font-size:14px;color:var(--text-3);line-height:1.7;margin-top:10px;margin-bottom:14px;padding-top:10px;border-top:1px solid var(--line-soft);flex:1}
     .proj-result{font-family:var(--mono);font-size:10px;color:var(--text-3);line-height:1.65;padding:8px 0 8px 14px;border-left:3px solid var(--accent);margin-bottom:14px;margin-top:4px}
     .proj-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
     .proj-meta{font-family:var(--mono);font-size:10px;color:var(--text-4)}
     .proj-arrow{font-size:14px;color:var(--text-4);transition:transform 150ms}
     .proj-card:hover .proj-arrow{transform:translateX(3px)}
+    html.dark .proj-card:hover{background:rgba(255,255,255,0.07);color:var(--text)}
+    html.dark .proj-card:hover .proj-num{color:var(--text-4)}
+    html.dark .proj-card:hover .proj-insight{color:var(--text)}
+    html.dark .proj-card:hover .proj-intervention{color:var(--text-3)}
+    html.dark .proj-card:hover .proj-result{color:var(--text-3);border-color:var(--accent)}
+    html.dark .proj-card:hover .chip{color:var(--text-4);border-color:var(--line)}
+    html.dark .proj-card:hover .proj-meta{color:var(--text-4)}
+    html.dark .proj-card:hover .proj-arrow{color:var(--text)}
     .page-footer{padding:40px 0 60px}
     .page-footer-inner{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
     .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
